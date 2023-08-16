@@ -465,7 +465,7 @@ namespace Inspinia_MVC5.Controllers.CashAdvance
 
         public string GenerateAdvancePaymentNO(long CompanyId)
         {
-            string result = string.Empty;
+            string result = string.Empty;//test123
             string CompanyCode = "";
             //CompanyTable cm = MASDB.CompanyTables.Where(s => s.CompanyId == CompanyId).SingleOrDefault();
             cCompany cm = cApi.apiGetCompanyByCompanyID(CompanyId);
