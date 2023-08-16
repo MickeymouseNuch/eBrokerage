@@ -20,7 +20,7 @@ namespace UVG_Main.Controllers.CN_Deposit
     {
         PMdbEntities1 DMPS = new PMdbEntities1();
         MASDBEntities MASDB = new MASDBEntities();
-        cApiPortal cApi = new cApiPortal(); //Test
+        cApiPortal cApi = new cApiPortal();
 
         public ActionResult Index()
         {
