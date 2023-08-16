@@ -1,0 +1,166 @@
+﻿@model Inspinia_MVC5.Models.MainClass.cEmployeeDetail
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>INSPINIA | @ViewBag.Title</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    @*<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>*@
+    <!-- Add local styles, mostly for plugins css file -->
+    @*@if (IsSectionDefined("Styles"))
+        {@RenderSection("Styles", required: false)}*@
+
+    <!-- Add jQuery Style direct - used for jQGrid plugin -->
+    <link href="@Url.Content("~/Scripts/plugins/jquery-ui/jquery-ui.min.css")" rel="stylesheet" type="text/css" />
+
+    <!-- Primary Inspinia style -->
+    @Styles.Render("~/font-awesome/css")
+    @Styles.Render("~/Content/css")
+</head>
+<body class="top-navigation" id="MainBody">
+
+    <!-- Skin configuration box -->
+    @*@Html.Partial("_SkinConfig")*@
+
+    <!-- Wrapper-->
+    <!-- PageClass give you ability to specify custom style for specific view based on action -->
+    <div id="wrapper" class="@Html.PageClass()">
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg @ViewBag.SpecialClass">
+            <div id="myHiddenField" hidden="hidden">
+                <strong id="EmployeeID"
+                        data-emp-id="@Model.EmpID"
+                        data-com-id="@Model.CompanyID"
+                        data-com-code="@Model.CompanyCode"
+                        data-parent-dept="@Model.ParentDeptID"
+                        data-parent-deptcode="@Model.ParentDeptCode"
+                        data-parent-deptname="@Model.ParentDeptNameT"
+                        data-dept-id="@Model.MainDeptID"
+                        data-dept-code="@Model.MainDeptCode"
+                        data-dept-name="@Model.MainDeptNameT"
+                        data-position-id="@Model.PositionID"
+                        data-position-code="@Model.PositionCode"
+                        data-position-positionname="@Model.PositionNameT"
+                        class="font-bold">
+                    @Model.DisplayName
+                </strong>
+
+                @Html.TextBox("EmpID", (string)@Model.EmpID)
+                @Html.TextBox("UserLogon", (string)@Model.UserLogon)
+                @Html.TextBox("ApplicationID", (string)@ViewBag.ApplicationID)
+                @Html.TextBox("RowAdmin",(int)@ViewBag.RoleAdmin.RoleAdmin)
+                @Html.TextBox("ViewOnly", (bool)@ViewBag.RoleAdmin.ViewOnly)
+                @*@Html.TextBox("IsModify", (bool)@ViewBag.RoleAdmin.IsModify)*@
+
+                <label id="isapplicationname"></label>
+                <label id="ismenu"></label>
+                <label id="issubmenu"></label>
+            </div>
+
+
+            <!-- Top Navbar -->
+            <div id="TopBar" style="padding-bottom:5px"></div>
+            @*@Html.Partial("_TopNavbar2")*@
+
+            <!-- Main view  -->
+            @*@RenderBody()*@
+            <div id="BodyBar"></div>
+
+            <!-- Footer -->
+            @Html.Partial("_Footer")
+
+        </div>
+        <!-- End page wrapper-->
+
+    </div>
+    <!-- End wrapper-->
+    <!-- Section for main scripts render -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/plugins/slimScroll")
+    @Scripts.Render("~/bundles/inspinia")
+
+    <!-- Skin config script - only for demo purpose-->
+    @Scripts.Render("~/bundles/skinConfig")
+    <script src="~/Scripts/Main/JS_Main.js"></script>
+    <script src="~/Scripts/Main/Utility.js"></script>
+    <script src="~/Scripts/Main/date.format.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //โหลดเมนูด้านบน-------------------------------------------------------
+            loadTopMenu('@Url.Action("LoadTopBar", "MasterPage")');
+            function loadTopMenu(url) {
+                var EmployeeID = $('#EmpID').val();
+                var ApplicationID = $('#ApplicationID').val();
+                $('#TopBar').load(url, {
+                    EmployeeID: EmployeeID, ApplicationID: ApplicationID
+                }, function () {
+                    var url = '@Url.Action("PageInfo", "MasterPage")' + "?ApplicationID=" + ApplicationID;
+                    loadInBodyPage(url);
+                });
+            }
+            //-------------------------------------------------------------------
+
+            //ตอนคลิกเมนูรีสทางด้านซ้ายให้เปิดลิ้งในส่วนกลางเพจ-------------------------------
+            $('#TopBar').on("click", ".clsmenuclick", function () {
+                $('#isapplicationname').text($(this).data("applicationname"));
+                $('#ismenu').text($(this).data("menu"));
+                $('#issubmenu').text($(this).data("submanu"));
+
+                $('#lblControllerName').text( $(this).data("con"));
+                $('#lblViewName').text($(this).data("view"));
+
+                var _Controller = $(this).data("con");
+                var _View = $(this).data("view");
+                var _ReportUrl = $(this).data("reporturl");
+                var url = '@Url.Action("View","Controller")';
+                url = url.replace("View", _View);
+                url = url.replace("Controller", _Controller);
+                if (_ReportUrl == "") {
+                    loadInBodyPage(url);
+                }
+                else {
+                    var urlReport = '@Url.Action("Index","ReportViewer")' + "?src=" + _ReportUrl;
+                }
+            });
+
+            $('#TopBar').on("click", "#btnHelp", function () {
+                var url = '@Url.Action("loadManual", "MasterPage")'
+                window.open(url);
+            });
+
+            $('#TopBar').on("click", "#btnUVlogoGo2ppportal", function () {
+                var EmployeeID = $('#EmpID').val();
+                var ApplicationID = $('#ApplicationID').val();
+                var url = '@Url.Action("getUrlAppportal", "MasterPage")';
+                $.post(url, { EmployeeID: EmployeeID, ApplicationID: ApplicationID }, function (result) {
+                    loadPage(result);
+                });
+            });
+
+            $('#TopBar').on("click", "#btnGo2Appportal", function () {
+                var EmployeeID = $('#EmpID').val();
+                var ApplicationID = $('#ApplicationID').val();
+                var url = '@Url.Action("getUrlAppportal", "MasterPage")';
+                $.post(url, { EmployeeID: EmployeeID, ApplicationID: ApplicationID }, function (result) {
+                    loadPage(result);
+                });
+            });
+            //-------------------------------------------------------------------
+        });
+    </script>
+
+    <!-- Handler for local scripts -->
+    @*@RenderSection("scripts", required: false)*@
+</body>
+</html>

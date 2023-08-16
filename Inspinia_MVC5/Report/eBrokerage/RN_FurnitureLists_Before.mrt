@@ -1,0 +1,1130 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection1 Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>Connection1</Alias>
+        <ConnectionStringEncrypted>5X7RAsVKk8HiS02ZeogyH8Pye8JNBdmIQghNnEtY6w/DasspQ3XzzW9a5QjoWPVGhT5pC09d2dnhSc2Y5VS1E9PEgWDOQUuc4U3lzGEA42P0cGUJThh7lGJHvNjxHK1jkBRxCV5PQ916EzmYZHQie9R4mwlGTUKI7BX18WNM4V7EyPXrSA==</ConnectionStringEncrypted>
+        <Name>Connection1</Name>
+      </Connection1>
+    </Databases>
+    <DataSources isList="true" count="6">
+      <rpt_Rent Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>rpt_Rent</Alias>
+        <Columns isList="true" count="115">
+          <value>RentNo,System.String</value>
+          <value>RentDate,System.DateTime</value>
+          <value>RentAt,System.String</value>
+          <value>RentPeriod,System.Int32</value>
+          <value>RentStartDate,System.DateTime</value>
+          <value>RentEndDate,System.DateTime</value>
+          <value>RentPrice,System.Decimal</value>
+          <value>DayofDue,System.String</value>
+          <value>RoomInsuranceQty,System.Int32</value>
+          <value>RoomInsuranceAmt,System.Decimal</value>
+          <value>RoomDepositQty,System.Int32</value>
+          <value>RoomDepositAmt,System.Decimal</value>
+          <value>CheckRoomRemarkRent,System.String</value>
+          <value>RentRemark,System.String</value>
+          <value>MaintenanceCharge,System.Decimal</value>
+          <value>WaterCharge,System.Decimal</value>
+          <value>CountKey,System.Int64</value>
+          <value>KeyIsAgent,System.Boolean</value>
+          <value>KeyIsJuristic,System.Boolean</value>
+          <value>ProjectAddress,System.String</value>
+          <value>CheckRoomRemarkDeposit,System.String</value>
+          <value>FacilityOther,System.String</value>
+          <value>FacilityRemark,System.String</value>
+          <value>UnitsCode,System.String</value>
+          <value>UnitsName,System.String</value>
+          <value>Floor,System.String</value>
+          <value>RoomNo,System.String</value>
+          <value>RoomArea,System.Decimal</value>
+          <value>BedRoomQty,System.Int32</value>
+          <value>LivingRoomQty,System.Int32</value>
+          <value>ToiletRoomQty,System.Int32</value>
+          <value>KitchenRoomQty,System.Int32</value>
+          <value>ProjectName,System.String</value>
+          <value>DevelopmentName,System.String</value>
+          <value>RentID,System.Int64</value>
+          <value>DS_FirstName,System.String</value>
+          <value>DS_CitizenID,System.String</value>
+          <value>DS_CitizenIssue,System.DateTime</value>
+          <value>DS_CitizenExp,System.DateTime</value>
+          <value>DS_Tel1,System.String</value>
+          <value>DS_AddressNo,System.String</value>
+          <value>DS_ZipCode,System.String</value>
+          <value>DS_Nationality,System.String</value>
+          <value>DS_Age,System.Int32</value>
+          <value>DS_PROVINCE_NAME,System.String</value>
+          <value>DS_AMPHUR_NAME,System.String</value>
+          <value>DS_SubDistrict,System.String</value>
+          <value>RN_FirstName,System.String</value>
+          <value>RN_CitizenID,System.String</value>
+          <value>RN_CitizenIssue,System.DateTime</value>
+          <value>RN_CitizenExp,System.DateTime</value>
+          <value>RN_Tel1,System.String</value>
+          <value>RN_AddressNo,System.String</value>
+          <value>RN_ZipCode,System.String</value>
+          <value>RN_Nationality,System.String</value>
+          <value>RN_Age,System.Int32</value>
+          <value>RN_PROVINCE_NAME,System.String</value>
+          <value>RN_AMPHUR_NAME,System.String</value>
+          <value>RN_SubDistrict,System.String</value>
+          <value>BankName,System.String</value>
+          <value>BankTypeNameTH,System.String</value>
+          <value>AccountName,System.String</value>
+          <value>AccountNo,System.String</value>
+          <value>DS_IDCard_Province,System.String</value>
+          <value>RN_IDCard_Province,System.String</value>
+          <value>RoomType,System.String</value>
+          <value>RN_Moo,System.String</value>
+          <value>RN_Soi,System.String</value>
+          <value>RN_Road,System.String</value>
+          <value>DS_Moo,System.String</value>
+          <value>DS_Soi,System.String</value>
+          <value>DS_Road,System.String</value>
+          <value>MulctPrice,System.Decimal</value>
+          <value>DS_UnExpireIDCard,System.Boolean</value>
+          <value>RN_UnExpireIDCard,System.Boolean</value>
+          <value>RN_AddressNo_Work,System.String</value>
+          <value>DS_AddressNo_Work,System.String</value>
+          <value>RoomFurnitureAmt,System.Decimal</value>
+          <value>RentFurnitureNo,System.String</value>
+          <value>ThaiCurrentcyRoomFurnitureAmt,System.String</value>
+          <value>CommissionPrice,System.Decimal</value>
+          <value>CommissionChecked,System.Boolean</value>
+          <value>PeriodStratEndRent_TH,System.String</value>
+          <value>CreatorName,System.String</value>
+          <value>ReviserName,System.String</value>
+          <value>RoomFurnitureQty,System.Int32</value>
+          <value>RoomFurnitureDepositQty,System.Int32</value>
+          <value>RoomFurnitureDepositAmt,System.Decimal</value>
+          <value>Pay_Cash,System.Decimal</value>
+          <value>Pay_Cashier,System.Decimal</value>
+          <value>Pay_CashierBank,System.String</value>
+          <value>Pay_CashierNo,System.String</value>
+          <value>Pay_CashierDate,System.DateTime</value>
+          <value>Pay_TransferCash,System.Decimal</value>
+          <value>Pay_TransferBankNo,System.String</value>
+          <value>Pay_TransferBankName,System.String</value>
+          <value>Pay_TransferCashDate,System.DateTime</value>
+          <value>Sum_RoomInsuranceAmt,System.Decimal</value>
+          <value>Sum_RoomDepositAmt,System.Decimal</value>
+          <value>Sum_RoomFurnitureAmt,System.Decimal</value>
+          <value>Sum_RoomFurnitureDepositAmt,System.Decimal</value>
+          <value>CHECKED_Pay_Cash,System.Int32</value>
+          <value>CHECKED_Pay_Cashier,System.Int32</value>
+          <value>CHECKED_TransferCash,System.Int32</value>
+          <value>CHECKED_RoomInsuranceAmt,System.Int32</value>
+          <value>CHECKED_RoomDepositAmt,System.Int32</value>
+          <value>CHECKED_RoomFurnitureAmt_INS,System.Int32</value>
+          <value>CHECKED_RoomFurnitureDepositAmt,System.Int32</value>
+          <value>Pay_CashierDate_TH,System.String</value>
+          <value>Pay_TransferCashDate_TH,System.String</value>
+          <value>RentDate_TH,System.String</value>
+          <value>Pay_CashierBankName,System.String</value>
+          <value>ReservationsAmt,System.Int32</value>
+          <value>TempRep_RoomNo,System.String</value>
+          <value>Building,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>rpt_Rent</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_RentID,RentID,8,0</value>
+        </Parameters>
+        <SqlCommand>SELECT *
+	FROM [PMdb].[dbo].[vw_rpt_Rent]
+	where RentID = @RentID</SqlCommand>
+      </rpt_Rent>
+      <ElectricityMeterNumber Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>ElectricityMeterNumber</Alias>
+        <Columns isList="true" count="9">
+          <value>CheckRoomDesc,System.String</value>
+          <value>CheckRoomID,System.Int64</value>
+          <value>IsQty,System.Boolean</value>
+          <value>CheckRoomUnit,System.String</value>
+          <value>ID,System.Int64</value>
+          <value>CheckRoomQty,System.Int32</value>
+          <value>IsBroken,System.Boolean</value>
+          <value>BrokenRoomQty,System.String</value>
+          <value>Checkbox_Room,System.Int32</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>ElectricityMeterNumber</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_RentID,RentID,8,0</value>
+        </Parameters>
+        <SqlCommand>SELECT MS_CHK.CheckRoomDesc , MS_CHK.CheckRoomID , MS_CHK.IsQty , MS_CHK.CheckRoomUnit , TRANS.ID,CAST (ISNULL(TRANS.CheckRoomQty,0)AS int) as CheckRoomQty , ISNULL(TRANS.IsBroken,0) as IsBroken, ISNULL(TRANS.BrokenRoomQty,0)  as BrokenRoomQty ,
+	CASE WHEN TRANS.ID is null THEN 0 else 1 END AS Checkbox_Room 
+FROM (
+SELECT [CheckRoomID]
+	,[CheckRoomDesc]
+	,[IsQty]
+	,ISNULL([CheckRoomUnit],'') as [CheckRoomUnit] FROM [PMdb].[dbo].[CheckRoomMasterTable] as MS_CHK )  as MS_CHK
+LEFT JOIN (SELECT *
+	FROM [PMdb].[dbo].[CheckRoomTrans]
+	where CheckType = 2
+	and ID = @RentID) as TRANS
+ON MS_CHK.CheckRoomID = TRANS.CheckRoomID
+where MS_CHK.CheckRoomID  in (2)</SqlCommand>
+      </ElectricityMeterNumber>
+      <TapWaterMeterNumber Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>TapWaterMeterNumber</Alias>
+        <Columns isList="true" count="9">
+          <value>CheckRoomDesc,System.String</value>
+          <value>CheckRoomID,System.Int64</value>
+          <value>IsQty,System.Boolean</value>
+          <value>CheckRoomUnit,System.String</value>
+          <value>ID,System.Int64</value>
+          <value>CheckRoomQty,System.Int32</value>
+          <value>IsBroken,System.Boolean</value>
+          <value>BrokenRoomQty,System.String</value>
+          <value>Checkbox_Room,System.Int32</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>TapWaterMeterNumber</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_RentID,RentID,8,0</value>
+        </Parameters>
+        <SqlCommand>SELECT MS_CHK.CheckRoomDesc , MS_CHK.CheckRoomID , MS_CHK.IsQty , MS_CHK.CheckRoomUnit , TRANS.ID,CAST(ISNULL(TRANS.CheckRoomQty,0)AS int) as CheckRoomQty , ISNULL(TRANS.IsBroken,0) as IsBroken, ISNULL(TRANS.BrokenRoomQty,0)  as BrokenRoomQty ,
+	CASE WHEN TRANS.ID is null THEN 0 else 1 END AS Checkbox_Room 
+FROM (
+SELECT [CheckRoomID]
+	,[CheckRoomDesc]
+	,[IsQty]
+	,ISNULL([CheckRoomUnit],'') as [CheckRoomUnit] FROM [PMdb].[dbo].[CheckRoomMasterTable] as MS_CHK )  as MS_CHK
+LEFT JOIN (SELECT *
+	FROM [PMdb].[dbo].[CheckRoomTrans]
+	where CheckType = 2
+	and ID = @RentID) as TRANS
+ON MS_CHK.CheckRoomID = TRANS.CheckRoomID
+where MS_CHK.CheckRoomID  in (1)</SqlCommand>
+      </TapWaterMeterNumber>
+      <CheckRoomList Ref="6" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>CheckRoomList</Alias>
+        <Columns isList="true" count="9">
+          <value>CheckRoomDesc,System.String</value>
+          <value>CheckRoomID,System.Int64</value>
+          <value>IsQty,System.Boolean</value>
+          <value>CheckRoomUnit,System.String</value>
+          <value>ID,System.Int64</value>
+          <value>CheckRoomQty,System.String</value>
+          <value>IsBroken,System.Boolean</value>
+          <value>BrokenRoomQty,System.String</value>
+          <value>Checkbox_Room,System.Int32</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>CheckRoomList</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_RentID,RentID,8,0</value>
+        </Parameters>
+        <SqlCommand>SELECT MS_CHK.CheckRoomDesc , MS_CHK.CheckRoomID , MS_CHK.IsQty , MS_CHK.CheckRoomUnit ,  TRANS.ID,CASE WHEN ISNULL(TRANS.CheckRoomQty,'') = 0 THEN '' ELSE ISNULL(TRANS.CheckRoomQty,'') END  as CheckRoomQty , ISNULL(TRANS.IsBroken,0) as IsBroken, ISNULL(TRANS.BrokenRoomQty,0)  as BrokenRoomQty ,
+	CASE WHEN TRANS.ID is null THEN 0 else 1 END AS Checkbox_Room 
+FROM (
+SELECT [CheckRoomID]
+	,[CheckRoomDesc]
+	,[IsQty]
+	,Sort
+	,ISNULL([CheckRoomUnit],'') as [CheckRoomUnit] FROM [PMdb].[dbo].[CheckRoomMasterTable] as MS_CHK )  as MS_CHK
+LEFT JOIN (SELECT *
+	FROM [PMdb].[dbo].[CheckRoomTrans]
+	where CheckType = 2
+	and ID = @RentID) as TRANS
+ON MS_CHK.CheckRoomID = TRANS.CheckRoomID
+where MS_CHK.CheckRoomID not in (1,2)
+order by MS_CHK.Sort</SqlCommand>
+      </CheckRoomList>
+      <BrokenTrans Ref="7" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>BrokenTrans</Alias>
+        <Columns isList="true" count="8">
+          <value>BrokenID,System.Int32</value>
+          <value>TypeID,System.Int32</value>
+          <value>RentID,System.Int32</value>
+          <value>Description,System.String</value>
+          <value>Creator,System.Int64</value>
+          <value>CreateDateTime,System.DateTime</value>
+          <value>Reviser,System.Int64</value>
+          <value>ReviseDateTime,System.DateTime</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>BrokenTrans</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_RentID,RentID,8,0</value>
+        </Parameters>
+        <SqlCommand>SELECT *
+	FROM [PMdb].[dbo].[CheckRoomBrokenTrans]
+	where RentID = @RentID</SqlCommand>
+      </BrokenTrans>
+      <RoomBrokenPayments Ref="8" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>RoomBrokenPayments</Alias>
+        <Columns isList="true" count="12">
+          <value>ID,System.Int32</value>
+          <value>TypeID,System.Int32</value>
+          <value>RentID,System.Int32</value>
+          <value>PaymentType,System.Int32</value>
+          <value>PaymentDesc,System.String</value>
+          <value>PaymentAmt,System.Decimal</value>
+          <value>Creator,System.Int64</value>
+          <value>CreateDateTime,System.DateTime</value>
+          <value>Reviser,System.Int64</value>
+          <value>ReviseDateTime,System.DateTime</value>
+          <value>TEXT01,System.String</value>
+          <value>TEXT02,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>RoomBrokenPayments</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_RentID,RentID,8,0</value>
+        </Parameters>
+        <SqlCommand>SELECT [ID]
+	,[TypeID]
+	,[RentID]
+	,[PaymentType]
+	,[PaymentDesc]
+	,[PaymentAmt]
+	,[Creator]
+	,[CreateDateTime]
+	,[Reviser]
+	,[ReviseDateTime]
+	,[PaymentDesc] + ' จำนวน '  as TEXT01
+	,' บาท' +  ' (' + dbo.fn_CurrencyToWordThai([PaymentAmt]) + ')' as TEXT02
+	FROM [PMdb].[dbo].[CheckRoomBrokenPayments]
+where RentID = @RentID</SqlCommand>
+      </RoomBrokenPayments>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="1">
+      <value>,RentID,RentID,System.String,_x0031_78,False,False,True</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="2">
+    <Page1 Ref="9" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="12">
+        <PageHeaderBand1 Ref="10" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,7.27,0.63</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text1 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.31,0,4.88,0.63</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,11</Font>
+              <Guid>d952addc5feb4f9ab17dee27ff033fe2</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>GRAND UNITY DEVELOPMENT CO.,LTD.
+900 7th Floor,Tonson Tower Ploenchit Road Lumpini Pathumwan
+Bangkok 10330</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>86e7d2c4b780425594c555bc24d71965</Guid>
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+        </PageHeaderBand1>
+        <Image1 Ref="12" type="Image" isKey="true">
+          <AspectRatio>True</AspectRatio>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>-0.3,0.1,1.8,0.67</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <File>C:\Users\neeranuch.ya\Desktop\messageImage_1564481388032.jpg</File>
+          <Guid>23009c501a6e4eb3810d08593b6de4cc</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Name>Image1</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Stretch>True</Stretch>
+          <VertAlignment>Center</VertAlignment>
+        </Image1>
+        <DataBand2 Ref="13" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.23,7.27,0.4</ClientRectangle>
+          <Components isList="true" count="1">
+            <SubReport1 Ref="14" type="SubReport" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.5,0.03,6.3,0.3</ClientRectangle>
+              <Components isList="true" count="0" />
+              <Name>SubReport1</Name>
+              <Page isRef="9" />
+              <Parameters isList="true" count="0" />
+              <Parent isRef="13" />
+              <SubReportPageGuid>33357916ac7e499c858e37ea3b93e0e7</SubReportPageGuid>
+            </SubReport1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>145486794fae42e89d58604d724fc79d</Guid>
+          <Name>DataBand2</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand2>
+        <DataBand1 Ref="15" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.03,7.27,1.34</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text2 Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0.31,7.29,0.31</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,18,Bold</Font>
+              <Guid>5a08b1adb82f4b82983546a09d60bcc8</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="9" />
+              <Parent isRef="15" />
+              <Text>ใบตรวจสอบสภาพห้องชุดของผู้เช่าก่อนการเช่า</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text2>
+            <Text4 Ref="17" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.5,0.87,3.07,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>33e9bf5fff9249d3870570bdf6ed9db0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="9" />
+              <Parent isRef="15" />
+              <Text>{ "เลขที่  &lt;b&gt;" + rpt_Rent.RentNo  + "&lt;/b&gt; "
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text4>
+            <Text3 Ref="18" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3.62,0.87,3.07,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>4ff2e0beb90844d38343ffcafd6e1292</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="9" />
+              <Parent isRef="15" />
+              <Text>{ "วันที่  &lt;b&gt;" + rpt_Rent.RentDate_TH + "&lt;/b&gt; "
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>e8de3ba6a8dd46558ceaaf5f41a74c9c</Guid>
+          <Name>DataBand1</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+        <DataBand4 Ref="19" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.77,7.27,0.4</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text5 Ref="20" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.5,0,6.29,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>eb0fe0a1b6ac4f40ac17401767fded0f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <Text>{ "ข้าพเจ้า  &lt;b&gt;" + rpt_Rent.RN_FirstName + "&lt;/b&gt; " + " &lt;br&gt;"
++ "ชื่อโครงการ"+ "&lt;b&gt; " +  rpt_Rent.ProjectName + "&lt;/b&gt;" + " &lt;br&gt;"
++ "ได้ตรวจรับสภาพห้องชุดเลขที่ " + "&lt;b&gt; " +  rpt_Rent.TempRep_RoomNo + " &lt;/b&gt;" 
++ "ชั้น " + "&lt;b&gt; " + rpt_Rent.Floor + " &lt;/b&gt;" 
++ "อาคาร " + "&lt;b&gt; " + rpt_Rent.Building + " &lt;/b&gt; " + "เพื่อเช่าพักอาศัย ดังมีรายการต่อไปนี้"
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text5>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>16fd5b78cc914ba086bacc889b21f458</Guid>
+          <Name>DataBand4</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand4>
+        <DataBand6 Ref="21" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.57,7.27,0.4</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text6 Ref="22" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.5,0,6.29,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>197e0837903f41f892b9234ad3d379f4</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="9" />
+              <Parent isRef="21" />
+              <Text>{ "1. มิเตอร์น้ำประปาที่ปรากฏ " + " มิเตอร์ &lt;b&gt;" + Format("{0:N0}", TapWaterMeterNumber.CheckRoomQty) + "&lt;/b&gt; หน่วย" + "&lt;br&gt;"
++ "2. มิเตอร์ไฟฟ้าที่ปรากฏ " + " มิเตอร์ &lt;b&gt;" + Format("{0:N0}", ElectricityMeterNumber.CheckRoomQty) + "&lt;/b&gt; หน่วย" + "&lt;br&gt;"
++ "เฟอร์นิเจอร์และเครื่องใช้ไฟฟ้า"
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text6>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>3d1b689db3a84b11a6771ff283818141</Guid>
+          <Name>DataBand6</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand6>
+        <DataBand5 Ref="23" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,5.37,7.27,0.41</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text13 Ref="24" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.5,0.08,6.29,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>7da3da65c66443ba9988c758776c04c2</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="9" />
+              <Parent isRef="23" />
+              <Text>{ "ข้าพเจ้าขอรับรองว่าได้ทำการตรวจรับห้องชุดก่อนทำสัญญาเช่าเพื่อพักอาศัย ตามรายงานดังกล่าวข้างต้นเป็นอย่างดีแล้ว และหากเกิดความเสียหายขึ้นนอกเหนือจากรายการที่ข้าพเจ้าได้บันทึกไว้ในเอกสารนี้ หลักจากที่ข้าพเจ้าได้เข้าพักอาศัยแล้ว  ข้าพเจ้ายินดีที่จะชดใช้ค่าเสียหายทั้งหมดที่เกิดขึ้นตามค่าใช้จ่ายที่เกิดขึ้นจริง รับทราบก่อนย้ายเข้า"
++ ""
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text13>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>baba849d0eb54a30992d61d61af84d62</Guid>
+          <Name>DataBand5</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand5>
+        <DataBand3 Ref="25" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6.18,7.27,2.91</ClientRectangle>
+          <Components isList="true" count="6">
+            <Text21 Ref="26" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.62,0.71,2.76,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>c460c0a60101497ebee9e67c4013229d</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="9" />
+              <Parent isRef="25" />
+              <Text>{"( " + rpt_Rent.RN_FirstName + " )"}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text21>
+            <Text22 Ref="27" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.62,0.47,2.76,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>3fe8100b4d704eb69c57cd7cd01f50d6</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="9" />
+              <Parent isRef="25" />
+              <Text>ลงชื่อ ................................................................. ผู้เช่า</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text22>
+            <Text15 Ref="28" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,1.65,2.76,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>b51d68d73ec740db98daa3f59138e5cc</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="9" />
+              <Parent isRef="25" />
+              <Text>{"( " + rpt_Rent.DS_FirstName + " )"}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text15>
+            <Text16 Ref="29" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,1.42,2.76,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>c9d726a361a7409fa1ac9221a2eb384f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="9" />
+              <Parent isRef="25" />
+              <Text>ลงชื่อ .............................................................. ผู้ให้เช่า</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text16>
+            <Text17 Ref="30" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,2.6,2.76,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>1600a2e20bdf4416b7745f08c13d2ac9</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="9" />
+              <Parent isRef="25" />
+              <Text>{"( " + rpt_Rent.ReviserName + " )"}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text17>
+            <Text19 Ref="31" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,2.36,3.16,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>940a61a8a3f24307b522d6f29153c910</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="9" />
+              <Parent isRef="25" />
+              <Text>ลงชื่อ ................................................................. พนักงาน</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text19>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>7b70730d912c40968aa17146ad1785c9</Guid>
+          <Name>DataBand3</Name>
+          <NewPageAfter>True</NewPageAfter>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+        <DataBand7 Ref="32" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,9.49,7.27,0.2</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text20 Ref="33" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.6,0,6.09,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>d9031c78ce3d4998b5b8e4556f718863</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="9" />
+              <Parent isRef="32" />
+              <Text>{ "3. สภาพห้องที่ชำรุดเสียหายเพราะการอยู่อาศัย"
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text20>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Enabled>False</Enabled>
+          <Filters isList="true" count="0" />
+          <Guid>00cf370e58894a9392044226c01bfd7c</Guid>
+          <Name>DataBand7</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand7>
+        <DataBand15 Ref="34" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,10.09,7.27,0.4</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text36 Ref="35" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>1.06,0.01,5.63,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>05f18d7ebfef46d58b9f02ecc839ef1b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text36</Name>
+              <Page isRef="9" />
+              <Parent isRef="34" />
+              <Text>{ BrokenTrans.Description
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text36>
+            <Text23 Ref="36" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.8,0.01,0.23,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>a35fe68cc84b4198bc13160b808d4ebf</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="9" />
+              <Parent isRef="34" />
+              <Text>{ "3." + Line}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>BrokenTrans</DataSourceName>
+          <Enabled>False</Enabled>
+          <Filters isList="true" count="0" />
+          <Guid>64cbabe76a4a454ca5673bdc03f1f028</Guid>
+          <Name>DataBand15</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand15>
+        <DataBand8 Ref="37" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,10.89,7.27,0.4</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text24 Ref="38" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.6,0.1,6.69,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>b2cc568e3b7745f79378df8212fad0dd</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="9" />
+              <Parent isRef="37" />
+              <Text>{ "4. ได้รับเงินค้ำประกันห้องชุด พร้อมหักค่าเสียหายภายในห้องชุดเรียบร้อยแล้ว"
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text24>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Enabled>False</Enabled>
+          <Filters isList="true" count="0" />
+          <Guid>801fc1135e204a82986397eed4bd3f31</Guid>
+          <Name>DataBand8</Name>
+          <NewPageBefore>True</NewPageBefore>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand8>
+        <DataBand9 Ref="39" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,11.69,7.27,0.3</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text25 Ref="40" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>1.12,0.01,6.23,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>8876f94af7fc45939ba297f85ecfd3c4</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="9" />
+              <Parent isRef="39" />
+              <Text>{RoomBrokenPayments.TEXT01 + RoomBrokenPayments.PaymentAmt + RoomBrokenPayments.TEXT02
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text25>
+            <Text26 Ref="41" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.8,0.01,0.23,0.24</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>ebca10bfb68746499fa43a4c291ba77a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="9" />
+              <Parent isRef="39" />
+              <Text>{ "4." + Line}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text26>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>RoomBrokenPayments</DataSourceName>
+          <Enabled>False</Enabled>
+          <Filters isList="true" count="0" />
+          <Guid>b3a6e17fd73b42de93702ffb6eb019b5</Guid>
+          <Name>DataBand9</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand9>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8478525b69be4bd7b8c97682436a27ff</Guid>
+      <LargeHeight>True</LargeHeight>
+      <Margins>0.5,0.5,0.5,0.5</Margins>
+      <Name>Page1</Name>
+      <PageHeight>11.69</PageHeight>
+      <PageWidth>8.27</PageWidth>
+      <PaperSize>A4</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="42" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+    <subReport_1 Ref="43" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <HeaderBand2 Ref="44" type="HeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,6.3,0.22</ClientRectangle>
+          <Components isList="true" count="6">
+            <Text7 Ref="45" type="Text" isKey="true">
+              <Border>Top, Left;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,1.5,0.22</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,12,Bold</Font>
+              <Guid>c5efd37cdcfd43a394425c7d609ee5c6</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="43" />
+              <Parent isRef="44" />
+              <Text>{ " รายการ"
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text7>
+            <Text8 Ref="46" type="Text" isKey="true">
+              <Border>Top, Left;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.5,0,0.47,0.22</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,12,Bold</Font>
+              <Guid>27f4111303f24f938525b3fe2bd4e467</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="43" />
+              <Parent isRef="44" />
+              <Text>จำนวน</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text8>
+            <Text9 Ref="47" type="Text" isKey="true">
+              <Border>Top, Left;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.97,0,1.6,0.22</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,12,Bold</Font>
+              <Guid>fa8da0c2d44e43e398d82eecdff43148</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="43" />
+              <Parent isRef="44" />
+              <Text>{ " รายการ"
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text9>
+            <Text10 Ref="48" type="Text" isKey="true">
+              <Border>Top, Left;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.47,0,0.47,0.22</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,12,Bold</Font>
+              <Guid>4554859554f84cdeb3d98957113fbeee</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="43" />
+              <Parent isRef="44" />
+              <Text>จำนวน</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text10>
+            <Text11 Ref="49" type="Text" isKey="true">
+              <Border>Top, Left;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.94,0,1.5,0.22</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,12,Bold</Font>
+              <Guid>fd60889b92da4e179305906744925288</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="43" />
+              <Parent isRef="44" />
+              <Text>{ " รายการ"
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text11>
+            <Text14 Ref="50" type="Text" isKey="true">
+              <Border>Top, Left, Right;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.44,0,0.47,0.22</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,12,Bold</Font>
+              <Guid>f968db3290ee43cfb85a939c3ea2b323</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="43" />
+              <Parent isRef="44" />
+              <Text>จำนวน</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text14>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>c2ef4171a0544d90a4caec0166ea4ce9</Guid>
+          <Name>HeaderBand2</Name>
+          <Page isRef="43" />
+          <Parent isRef="43" />
+        </HeaderBand2>
+        <LabelsDataBand Ref="51" type="DataBand" isKey="true">
+          <Border>None;Black;2;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,0.82,6.3,0.24</ClientRectangle>
+          <ColumnDirection>DownThenAcross</ColumnDirection>
+          <Columns>3</Columns>
+          <ColumnWidth>1.9685039370078741</ColumnWidth>
+          <Components isList="true" count="1">
+            <Label_Area Ref="52" type="Panel" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,1.97,0.24</ClientRectangle>
+              <Components isList="true" count="3">
+                <Text12 Ref="53" type="Text" isKey="true">
+                  <AllowHtmlTags>True</AllowHtmlTags>
+                  <AutoWidth>True</AutoWidth>
+                  <Brush>Transparent</Brush>
+                  <CanGrow>True</CanGrow>
+                  <CanShrink>True</CanShrink>
+                  <ClientRectangle>0.31,0,1.85,0.22</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>TH Sarabun New,11</Font>
+                  <Guid>c158d0c863174d499a1cd8499049ecad</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text12</Name>
+                  <Page isRef="43" />
+                  <Parent isRef="52" />
+                  <Text>{ "&lt;b&gt;" + CheckRoomList.CheckRoomDesc  + "&lt;/b&gt; "
+}</Text>
+                  <TextBrush>Black</TextBrush>
+                  <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+                  <TextQuality>Wysiwyg</TextQuality>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text12>
+                <CheckBox2 Ref="54" type="CheckBox" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <Checked>{CheckRoomList.Checkbox_Room}</Checked>
+                  <CheckStyleForFalse>NoneRectangle</CheckStyleForFalse>
+                  <CheckStyleForTrue>CheckRectangle</CheckStyleForTrue>
+                  <ClientRectangle>0,0,0.31,0.24</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <ContourColor>Black</ContourColor>
+                  <Guid>1561b8f349f14c91a5d62109ab5149cf</Guid>
+                  <Name>CheckBox2</Name>
+                  <Page isRef="43" />
+                  <Parent isRef="52" />
+                  <Printable>False</Printable>
+                  <TextBrush>Black</TextBrush>
+                  <Values>1/0</Values>
+                </CheckBox2>
+                <Text18 Ref="55" type="Text" isKey="true">
+                  <AllowHtmlTags>True</AllowHtmlTags>
+                  <Border>Left;Black;1;Solid;False;4;Black</Border>
+                  <Brush>Transparent</Brush>
+                  <CanGrow>True</CanGrow>
+                  <ClientRectangle>1.5,0,0.4,0.24</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>TH Sarabun New,11</Font>
+                  <Guid>3a0ff58343b54ba09eac8c2eaee1b882</Guid>
+                  <HorAlignment>Right</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text18</Name>
+                  <Page isRef="43" />
+                  <Parent isRef="52" />
+                  <Text>{ "&lt;b&gt;" +  CheckRoomList.CheckRoomQty + "&lt;/b&gt; "
+}</Text>
+                  <TextBrush>Black</TextBrush>
+                  <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+                  <TextQuality>Wysiwyg</TextQuality>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text18>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Guid>7906c420eff843d98b59ce91f78c069c</Guid>
+              <Name>Label_Area</Name>
+              <Page isRef="43" />
+              <Parent isRef="51" />
+            </Label_Area>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>CheckRoomList</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Guid>a1c5215550ea48e68fb67e81f2d14c36</Guid>
+          <Name>LabelsDataBand</Name>
+          <Page isRef="43" />
+          <Parent isRef="43" />
+          <PrintIfDetailEmpty>True</PrintIfDetailEmpty>
+          <Sort isList="true" count="0" />
+        </LabelsDataBand>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>33357916ac7e499c858e37ea3b93e0e7</Guid>
+      <Margins>0.39,0.39,0.39,0.39</Margins>
+      <Name>subReport_1</Name>
+      <PageHeight>11.69</PageHeight>
+      <PageWidth>7.08</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="56" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </subReport_1>
+  </Pages>
+  <PrinterSettings Ref="57" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>6/15/2023 9:38:23 AM</ReportChanged>
+  <ReportCreated>8/19/2019 2:36:32 PM</ReportCreated>
+  <ReportFile>E:\Project\30 eBrokerage\Inspinia_MVC5\Report\eBrokerage\RN_FurnitureLists_Before.mrt</ReportFile>
+  <ReportGuid>e27d8136ce7347aeaee6c0cc81717718</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2014.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,2115 @@
+﻿
+<div class="modal inmodal fade" id="myModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:10px">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                @* --------------------------------Modal Heading 1------------------------------------- *@
+                <div class="row">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-8">
+                        <h4 class="modal-title"><label for="lblColor" id="lblHeader">รายละเอียดสัญญาเช่าห้องชุด </label></h4>
+                    </div>
+                    <div class="col-lg-2">
+                    </div>
+                </div>
+                <hr />
+                @* --------------------------------End Modal Heading 1---------------------------------- *@
+
+
+                @* --------------------------------Modal Heading 2-------------------------------------- *@
+                <div class="row">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:right">
+                        <label>เลขที่ : </label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label id="lblDocNo" style="color:dodgerblue">RT-1801-001</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:right">
+                        <label>วันที่ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                    </div>
+                    <div class="form-group" id="data_1" style="margin-bottom: 5px;">
+                        <div class="col-lg-3 input-group date" style="height: 28px;text-align:left;padding-left: 15px;padding-right: 15px;">
+                            <input id="ddlDocDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")" readonly="readonly"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="divEndcontactDate" class="row">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:right">
+                        <label>วันที่จบสัญญา : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                    </div>
+                    <div class="form-group" id="data_1" style="margin-bottom: 5px;">
+                        <div class="col-lg-3 input-group date" style="height: 28px;text-align:left;padding-left: 15px;padding-right: 15px;">
+                            <input id="ddlDocEndDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")" readonly="readonly"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:right;padding-top: 5px;">
+                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ทำที่ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <input type="text" id="txtDocAt" name="txtDocAt" class="form-control" style="" data-id="" />
+                    </div>
+                </div>
+                <div class="row" style="padding-top:5px">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    @*<div class="col-lg-3" style="text-align:right">
+                            <label>ประเภทการเช่า : </label>
+                        </div>
+                        <div class="col-lg-3" style="text-align:left">
+                            <label class="label label-info" id="lblRentType">เจ้าของร่วม</label>
+                        </div>*@
+                </div>
+                <div class="row">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:right">
+                        <label>เลขที่เอกสารอ้างอิง : </label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left;margin-bottom: 5px;">
+                        @*<input type="text" id="txtDocsRef" name="txtDocsRef" class="form-control" style="" data-id="" value="" />*@
+                        <textarea id="txtDocsRef" class="form-control" style="" data-id="" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:right">
+                        <label>สถานะเอกสาร : </label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label id="lblDocumentStatusDisplay" style="color:dodgerblue">เปิดใหม่</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row" hidden="hidden">
+                            <div id="" class="col-lg-12" style="">
+                                <label id="lblDocID" class="" data-id="" style="padding-bottom: 10px;">LableDescription : </label>
+                                <label id="lblCreator" class="" data-id="" style="padding-bottom: 10px;">LableDescription : </label>
+                                <label id="lblIsDelete" class="" data-id="" style="padding-bottom: 10px;">LableDescription : </label>
+                                <label id="lblRentStatus" class="" data-id="" style="padding-bottom: 10px;">RentStatus : </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* --------------------------------End Modal Heading 2---------------------------------- *@
+        <div class="modal-body" style="padding-bottom:0px">
+            @*ข้อมูลผู้ให้เช่า*@
+            @*<div class="row" id="rowPV">
+            <div class="col-sm-12">
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">ข้อมูลผู้ให้เช่า (รายละเอียดตามบัตรประชาชน)</a>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">ชื่อ - สกุล : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtName" name="txtName" class="form-control" style="" data-id="" value="นายไพศาล สวัสดี" />
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">อายุ : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtAge" name="txtAge" class="form-control" style="" data-id="" value="30" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                                <input type="text" id="txtDSCustID" name="txtDSCustID" class="form-control" style="" data-id="" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                                <input type="text" id="txtDepositID" name="txtDepositID" class="form-control" style="" data-id="" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                                <input type="text" id="txtUnitID" name="txtUnitID" class="form-control" style="" data-id="" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                                <input type="text" id="txtRTCustID" name="txtRTCustID" class="form-control" style="" data-id="" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                                <input type="text" id="txtRentID" name="txtRentID" class="form-control" style="" data-id="" />
+                                            </div>
+
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">เลขที่บัตรประชาชน : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtIDCard" name="txtIDCard" class="form-control" style="" data-id="" value="1230273003xxx" />
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">ออกเมื่อวันที่ : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <div class="form-group" id="data_1">
+                                                    <div class="input-group date">
+                                                        <input id="ddlCardDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("31/12/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">สัญชาติ : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtNationality" name="txtNationality" class="form-control" style="" data-id="" value="ไทย" />
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">หมดอายุวันที่ : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form-group" id="data_1">
+                                                    <div class="input-group date">
+                                                        <input id="txtCardExpire" type="text" class="form-control" value="@System.DateTime.Now.ToString("31/12/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">ณ จังหวัด : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtCardFrom" name="txtCardFrom" class="form-control" style="" data-id="" value="ตราด" />
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">ที่อยู่ : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtAddress" name="txtAddress" class="form-control" style="" data-id="" value="198/10" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">หมู่ : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtMoo" name="txtMoo" class="form-control" style="" data-id="" value="9" />
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">ตรอก/ซอย : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtSoi" name="txtSoi" class="form-control" style="" data-id="" value="-" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">ถนน : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtRoad" name="txtRoad" class="form-control" style="" data-id="" value="-" />
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">ตำบล/แขวง : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtSubDistict" name="txtSubDistict" class="form-control" style="" data-id="" value="คลองใหญ่" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">เขต/อำเภอ : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtDistict" name="txtDistict" class="form-control" style="" data-id="" value="คลองใหญ่" />
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">จังหวัด : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtProvince" name="txtProvince" class="form-control" style="" data-id="" value="ตราด" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">รหัสไปรษณีย์ : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtzipcode" name="txtzipcode" class="form-control" style="" data-id="" value="23110" />
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">เบอร์โทร : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtTel" name="txtTel" class="form-control" style="" data-id="" value="093-07566xx" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+            @*ข้อมูลบัญชีธนาคาร*@
+            <div class="panel-group" id="accordionBankDS">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordionBankDS" href="#collapseBankDS">ข้อมูลผู้ฝากเช่า / ฝากขาย</a>
+                        </h5>
+                    </div>
+                    <div id="collapseBankDS" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="row" id="" style="">
+                                <div class="col-lg-2" style="text-align:right">
+                                    <label id="" class="" data-id="" style="padding-top: 5px;">ชื่อ - สกุล : </label>
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="text" id="txtName" name="txtName" class="form-control" style="" data-id="" value="นายไพศาล สวัสดี" readonly="readonly" />
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บัญชีธนาคาร : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:left" readonly="readonly">
+                                    @*<input type="text" id="txtBankName" name="txtBankName" class="form-control" style="" data-id="" value="@_CustData[0].BankID" />*@
+                                    @*@Html.DropDownList("ddlBank", null, "Please Select", new { @class = "select2_Bank form-control", style = "width:100%" })*@
+                                    @Html.DropDownList("ddl_Bank", null, "Please Select", new { @class = "select2_Bank form-control", style = "width:100%" })
+                                </div>
+
+                                <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                    <input type="text" id="txtDSCustID" name="txtDSCustID" class="form-control" style="" data-id="" />
+                                </div>
+                                <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                    <input type="text" id="txtDepositID" name="txtDepositID" class="form-control" style="" data-id="" />
+                                </div>
+                                <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                    <input type="text" id="txtUnitID" name="txtUnitID" class="form-control" style="" data-id="" />
+                                </div>
+                                <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                    <input type="text" id="txtRTCustID" name="txtRTCustID" class="form-control" style="" data-id="" />
+                                </div>
+                                <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                    <input type="text" id="txtRentID" name="txtRentID" class="form-control" style="" data-id="" />
+                                </div>
+                                <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                    <input type="text" id="txtRVID" name="txtRVID" class="form-control" style="" data-id="" />
+                                </div>
+                                <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                    <input type="text" id="txtCopyRentID" name="txtCopyRentID" class="form-control" style="" data-id="" />
+                                </div>
+
+                                <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                    <input type="text" id="txtRNCopyRentID" name="txtCopyRentID" class="form-control" style="" data-id="" />
+                                </div>
+
+                            </div>
+                            <br />
+                            @*<div class="row" id="" style="">
+                            <div id="" class="col-lg-2" style="text-align:right">
+                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">ประเภทบัญชี : </label>
+                            </div>
+                            <div id="" class="col-lg-3"  style="text-align:left">
+                             @Html.DropDownList("ddlDS_AccountType", null, "Please Select", new { @class = "select2_DSAccountType form-control", style = "width:100%" })
+
+                            </div>
+                        </div>
+                        <br />*@
+                            <div class="row" id="" style="">
+                                <div class="col-lg-2" style="text-align:right;padding-left: 5px;">
+                                    <label id="" class="" data-id="" style="padding-top: 5px;">เลขที่บัตรประชาชน : </label>
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="text" id="txtIDCard" name="txtIDCard" class="form-control" style="" data-id="" value="1230273003xxx" readonly="readonly" />
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">เลขที่บัญชี : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="">
+                                    <input type="text" id="txt_AccountNo" name="txt_AccountNo" class="form-control" style="" data-id="" readonly="readonly" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div class="col-lg-2" style="text-align:right">
+                                    <label id="" class="" data-id="" style="padding-top: 5px;">เบอร์โทร : </label>
+                                </div>
+                                <div class="col-lg-3" style="text-align:left">
+                                    <input type="text" id="txtTel" name="txtTel" class="form-control allownumericwithoutdecimal" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)" style="" data-id="" value="09307566xx" readonly="readonly" />
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ชื่อบัญชี : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="">
+                                    <input type="text" id="txt_AccountName" name="txt_AccountName" class="form-control" style="" data-id="" readonly="readonly" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*ข้อมูลผู้เช่า*@
+            <div class="row" id="rowPV">
+                <div class="col-sm-12">
+                    <div class="panel-group" id="accordionRender">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordionRender" href="#collapseRender">ข้อมูลผู้เช่า (รายละเอียดตามบัตรประชาชน)</a>
+                                </h5>
+                            </div>
+                            <div id="collapseRender" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="row" id="" style="">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">ประเภทลูกค้า : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3" style="padding-left: 0px; margin-left: 14px" >
+                                                    <input type="radio" id="rdo1" name="niti" value="30" ><label for="rdo1" >&nbsp;&nbsp;บุคคลทั่วไป</label>
+                                                    &nbsp;&nbsp;
+                                                    <input type="radio" id="rdo2" name="niti" value="60" ><label for="rdo2">&nbsp;&nbsp;นิติบุคคล</label>
+                                                </div>
+                                                <div id="" class="col-lg-2" style="text-align:right">
+                                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;"> </label>
+                                                </div>
+                                                <div id="" class="col-lg-3" style="text-align:left" readonly="readonly">
+                                                    @*@Html.DropDownList("ddl_Bank", null, "Please Select", new { @class = "select2_Bank form-control", style = "width:100%" })*@
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="txtIDCardRN" class="" data-id="" style="padding-top: 5px;">เลขที่บัตรประชาชน : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtCus_IDCard" name="txtcus_IDCard" class="form-control" style="" data-id="" maxlength = "13" onkeypress = "return /[0-9]/i.test(event.key)"/>
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="txtNameRN" class="" data-id="" style="padding-top: 5px;">ชื่อ-สกุล : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <input type="text" id="txtCus_Name" name="txtCus_Name" class="form-control" style="" data-id="" />
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row" id="committee" style="" hidden>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="">กรรมการผู้มีอํานาจกระทําการแทนบริษัท : </label><label for="lblColor" id="lblColor" style="color:red">*</label>
+                                                </div>
+                                                <div class="col-lg-3" style="padding-left: 0px; margin-left: 14px">
+                                                    <input type="text" id="txtcommittee" name="" class="form-control" style="width: 95%;" data-id=""  />
+                                                </div>
+                                                <div id="" class="col-lg-2" style="text-align:right">
+                                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;"> </label>
+                                                </div>
+                                                <div id="" class="col-lg-3" style="text-align:left" readonly="readonly">
+                                                    @*@Html.DropDownList("ddl_Bank", null, "Please Select", new { @class = "select2_Bank form-control", style = "width:100%" })*@
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">อายุ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="number" id="txtCus_Age" name="txtCus_Age" class="form-control allownumericwithoutdecimal" style="" data-id="" min="0" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">ออกเมื่อวันที่ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <div class="form-group" id="data_1">
+                                                        <div class="input-group date">
+                                                            <input id="ddlCus_CardDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("31/12/yyyy")" readonly="readonly"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">สัญชาติ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <input type="text" id="txtCus_Nationality" name="txtCus_Nationality" class="form-control" style="" data-id="" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">หมดอายุวันที่ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="form-group" id="data_1">
+                                                        <div class="input-group date">
+                                                            <input id="ddlCus_CardExpire" type="text" class="form-control" value="@System.DateTime.Now.ToString("31/12/yyyy")" readonly="readonly"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="col-lg-2" style="text-align:left;padding-left: 0px;">
+                                                        <div class="checkbox i-checks"><input type="checkbox" value="0" class="clsChkUnExpireCard" id="ChkUnExpireCard" style="padding-top: 5px;"></div>
+                                                    </div>
+                                                    <div id="" class="col-lg-9" style="text-align:left;padding-left: 0px;">
+                                                        <label id="" class="" data-id="" style="padding-top: 10px;">  : ตลอดชีพ </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">ณ จังหวัด : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                @*<div class="col-lg-3">
+                <input type="text" id="txtCus_CardFrom" name="txtCus_CardFrom" class="form-control" style="" data-id="" />
+            </div>*@
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    @*<input type="text" id="txtSubDistrict" name="txtSubDistrict" class="form-control" style="" data-id="" value="@_ContactDetail.SubDistrict" />*@
+                                                    @Html.DropDownList("ddlCardFrom", null, "Please Select", new { @class = "select2_CardFrom form-control", style = "width:100%" })
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">ที่อยู่ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <input type="text" id="txtCus_Address" name="txtCus_Address" class="form-control" style="" data-id="" />
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">หมู่ : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtCus_Moo" name="txtCus_Moo" class="form-control" style="" data-id="" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">ตรอก/ซอย : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <input type="text" id="txtCus_Soi" name="txtCus_Soi" class="form-control" style="" data-id="" />
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">ถนน : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtCus_Road" name="txtCus_Road" class="form-control" style="" data-id="" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">จังหวัด : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    @*<input type="text" id="txtSubDistrict" name="txtSubDistrict" class="form-control" style="" data-id="" value="@_ContactDetail.SubDistrict" />*@
+                                                    @Html.DropDownList("ddlProvince", null, "Please Select", new { @class = "select2_Provice form-control", style = "width:100%" })
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">เขต/อำเภอ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    @*<input type="text" id="txtDistrict" name="txtDistrict" class="form-control" style="" data-id="" value="@_ContactDetail.District" />*@
+                                                    @Html.DropDownList("ddlDistrict", null, "Please Select", new { @class = "select2_Distict form-control", style = "width:100%" })
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">ตำบล/แขวง : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    @*<input type="text" id="txtProvince" name="txtProvince" class="form-control" style="" data-id="" value="@_ContactDetail.Province" />*@
+                                                    @Html.DropDownList("ddlSubDistrict", null, "Please Select", new { @class = "select2_SubDistinct form-control", style = "width:100%" })
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">รหัสไปรษณีย์ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtCus_Zipcode" name="txtCus_Zipcode" class="form-control" style="" data-id="" maxlength="5" onkeypress="return /[0-9]/i.test(event.key)"/>
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">เบอร์โทร : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <input type="text" id="txtCus_Tel" name="txtCus_Tel" class="form-control allownumericwithoutdecimal" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)" style="" data-id="" />
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">เบอร์มือถือ : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtTelCellPhone" name="txtTelCellPhone" class="form-control allownumericwithoutdecimal" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)" style="" data-id="" value="" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">e-mail : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <input type="text" id="txtEmail" name="txtEmail" class="form-control" style="" data-id="" value="" />
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label id="" class="" data-id="" style="padding-top: 5px;">สถานที่ทำงาน : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <textarea id="txtCus_Company" class="form-control" style="" data-id="" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*รายละเอียดห้อง*@
+            <div class="panel-group" id="accordionRoom">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordionRoom" href="#collapseRoom">รายละเอียดห้อง</a>
+                        </h5>
+                    </div>
+                    <div id="collapseRoom" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ประเภทการเช่า : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:left">
+                                    @Html.DropDownList("ddl_RentType", null, "Please Select", new { @class = "select2_RentType form-control", style = "width:100%" })
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">Developer : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:left">
+                                    @Html.DropDownList("ddl_Developer", null, "Please Select", new { @class = "select2_Developer form-control", style = "width:100%" })
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">โครงการ : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:left">
+                                    @Html.DropDownList("ddl_Project", null, "Please Select", new { @class = "select2_Project form-control", style = "width:100%" })
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ชั้น : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtFloor" name="txtFloor" class="form-control" style="" data-id="" value="19" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ห้องชุดเลขที่ : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtUnits" name="txtUnits" class="form-control" style="" data-id="" value="B-0505" />
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บ้านเลขที่ : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtAddressNo" name="txtAddressNo" class="form-control" style="" data-id="" value="287/99" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">รูปแบบห้องชุด : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:left">
+                                    @*<input type="text" id="txtRoomType" name="txtModel" class="form-control" style="" data-id=""  value="2BR"/>*@
+                                    @Html.DropDownList("ddlDS_UnitType", null, "Please Select", new { @class = "select2_UnitType form-control", style = "width:100%" })
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">เนื้อที่ห้องชุด : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtRoomArea" name="txtRoomArea" class="form-control" style="" data-id="" value="50" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ตารางเมตร</label>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">อาคาร : </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtBuilding" name="txtBuilding" class="form-control" style="" data-id="" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ตั้งอยู่ที่ : </label>
+                                </div>
+                                <div id="" class="col-lg-8" style="text-align:right">
+                                    <textarea id="txtRoomAddress" class="form-control" style="" data-id="" rows="3" value="">ถนนวิภาวดีรังสิต</textarea>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ระยะเวลาเช่า : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="number" id="txtContractPeriod" name="txtContractPeriod" class="form-control" style="" data-id="" min="0" />
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">วันที่เริ่มต้น : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <div class="form-group" id="data_1">
+                                        <div class="input-group date">
+                                            <input id="txtContractSdate" type="text" class="form-control" value="@System.DateTime.Now.ToString("31/01/yyyy")" readonly="readonly"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">Com Rate (ต่อสัญญา)  : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="number" id="txtConRateCopyConctact" name="txtConRateCopyConctact" class="form-control" style="" data-id="" min="0" />
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">วันที่สิ้นสุด : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <div class="form-group" id="data_1">
+                                        <div class="input-group date">
+                                            <input id="txtContractEdate" type="text" class="form-control" value="@System.DateTime.Now.ToString("31/12/yyyy")" readonly="readonly"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @******* รายละเอียดสถานที่*@
+            <div class="panel-group" id="accordionShopDetails">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">รายละเอียดสถานที่</a>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <div class="row">
+                                        <div class="col-lg-2" style="text-align:right">
+                                            <label id="" class="" data-id="" style="padding-top: 5px;">ชื่อร้านค้า : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <input type="text" id="txtNameShop" name="txtNameShop" class="form-control" style="" data-id="" value=""  disabled/>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-lg-2" style="text-align:right">
+                                            <label id="" class="" data-id="" style="padding-top: 5px;">วัตถุประสงค์ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                        </div>
+                                        <div class="col-lg-3" style="text-align:left">
+                                            <input type="text" id="txtAimShop" name="txtAimShop" class="form-control" style="" data-id="" value="" disabled/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*รายละเอียดการชำระเงินค่าเช่า / ค่าใช้จ่ายต่าง ๆ*@
+            <div class="panel-group" id="accordionBank">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">รายละเอียดการชำระเงินค่าเช่า / ค่าใช้จ่ายต่าง ๆ</a>
+                        </h5>
+                    </div>
+                    <div id="collapseBank" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">อัตราค่าเช่า : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="">
+                                    <input type="text" id="txtRentPrice" name="txtRentPrice" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                </div>
+                                <div id="" class="col-lg-3" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท / เดือน</label>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ทุกวันที่ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="">
+                                    <input type="text" id="txtDayOfDue" name="txtDayOfDue" class="form-control" style="text-align:right" data-id="" value="1" />
+                                </div>
+                                <div id="" class="col-lg-3" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*รายละเอียดเงินประกัน*@
+
+            <div class="row">
+                <div id="" class="col-lg-12">
+                    <div class="col-lg-6" style="padding-left: 0px;padding-right: 5px;">
+                        <div class="panel-group" id="accordionBank">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">รายละเอียดเงินประกัน</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseBank" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">เงินประกันการเช่า : </label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <input type="text" id="txtRoomInsurance" name="txtRoomDeposit" class="form-control allownumericwithoutdecimal" style="text-align:right" data-id="" min="0" />
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">เดือน</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">จำนวนเงิน : </label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <input type="text" id="txtRoomInsurancePrice" name="txtRoomDepositPrice" class="form-control numbersOnly" style="text-align:right" data-id="" value="" />
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">ค่าเช่าล่วงหน้า : </label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <input type="text" id="txtDepositRent" name="txtDepositRent" class="form-control allownumericwithoutdecimal" style="text-align:right" data-id="" min="0" />
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">เดือน</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">จำนวนเงิน : </label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <input type="text" id="txtDepositRentPrice" name="txtDepositRentPrice" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">ค่าปรับ (คืนล่าช้า) : </label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <input type="text" id="txtDepositMulctPrice" name="txt" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">วันละ/บาท</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">หัก (เงินจอง) : </label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <input type="text" id="txtReversionAmt" name="txt" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    @*//// รายละเอียดเงินประกันค่าเช่าเฟอร์นิเจอร์*@
+                    <div class="col-lg-6" style="padding-left: 5px;padding-right: 0px;">
+
+
+                        <div class="panel-group" id="accordionBank">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">รายละเอียดค่าเช่าเฟอร์นิเจอร์</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseBank" class="panel-collapse collapse in">
+                                    <div class="panel-body" style="height: 273px;">
+
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">ค่าเช่าเฟอร์นิเจอร์และเครื่องใช้ไฟฟ้า : </label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <input type="text" id="txtRentFurnitureQty" name="txtRentFurnitureQty" class="form-control allownumericwithoutdecimal" style="text-align:right" data-id="" min="0" />
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">เดือน</label>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">จำนวนเงิน : </label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <input type="text" id="txtRentFurniture" name="txtRentFurniture" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">ค่าเช่าล่วงหน้า : </label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <input type="text" id="txtDepositFur" name="txtDepositFur" class="form-control allownumericwithoutdecimal" style="text-align:right" data-id="" min="0" />
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">เดือน</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">จำนวนเงิน : </label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <input type="text" id="txtDepositFurPrice" name="txtDepositFurPrice" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row" id="" style="">
+                                            <div id="" class="col-lg-4" style="text-align:right">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;"></label>
+                                            </div>
+                                            <div id="" class="col-lg-5" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;"></label>
+                                            </div>
+                                            <div id="" class="col-lg-3" style="">
+                                                <label id="lbl" class="" data-id="" style="padding-top: 5px;"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel-group" id="accordionBank">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">ประเภทการชำระเงิน ค่าใช้จ่ายต่างๆ</a>
+                        </h5>
+                    </div>
+                    <div id="collapseBank" class="panel-collapse collapse in">
+                        <div class="panel-body" id="pRevRent">
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">เงินสด : </label><label for="lblColor" id="lblColor" style="color:red"></label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <input type="text" id="txtReserve_RNAmountCash" name="txtReserve_AmountCash" class="form-control numbersOnly" style="text-align:right" data-id="" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    @*  <label id="lbl" class="" data-id="" style="padding-top: 5px;"> : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>*@
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    @* <input type="text" id="txtDayOfDue" name="txtDayOfDue" class="form-control numbersOnly" style="text-align:right" data-id="" />*@
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    @* <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>*@
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">แคชเชียร์เช็ค : </label><label for="lblColor" id="lblColor" style="color:red"></label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <input type="text" id="txtReserve_RNAmountCashier" name="txtReserve_RNAmountCashier" class="form-control numbersOnly" style="text-align:right" data-id="" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ธนาคาร :</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:left">
+                                    @Html.DropDownList("ddl_RNCashierBank", null, "Please Select", new { @class = "select2_RNCashierBank form-control", style = "width:100%" })
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+                                    @* <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>*@
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">เลขที่ :</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtReserve_RNCashierNo" name="txtReserve_RNCashierNo" class="form-control" style="text-align:left" data-id="" />
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">วันที่</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <div class="form-group" id="data_1" style="margin-bottom: 5px;">
+                                        <div class="col-lg-10 input-group date" style="height: 28px;text-align:left;padding-left: 0px;padding-right: 30px;">
+                                            <input id="dllRNCashierDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+
+                                </div>
+                            </div>
+                            <hr>
+
+                            @*เงินโอนผ่านธนาคาร :*@
+
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">เงินโอนผ่านธนาคาร : </label><label for="lblColor" id="lblColor" style="color:red"></label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <input type="text" id="txtReserve_RNAmounCashTransfer" name="txtReserve_RNAmounCashTransfer" class="form-control numbersOnly" style="text-align:right" data-id="" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บัญชีเลขที่ :</label>
+                                    @*  <label id="lbl" class="" data-id="" style="padding-top: 5px;"> : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>*@
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtReserve_RNBankNoCashTransfer" name="txtReserve_RNBankNoCashTransfer" class="form-control" style="text-align:left" data-id="" />
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+                                    @* <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>*@
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ชื่อบัญชี</label>
+                                    @*  <label id="lbl" class="" data-id="" style="padding-top: 5px;"> : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>*@
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtReserve_RNBankNameCashTransfer" name="txtReserve_RNBankNameCashTransfer" class="form-control" style="text-align:left" data-id="" />
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+                                    @* <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>*@
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">วันที่</label>
+                                    @*  <label id="lbl" class="" data-id="" style="padding-top: 5px;"> : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>*@
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <div class="form-group" id="data_1" style="margin-bottom: 5px;">
+                                        <div class="col-lg-10 input-group date" style="height: 28px;text-align:left;padding-left: 0px;padding-right: 30px;">
+                                            <input id="dllRNCashTransferDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+                                    @* <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>*@
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel-group" id="accordionBank">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">ออกใบเสร็จรับเงินชั่วคราว ( Commission )</a>
+                        </h5>
+                    </div>
+                    <div id="collapseBank" class="panel-collapse collapse in">
+                        <div class="panel-body" id="pRevRent">
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ออกค่า Commission : </label><label for="lblColor" id="lblColor" style="color:red"></label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:left">
+                                    @*<input type="text" id="txtReserve_RNAmountCash" name="txtReserve_AmountCash" class="form-control numbersOnly" style="text-align:right" data-id="" />*@
+                                    <div class="checkbox i-checks" style="margin-top: 5px;"><input type="checkbox" id="ChkCommission" class="ChkCommission" name="ChkCommission"></div>
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;"></label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    @*<label id="lbl" class="" data-id="" style="padding-top: 5px;">ค่า Commission : </label><label for="lblColor" id="lblColor" style="color:red"></label>*@
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    @*<input type="text" id="txtCommissionAmt" name="txtCommissionAmt" class="form-control numbersOnly" style="text-align:right" data-id="" />*@
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    @*<label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>*@
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">จำนวน : </label><label for="lblColor" id="lblColor" style="color:red">*</label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <input type="text" id="txtCommissionAmt" name="txtCommissionAmt" class="form-control numbersOnly" style="text-align:right" data-id="" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    @*<label id="lbl" class="" data-id="" style="padding-top: 5px;">ออกค่า Commission : </label>*@<label for="lblColor" id="lblColor" style="color:red"></label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    @*<input type="text" id="txtReserve_RNAmountCash" name="txtReserve_AmountCash" class="form-control numbersOnly" style="text-align:right" data-id="" />*@
+                                    @*<div class="checkbox i-checks"><input type="checkbox" value="0" id="ChkCommission" class="ChkCommission" name="ChkCommission"></div>*@
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    @*<label id="lbl" class="" data-id="" style="padding-top: 5px;"></label>*@
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel-group" id="accordionBank">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">ประเภทการชำระเงิน ค่านายหน้า</a>
+                        </h5>
+                    </div>
+                    <div id="collapseBank" class="panel-collapse collapse in">
+                        <div class="panel-body" id="pRevRent">
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">เงินสด (ค่านายหน้า) : </label><label for="lblColor" id="lblColor" style="color:red"></label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <input type="text" id="txtCom_RNAmountCash" name="txtCom_RNAmountCash" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    @*  <label id="lbl" class="" data-id="" style="padding-top: 5px;"> : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>*@
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    @* <input type="text" id="txtDayOfDue" name="txtDayOfDue" class="form-control numbersOnly" style="text-align:right" data-id="" />*@
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    @* <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>*@
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">แคชเชียร์เช็ค (ค่านายหน้า)  : </label><label for="lblColor" id="lblColor" style="color:red"></label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <input type="text" id="txtCom_RNAmountCashier" name="txtReserve_RNAmountCashier" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ธนาคาร (ค่านายหน้า)  :</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:left">
+                                    @Html.DropDownList("ddl_ComRNCashierBank", null, "Please Select", new { @class = "select2_ComRNCashierBank form-control", style = "width:100%" })
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+                                    @* <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>*@
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">เลขที่ (ค่านายหน้า) :</label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtCom_RNCashierNo" name="txtCom_RNCashierNo" class="form-control" style="text-align:left" data-id="" />
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">วันที่ (ค่านายหน้า) </label>
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <div class="form-group" id="data_1" style="margin-bottom: 5px;">
+                                        <div class="col-lg-10 input-group date" style="height: 28px;text-align:left;padding-left: 0px;padding-right: 30px;">
+                                            <input id="dllComCashierDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+
+                                </div>
+                            </div>
+                            <hr>
+
+                            @*เงินโอนผ่านธนาคาร :*@
+
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">เงินโอนผ่านธนาคาร (ค่านายหน้า) : </label><label for="lblColor" id="lblColor" style="color:red"></label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <input type="text" id="txtCom_RNAmounCashTransfer" name="txtCom_RNAmounCashTransfer" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">บัญชีเลขที่ (ค่านายหน้า) :</label>
+                                    @*  <label id="lbl" class="" data-id="" style="padding-top: 5px;"> : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>*@
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtCom_RNBankNoCashTransfer" name="txtCom_RNBankNoCashTransfer" class="form-control" style="text-align:left" data-id="" />
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+                                    @* <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>*@
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">ชื่อบัญชี (ค่านายหน้า) </label>
+                                    @*  <label id="lbl" class="" data-id="" style="padding-top: 5px;"> : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>*@
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <input type="text" id="txtCom_RNBankNameCashTransfer" name="txtCom_RNBankNameCashTransfer" class="form-control" style="text-align:left" data-id="" />
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+                                    @* <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>*@
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" id="" style="">
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+
+                                </div>
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">วันที่ (ค่านายหน้า)</label>
+                                    @*  <label id="lbl" class="" data-id="" style="padding-top: 5px;"> : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>*@
+                                </div>
+                                <div id="" class="col-lg-3" style="text-align:right">
+                                    <div class="form-group" id="data_1" style="margin-bottom: 5px;">
+                                        <div class="col-lg-10 input-group date" style="height: 28px;text-align:left;padding-left: 0px;padding-right: 30px;">
+                                            <input id="dllComCashTransferDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="" class="col-lg-1" style="">
+                                    @* <label id="lbl" class="" data-id="" style="padding-top: 5px;">ของเดือนแห่งปฏิทิน</label>*@
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*////ข้อมูลการตรวจสภาพห้องชุดของผู้เช่าก่อนเข้า*@
+            <div class="row">
+                <div id="" class="col-lg-12">
+                    <div class="col-lg-6" style="padding-left: 0px;padding-right: 5px;">
+                        <div class="panel-group" id="pvChekBefore">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">ข้อมูลการตรวจสภาพห้องชุดของผู้เช่าก่อนเข้า</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseBank" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="col-lg-12">
+                                            <div class="ibox float-e-margins">
+                                                <div class="ibox-content" style="height: 513.500px; overflow-Y: scroll; border-top-width: 0px; margin-top:0px">
+
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped" id="CheckRoomChekBeforeTB">
+                                                            <thead>
+                                                                <tr>
+
+                                                                    <th style="padding-top: 0px;align-items:center;text-align:center;margin-top:0px">
+                                                                        <div class="checkbox i-checks"><input type="checkbox" id="ChkAllBefore" class="clsCheckRoomID"></div>
+                                                                    </th>
+                                                                    <th>รายการ </th>
+                                                                    <th style="text-align:right;">จำนวน </th>
+                                                                    @*<th>หน่วย</th>*@
+
+                                                                    <th>หน่วย</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            @if (ViewBag.lstCheckRoomMaster != null)
+                                                            {
+                                                                <tbody>
+                                                                    @{int i = 1; }
+                                                                    @foreach (Inspinia_MVC5.Models.DMPS.CheckRoomMasterTable item in ViewBag.lstCheckRoomMaster)
+                                                                    {
+                                                                        var nameTAP = "RCC" + item.CheckRoomID;
+                                                                        var nameText = "RCT" + item.CheckRoomID;
+                                                                        var nameBBTAP = "BCC" + item.CheckRoomID;
+                                                                        var nameBBText = "BCT" + item.CheckRoomID;
+                                                                        <tr style="height: 20px;">
+                                                                            <td style="padding-top: 0px;align-items:center;text-align:center;margin-top:0px;">
+                                                                                <div class="checkbox i-checks"><input type="checkbox" value="@item.CheckRoomID" id="@nameTAP" class="clsCheckRoomID" name="CheckBefore"></div>
+                                                                            </td>
+
+                                                                            <td class="clsCheckRoomDesc">@item.CheckRoomDesc</td>
+
+
+                                                                            @if (@item.IsQty == true)
+                                                                            {
+                                                                                <td>
+                                                                                    <input type="number" id="@nameText" name="ObjName" class="form-control clsCheckQty" style="width: 70%; text-align:right; float:right;height: 28px;" min="0" data-id="" />
+                                                                                </td>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <td></td>
+                                                                            }
+
+
+
+
+                                                                            <td>@item.CheckRoomUnit</td>
+                                                                        </tr>
+
+                                                                        i++;
+                                                                    }
+                                                                </tbody>
+
+                                                            }
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6" style="padding-left: 0px;padding-right: 5px;">
+                        <div class="panel-group" id="pvChekAfter">
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">ข้อมูลการตรวจสภาพห้องชุดของผู้เช่าสิ้นสุดการเช่า</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseBank" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div id="" class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="ibox float-e-margins">
+                                                        <div class="ibox-content" style="height: 513.500px; overflow-Y: scroll; border-top-width: 0px; margin-top:0px">
+
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped" id="CheckRoomChekAfterTB">
+                                                                    <thead>
+                                                                        <tr>
+
+                                                                            <th style="padding-top: 0px;text-align:right;margin-top:0px;  border-bottom-right-radius:1px">
+
+                                                                                <div class="checkbox i-checks"><input type="checkbox" id="ChkAllAfter" class="clsCheckAllBroken"></div>
+                                                                            </th>
+
+                                                                            <th>รายการ (เสียหาย) </th>
+                                                                            @*<th style="text-align:right;">จำนวน </th>*@
+
+
+
+
+
+                                                                            <th style="text-align:right;">จำนวน </th>
+                                                                            <th>หน่วย</th>
+                                                                        </tr>
+                                                                    </thead>
+
+                                                                    @if (ViewBag.lstCheckRoomMaster != null)
+                                                                    {
+                                                                        <tbody>
+                                                                            @{int i = 1; }
+                                                                            @foreach (Inspinia_MVC5.Models.DMPS.CheckRoomMasterTable item in ViewBag.lstCheckRoomMaster)
+                                                                            {
+                                                                                var nameTAP = "RCC" + item.CheckRoomID;
+                                                                                var nameText = "RCT" + item.CheckRoomID;
+                                                                                var nameBBTAP = "BCC" + item.CheckRoomID;
+                                                                                var nameBBText = "BCT" + item.CheckRoomID;
+                                                                                <tr style="height: 20px;">
+                                                                                    <td style="padding-top: 0px;text-align:right;margin-top:0px;  border-bottom-right-radius:1px">
+                                                                                        <div class="checkbox i-checks"><input type="checkbox" value="@item.CheckRoomID" id="@nameBBTAP" class="clsBrokenCheck" name="CheckAfter"></div>
+                                                                                    </td>
+
+                                                                                    <td class="clsCheckRoomDesc">@item.CheckRoomDesc</td>
+
+
+                                                                                    @*@if (@item.IsQty == true)
+                                                                                {
+                                                                                    <td>
+                                                                                        <input type="number" id="@nameText" name="ObjName" class="form-control clsCheckQty" style="width: 30%; text-align:right; float:right;height: 28px;" min="0" data-id="" />
+                                                                                    </td>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <td></td>
+                                                                                }*@
+
+
+
+                                                                                    @if (@item.IsQty == true)
+                                                                                    {
+                                                                                        <td>
+                                                                                            <div class="form-group has-warning">
+                                                                                                <input type="number" id="@nameBBText" name="ObjName" class="form-control has-warning clsBrokenCheckQty" style="width: 70%; text-align:right; float:right;height: 28px;" min="0" data-id="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <td></td>
+                                                                                    }
+
+                                                                                    <td>@item.CheckRoomUnit</td>
+                                                                                </tr>
+
+                                                                                i++;
+                                                                            }
+                                                                        </tbody>
+
+                                                                    }
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="panel-group" id="accordionBank">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">สภาพห้องที่ชำรุดเสียหายเพราะการอยู่อาศัย</a>
+                        </h5>
+                    </div>
+                    <div id="collapseBank" class="panel-collapse collapse in">
+                        <div class="panel-body" id="pOther" style="padding-bottom: 10px;height: 300px; overflow-Y: scroll;">
+                            <div class="col-lg-12">
+                                <div id="DataListViewBrokenTrans"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel-group" id="accordionBank">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">เงินประกัน / หักค่าเสียหาย</a>
+                        </h5>
+                    </div>
+                    <div id="collapseBank" class="panel-collapse collapse in">
+                        <div class="panel-body" id="pOther" style="padding-bottom: 10px;">
+                            <div class="col-lg-12">
+
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">เงินค้ำประกัน : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <input type="text" id="txtBrokenInsuranceAmt" name="txtBrokenInsuranceAmt" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">หักค่าเสียหาย : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <input type="text" id="txtBrokenAmt" name="txtBrokenAmt" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">คงเหลือเงินคืน : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <input type="text" id="txtBrokenRemainAmt" name="txtBrokenRemainAmt" class="form-control numbersOnly" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <br>
+                                <div class="row" id="" style="text-align:right">
+                                    <div id="" class="col-lg-2" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-bottom: 10px;">อื่นๆ : </label>
+                                    </div>
+                                    <div id="" class="col-lg-10" style="">
+                                        <textarea id="txtBrokentOther" class="form-control" style="" data-id="" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-group" id="accordionBank">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">อื่นๆ</a>
+                        </h5>
+                    </div>
+                    <div id="collapseBank" class="panel-collapse collapse in">
+                        <div class="panel-body" id="pOther">
+                            <div class="row" id="" style="text-align:right">
+                                <div id="" class="col-lg-2" style="">
+                                    <label id="lbl" class="" data-id="" style="padding-bottom: 10px;">รายละเอียดเพิ่มเติม : </label>
+                                </div>
+                                <div id="" class="col-lg-10" style="">
+                                    <textarea id="txtCheckRoomRemarkDeposit" class="form-control" style="" data-id="" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-lg-12">
+
+
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">แนบไฟล์ 1 : </label>
+                                </div>
+                                <div id="" class="col-lg-8" style="">
+                                    <input type="file" id="txtAttachFile" data-running="1" class="form-control input-mini clsAttachFile" style="text-align:right;" readonly="readonly" value="" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <button id="btnPreviewFile" class="btn btn-info btn-sm clsPreviewFile" data-running="1" data-path="">Preview File</button>
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="col-lg-12">
+
+
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">แนบไฟล์ 2 : </label>
+                                </div>
+                                <div id="" class="col-lg-8" style="">
+                                    <input type="file" id="txtAttachFile2" data-running="2" class="form-control input-mini clsAttachFile" style="text-align:right;" readonly="readonly" value="" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <button id="btnPreviewFile2" class="btn btn-info btn-sm clsPreviewFile" data-running="2" data-path="">Preview File</button>
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="col-lg-12">
+
+
+                                <div id="" class="col-lg-2" style="text-align:right">
+                                    <label id="lbl" class="" data-id="" style="padding-top: 5px;">แนบไฟล์ 3 : </label>
+                                </div>
+                                <div id="" class="col-lg-8" style="">
+                                    <input type="file" id="txtAttachFile3" data-running="3" class="form-control input-mini clsAttachFile" style="text-align:right;" readonly="readonly" value="" />
+                                </div>
+                                <div id="" class="col-lg-2" style="">
+                                    <button id="btnPreviewFile3" class="btn btn-info btn-sm clsPreviewFile" data-running="3" data-path="">Preview File</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="panel-group" id="accordionName">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h5 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordionName" href="#collapseName">ข้อมูลการตรวจสภาพห้องชุดของผู้เช่าก่อนเข้า / สิ้นสุดการเช่า</a>
+                    </h5>
+                </div>
+                <div id="collapseName" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-2" style="text-align:right">
+                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">มิเตอร์น้ำประปา : </label>
+                            </div>
+                            <div id="" class="col-lg-3" style="">
+                                <input type="text" id="txtWaterStart" name="txtWaterStart" class="form-control" style="" data-id="" />
+                            </div>
+                            <div id="" class="col-lg-3" style="">
+                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">หน่วย</label>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-2" style="text-align:right">
+                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">มิเตอร์ไฟฟ้า : </label>
+                            </div>
+                            <div id="" class="col-lg-3" style="">
+                                <input type="text" id="txtelectricityStart" name="txtelectricityStart" class="form-control" style="" data-id="" />
+                            </div>
+                            <div id="" class="col-lg-3" style="">
+                                <label id="lbl" class="" data-id="" style="padding-top: 5px;">หน่วย</label>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <table>
+                                    <tr>
+                                        <td style="width:140px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ทีวี </label></div></td>
+                                        <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                        <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;เครื่อง</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;โซฟา + โต๊ะกลาง </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <table>
+                                    <tr>
+                                        <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;อุปกรณ์ทำความสะอาด</label></div></td>
+                                        <td><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <table>
+                                    <tr>
+                                        <td style="width:140px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;รีโมททีวี </label></div></td>
+                                        <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                        <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;อัน</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;โต๊ะทานอาหารพร้อมเก้าอี้ </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ชุดผ้าม่าน </label></div>
+                            </div>
+                        </div>
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ชั้นวางทีวี </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ชุดผ้าปูที่นอน / ผ้าห่ม </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;วอลเปเปอร์ </label></div>
+                            </div>
+                        </div>
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <table>
+                                    <tr>
+                                        <td style="width:140px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เครื่องปรับอากาศ </label></div></td>
+                                        <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                        <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;เครื่อง</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ที่นอน / หมอน </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <table>
+                                    <tr>
+                                        <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;กุญแจหน้าห้อง  </label></div></td>
+                                        <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                        <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;ดอก</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <table>
+                                    <tr>
+                                        <td style="width:140px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;รีโมทแอร์ </label></div></td>
+                                        <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                        <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;อัน</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;โต๊ะเครื่องแป้ง </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <table>
+                                    <tr>
+                                        <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;กุญแจห้องนอน  </label></div></td>
+                                        <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                        <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;ดอก</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เตาไฟฟ้า </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เครื่องทำน้ำอุ่น </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <table>
+                                    <tr>
+                                        <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;กุญแจ Mail box  </label></div></td>
+                                        <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                        <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;ดอก</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เครื่องดูดควัน </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;โต๊ะทำงาน </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <table>
+                                    <tr>
+                                        <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;Key Card ลิฟท์  </label></div></td>
+                                        <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                        <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;ใบ</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ไมโครเวฟ </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เครื่องดูดฝุ่น </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <table>
+                                    <tr>
+                                        <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;Key Card ที่จอดรถ  </label></div></td>
+                                        <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                        <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;ใบ</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ตู้เย็น </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;พรมรองพื้น / พรมเช็ดเท้า </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;Digital Door Lock </label></div>
+                            </div>
+                        </div>
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เครื่องซักผ้า </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ถังขยะ </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                            </div>
+                        </div>
+                        <div class="row" id="" style="">
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ตู้เสื้อผ้า </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ราวตากผ้า </label></div>
+                            </div>
+                            <div id="" class="col-lg-4" style="">
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row" id="" style="text-align:right">
+                            <div id="" class="col-lg-2" style="">
+                                <label id="lbl" class="" data-id="" style="padding-bottom: 10px;">รายละเอียดเพิ่มเติม : </label>
+                            </div>
+                            <div id="" class="col-lg-10" style="">
+                                <textarea id="" class="form-control" style="" data-id="" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+
+        </div>
+
+
+
+            <div class="modal-footer">
+                <div class="row" id="" style="">
+                    <div id="" class="col-lg-12" style="text-align:right">
+                        <input type="text" hidden="hidden" value="0" />
+                        <button type="button" id="btnSave" class="btn btn-success" data-id="0" title="บันทึกสัญญาเช่าห้องชุด"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
+                        <button type="button" id="btnPrint" class="btn btn-warning" data-id="0" title="บันทึกและพิมพ์สัญญาเช่าห้องชุด"><i class="fa fa-print"></i>&nbsp;&nbsp;Save & Print</button>
+                        <button type="button" id="btnEndContract" class="btn btn-success" data-id="0" title="บันทึกจบสัญญาเช่าห้องชุด"><i class="fa fa-save"></i>&nbsp;&nbsp;End Contract</button>
+                        <button type="button" id="btnCancel" class="btn btn-danger" data-id="0" title="ยกเลิกสัญญาเช่าห้องชุด"><i class="fa fa-ban"></i>&nbsp;&nbsp;Cancel</button>
+                        <button type="button" id="btnClose" class="btn btn-default" data-id="0" title="ปิด"><i class="fa fa-close"></i>&nbsp;&nbsp;Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*----------------------- Import CSS---------------------- *@
+@Styles.Render("~/plugins/footableStyles")
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+@Styles.Render("~/plugins/select2Styles")
+@Styles.Render("~/plugins/dataPickerStyles")
+@Styles.Render("~/plugins/sweetAlertStyles")
+@Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+@*-------------------------------------------------------- *@
+
+@*------------------ Import JavaScript-------------------- *@
+@Scripts.Render("~/plugins/footable")
+@Scripts.Render("~/plugins/dataTables")
+@Scripts.Render("~/plugins/select2")
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/sweetAlert")
+@Scripts.Render("~/plugins/iCheck")
+@*-------------------------------------------------------- *@
+
+<script src="~/Scripts/Main/JS_Main.js"></script>
+<script src="~/Scripts/Main/Utility.js"></script>
+<script src="~/Scripts/Main/date.format.js"></script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        //$('.i-checks').iCheck({
+        //    checkboxClass: 'icheckbox_square-green',
+        //    radioClass: 'iradio_square-green',
+        //});
+
+        //$('.clsCheckAllBroken').on('ifChecked', function () {
+
+        //    alert("The text has been changed.");
+        //    if ($('#ChkAllAfter').is(':checked') == true) {
+        //        $('input[name="CheckAfter"]').iCheck('check');
+        //    }
+        //})
+
+
+        //$('.clsCheckAllBroken').on('ifUnchecked', function () {
+        //    alert("The text has been changed.");
+        //    if ($('#ChkAllAfter').is(':checked') == false) {
+        //        $('input[name="CheckAfter"]').iCheck('uncheck');
+        //    }
+
+        //})
+
+
+        @*$(".allownumericwithoutdecimal").on("keypress keyup blur", function (event) {
+            $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+        }
+
+
+        $(document).delegate('.numbersOnly', 'keypress', function (e) {
+            if (String.fromCharCode(e.keyCode).match(/[^0-9\.\,]/g)) return false;
+        });
+
+        $(document).delegate('.numbersOnly', 'focusout', function () {
+            var IsVal = parseFloat($(this).val().replace(/\,/g, ''));
+            if (isNaN(IsVal)) { IsVal = 0; }
+            $(this).val(ConvertString2DecimalFormat(IsVal.toFixed(2)));
+        });
+
+        $('.txtKM').keyup(function () {
+
+
+                var _KMVal = $(this).val();
+                var _TotalID = "#TotalPricePerKM" + $(this).data('id')
+                //alert(_TotalID + " :: KM = " + _KMVal);
+
+                var url = '@Url.Action("CalculateTotalFeebyKM", "eWorkFlow_FixRateType")';
+
+                $.post(url, {
+                    _KM: _KMVal,
+                }, function (result) {
+                    $(_TotalID).val(parseFloat(Math.round(result * 100) / 100).toFixed(2));
+                });
+
+        });
+
+
+        function GetCalculateTotalFeebyKM(_KMVal) {
+            var url = '@Url.Action("CalculateTotalFeebyKM", "eWorkFlow_FixRateType")';
+
+            $.post(url, {
+                _KM: _KMVal,
+            }, function (result) {
+                return result;
+            });
+        }*@
+
+    });
+</script>

@@ -1,0 +1,231 @@
+﻿@using System.Data;
+
+<div class="wrapper wrapper-content animated fadeIn" style="padding-top:0px">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-tabs">
+                <li class="tabshow " data-tab="Cust" id="item"><a data-toggle="tab">รายการผู้ฝากเช่า/ฝากขายห้อง</a></li>
+                <li class="tabshow" data-tab="Unit" id="price"><a data-toggle="tab">รายการห้องฝากเช่า/ฝากขาย</a></li>
+            </ul>
+
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+
+                    @{
+                        var IsshowTab = ViewBag.IsshowTab;
+                        var i = 0;
+
+
+                        if (IsshowTab == "Cust")
+                        {
+                            <table id="" class="table table-striped table-bordered table-hover dataTables-example dataTableCust" style="width:2000px;">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th></th>
+                                        <th width="100px">ชื่อ-สกุล</th>
+                                        <th width="150px">เลขบัตรประชาชน</th>
+                                        <th width="350px">ที่อยู่</th>
+                                        <th width="200px">อีเมล์</th>
+                                        <th>โทรศัพท์บ้าน/ที่ทำงาน</th>
+                                        <th>โทรศัพท์มือถือ</th>
+                                        <th>จำนวนห้อง</th>
+                                        <th>สถานะ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (Inspinia_MVC5.Models.DMPS.vw_CRM_Contract item in ViewBag.lstCustContract)
+                                    {
+                                        <tr class="IsRows" data-id="@item.ModifyDate">
+                                            @*<td class="text-right"> @i </td>*@
+                                            <td class="text-right">  @(i + 1)</td>
+                                            <td class="text-center">
+                                                <button data-id="@item.ContactsID" class="confirm-View btnVED btn-primary" type="button" title="แสดงข้อมูล"><i class="fa fa-search"></i></button>
+                                                @*<button data-id="@item.WorkNO" data-id2="@item.WorkID" data-id3="@item.WorkTransID" class="confirm-Print btnVED btn-warning" type="button"><i class="fa fa fa-print"></i></button>*@
+                                            </td>
+                                            @*@if (item.DocumentStatusID == 2 || item.DocumentStatusID == 1 || item.DocumentStatusID == 0)
+                                                {
+                                                    <td style="text-align:center;"><input type="checkbox" id="chkWork" class="chkWork" data-id="@item.WorkID" data-id2="@item.WorkTransID"   /></td>
+
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align:center;"></td>
+                                                }*@
+                                            <td> @item.NameFullPre </td>
+                                            <td> @item.CitizenID </td>
+                                            <td> @item.Address </td>
+                                            <td>  </td>
+                                            <td> @item.Tel1  </td>
+                                            <td> @item.FaxNo  </td>
+                                            <td> @item.CountUnits  </td>
+
+                                            @if (item.IsDelete == true)
+                                            {
+                                                <td><label class="label label-danger"> Delete </label></td>
+                                            }
+                                            else
+                                            {
+                                                <td><label class="label label-primary"> Active </label></td>
+
+                                            }
+
+                                            @*@if (item.IsDelete == true)
+                                                {
+                                                    <td><label class="label label-danger"> Delete </label></td>
+                                                }
+                                                else
+                                                {
+                                                    <td><label class="label label-primary"> Active </label></td>
+
+                                                }*@
+
+
+
+                                            @*<td> @item.WorkDate.GetValueOrDefault().ToString("dd/MM/yyyy") </td>
+                                                <td> @item.CustomerName </td>
+                                                <td> @item.CustomerAddress </td>
+                                                <td> @item.CustomerRoad </td>
+                                                <td> @item.CustomerDistrict </td>
+                                                <td> @item.WorkDetail </td>
+                                                @*<td> @item.STime - @item.ETime</td>*@
+
+                                            @*<td> @item.DisplayName </td>
+                                                <td> @item.OwnerPhone </td>
+                                                <td> @item.MessengerNameTH </td>
+                                                <td><label class="label @item.ClassName">@item.DocumentStatusTH </label></td>*@
+                                            @*<td> @item.DocumentStatusTH </td>*@
+                                        </tr>
+                                        i++;
+                                    }
+
+                                </tbody>
+                                <tfoot>
+                                    <tr></tr>
+                                </tfoot>
+                            </table>
+
+                        }
+                        if (IsshowTab == "Unit")
+                        {
+
+                            <table id="tbCustUnits" class="table table-striped table-bordered table-hover dataTables-example dataTableUnit" style="width:2000px">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th style="width:100px"></th>
+                                        @*<th style="width:80px"></th>*@
+                                        <th style="width:300px">โครงการ</th>
+                                        <th>ห้อง</th>
+                                        <th>ชั้น</th>
+                                        <th>พื้นที่</th>
+                                        <th>ประเภทห้อง</th>
+                                        <th>ประเภทการเช่า</th>
+                                        <th>สถานะ</th>
+                                        <th style="width:300px">ราคาเช่า</th>
+                                        <th style="width:300px">ราคาขาย</th>
+                                        <th>วันที่ทำสัญญา</th>
+                                        <th>วันที่สิ้นสุด</th>
+                                    </tr>
+                                </thead>
+                                @if (ViewBag.lstUnitDetails != null)
+                                {
+                                    <tbody>
+
+                                        @foreach (Inspinia_MVC5.Models.DMPS.vw_UnitsDetails item in ViewBag.lstUnitDetails)
+                                        {
+                                        <tr class="IsRows" data-id="@item.ReviseDateTime">
+                                            <td class="text-right"> @(i + 1) </td>
+                                            <td class="text-center" style="width:120px" data-UN="@item.UnitsID" data-CT="@item.DSContactID" data-DS="@item.DepositID">
+                                                <button id="ViewDS" data-UN="@item.UnitsID" data-CT="@item.DSContactID" data-DS="@item.DepositID" class="confirm-ViewDS btnVED ClsUint btn-primary" title="แสดงข้อมูล" type="button"><i class="fa fa-search"></i></button>
+                                                @if (item.UnitType != "SHOP")
+                                                {
+                                                    <button id="PrintDS" data-UN="@item.UnitsID" data-CT="@item.DSContactID" data-DS="@item.DepositID" class="confirm-PrintDS btnVED btn-warning" title="พิมพ์สัญญา" type="button"><i class="fa fa fa-print"></i></button>
+
+                                                }
+                                                else
+                                                {
+                                                    <button id="PrintSHOPDS" data-UN="@item.UnitsID" data-CT="@item.DSContactID" data-DS="@item.DepositID" class="confirm-PrintDSSHOP btnVED btn-warning" title="พิมพ์สัญญา SHOP" type="button"><i class="fa fa fa-print"></i></button>
+
+                                                }
+                                                <button id="UploadDS" data-UN="@item.UnitsID" data-CT="@item.DSContactID" data-DS="@item.DepositID" class="confirm-UploadDS btnVED btn-success" title="อัพโหลดเอกสาร" type="button"><i class="fa fa-file-text"></i></button>
+
+
+                                            </td>
+
+                                            @*@if (item.DepositStatus == 0)
+                    {
+                        <td style="padding-top: 10px;padding-bottom: 0px;text-align:center">
+                            <div class="checkbox i-checks">
+                                <input type="checkbox" value="" class="ClsCheckDel">
+                            </div>
+                        </td>}
+                    else
+                    {
+                        <td style="padding-top: 10px;padding-bottom: 0px;text-align:center">
+                            <div class="checkbox i-checks"><input type="checkbox" value="" readonly="readonly" aria-checked="false" aria-disabled="true" disabled class="ClsCheckDel"></div>
+                        </td>}
+
+                     <td>
+            @if (item.ISContact == 0)
+            {<label class="label @item.UnitCls">@item.DescriptionTH</label> }
+        else
+        { <label class="label @item.UnitCls">@item.DescriptionTH  ทำสัญญา </label>}
+
+        </td>
+        <td>
+            @if (item.UnitCls == "label-danger")
+            {<p>@(item.ReviseDateTime != null ? ((DateTime)item.ReviseDateTime).ToString("dd/MM/yyyy") : "")</p> }
+        else
+        { <p> </p>}
+        </td>
+                                            *@
+
+
+                                            <td>@item.ProjectName</td>
+                                            @*<td>
+                                            @if (item.IsDelete == true) ถ้าชื่อโปรเจคชื่อใน projecttable is 1 ให้ code =code แล้วเลือก projectname ที่ is 0
+                                            { }
+
+                                            </td>*@
+                                            <td>@item.UnitsCode</td>
+                                            <td>@item.Floor</td>
+                                            <td>@item.RoomArea</td>
+                                            <td>@item.UnitType</td>
+                                            <td><label class="label @item.RentStatusCls">@item.RentTypeNameTH</label></td>
+                                            <td><label class="label @item.UnitStatusCls">@item.DescriptionTH</label></td>
+                                            <td style="width:300px">@item.RentPriceStart.GetValueOrDefault().ToString("##,###,###,##0.00") -  @item.RentPriceEnd.GetValueOrDefault().ToString("##,###,###,##0.00") </td>
+                                            <td style="width:300px">@item.SalePriceStart.GetValueOrDefault().ToString("##,###,###,##0.00") -  @item.SalePriceEnd.GetValueOrDefault().ToString("##,###,###,##0.00") </td>
+                                            <td>@item.DepositStart.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                                            <td>@item.DepositEnd.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                                        </tr>
+
+                                            @*@foreach (var items in ViewBag.LstData)
+                                                {
+                                                <tr id="" class="" data-id="" data-rownumber="" style="">
+                                                    <td></td>
+                                                </tr>
+                                                }*@
+                                            i++;
+                                        }
+                                    </tbody>
+                                }
+
+                                <tfoot>
+                                    <tr></tr>
+                                </tfoot>
+                            </table>
+
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

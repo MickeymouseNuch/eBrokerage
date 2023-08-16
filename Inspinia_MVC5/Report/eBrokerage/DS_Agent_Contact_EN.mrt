@@ -1,0 +1,2261 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection1 Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>Connection1</Alias>
+        <ConnectionStringEncrypted>5X7RAsVKk8HiS02ZeogyH8Pye8JNBdmIQghNnEtY6w/DasspQ3XzzW9a5QjoWPVGhT5pC09d2dnhSc2Y5VS1E9PEgWDOQUuc4U3lzGEA42P0cGUJThh7lGJHvNjxHK1jkBRxCV5PQ916EzmYZHQie9R4mwlGTUKI7BX18WNM4V7EyPXrSA==</ConnectionStringEncrypted>
+        <Name>Connection1</Name>
+      </Connection1>
+    </Databases>
+    <DataSources isList="true" count="3">
+      <DataSource1 Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>DataSource1</Alias>
+        <Columns isList="true" count="72">
+          <value>DepositNo,System.String</value>
+          <value>DepositDate,System.DateTime</value>
+          <value>FirstName,System.String</value>
+          <value>DepositStart,System.DateTime</value>
+          <value>DepositEnd,System.DateTime</value>
+          <value>CountKey,System.Int64</value>
+          <value>KeyIsAgent,System.Boolean</value>
+          <value>KeyIsJuristic,System.Boolean</value>
+          <value>BankID,System.String</value>
+          <value>BankTypeID,System.Int64</value>
+          <value>BankNo,System.String</value>
+          <value>BankName,System.String</value>
+          <value>BankTypeNameTH,System.String</value>
+          <value>BankNameFull,System.String</value>
+          <value>BankNameENGFull,System.String</value>
+          <value>CitizenID,System.String</value>
+          <value>CitizenIssue,System.DateTime</value>
+          <value>CitizenExp,System.DateTime</value>
+          <value>CitizenProvince,System.String</value>
+          <value>Tel1,System.String</value>
+          <value>AddressNo,System.String</value>
+          <value>Moo,System.String</value>
+          <value>Soi,System.String</value>
+          <value>Village,System.String</value>
+          <value>Road,System.String</value>
+          <value>ZipCode,System.String</value>
+          <value>AddressNo_Work,System.String</value>
+          <value>UnitsCode,System.String</value>
+          <value>RoomArea,System.Decimal</value>
+          <value>RoomNo,System.String</value>
+          <value>Floor,System.String</value>
+          <value>IsSale,System.Boolean</value>
+          <value>SalePriceStart,System.Int32</value>
+          <value>SalePriceEnd,System.Int32</value>
+          <value>IsRent,System.Boolean</value>
+          <value>RentPriceStart,System.Int32</value>
+          <value>RentPriceEnd,System.Int32</value>
+          <value>ProjectCode,System.String</value>
+          <value>ProjectName,System.String</value>
+          <value>DevelopmentCode,System.String</value>
+          <value>DevelopmentName,System.String</value>
+          <value>DepositID,System.Int64</value>
+          <value>CheckRoomRemarkDeposit,System.String</value>
+          <value>RoomType,System.String</value>
+          <value>Tel2,System.String</value>
+          <value>Email,System.String</value>
+          <value>Province,System.String</value>
+          <value>District,System.String</value>
+          <value>SubDistrict,System.String</value>
+          <value>DepositStatus,System.Int32</value>
+          <value>DeveloperID,System.Int64</value>
+          <value>ProjectID,System.Int64</value>
+          <value>InChargeBy,System.Int64</value>
+          <value>InChargeByName,System.String</value>
+          <value>ReviseDateTime,System.DateTime</value>
+          <value>ReasonCancel,System.String</value>
+          <value>DescriptionTH,System.String</value>
+          <value>DescriptionENG,System.String</value>
+          <value>DS_AddressNo,System.String</value>
+          <value>NUM_RentPrice,System.String</value>
+          <value>NUM_SalePrice,System.String</value>
+          <value>THAI_RentPrice,System.String</value>
+          <value>THAI_SalePrice,System.String</value>
+          <value>ENG_RentPrice,System.String</value>
+          <value>ENG_SalePrice,System.String</value>
+          <value>TH_DepositDate,System.String</value>
+          <value>TH_DepositStart,System.String</value>
+          <value>TH_DepositEnd,System.String</value>
+          <value>EN_DepositDate,System.String</value>
+          <value>EN_DepositStart,System.String</value>
+          <value>EN_DepositEnd,System.String</value>
+          <value>RateComCopyContact,System.Decimal</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>DataSource1</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_DepositID,DepositID,8,50</value>
+        </Parameters>
+        <SqlCommand>SELECT *
+	,CASE WHEN [RentPriceStart] &gt; 0  THEN CAST(FORMAT([RentPriceStart],'###,###,###,###,###') AS nvarchar(MAX)) + ' - ' + CAST(FORMAT([RentPriceEnd],'###,###,###,###,###') AS nvarchar(MAX)) ELSE '-'   END  AS NUM_RentPrice
+	  ,CASE WHEN [SalePriceStart] &gt; 0  THEN CAST(FORMAT([SalePriceStart],'###,###,###,###,###') AS nvarchar(MAX)) + ' - ' + CAST(FORMAT([SalePriceEnd],'###,###,###,###,###') AS nvarchar(MAX)) ELSE '-'   END  AS NUM_SalePrice
+	  ,CASE WHEN [RentPriceStart] &gt; 0  THEN dbo.fn_CurrencyToWordThai([RentPriceStart]) + ' ถึง ' + dbo.fn_CurrencyToWordThai([RentPriceEnd]) ELSE '-'   END  AS THAI_RentPrice
+	  ,CASE WHEN [SalePriceStart] &gt; 0  THEN dbo.fn_CurrencyToWordThai([SalePriceStart]) + ' ถึง ' + dbo.fn_CurrencyToWordThai([SalePriceEnd]) ELSE '-'   END  AS THAI_SalePrice
+	  ,CASE WHEN RentPriceStart &gt; 0  THEN dbo.fnIntegerToWords(RentPriceStart) + ' Bath ' + ' to ' + dbo.fnIntegerToWords(RentPriceEnd) + ' Bath ' ELSE '-'   END  AS ENG_RentPrice
+	  	  ,CASE WHEN SalePriceEnd &gt; 0  THEN dbo.fnIntegerToWords(SalePriceEnd) + ' Bath ' + ' to ' + dbo.fnIntegerToWords(SalePriceEnd) + ' Bath ' ELSE '-'   END  AS ENG_SalePrice
+		,dbo.ThaiMMMMDate(DepositDate) as TH_DepositDate
+		,dbo.ThaiMMMMDate(DepositStart) as TH_DepositStart
+		,dbo.ThaiMMMMDate(DepositEnd) as TH_DepositEnd
+		,dbo.EngMMMMDate(DepositDate) as EN_DepositDate
+		,dbo.EngMMMMDate(DepositStart) as EN_DepositStart
+		,dbo.EngMMMMDate(DepositEnd) as EN_DepositEnd
+,RateComCopyContact 
+	FROM [dbo].[vw_rpt_Deposit]
+	WHERE DepositID = @DepositID</SqlCommand>
+      </DataSource1>
+      <Company Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>Company</Alias>
+        <Columns isList="true" count="6">
+          <value>CompanyCode,System.String</value>
+          <value>CompanyNameTH,System.String</value>
+          <value>CompanyNameEND,System.String</value>
+          <value>Address_TH,System.String</value>
+          <value>Address_EN,System.String</value>
+          <value>URL_LOGO,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>Company</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>SELECT *
+	FROM [dbo].[CompanyTable]</SqlCommand>
+      </Company>
+      <CheckRoom Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>CheckRoom</Alias>
+        <Columns isList="true" count="9">
+          <value>ID,System.Int64</value>
+          <value>IsQty,System.Boolean</value>
+          <value>CheckRoomQty,System.String</value>
+          <value>CheckRoomID,System.Int64</value>
+          <value>CheckRoomDesc,System.String</value>
+          <value>CheckType,System.Int64</value>
+          <value>IsBroken,System.Boolean</value>
+          <value>BrokenRoomQty,System.String</value>
+          <value>Sort,System.Int32</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>CheckRoom</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_ID,DepositID,8,0</value>
+        </Parameters>
+        <SqlCommand>SELECT *
+	FROM [PMdb].[dbo].[vw_CheckRoomlist]
+	where ID = @ID</SqlCommand>
+      </CheckRoom>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="2">
+      <value>,ReservationsID,ReservationsID,System.String,_x0032_,False,False,True</value>
+      <value>,DepositID,DepositID,System.Int32,_x0033_0371,False,False,True</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="9">
+    <Page1 Ref="6" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="16">
+        <PageHeaderBand8 Ref="7" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,18,2.29</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text125 Ref="8" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.3,0.05,12.7,2.03</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>6960b238ff684fcfb17258182a68abf1</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text125</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>GRAND UNITY DEVELOPMENT CO., LTD.
+900 7th Floor, Tonson Tower Ploenchit Road Lumpini Pathumwan
+Bangkok 10330
+</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text125>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>27f79d2458bb4a5997408ab88dab408d</Guid>
+          <Name>PageHeaderBand8</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </PageHeaderBand8>
+        <PageFooterBand1 Ref="9" type="PageFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,25.68,18,1.52</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text13 Ref="10" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0.81,8.89,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Enabled>False</Enabled>
+              <Font>TH Sarabun New,13</Font>
+              <Guid>d7cf4babb4ed4b09ab17c8467fd4a818</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="6" />
+              <Parent isRef="9" />
+              <Text>{Blank(0) + "โครงการ "  + DataSource1.ProjectName }</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text13>
+            <Text11 Ref="11" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>9.56,0.74,8.38,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,13</Font>
+              <Guid>4477d55eb5754ea498968907d410461e</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="6" />
+              <Parent isRef="9" />
+              <Text> {"Page " + PageNumber + " Of  " + TotalPageCount }</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text11>
+            <Text12 Ref="12" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0.2,8.89,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Enabled>False</Enabled>
+              <Font>TH Sarabun New,13</Font>
+              <Guid>f9ccda8f243b4aee9907fe2bb3b30d88</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="6" />
+              <Parent isRef="9" />
+              <Text>สัญญาแต่งตั้งตัวแทน นายหน้า จัดหาผู้เช่าและ/หรือผู้ซื้อห้องชุด</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text12>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>04d9f41c23714a8583c387e00d7b4b8d</Guid>
+          <Name>PageFooterBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </PageFooterBand1>
+        <Image1 Ref="13" type="Image" isKey="true">
+          <AspectRatio>True</AspectRatio>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>33,-2.2,4.06,2.16</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <File>C:\Users\neeranuch.ya\Desktop\messageImage_1564481388032.jpg</File>
+          <Guid>7f1e750ae07c413ca5b31417f3bf9767</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Name>Image1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Stretch>True</Stretch>
+          <VertAlignment>Center</VertAlignment>
+        </Image1>
+        <Image8 Ref="14" type="Image" isKey="true">
+          <AspectRatio>True</AspectRatio>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>-0.4,0.2,4.06,2.16</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <File>C:\Users\neeranuch.ya\Desktop\messageImage_1564481388032.jpg</File>
+          <Guid>4dd2dce6e925424492ae9c2960a3780d</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Name>Image8</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Stretch>True</Stretch>
+          <VertAlignment>Center</VertAlignment>
+        </Image8>
+        <DataBand1 Ref="15" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.49,18,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+        <ChildBand1 Ref="16" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.29,18,2.4</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text1 Ref="17" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0,18,1.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,18,Bold| Underline</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>57bafe93d2cf4afca4b42d695890aa38</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="6" />
+              <Parent isRef="16" />
+              <Text>Agreement for Appointment of Agent/Broker 
+for Condominium Unit Tenant and/or Purchaser </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ChildBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand1>
+        <ChildBand33 Ref="18" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,7.49,18,2</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text46 Ref="19" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0.39,9.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <Guid>6cbae19cf11942e3b226dd4c9078e022</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text46</Name>
+              <Page isRef="6" />
+              <Parent isRef="18" />
+              <Text>{Blank(0) + " No. &lt;b&gt;" + DataSource1.DepositNo + "&lt;/b&gt; "
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text46>
+            <Text48 Ref="20" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>6.2,0.39,11.8,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <Guid>6307f35500cb495a8f620f55b2566034</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text48</Name>
+              <Page isRef="6" />
+              <Parent isRef="18" />
+              <Text>{Blank(0) + "Condominium Project &lt;b&gt;" + DataSource1.ProjectName + "&lt;/b&gt; "
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text48>
+            <Text49 Ref="21" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>6.2,0.99,11.8,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <Guid>e9e8baee5a5f4929bd5b92d1d43c41e3</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text49</Name>
+              <Page isRef="6" />
+              <Parent isRef="18" />
+              <Text>{Blank(0) + "Date &lt;b&gt;" + DataSource1.EN_DepositDate + "&lt;/b&gt; "
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text49>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>bcf4dd3328b94e2e9d8115f8edb42c19</Guid>
+          <Name>ChildBand33</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand33>
+        <ChildBand2 Ref="22" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,10.29,18,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <SubReport7 Ref="23" type="SubReport" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,18,0.6</ClientRectangle>
+              <Components isList="true" count="0" />
+              <Guid>6fb20b9d32dd4dd98f4a64b4a8577b60</Guid>
+              <Name>SubReport7</Name>
+              <Page isRef="6" />
+              <Parameters isList="true" count="0" />
+              <Parent isRef="22" />
+              <SubReportPageGuid>5173bb458aad4c8aaeed0a862ccebb41</SubReportPageGuid>
+            </SubReport7>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>f08d96288c964c6b9d9058d0e9acc08d</Guid>
+          <Name>ChildBand2</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand2>
+        <ChildBand9 Ref="24" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,11.69,18,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <SubReport1 Ref="25" type="SubReport" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,18,0.6</ClientRectangle>
+              <Components isList="true" count="0" />
+              <Guid>3f630b6244444e4081888fcad8df6ada</Guid>
+              <Name>SubReport1</Name>
+              <Page isRef="6" />
+              <Parameters isList="true" count="0" />
+              <Parent isRef="24" />
+              <SubReportPageGuid>a0dc10994c11412f81caa024127d7b96</SubReportPageGuid>
+            </SubReport1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>79cf19be8c464c1fb28da546f2d4470d</Guid>
+          <Name>ChildBand9</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand9>
+        <ChildBand15 Ref="26" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,13.09,18,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <SubReport2 Ref="27" type="SubReport" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,18,0.6</ClientRectangle>
+              <Components isList="true" count="0" />
+              <Guid>8186f41c3ea34d9fbed9b37228d73ce6</Guid>
+              <Name>SubReport2</Name>
+              <Page isRef="6" />
+              <Parameters isList="true" count="0" />
+              <Parent isRef="26" />
+              <SubReportPageGuid>cd5e80d2ecce4750beb774ccd945b13e</SubReportPageGuid>
+            </SubReport2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>430e25e631524da09691c86cc21f48c1</Guid>
+          <Name>ChildBand15</Name>
+          <NewPageAfter>True</NewPageAfter>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand15>
+        <ChildBand14 Ref="28" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,14.49,18,1.6</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text21 Ref="29" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,18,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,18,Bold| Underline</Font>
+              <Guid>6f235d7b97f5498692e7fee7e1cd2e84</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>Exhibit 1</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+            <Text17 Ref="30" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.71,18,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,18,Bold| Underline</Font>
+              <Guid>513e2951ad2141e1a678753d400610cf</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>Basic Rules of the Lease and/or Sale</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text17>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>04d604894ea349628856bb06073f958c</Guid>
+          <Name>ChildBand14</Name>
+          <NewPageBefore>True</NewPageBefore>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand14>
+        <ChildBand16 Ref="31" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,16.89,18,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <SubReport3 Ref="32" type="SubReport" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,18,0.6</ClientRectangle>
+              <Components isList="true" count="0" />
+              <Guid>e536fed7b86446c0bee1d7d3c5fa9792</Guid>
+              <Name>SubReport3</Name>
+              <Page isRef="6" />
+              <Parameters isList="true" count="0" />
+              <Parent isRef="31" />
+              <SubReportPageGuid>8b3090af57bb4446b37b23cd6dde3c7c</SubReportPageGuid>
+            </SubReport3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>9dc70c6a049244618ce8da340a0b9b1d</Guid>
+          <Name>ChildBand16</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand16>
+        <ChildBand24 Ref="33" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,18.29,18,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <SubReport4 Ref="34" type="SubReport" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,18,0.6</ClientRectangle>
+              <Components isList="true" count="0" />
+              <Guid>1edd8693ec364cb5b555d33ed8388bd9</Guid>
+              <Name>SubReport4</Name>
+              <Page isRef="6" />
+              <Parameters isList="true" count="0" />
+              <Parent isRef="33" />
+              <SubReportPageGuid>fd43a5d1f1a04a74970b0a6ea40abe95</SubReportPageGuid>
+            </SubReport4>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>d2b3815bb5bb40cfbbe032013b14040d</Guid>
+          <Name>ChildBand24</Name>
+          <NewPageAfter>True</NewPageAfter>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand24>
+        <ChildBand23 Ref="35" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,19.69,18,2</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text31 Ref="36" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,18,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,18,Bold| Underline</Font>
+              <Guid>2c41242581a84756a9461bb780518e8c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text31</Name>
+              <Page isRef="6" />
+              <Parent isRef="35" />
+              <Text>Exhibit 2</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text31>
+            <Text34 Ref="37" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.71,18,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,18,Bold| Underline</Font>
+              <Guid>642a4556832d4d4fa2979c69e31e6d36</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text34</Name>
+              <Page isRef="6" />
+              <Parent isRef="35" />
+              <Text>Scope of Work of the Agent/Broker to Approach Tenant and/or Purchaser of the Unit</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text34>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>c79b2c9bacc741bbbd3d5f957412f9d8</Guid>
+          <Name>ChildBand23</Name>
+          <NewPageBefore>True</NewPageBefore>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand23>
+        <ChildBand27 Ref="38" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,22.49,18,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <SubReport5 Ref="39" type="SubReport" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,18,0.6</ClientRectangle>
+              <Components isList="true" count="0" />
+              <Guid>9e737ed2f1834ae5b88ab5b997fb686d</Guid>
+              <Name>SubReport5</Name>
+              <Page isRef="6" />
+              <Parameters isList="true" count="0" />
+              <Parent isRef="38" />
+              <SubReportPageGuid>4e704c9253d64ed3b3156a577d75324a</SubReportPageGuid>
+            </SubReport5>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>fdaf7273cc78421ba31b558098dfed1c</Guid>
+          <Name>ChildBand27</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand27>
+        <ChildBand31 Ref="40" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,23.89,18,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <SubReport6 Ref="41" type="SubReport" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,18,0.6</ClientRectangle>
+              <Components isList="true" count="0" />
+              <Guid>9adb321ec20d41b38d8168b7b6055956</Guid>
+              <Name>SubReport6</Name>
+              <Page isRef="6" />
+              <Parameters isList="true" count="0" />
+              <Parent isRef="40" />
+              <SubReportPageGuid>a6c25427463c435bb2a24f0c6068830a</SubReportPageGuid>
+            </SubReport6>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>f0bb6eea4d774baf9bde5e405c2e0295</Guid>
+          <Name>ChildBand31</Name>
+          <NewPageBefore>True</NewPageBefore>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ChildBand31>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>77fb0bbdcbbf46d092167d49bb120879</Guid>
+      <Margins>1.5,1.5,1.5,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <PaperSize>A4</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="42" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+    <subReport_1 Ref="43" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="7">
+        <DataBand2 Ref="44" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,18,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand2</Name>
+          <Page isRef="43" />
+          <Parent isRef="43" />
+          <Sort isList="true" count="0" />
+        </DataBand2>
+        <ChildBand8 Ref="45" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,1.2,18,5.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text5 Ref="46" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,5.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>6201aa5100ec4c6e95a184d8433065b0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="43" />
+              <Parent isRef="45" />
+              <Text>{Blank(20) + "I &lt;b&gt;" + DataSource1.FirstName + "&lt;/b&gt;" + " Registered address located at
+&lt;b&gt;" + DataSource1.DS_AddressNo + "&lt;/b&gt;" + " Moo &lt;b&gt;" + DataSource1.Moo + "&lt;/b&gt;" +  " Soi &lt;b&gt;" + DataSource1.Soi + "&lt;/b&gt;" +  " Road &lt;b&gt;" + DataSource1.Road + "&lt;/b&gt;" +  " Sub-District &lt;b&gt;" +  DataSource1.SubDistrict + "&lt;/b&gt;" +  " District &lt;b&gt;" + DataSource1.District + "&lt;/b&gt;" + " Province &lt;b&gt;" + 
+DataSource1.Province + "&lt;/b&gt;" +  " Post Code &lt;b&gt;"  + DataSource1.ZipCode + "&lt;/b&gt;" +  " House/Office Telephone &lt;b&gt;"  +  DataSource1.Tel1 + "&lt;/b&gt;" + " Mobile Phone &lt;b&gt;" +  DataSource1.Tel2 + "&lt;/b&gt;" +  " E-mail &lt;b&gt;" +  DataSource1.Email + "&lt;/b&gt;" + " Owner of Condominium Unit No &lt;b&gt;" +  DataSource1.UnitsCode + "&lt;/b&gt;" +  " Address &lt;b&gt;" +  DataSource1.RoomNo  + "&lt;/b&gt;" +  
+" Condominium Project &lt;b&gt;"  +  DataSource1.ProjectName + "&lt;/b&gt;" +  " Condominium Unit Area &lt;b&gt;" +  DataSource1.RoomArea + "&lt;/b&gt; Square Meters,"   + " Unit Type &lt;b&gt;" +  DataSource1.RoomType  +  "&lt;/b&gt;" + "  hereinafter referred to as the “Unit”,"}
+
+
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text5>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ChildBand8</Name>
+          <Page isRef="43" />
+          <Parent isRef="43" />
+        </ChildBand8>
+        <ChildBand3 Ref="47" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,7.8,18,2.2</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text6 Ref="48" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,2.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>947373598cfd481d8e481c7e31160861</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="43" />
+              <Parent isRef="47" />
+              <Text>{Blank(20) + "Agree to appoint &lt;b&gt;" + "Grand Unity Development Co., Ltd." + "&lt;/b&gt;" + " as the agent/broker (hereinafter referred to as the “Company”) from "  +  DataSource1.TH_DepositStart +  " to  " + DataSource1.TH_DepositEnd +  " subject to the following terms and conditions. "  }</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text6>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>2abd85b657914c379d2e2f5b4fecea70</Guid>
+          <Name>ChildBand3</Name>
+          <Page isRef="43" />
+          <Parent isRef="43" />
+        </ChildBand3>
+        <ChildBand4 Ref="49" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,10.8,18,3.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text7 Ref="50" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,3.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>0e9434fe24dc416d802703a006535147</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="43" />
+              <Parent isRef="49" />
+              <Text>{Blank(20) + "1.I agree to appoint the Company to approach the tenant and/or purchaser of the Unit on my behalf for the purpose of executing and closing a lease agreement and/or purchase and sale agreement with the tenant and/or purchaser and the Company agrees to accept appointment as the agent in approaching a tenant and/or purchaser for the Unit. Both parties agree to with the Basic Rules for Lease and/or Sale (Exhibit 1) and the Company agrees to proceed in accordance with the scope of work of an agent/broker to approach a tenant and/or purchaser (Exhibit 2)." }</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text7>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>c8e094c095b4479687af1fcbc1697450</Guid>
+          <Name>ChildBand4</Name>
+          <Page isRef="43" />
+          <Parent isRef="43" />
+        </ChildBand4>
+        <ChildBand5 Ref="51" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,15.4,18,2.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text8 Ref="52" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,2.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>342498712a124a17aefb525d9fec73e0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="43" />
+              <Parent isRef="51" />
+              <Text>{Blank(20) + " 2.In the event that I find a tenant and/or purchaser for the Unit as a result of the Company’s efforts, resulting in the execution of an agreement or in the event that I benefit from the Company’s efforts resulting in the execution of an agreement with the tenant and/or purchaser for the lease and/or sale of the Unit, I agree to pay the agency fee to the Company in the amount specified in Clause 7 herebelow. " }</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text8>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>ff05f096068f4ce0b2bf905e339dcdac</Guid>
+          <Name>ChildBand5</Name>
+          <Page isRef="43" />
+          <Parent isRef="43" />
+        </ChildBand5>
+        <ChildBand6 Ref="53" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,19,18,3.2</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text9 Ref="54" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,3.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>a8a970f7a1e943d7873a21b6c5170993</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="43" />
+              <Parent isRef="53" />
+              <Text>{Blank(20) + "3.In the event that the Company provides a tenant and/or purchaser to execute a contract and receives payment for the reservation for a lease and/or sale from the tenant and/or purchaser on my behalf, if subsequently, I decline to sign the agreement with the tenant and/or purchaser, I agree to refund the amount paid for reservation and/or any other amounts received together with fines and damages to the party that paid the reservation fee and I agree to pay the agency fee to the Company in the agree amount.	"}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text9>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>40a2fe58a0be421db49783833865f58f</Guid>
+          <Name>ChildBand6</Name>
+          <Page isRef="43" />
+          <Parent isRef="43" />
+        </ChildBand6>
+        <ChildBand7 Ref="55" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,23,18,2.2</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text10 Ref="56" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,2.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>d346ff4c6ca64bfa9f59c410d4f7dba2</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="43" />
+              <Parent isRef="55" />
+              <Text>{Blank(20) + "4.In the event that I find a tenant and/or purchaser on my own, I agree to notify the Company in writing at the Company’s office address specified herein no less than 3 days after finding the tenant and/or purchaser, failing which it shall be deemed that the Company has successfully found the tenant and/or purchaser, in which case I agree to pay the agency fee to the Company in the agreed amount."}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text10>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>5aebd3e2371b42aa839ae6db80b6bdce</Guid>
+          <Name>ChildBand7</Name>
+          <Page isRef="43" />
+          <Parent isRef="43" />
+        </ChildBand7>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>5173bb458aad4c8aaeed0a862ccebb41</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>subReport_1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>20</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="57" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </subReport_1>
+    <subReport_2 Ref="58" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="6">
+        <DataBand3 Ref="59" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,18,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand3</Name>
+          <Page isRef="58" />
+          <Parent isRef="58" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+        <ChildBand10 Ref="60" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,1.2,18,2.2</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text14 Ref="61" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,2.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>6201aa5100ec4c6e95a184d8433065b0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="58" />
+              <Parent isRef="60" />
+              <Text>{Blank(20) + "5.I agree for the Company to transfer the reservation fee after deduction of the agency fee and other costs and expenses (if any) to me at the following Account Number " + "&lt;b&gt;"+ DataSource1.BankNo + "&lt;/b&gt;"  +  " Bank " + "&lt;b&gt;" + DataSource1.BankNameENGFull  + "&lt;/b&gt;" + " Account Name" + "&lt;b&gt;"+ DataSource1.BankName + "&lt;/b&gt;"} 
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text14>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ChildBand10</Name>
+          <Page isRef="58" />
+          <Parent isRef="58" />
+        </ChildBand10>
+        <ChildBand11 Ref="62" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,4.2,18,1.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text15 Ref="63" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,1.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>ceabed352b6349869c24c5cdd78363e3</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="58" />
+              <Parent isRef="62" />
+              <Text>{Blank(20) + "6.In consideration of providing the Unit lease and/or purchase agency services, the Company’s fees shall be as follows:"} 
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text15>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>af857248631145f38403ee5d8653c90d</Guid>
+          <Name>ChildBand11</Name>
+          <Page isRef="58" />
+          <Parent isRef="58" />
+        </ChildBand11>
+        <ChildBand34 Ref="64" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,6.6,18,10.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text47 Ref="65" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,10.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>ba0f57c14c5246c383fc29a10efaa8ca</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text47</Name>
+              <Page isRef="58" />
+              <Parent isRef="64" />
+              <Text>{Blank(20) + "6.1 Sale of the Unit shall be subject to a fee in the amount of 3% of the sale price;" + 
+"&lt;br&gt;" + Blank(20) + "6.2 Sale of the down payment of the Unit shall be subject to the following fee:"  + 
+"&lt;br&gt;" + Blank(25) + "-If the down payment sale price is higher than the original amount, the fee shall be 20% of the profit earned on the down payment sale;"  + 
+"&lt;br&gt;" + Blank(25) + "-If the down payment sale price is equal to the original amount, the fee shall be 5,000 Baht per unit"  +
+"&lt;br&gt;" + Blank(20) + "6.3 Lease of the Unit shall be subject to the following fees:"  +
+"&lt;br&gt;" + Blank(25) + "-Lease term of 6 months shall be subject to a fee equal to 0.5 month’s rent;"  +
+"&lt;br&gt;" + Blank(25) + "-Lease term of 1 year shall be subject to a fee equal to 1 month’s rent;"  +
+"&lt;br&gt;" + Blank(25) + "-Lease term of 2 years shall be subject to a fee equal to 1.5 month’s rent;"  +
+"&lt;br&gt;" + Blank(25) + "-Lease term of 3 years shall be subject to a fee equal to 2 month’s rent;"  +
+"&lt;br&gt;" + Blank(25) + "-If the Company causes the extension of the lease of the Unit, the Company shall be entitled to a fee in the amount of ......................... of the monthly rent"  +
+"&lt;br&gt;" + Blank(25) + " In the event of early termination, the Company shall have no obligation to refund the agency fees whatsoever"  
+} 
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text47>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>26b484d60ae2453fbb9ce95cb4bacae9</Guid>
+          <Name>ChildBand34</Name>
+          <Page isRef="58" />
+          <Parent isRef="58" />
+        </ChildBand34>
+        <ChildBand12 Ref="66" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,18.2,18,1.4</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text16 Ref="67" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,1.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>e79962b1a01f4607964581ceaa22e2ee</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="58" />
+              <Parent isRef="66" />
+              <Text>{Blank(20) + "7.In finding a tenant and/or purchaser, the Company shall offer an amount of not less than the following amounts:" + 
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text16>
+          </Components>
+          <Conditions isList="true" count="2">
+            <value>DataSource1.RateComCopyContact,EqualTo,_x0030_.00,,Numeric,Red,Transparent,Arial_x002C_8,True,False,,,None</value>
+            <value>DataSource1.RateComCopyContact,NotEqualTo,_x0030_.00,,Numeric,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+          </Conditions>
+          <Guid>cd41dc65d2504f9d9f322eeb3d1b058c</Guid>
+          <Name>ChildBand12</Name>
+          <Page isRef="58" />
+          <Parent isRef="58" />
+        </ChildBand12>
+        <ChildBand13 Ref="68" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,20.4,18,3.2</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text18 Ref="69" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,3.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>c40154427ab64f93ad867a6cb3219a82</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="58" />
+              <Parent isRef="68" />
+              <Text>{ Blank(20) + "Rent " + "&lt;b&gt; " + DataSource1.NUM_RentPrice + "&lt;/b&gt; Baht/month " + "( " + DataSource1.ENG_RentPrice + " )"
++"&lt;br&gt;" + Blank(20) + "Sale Price " + "&lt;b&gt; " + DataSource1.NUM_SalePrice + "&lt;/b&gt; Baht" + " ( "+ DataSource1.ENG_SalePrice + " )"
+} 
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text18>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>5eafd4636f1645a697201e7e7f9380e4</Guid>
+          <Name>ChildBand13</Name>
+          <Page isRef="58" />
+          <Parent isRef="58" />
+        </ChildBand13>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>a0dc10994c11412f81caa024127d7b96</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>subReport_2</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>20</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="70" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </subReport_2>
+    <subReport_3 Ref="71" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <DataBand25 Ref="72" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,18,10.47</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text25 Ref="73" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0.4,18.8,1.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <Guid>51a089cba46147ee9df5b89dbc374006</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="71" />
+              <Parent isRef="72" />
+              <Text>I agree to all of the above terms and conditions.</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text25>
+            <Text27 Ref="74" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.67,2.79,7.62,2.54</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <Guid>630e890636104266a08f6511fe1cf8aa</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="71" />
+              <Parent isRef="72" />
+              <Text>Signed  …………………………………………………………	
+( {DataSource1.FirstName} )	
+Unit Owner</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text27>
+            <Text28 Ref="75" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>9.76,2.79,7.62,2.54</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <Guid>212a5bd5aa9d440ab5e22f61f597fe5b</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="71" />
+              <Parent isRef="72" />
+              <Text>Signed  …………………………………………………………	
+      ( ………………………………………………………… )	
+Grand Unity Development Co., Ltd.</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text28>
+            <Text29 Ref="76" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.87,7.87,7.62,2.54</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <Guid>fda2d2675fd244c5b43e40ddcf3abeaa</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="71" />
+              <Parent isRef="72" />
+              <Text>Signed  …………………………………………………………	
+       ( ………………………………………………………… )	
+Witness</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text29>
+            <Text30 Ref="77" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>9.8,7.8,7.62,2.54</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <Guid>f79338c784c245ceafe20db6ab5459bd</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="71" />
+              <Parent isRef="72" />
+              <Text>Signed  …………………………………………………………	
+       ( ………………………………………………………… )	
+Witness</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text30>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Filters isList="true" count="0" />
+          <Guid>fa77ecb9b1e24d8ca710ccb0ff174b84</Guid>
+          <Name>DataBand25</Name>
+          <Page isRef="71" />
+          <Parent isRef="71" />
+          <Sort isList="true" count="0" />
+        </DataBand25>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>cd5e80d2ecce4750beb774ccd945b13e</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>subReport_3</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>20</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="78" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </subReport_3>
+    <subReport_4 Ref="79" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="5">
+        <DataBand4 Ref="80" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,18,0.27</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <Filters isList="true" count="0" />
+          <Guid>fa77ecb9b1e24d8ca710ccb0ff174b84</Guid>
+          <Name>DataBand4</Name>
+          <Page isRef="79" />
+          <Parent isRef="79" />
+          <Sort isList="true" count="0" />
+        </DataBand4>
+        <ChildBand17 Ref="81" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,1.47,18,1.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text19 Ref="82" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,1.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>fb220aeb043143c9a85a3f8a0c575ca1</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="79" />
+              <Parent isRef="81" />
+              <Text>{Blank(0) + "1.	Unit owners who wish for the Company to lease –sell their Unit shall fill out the form for engaging "
++ "&lt;b&gt; " + Company.CompanyNameEND + " &lt;/b&gt;" + " to lease-sell the Unit."
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text19>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>cc37a41092664dcc9d7c63aaa8afb339</Guid>
+          <Name>ChildBand17</Name>
+          <Page isRef="79" />
+          <Parent isRef="79" />
+        </ChildBand17>
+        <ChildBand18 Ref="83" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,3.87,18,8.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text20 Ref="84" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,8.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>6927c043b80141e1a9d825dd5fbc5584</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="79" />
+              <Parent isRef="83" />
+              <Text>{Blank(0) + "2." + "&lt;b&gt;" + Company.CompanyNameEND  + "&lt;/b&gt;" + " ’s fees for lease-sale shall be as follows:"
++ "&lt;br&gt; "+ Blank(15) +  "2.1 Sale of the Unit shall be subject to a fee in the amount of 3% of the sale price;"
++ "&lt;br&gt; "+ Blank(15) +  "2.2 Sale of the down payment of the Unit shall have the following fees:"
++ "&lt;br&gt; "+ Blank(20) +  "2.2.1 If the down payment sale price is higher than the original amount, the fee shall be 20% of the profit earned on the down payment sale;"
++ "&lt;br&gt; "+ Blank(20) +  "2.2.2	If the down payment sale price is equal to the original amount, the fee shall be 5,000 Baht per unit"
++ "&lt;br&gt; "+ Blank(15) +  "2.3 Lease of the Unit shall be subject to the following fees:"
++ "&lt;br&gt; "+ Blank(20) +  "-Lease term of 6 months shall be subject to a fee equal to 0.5 month’s rent;"
++ "&lt;br&gt; "+ Blank(20) +  "-Lease term of 1 year shall be subject to a fee equal to 1 month’s rent;"
++ "&lt;br&gt; "+ Blank(20) +  "-Lease term of 2 years shall be subject to a fee equal to 1.5 month’s rent;"
++ "&lt;br&gt; "+ Blank(20) +  "-Lease term of 3 years shall be subject to a fee equal to 2 month’s rent;"
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text20>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>dbaa5a0a5eea47448655264ee00f083a</Guid>
+          <Name>ChildBand18</Name>
+          <Page isRef="79" />
+          <Parent isRef="79" />
+        </ChildBand18>
+        <ChildBand19 Ref="85" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,13.47,18,9.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text22 Ref="86" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,9.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>bbc5a434f32c43a8aad27ca0cb240157</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="79" />
+              <Parent isRef="85" />
+              <Text>{Blank(0) + "3.Reservation Fee"
++ "&lt;br&gt; "+ Blank(15) +  "3.1 For the purchase-sale, the purchaser shall pay a reservation fee of 5% of the purchase price (or the price agreed by the purchaser and the Unit owner)"
++ "&lt;br&gt; "+ Blank(15) + "&lt;b&gt;&lt;u&gt;"+ " In the event of sale  " + "&lt;/u&gt;&lt;/b&gt;" + "if the reservation fee is paid, but the contract is not executed, the Unit owner will not refund the reservation fee, unless agreed otherwise and for the reservation fee in the case the reservation is cancelled, the Unit owner shall pay the fee to Grand Unity Development Co., Ltd. at the rate of 20% of the reservation fee for the canceled reservation."
++ "&lt;br&gt; "+ Blank(15) + "3.2 For the Lease, the tenant shall pay a reservation fee in the amount of 5,000 Baht per unit"
++ "&lt;br&gt; "+ Blank(15) +  "The tenant shall pay a security deposit for the unit in the amount equal to 2 month’s rent on the date of the lease agreement and pay rent 1 month in advance (before moving in) and if the contract isn’t signed within 15 days (Fifteen) from the date of the reservation fee, the Unit owner is entitled to forfeit the reservation fee. The Unit owner shall pay the fee to Grand Unity Development Co., Ltd. at the rate of 50 % of the reservation fee for the canceled reservation."
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text22>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>9c7c54ef8b0b4cc1a2df357fbbf1e3c7</Guid>
+          <Name>ChildBand19</Name>
+          <Page isRef="79" />
+          <Parent isRef="79" />
+        </ChildBand19>
+        <ChildBand20 Ref="87" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,23.87,18,3.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text23 Ref="88" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,3.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>98e8a13208604cadbb620bfba09d70f2</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="79" />
+              <Parent isRef="87" />
+              <Text>{Blank(0) + "4.	The Unit owner shall pay the fees in No. 2 to Grand Unity Development Co., Ltd. as follows:"
++ "&lt;br&gt; "+ Blank(15) +  "4.1	For the Lease, upon execution of the Lease Agreement, the Unit owner shall pay on the date of execution of the contract."
++ "&lt;br&gt; "+ Blank(15) +  "4.2	For the Purchase-Sale, Unit owner shall pay on the date of registration of transfer of title at the land office or other date as agreed between the Unit owner and the Company "
++ "&lt;br&gt; "+ Blank(15) +  "4.3	For the Purchase-Sale of Down Payment, Unit owner shall pay on the date of the documentation to change the contracting party"}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text23>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>6e5aef37d684445fac0f1ff32766248d</Guid>
+          <Name>ChildBand20</Name>
+          <Page isRef="79" />
+          <Parent isRef="79" />
+        </ChildBand20>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8b3090af57bb4446b37b23cd6dde3c7c</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>subReport_4</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>20</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="89" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </subReport_4>
+    <subReport_5 Ref="90" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="5">
+        <DataBand5 Ref="91" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,18,0.27</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <Filters isList="true" count="0" />
+          <Guid>fa77ecb9b1e24d8ca710ccb0ff174b84</Guid>
+          <Name>DataBand5</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Sort isList="true" count="0" />
+        </DataBand5>
+        <ChildBand21 Ref="92" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,1.47,18,1</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text24 Ref="93" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>fb220aeb043143c9a85a3f8a0c575ca1</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="90" />
+              <Parent isRef="92" />
+              <Text>{Blank(0) + "5.	 The rent and/or purchase and sale price of the Unit shall be paid directly to the Unit owner."}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text24>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>cc37a41092664dcc9d7c63aaa8afb339</Guid>
+          <Name>ChildBand21</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+        </ChildBand21>
+        <ChildBand25 Ref="94" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,3.27,18,2.2</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text32 Ref="95" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,2.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>d89e4b4f36e244baa1b44caf973367b5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text32</Name>
+              <Page isRef="90" />
+              <Parent isRef="94" />
+              <Text>{Blank(0) + "6.	Management of the Unit Key"
++"&lt;br&gt;"+ Blank(15) + "The Unit owner shall deliver the Unit key to Grand Unity Development Co., Ltd. who will keep the key in a key box prepared by the Company." }
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text32>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>14448976821948a98e7caf5db8c284dd</Guid>
+          <Name>ChildBand25</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+        </ChildBand25>
+        <ChildBand26 Ref="96" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,6.27,18,1.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text33 Ref="97" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,1.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>31dd3692f430442c94b511374992850f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text33</Name>
+              <Page isRef="90" />
+              <Parent isRef="96" />
+              <Text>{Blank(0) + "7.	If the Unit owner appoints more than 1 agent/broker, the Unit owner shall inform the Company and shall specify the same in the Agreement"}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text33>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>8bb1391d9ccc4060ba8730d486ea7e99</Guid>
+          <Name>ChildBand26</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+        </ChildBand26>
+        <ChildBand22 Ref="98" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,8.67,18,11</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text26 Ref="99" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,11</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>6927c043b80141e1a9d825dd5fbc5584</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="90" />
+              <Parent isRef="98" />
+              <Text>{Blank(0) + "8.	Additional service to collect rent payment from the tenant"
++ "&lt;br&gt; "+ Blank(15) +  "8.1 The Company offers additional services of collecting the monthly rent at the following fee:"
++ "&lt;br&gt; "+ Blank(20) +  "Rent between 8,000-20,000 Baht 		500 Baht per month service fee"
++ "&lt;br&gt; "+ Blank(20) +  "Rent between 20,500-30,000 Baht		800 Baht per month service fee"
++ "&lt;br&gt; "+ Blank(20) +  "Rent more than 30,500 Baht			    1,000 Baht per month service fee"
++ "&lt;br&gt; "+ Blank(15) +  "8.2 Procedures to collect rent payment from tenant:"
++ "&lt;br&gt; "+ Blank(20) +  "8.2.1 Calling the tenant 3 days in advance to inform the tenant of the Company’s staff going to collect the rent"
++ "&lt;br&gt; "+ Blank(20) +  "8.2.2 The Company’s staff will collect the rent from the tenant when due"
++ "&lt;br&gt; "+ Blank(20) +  "8.2.3 The Company’s staff will issue a receipt confirming receipt of the rent"
++ "&lt;br&gt; "+ Blank(20) +  "8.2.4 The Company’s staff transfer the payment into the Company’s account "
++ "&lt;br&gt; "+ Blank(20) +  "8.2.5 The accounting department is notified of the transfer "
++ "&lt;br&gt; "+ Blank(20) +  "8.2.6 The account staff transfer the rent after deducting service fees to the Unit owner"
++ "&lt;br&gt; "+ Blank(20) +  "8.2.7 Telephone to the Unit owner to check the rent amount"
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text26>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>dbaa5a0a5eea47448655264ee00f083a</Guid>
+          <Name>ChildBand22</Name>
+          <NewPageAfter>True</NewPageAfter>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+        </ChildBand22>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>fd43a5d1f1a04a74970b0a6ea40abe95</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>subReport_5</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>20</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="100" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </subReport_5>
+    <subReport_6 Ref="101" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="4">
+        <DataBand6 Ref="102" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,18,0.27</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <Filters isList="true" count="0" />
+          <Guid>fa77ecb9b1e24d8ca710ccb0ff174b84</Guid>
+          <Name>DataBand6</Name>
+          <Page isRef="101" />
+          <Parent isRef="101" />
+          <Sort isList="true" count="0" />
+        </DataBand6>
+        <ChildBand28 Ref="103" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,1.47,18,1.4</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text35 Ref="104" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,1.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>fb220aeb043143c9a85a3f8a0c575ca1</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text35</Name>
+              <Page isRef="101" />
+              <Parent isRef="103" />
+              <Text>{Blank(10) + "Grand Unity Development Co., Ltd., engaged in the agency/brokerage business, sets forth the scope of work in finding a tenant to lease the owner’s Unit as follows:"
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text35>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>cc37a41092664dcc9d7c63aaa8afb339</Guid>
+          <Name>ChildBand28</Name>
+          <Page isRef="101" />
+          <Parent isRef="101" />
+        </ChildBand28>
+        <ChildBand29 Ref="105" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,3.67,18,12.4</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text36 Ref="106" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,12.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>d89e4b4f36e244baa1b44caf973367b5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text36</Name>
+              <Page isRef="101" />
+              <Parent isRef="105" />
+              <Text>{Blank(15) +"1. Scope of Work"
++"&lt;br&gt;" + Blank(20) + "1.1 The Company has the duty to find a tenant and/or purchaser for the Unit"
++"&lt;br&gt;" + Blank(20)+  "1.2 The Company will collect the security deposit equal to 2 month’s rent and collect rent in advance equal to 1 month’s rent and/or reservation fee for the Unit and transfer the money to the Unit owner within 15 days (Fifteen) from the date of the lease agreement and/or purchase and sale agreement after deduction of the agency fee and other fees (if any) under the Agreement.ก"
++"&lt;br&gt;" + Blank(20) + "1.3 Inspect the items inside the Unit prior to delivery to the tenant as well as make an inventory of the items for the tenant to acknowledge and sign off."
++"&lt;br&gt;" + Blank(20) + "1.4 Prepare the lease agreement and/or condominium unit sale and purchase agreement."
++"&lt;br&gt;" + Blank(20) + "1.5 Hand over the Unit and keys to the tenant and/or purchaser. "
++"&lt;br&gt;" + Blank(20) + "1.6 Notify the tenant of the methods for payment of the rent and public utilities or payment of the purchase price."
++"&lt;br&gt;" + Blank(20) + "1.7 Unit owner shall inspect the items inside the Unit when the tenant moves out."
++"&lt;br&gt;" + Blank(20) + "1.8 To refund the security deposit, the unit owner shall return it to the tenant after deduction (if any) within not more than 60 (Sixty) days from the date the tenant moves out."
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text36>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>14448976821948a98e7caf5db8c284dd</Guid>
+          <Name>ChildBand29</Name>
+          <Page isRef="101" />
+          <Parent isRef="101" />
+        </ChildBand29>
+        <ChildBand30 Ref="107" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,16.87,18,4.8</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text37 Ref="108" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,3.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>d1a40f2019c744ebbd28a818252ac255</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text37</Name>
+              <Page isRef="101" />
+              <Parent isRef="107" />
+              <Text>{Blank(15) + "2.	Documents comprising the lease/sale:"
++"&lt;br&gt;" + Blank(20) + "2.1 Agreement to appoint the agent/broker to find a tenant and/or purchaser for the unit."
++"&lt;br&gt;" + Blank(20) + "2.2 Copy of the Thai national ID card (of the Unit owner)."
++"&lt;br&gt;" + Blank(20) + "2.3 Copy of the Condominium Unit Title Deed front and back page (Or Chor 2)"
++"&lt;br&gt;" + Blank(20) + "2.4 Condominium unit keys with total " + "&lt;b&gt;" + DataSource1.CountKey + "&lt;/b&gt;" + " keys "
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text37>
+            <Text38 Ref="109" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>3.2,3.73,7.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>e5f150caf11745eabf1a5cc4b52bd3a8</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text38</Name>
+              <Page isRef="101" />
+              <Parent isRef="107" />
+              <Text>{ Blank(1) + "Delivered to Company staff"
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text38>
+            <Text39 Ref="110" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>10.8,3.73,7.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>8a93f9919cdd4e95b499f96a9be9521a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text39</Name>
+              <Page isRef="101" />
+              <Parent isRef="107" />
+              <Text>{ Blank(1) + "Delivered to Juristic Person staff"
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text39>
+            <CheckBox3 Ref="111" type="CheckBox" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <Checked>{DataSource1.KeyIsAgent}</Checked>
+              <CheckStyleForFalse>NoneRectangle</CheckStyleForFalse>
+              <CheckStyleForTrue>CheckRectangle</CheckStyleForTrue>
+              <ClientRectangle>2.2,3.73,1,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ContourColor>Black</ContourColor>
+              <Name>CheckBox3</Name>
+              <Page isRef="101" />
+              <Parent isRef="107" />
+              <TextBrush>Black</TextBrush>
+            </CheckBox3>
+            <CheckBox1 Ref="112" type="CheckBox" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <Checked>{DataSource1.KeyIsJuristic}</Checked>
+              <CheckStyleForFalse>NoneRectangle</CheckStyleForFalse>
+              <CheckStyleForTrue>CheckRectangle</CheckStyleForTrue>
+              <ClientRectangle>9.8,3.73,1,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ContourColor>Black</ContourColor>
+              <Name>CheckBox1</Name>
+              <Page isRef="101" />
+              <Parent isRef="107" />
+              <TextBrush>Black</TextBrush>
+            </CheckBox1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>2843657868634deb9697c0060a845bfa</Guid>
+          <Name>ChildBand30</Name>
+          <Page isRef="101" />
+          <Parent isRef="101" />
+        </ChildBand30>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>4e704c9253d64ed3b3156a577d75324a</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>subReport_6</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>20</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="113" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </subReport_6>
+    <subReport_7 Ref="114" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <SubReport8 Ref="115" type="SubReport" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4,18,1.4</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Name>SubReport8</Name>
+          <Page isRef="114" />
+          <Parameters isList="true" count="0" />
+          <Parent isRef="114" />
+          <SubReportPageGuid>e912fda0c4544aec9a0d7dc08f1af3ea</SubReportPageGuid>
+        </SubReport8>
+        <DataBand7 Ref="116" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,18,1.07</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <Filters isList="true" count="0" />
+          <Guid>fa77ecb9b1e24d8ca710ccb0ff174b84</Guid>
+          <Name>DataBand7</Name>
+          <NewPageBefore>True</NewPageBefore>
+          <Page isRef="114" />
+          <Parent isRef="114" />
+          <Sort isList="true" count="0" />
+        </DataBand7>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>a6c25427463c435bb2a24f0c6068830a</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>subReport_7</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>20</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="117" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </subReport_7>
+    <Table Ref="118" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="7">
+        <DataBand8 Ref="119" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,18,0.87</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text41 Ref="120" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>ddbe44f53d3848d19b1d79ea00fddc02</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text41</Name>
+              <Page isRef="118" />
+              <Parent isRef="119" />
+              <Text>{Blank(15) + "3. Standard Unit Furniture Report for the Unit for lease/sale"
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text41>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Filters isList="true" count="0" />
+          <Guid>fa77ecb9b1e24d8ca710ccb0ff174b84</Guid>
+          <Name>DataBand8</Name>
+          <NewPageBefore>True</NewPageBefore>
+          <Page isRef="118" />
+          <Parent isRef="118" />
+          <Sort isList="true" count="0" />
+        </DataBand8>
+        <ColumnHeaderBand1 Ref="121" type="Stimulsoft.Report.Components.StiColumnHeaderBand" isKey="true">
+          <Border>All;[105:105:105];1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.07,18,0.8</ClientRectangle>
+          <Components isList="true" count="7">
+            <Text42 Ref="122" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.6,-0.02,13.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16,Bold</Font>
+              <Guid>f2cf0519ee724749aac951b8f3b314ee</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text42</Name>
+              <Page isRef="118" />
+              <Parent isRef="121" />
+              <Text>Item</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text42>
+            <Text43 Ref="123" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15,-0.02,3,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16,Bold</Font>
+              <Guid>e72d43944e8846a6a1e958f81ad00dbc</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text43</Name>
+              <Page isRef="118" />
+              <Parent isRef="121" />
+              <Text>Quantity</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text43>
+            <Text40 Ref="124" type="Text" isKey="true">
+              <Border>All;Transparent;2;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.1,-0.02,1.5,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16,Bold</Font>
+              <Guid>b625eb89d1aa407ebb21892089e546e0</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text40</Name>
+              <Page isRef="118" />
+              <Parent isRef="121" />
+              <Text>No.</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text40>
+            <StartPointPrimitive2 Ref="125" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>15,-0.01,0,0</ClientRectangle>
+              <Name>StartPointPrimitive2</Name>
+              <Page isRef="118" />
+              <Parent isRef="121" />
+              <ReferenceToGuid>ac261dd1556e478f89cbc45a54b8df0d</ReferenceToGuid>
+            </StartPointPrimitive2>
+            <EndPointPrimitive2 Ref="126" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>15,0.8,0,0</ClientRectangle>
+              <Name>EndPointPrimitive2</Name>
+              <Page isRef="118" />
+              <Parent isRef="121" />
+              <ReferenceToGuid>ac261dd1556e478f89cbc45a54b8df0d</ReferenceToGuid>
+            </EndPointPrimitive2>
+            <StartPointPrimitive1 Ref="127" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>1.6,-0.01,0,0</ClientRectangle>
+              <Name>StartPointPrimitive1</Name>
+              <Page isRef="118" />
+              <Parent isRef="121" />
+              <ReferenceToGuid>d6c61ac5f1954ccfb6a97dddf7566b42</ReferenceToGuid>
+            </StartPointPrimitive1>
+            <EndPointPrimitive1 Ref="128" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>1.6,0.81,0,0</ClientRectangle>
+              <Name>EndPointPrimitive1</Name>
+              <Page isRef="118" />
+              <Parent isRef="121" />
+              <ReferenceToGuid>d6c61ac5f1954ccfb6a97dddf7566b42</ReferenceToGuid>
+            </EndPointPrimitive1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ColumnHeaderBand1</Name>
+          <Page isRef="118" />
+          <Parent isRef="118" />
+        </ColumnHeaderBand1>
+        <Table1 Ref="129" type="Stimulsoft.Report.Components.Table.StiTable" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,3.67,18,0.8</ClientRectangle>
+          <ColumnCount>3</ColumnCount>
+          <Components isList="true" count="3">
+            <Table1_Cell1 Ref="130" type="TableCell" isKey="true">
+              <Border>All;[105:105:105];1;Solid;False;4;[105:105:105]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,1.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <HorAlignment>Center</HorAlignment>
+              <ID>0</ID>
+              <JoinCells isList="true" count="0" />
+              <Margins>0,0,0,0</Margins>
+              <Name>Table1_Cell1</Name>
+              <Page isRef="118" />
+              <Parent isRef="129" />
+              <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+              <Text>{Line}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Table1_Cell1>
+            <Table1_Cell2 Ref="131" type="TableCell" isKey="true">
+              <Border>All;[105:105:105];1;Solid;False;4;[105:105:105]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.6,0,13.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <ID>1</ID>
+              <JoinCells isList="true" count="0" />
+              <Margins>0,0,0,0</Margins>
+              <Name>Table1_Cell2</Name>
+              <Page isRef="118" />
+              <Parent isRef="129" />
+              <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+              <Text>{CheckRoom.CheckRoomDesc}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Table1_Cell2>
+            <Table1_Cell3 Ref="132" type="TableCell" isKey="true">
+              <Border>All;[105:105:105];1;Solid;False;4;[105:105:105]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15,0,3,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <HorAlignment>Center</HorAlignment>
+              <ID>4</ID>
+              <JoinCells isList="true" count="0" />
+              <Margins>0,0,0,0</Margins>
+              <Name>Table1_Cell3</Name>
+              <Page isRef="118" />
+              <Parent isRef="129" />
+              <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+              <Text>{CheckRoom.CheckRoomQty}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Table1_Cell3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>CheckRoom</DataSourceName>
+          <Filters isList="true" count="0" />
+          <MinHeight>0.2</MinHeight>
+          <Name>Table1</Name>
+          <NumberID>25</NumberID>
+          <Page isRef="118" />
+          <Parent isRef="118" />
+          <RowCount>1</RowCount>
+          <Sort isList="true" count="0" />
+        </Table1>
+        <DataBand9 Ref="133" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,5.27,18,3.87</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text44 Ref="134" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0.8,18,2.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>59a29aad9ca44abb86d1517d1d288b8b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text44</Name>
+              <Page isRef="118" />
+              <Parent isRef="133" />
+              <Text>{Blank(0) + "Remark "+ "............................................................................................................................................................"
++ "&lt;br&gt;"+ ".........................................................................................................................................................................."
++ "&lt;br&gt;"+ ".........................................................................................................................................................................."
++ "&lt;br&gt;"+ "..........................................................................................................................................................................."
++ "&lt;br&gt;"+ ".........................................................................................................................................................................."}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text44>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Filters isList="true" count="0" />
+          <Guid>f8fdaaf21e494f49bf15d18297b6506c</Guid>
+          <Name>DataBand9</Name>
+          <NewPageBefore>True</NewPageBefore>
+          <Page isRef="118" />
+          <Parent isRef="118" />
+          <Sort isList="true" count="0" />
+        </DataBand9>
+        <ChildBand32 Ref="135" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,9.94,18,3</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text45 Ref="136" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0,18,2.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>ef00113ef5e346f6a173963ec018ca96</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text45</Name>
+              <Page isRef="118" />
+              <Parent isRef="135" />
+              <Text>{Blank(0) + "Acknowledged by the Unit owner in acceptance of terms and conditions:"
++ "&lt;br&gt;" + Blank(0) +"Signed  " + "&lt;b&gt;" +  DataSource1.FirstName+  "&lt;/b&gt;" + "Telephone number " +"&lt;b&gt;" + DataSource1.Tel1 + "&lt;/b&gt;"  
++ "&lt;br&gt;" + Blank(0) +"Owner of Unit No " + "&lt;b&gt;" + DataSource1.UnitsCode  +  "&lt;/b&gt;" + " Project " +"&lt;b&gt;" +  DataSource1.ProjectName + "&lt;/b&gt;" +  " Date  ........................................." 
+}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text45>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>0e45073b2e694d9fb2692850c5ee6ac9</Guid>
+          <Name>ChildBand32</Name>
+          <Page isRef="118" />
+          <Parent isRef="118" />
+        </ChildBand32>
+        <VerticalLinePrimitive2 Ref="137" type="VerticalLinePrimitive" isKey="true">
+          <ClientRectangle>15,2.06,0.0254,0.81</ClientRectangle>
+          <Color>DimGray</Color>
+          <EndCap Ref="138" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </EndCap>
+          <Guid>ac261dd1556e478f89cbc45a54b8df0d</Guid>
+          <Name>VerticalLinePrimitive2</Name>
+          <Page isRef="118" />
+          <Parent isRef="118" />
+          <StartCap Ref="139" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </StartCap>
+        </VerticalLinePrimitive2>
+        <VerticalLinePrimitive1 Ref="140" type="VerticalLinePrimitive" isKey="true">
+          <ClientRectangle>1.6,2.06,0.0254,0.82</ClientRectangle>
+          <Color>DimGray</Color>
+          <EndCap Ref="141" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </EndCap>
+          <Guid>d6c61ac5f1954ccfb6a97dddf7566b42</Guid>
+          <Name>VerticalLinePrimitive1</Name>
+          <Page isRef="118" />
+          <Parent isRef="118" />
+          <StartCap Ref="142" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </StartCap>
+        </VerticalLinePrimitive1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>e912fda0c4544aec9a0d7dc08f1af3ea</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Table</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>20</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="143" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Table>
+  </Pages>
+  <PrinterSettings Ref="144" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>6/15/2023 9:41:24 AM</ReportChanged>
+  <ReportCreated>7/30/2019 3:33:09 PM</ReportCreated>
+  <ReportFile>E:\Project\30 eBrokerage\Inspinia_MVC5\Report\eBrokerage\DS_Agent_Contact_EN.mrt</ReportFile>
+  <ReportGuid>e8159f85353f427183d7b3fc660cd158</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2014.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+		public string Blank (int number)
+		{
+			string result = "";
+			for(int i = 0; i &lt; number; i++)
+			{
+				result += "&amp;nbsp;";
+			}
+			return result;
+		}
+		
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,1196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EMSGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DocumentStatusTable">
+          <Key>
+            <PropertyRef Name="DocumentStatusID" />
+          </Key>
+          <Property Name="DocumentStatusID" Type="int" Nullable="false" />
+          <Property Name="DocumentStatusTH" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentStatusEN" Type="varchar" MaxLength="50" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="ClassID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="EmpGroupTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmpSpecialTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupID" Type="bigint" />
+          <Property Name="EmpID" Type="bigint" />
+          <Property Name="DeptsID" Type="bigint" />
+          <Property Name="CompanyID" Type="bigint" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MessengerTable">
+          <Key>
+            <PropertyRef Name="MessengerID" />
+          </Key>
+          <Property Name="MessengerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MessengerNameTH" Type="varchar" MaxLength="50" />
+          <Property Name="MessengerNameEN" Type="varchar" MaxLength="50" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+        </EntityType>
+        <EntityType Name="TimeTable">
+          <Key>
+            <PropertyRef Name="TimeID" />
+          </Key>
+          <Property Name="TimeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Timer" Type="varchar" MaxLength="50" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EMSG.dbo.TimeTypeTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TimeTypeTable">
+          <Key>
+            <PropertyRef Name="TimeTypeID" />
+          </Key>
+          <Property Name="TimeTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeTypeNameTH" Type="varchar" MaxLength="50" />
+          <Property Name="TimeTypeNameEN" Type="varchar" MaxLength="50" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+        </EntityType>
+        <EntityType Name="WorkTable">
+          <Key>
+            <PropertyRef Name="WorkID" />
+          </Key>
+          <Property Name="WorkID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkNO" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyID" Type="bigint" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="CreatorDept" Type="bigint" />
+          <Property Name="CreatorDeptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDept" Type="bigint" />
+          <Property Name="ReviserDeptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="OwnerDept" Type="bigint" />
+          <Property Name="OwnerDeptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EMSG.dbo.WorkTable201806' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WorkTable201806">
+          <Key>
+            <PropertyRef Name="WorkID" />
+          </Key>
+          <Property Name="WorkID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkNO" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyID" Type="bigint" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="CreatorDept" Type="bigint" />
+          <Property Name="CreatorDeptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDept" Type="bigint" />
+          <Property Name="ReviserDeptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="OwnerDept" Type="bigint" />
+          <Property Name="OwnerDeptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+        </EntityType>
+        <EntityType Name="WorkTrans">
+          <Key>
+            <PropertyRef Name="WorkTransID" />
+          </Key>
+          <Property Name="WorkTransID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkNO" Type="varchar" MaxLength="50" />
+          <Property Name="WorkID" Type="bigint" />
+          <Property Name="WorkDate" Type="datetime" />
+          <Property Name="CustomerName" Type="varchar(max)" Nullable="false" />
+          <Property Name="CustomerAddress" Type="varchar(max)" />
+          <Property Name="CustomerRoad" Type="varchar" MaxLength="500" />
+          <Property Name="CustomerDistrict" Type="varchar" MaxLength="500" />
+          <Property Name="CustomerPhone" Type="varchar" MaxLength="500" />
+          <Property Name="WorkTypeID" Type="bigint" />
+          <Property Name="WorkTypeText" Type="varchar" MaxLength="500" />
+          <Property Name="WorkDetail" Type="varchar(max)" />
+          <Property Name="StartTime" Type="bigint" />
+          <Property Name="EndTime" Type="bigint" />
+          <Property Name="TimeTypeID" Type="bigint" />
+          <Property Name="SpecialOrder" Type="varchar(max)" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="500" />
+          <Property Name="OwnerPhone" Type="varchar" MaxLength="100" />
+          <Property Name="OwnerMobile" Type="varchar" MaxLength="100" />
+          <Property Name="MessengerID" Type="bigint" />
+          <Property Name="DocumentStatusID" Type="int" />
+          <Property Name="Remark" Type="varchar(max)" />
+          <Property Name="SendeMailOpen" Type="bigint" />
+          <Property Name="SendeMailCancel" Type="bigint" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+        </EntityType>
+        <EntityType Name="WorkTypeTable">
+          <Key>
+            <PropertyRef Name="WorkTypeID" />
+          </Key>
+          <Property Name="WorkTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkTypeNameTH" Type="varchar" MaxLength="50" />
+          <Property Name="WorkTypeNameEN" Type="varchar" MaxLength="50" />
+          <Property Name="IsText" Type="bit" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="IsTime" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EMSG.dbo.vw_EmpSpecialGroup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_EmpSpecialGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EmpID" Type="bigint" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="255" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="bigint" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EMSG.dbo.vw_rpt_WorkDocs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_rpt_WorkDocs">
+          <Key>
+            <PropertyRef Name="WorkID" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="WorkTransID" />
+          </Key>
+          <Property Name="WorkID" Type="bigint" Nullable="false" />
+          <Property Name="WorkNO" Type="varchar" MaxLength="50" />
+          <Property Name="WorkDate" Type="datetime" />
+          <Property Name="TimeTypeID" Type="bigint" />
+          <Property Name="TimeTypeNameTH" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerName" Type="varchar(max)" Nullable="false" />
+          <Property Name="CustomerAddress" Type="varchar(max)" />
+          <Property Name="CustomerPhone" Type="varchar" MaxLength="500" />
+          <Property Name="WorkTypeID" Type="bigint" />
+          <Property Name="WorkTypeNameTH" Type="varchar" MaxLength="159" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="100" />
+          <Property Name="DeptDescription" Type="varchar(max)" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="255" />
+          <Property Name="CP_ADDR" Type="varchar(max)" />
+          <Property Name="CP_PHONE" Type="varchar" MaxLength="30" />
+          <Property Name="CP_FAX" Type="varchar" MaxLength="10" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="200" />
+          <Property Name="WorkDetail" Type="varchar(max)" />
+          <Property Name="OwnerPhone" Type="varchar" MaxLength="100" />
+          <Property Name="OwnerMobile" Type="varchar" MaxLength="100" />
+          <Property Name="WorkTransID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EMSG.dbo.vw_SendEmail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_SendEmail">
+          <Key>
+            <PropertyRef Name="WorkID" />
+            <PropertyRef Name="WorkTransID" />
+          </Key>
+          <Property Name="DocumentStatusID" Type="int" />
+          <Property Name="WorkID" Type="bigint" Nullable="false" />
+          <Property Name="WorkTransID" Type="bigint" Nullable="false" />
+          <Property Name="WorkNO" Type="varchar" MaxLength="50" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="Owner_DisplayName" Type="varchar" MaxLength="255" />
+          <Property Name="Owner_Email" Type="varchar" MaxLength="255" />
+          <Property Name="Creator_DisplayName" Type="varchar" MaxLength="255" />
+          <Property Name="Creator_Email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EMSG.dbo.vw_TimeTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_TimeTable">
+          <Key>
+            <PropertyRef Name="TimeID" />
+          </Key>
+          <Property Name="TimeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Timer" Type="varchar" MaxLength="50" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EMSG.dbo.vw_WorkDocument' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_WorkDocument">
+          <Key>
+            <PropertyRef Name="WorkID" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="Time_RPT" />
+            <PropertyRef Name="UserActive" />
+            <PropertyRef Name="SendeMailOpen" />
+            <PropertyRef Name="SendeMailCance" />
+            <PropertyRef Name="WorkTransID" />
+            <PropertyRef Name="EmpGroupID" />
+            <PropertyRef Name="GroupEmpOwner" />
+            <PropertyRef Name="GroupEmpCreate" />
+          </Key>
+          <Property Name="OwnerDeptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeptCode" Type="varchar" MaxLength="500" />
+          <Property Name="WorkID" Type="bigint" Nullable="false" />
+          <Property Name="WorkNO" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyID" Type="bigint" />
+          <Property Name="CustomerName" Type="varchar(max)" Nullable="false" />
+          <Property Name="CustomerAddress" Type="varchar(max)" />
+          <Property Name="CustomerRoad" Type="varchar" MaxLength="500" />
+          <Property Name="CustomerDistrict" Type="varchar" MaxLength="500" />
+          <Property Name="CustomerPhone" Type="varchar" MaxLength="500" />
+          <Property Name="WorkDetail" Type="varchar(max)" />
+          <Property Name="StartTime" Type="bigint" />
+          <Property Name="EndTime" Type="bigint" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="500" />
+          <Property Name="OwnerPhone" Type="varchar" MaxLength="100" />
+          <Property Name="SpecialOrder" Type="varchar(max)" />
+          <Property Name="STime" Type="varchar" MaxLength="50" />
+          <Property Name="ETime" Type="varchar" MaxLength="50" />
+          <Property Name="WorkTypeNameTH" Type="varchar" MaxLength="50" />
+          <Property Name="Time_RPT" Type="varchar" MaxLength="108" Nullable="false" />
+          <Property Name="MessengerNameTH" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentStatusTH" Type="varchar" MaxLength="50" />
+          <Property Name="WorkDate" Type="datetime" />
+          <Property Name="MessengerID" Type="bigint" />
+          <Property Name="WorkTypeID" Type="bigint" />
+          <Property Name="STimeID" Type="int" />
+          <Property Name="ETimeID" Type="int" />
+          <Property Name="DocumentStatusID" Type="int" />
+          <Property Name="TimeTypeID" Type="bigint" />
+          <Property Name="WorkTypeText" Type="varchar" MaxLength="500" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="TimeTypeNameTH" Type="varchar" MaxLength="50" />
+          <Property Name="OwnerMobile" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="255" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="255" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="UserActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="ClassID" Type="bigint" />
+          <Property Name="ClassName" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="SendeMailOpen" Type="bigint" Nullable="false" />
+          <Property Name="SendeMailCance" Type="bigint" Nullable="false" />
+          <Property Name="DeptDescription" Type="varchar(max)" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="200" />
+          <Property Name="CP_TNAME" Type="varchar" MaxLength="60" />
+          <Property Name="CP_ENAME" Type="varchar" MaxLength="60" />
+          <Property Name="CP_ADDR" Type="varchar(max)" />
+          <Property Name="CP_BUILD" Type="varchar" MaxLength="30" />
+          <Property Name="CP_ROAD" Type="varchar" MaxLength="30" />
+          <Property Name="CP_PLACE" Type="varchar" MaxLength="30" />
+          <Property Name="CP_FAX" Type="varchar" MaxLength="30" />
+          <Property Name="CP_POSTCODE" Type="varchar" MaxLength="10" />
+          <Property Name="CP_PHONE" Type="varchar" MaxLength="30" />
+          <Property Name="CP_EBUILD" Type="varchar" MaxLength="30" />
+          <Property Name="WorkTransID" Type="bigint" Nullable="false" />
+          <Property Name="Expr1" Type="varchar" MaxLength="500" />
+          <Property Name="Remark" Type="varchar(max)" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="DeptId" Type="bigint" />
+          <Property Name="WorkTypeTimes" Type="varchar" MaxLength="159" />
+          <Property Name="EmpGroupID" Type="int" Nullable="false" />
+          <Property Name="GroupEmpOwner" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GroupEmpCreate" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="C_emp_DisplayName" Type="varchar" MaxLength="100" />
+          <Property Name="R_emp_DisplayName" Type="varchar" MaxLength="100" />
+          <Property Name="C_emp_Company" Type="varchar" MaxLength="100" />
+          <Property Name="R_emp_Company" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="EMSGModelStoreContainer">
+          <EntitySet Name="DocumentStatusTable" EntityType="Self.DocumentStatusTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpGroupTable" EntityType="Self.EmpGroupTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpSpecialTable" EntityType="Self.EmpSpecialTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessengerTable" EntityType="Self.MessengerTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeTable" EntityType="Self.TimeTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkTable" EntityType="Self.WorkTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkTrans" EntityType="Self.WorkTrans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkTypeTable" EntityType="Self.WorkTypeTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeTypeTable" EntityType="Self.TimeTypeTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TimeTypeTable].[TimeTypeID] AS [TimeTypeID], 
+    [TimeTypeTable].[TimeTypeNameTH] AS [TimeTypeNameTH], 
+    [TimeTypeTable].[TimeTypeNameEN] AS [TimeTypeNameEN], 
+    [TimeTypeTable].[Creator] AS [Creator], 
+    [TimeTypeTable].[CreateDate] AS [CreateDate], 
+    [TimeTypeTable].[Reviser] AS [Reviser], 
+    [TimeTypeTable].[ReviserDate] AS [ReviserDate], 
+    [TimeTypeTable].[IsDelete] AS [IsDelete], 
+    [TimeTypeTable].[DeleteDate] AS [DeleteDate], 
+    [TimeTypeTable].[DeleteBy] AS [DeleteBy]
+    FROM [dbo].[TimeTypeTable] AS [TimeTypeTable]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WorkTable201806" EntityType="Self.WorkTable201806" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WorkTable201806].[WorkID] AS [WorkID], 
+    [WorkTable201806].[WorkNO] AS [WorkNO], 
+    [WorkTable201806].[CompanyID] AS [CompanyID], 
+    [WorkTable201806].[Creator] AS [Creator], 
+    [WorkTable201806].[CreatorDept] AS [CreatorDept], 
+    [WorkTable201806].[CreatorDeptCode] AS [CreatorDeptCode], 
+    [WorkTable201806].[CreateDate] AS [CreateDate], 
+    [WorkTable201806].[Reviser] AS [Reviser], 
+    [WorkTable201806].[ReviserDept] AS [ReviserDept], 
+    [WorkTable201806].[ReviserDeptCode] AS [ReviserDeptCode], 
+    [WorkTable201806].[ReviserDate] AS [ReviserDate], 
+    [WorkTable201806].[OwnerDept] AS [OwnerDept], 
+    [WorkTable201806].[OwnerDeptCode] AS [OwnerDeptCode], 
+    [WorkTable201806].[IsDelete] AS [IsDelete], 
+    [WorkTable201806].[DeleteDate] AS [DeleteDate], 
+    [WorkTable201806].[DeleteBy] AS [DeleteBy]
+    FROM [dbo].[WorkTable201806] AS [WorkTable201806]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_EmpSpecialGroup" EntityType="Self.vw_EmpSpecialGroup" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_EmpSpecialGroup].[EmpID] AS [EmpID], 
+    [vw_EmpSpecialGroup].[DisplayName] AS [DisplayName], 
+    [vw_EmpSpecialGroup].[ID] AS [ID], 
+    [vw_EmpSpecialGroup].[GroupID] AS [GroupID], 
+    [vw_EmpSpecialGroup].[IsActive] AS [IsActive]
+    FROM [dbo].[vw_EmpSpecialGroup] AS [vw_EmpSpecialGroup]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_rpt_WorkDocs" EntityType="Self.vw_rpt_WorkDocs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_rpt_WorkDocs].[WorkID] AS [WorkID], 
+    [vw_rpt_WorkDocs].[WorkNO] AS [WorkNO], 
+    [vw_rpt_WorkDocs].[WorkDate] AS [WorkDate], 
+    [vw_rpt_WorkDocs].[TimeTypeID] AS [TimeTypeID], 
+    [vw_rpt_WorkDocs].[TimeTypeNameTH] AS [TimeTypeNameTH], 
+    [vw_rpt_WorkDocs].[CustomerName] AS [CustomerName], 
+    [vw_rpt_WorkDocs].[CustomerAddress] AS [CustomerAddress], 
+    [vw_rpt_WorkDocs].[CustomerPhone] AS [CustomerPhone], 
+    [vw_rpt_WorkDocs].[WorkTypeID] AS [WorkTypeID], 
+    [vw_rpt_WorkDocs].[WorkTypeNameTH] AS [WorkTypeNameTH], 
+    [vw_rpt_WorkDocs].[OwnerName] AS [OwnerName], 
+    [vw_rpt_WorkDocs].[DeptDescription] AS [DeptDescription], 
+    [vw_rpt_WorkDocs].[CompanyName] AS [CompanyName], 
+    [vw_rpt_WorkDocs].[CP_ADDR] AS [CP_ADDR], 
+    [vw_rpt_WorkDocs].[CP_PHONE] AS [CP_PHONE], 
+    [vw_rpt_WorkDocs].[CP_FAX] AS [CP_FAX], 
+    [vw_rpt_WorkDocs].[ImageURL] AS [ImageURL], 
+    [vw_rpt_WorkDocs].[WorkDetail] AS [WorkDetail], 
+    [vw_rpt_WorkDocs].[OwnerPhone] AS [OwnerPhone], 
+    [vw_rpt_WorkDocs].[OwnerMobile] AS [OwnerMobile], 
+    [vw_rpt_WorkDocs].[WorkTransID] AS [WorkTransID]
+    FROM [dbo].[vw_rpt_WorkDocs] AS [vw_rpt_WorkDocs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SendEmail" EntityType="Self.vw_SendEmail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SendEmail].[DocumentStatusID] AS [DocumentStatusID], 
+    [vw_SendEmail].[WorkID] AS [WorkID], 
+    [vw_SendEmail].[WorkTransID] AS [WorkTransID], 
+    [vw_SendEmail].[WorkNO] AS [WorkNO], 
+    [vw_SendEmail].[OwnerID] AS [OwnerID], 
+    [vw_SendEmail].[Creator] AS [Creator], 
+    [vw_SendEmail].[Owner_DisplayName] AS [Owner_DisplayName], 
+    [vw_SendEmail].[Owner_Email] AS [Owner_Email], 
+    [vw_SendEmail].[Creator_DisplayName] AS [Creator_DisplayName], 
+    [vw_SendEmail].[Creator_Email] AS [Creator_Email]
+    FROM [dbo].[vw_SendEmail] AS [vw_SendEmail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_TimeTable" EntityType="Self.vw_TimeTable" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_TimeTable].[TimeID] AS [TimeID], 
+    [vw_TimeTable].[Timer] AS [Timer], 
+    [vw_TimeTable].[IsDelete] AS [IsDelete]
+    FROM [dbo].[vw_TimeTable] AS [vw_TimeTable]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_WorkDocument" EntityType="Self.vw_WorkDocument" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_WorkDocument].[OwnerDeptCode] AS [OwnerDeptCode], 
+    [vw_WorkDocument].[DeptCode] AS [DeptCode], 
+    [vw_WorkDocument].[WorkID] AS [WorkID], 
+    [vw_WorkDocument].[WorkNO] AS [WorkNO], 
+    [vw_WorkDocument].[CompanyID] AS [CompanyID], 
+    [vw_WorkDocument].[CustomerName] AS [CustomerName], 
+    [vw_WorkDocument].[CustomerAddress] AS [CustomerAddress], 
+    [vw_WorkDocument].[CustomerRoad] AS [CustomerRoad], 
+    [vw_WorkDocument].[CustomerDistrict] AS [CustomerDistrict], 
+    [vw_WorkDocument].[CustomerPhone] AS [CustomerPhone], 
+    [vw_WorkDocument].[WorkDetail] AS [WorkDetail], 
+    [vw_WorkDocument].[StartTime] AS [StartTime], 
+    [vw_WorkDocument].[EndTime] AS [EndTime], 
+    [vw_WorkDocument].[OwnerName] AS [OwnerName], 
+    [vw_WorkDocument].[OwnerPhone] AS [OwnerPhone], 
+    [vw_WorkDocument].[SpecialOrder] AS [SpecialOrder], 
+    [vw_WorkDocument].[STime] AS [STime], 
+    [vw_WorkDocument].[ETime] AS [ETime], 
+    [vw_WorkDocument].[WorkTypeNameTH] AS [WorkTypeNameTH], 
+    [vw_WorkDocument].[Time_RPT] AS [Time_RPT], 
+    [vw_WorkDocument].[MessengerNameTH] AS [MessengerNameTH], 
+    [vw_WorkDocument].[DocumentStatusTH] AS [DocumentStatusTH], 
+    [vw_WorkDocument].[WorkDate] AS [WorkDate], 
+    [vw_WorkDocument].[MessengerID] AS [MessengerID], 
+    [vw_WorkDocument].[WorkTypeID] AS [WorkTypeID], 
+    [vw_WorkDocument].[STimeID] AS [STimeID], 
+    [vw_WorkDocument].[ETimeID] AS [ETimeID], 
+    [vw_WorkDocument].[DocumentStatusID] AS [DocumentStatusID], 
+    [vw_WorkDocument].[TimeTypeID] AS [TimeTypeID], 
+    [vw_WorkDocument].[WorkTypeText] AS [WorkTypeText], 
+    [vw_WorkDocument].[Creator] AS [Creator], 
+    [vw_WorkDocument].[TimeTypeNameTH] AS [TimeTypeNameTH], 
+    [vw_WorkDocument].[OwnerMobile] AS [OwnerMobile], 
+    [vw_WorkDocument].[CompanyCode] AS [CompanyCode], 
+    [vw_WorkDocument].[CompanyName] AS [CompanyName], 
+    [vw_WorkDocument].[DisplayName] AS [DisplayName], 
+    [vw_WorkDocument].[OwnerID] AS [OwnerID], 
+    [vw_WorkDocument].[UserActive] AS [UserActive], 
+    [vw_WorkDocument].[IsDelete] AS [IsDelete], 
+    [vw_WorkDocument].[ClassID] AS [ClassID], 
+    [vw_WorkDocument].[ClassName] AS [ClassName], 
+    [vw_WorkDocument].[CreateDate] AS [CreateDate], 
+    [vw_WorkDocument].[SendeMailOpen] AS [SendeMailOpen], 
+    [vw_WorkDocument].[SendeMailCance] AS [SendeMailCance], 
+    [vw_WorkDocument].[DeptDescription] AS [DeptDescription], 
+    [vw_WorkDocument].[ImageURL] AS [ImageURL], 
+    [vw_WorkDocument].[CP_TNAME] AS [CP_TNAME], 
+    [vw_WorkDocument].[CP_ENAME] AS [CP_ENAME], 
+    [vw_WorkDocument].[CP_ADDR] AS [CP_ADDR], 
+    [vw_WorkDocument].[CP_BUILD] AS [CP_BUILD], 
+    [vw_WorkDocument].[CP_ROAD] AS [CP_ROAD], 
+    [vw_WorkDocument].[CP_PLACE] AS [CP_PLACE], 
+    [vw_WorkDocument].[CP_FAX] AS [CP_FAX], 
+    [vw_WorkDocument].[CP_POSTCODE] AS [CP_POSTCODE], 
+    [vw_WorkDocument].[CP_PHONE] AS [CP_PHONE], 
+    [vw_WorkDocument].[CP_EBUILD] AS [CP_EBUILD], 
+    [vw_WorkDocument].[WorkTransID] AS [WorkTransID], 
+    [vw_WorkDocument].[Expr1] AS [Expr1], 
+    [vw_WorkDocument].[Remark] AS [Remark], 
+    [vw_WorkDocument].[ReviserDate] AS [ReviserDate], 
+    [vw_WorkDocument].[DeptId] AS [DeptId], 
+    [vw_WorkDocument].[WorkTypeTimes] AS [WorkTypeTimes], 
+    [vw_WorkDocument].[EmpGroupID] AS [EmpGroupID], 
+    [vw_WorkDocument].[GroupEmpOwner] AS [GroupEmpOwner], 
+    [vw_WorkDocument].[GroupEmpCreate] AS [GroupEmpCreate], 
+    [vw_WorkDocument].[C_emp_DisplayName] AS [C_emp_DisplayName], 
+    [vw_WorkDocument].[R_emp_DisplayName] AS [R_emp_DisplayName], 
+    [vw_WorkDocument].[C_emp_Company] AS [C_emp_Company], 
+    [vw_WorkDocument].[R_emp_Company] AS [R_emp_Company]
+    FROM [dbo].[vw_WorkDocument] AS [vw_WorkDocument]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EMSGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DocumentStatusTable">
+          <Key>
+            <PropertyRef Name="DocumentStatusID" />
+          </Key>
+          <Property Name="DocumentStatusID" Type="Int32" Nullable="false" />
+          <Property Name="DocumentStatusTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentStatusEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="ClassID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="EmpGroupTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EmpSpecialTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupID" Type="Int64" />
+          <Property Name="EmpID" Type="Int64" />
+          <Property Name="DeptsID" Type="Int64" />
+          <Property Name="CompanyID" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MessengerTable">
+          <Key>
+            <PropertyRef Name="MessengerID" />
+          </Key>
+          <Property Name="MessengerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessengerNameTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MessengerNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="TimeTable">
+          <Key>
+            <PropertyRef Name="TimeID" />
+          </Key>
+          <Property Name="TimeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Timer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="WorkTable">
+          <Key>
+            <PropertyRef Name="WorkID" />
+          </Key>
+          <Property Name="WorkID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="Int64" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="CreatorDept" Type="Int64" />
+          <Property Name="CreatorDeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDept" Type="Int64" />
+          <Property Name="ReviserDeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="OwnerDept" Type="Int64" />
+          <Property Name="OwnerDeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="WorkTran">
+          <Key>
+            <PropertyRef Name="WorkTransID" />
+          </Key>
+          <Property Name="WorkTransID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkID" Type="Int64" />
+          <Property Name="WorkDate" Type="DateTime" Precision="3" />
+          <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerRoad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerDistrict" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WorkTypeID" Type="Int64" />
+          <Property Name="WorkTypeText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WorkDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StartTime" Type="Int64" />
+          <Property Name="EndTime" Type="Int64" />
+          <Property Name="TimeTypeID" Type="Int64" />
+          <Property Name="SpecialOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="OwnerName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerMobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MessengerID" Type="Int64" />
+          <Property Name="DocumentStatusID" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SendeMailOpen" Type="Int64" />
+          <Property Name="SendeMailCancel" Type="Int64" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="WorkTypeTable">
+          <Key>
+            <PropertyRef Name="WorkTypeID" />
+          </Key>
+          <Property Name="WorkTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkTypeNameTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkTypeNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsText" Type="Boolean" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="IsTime" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="TimeTypeTable">
+          <Key>
+            <PropertyRef Name="TimeTypeID" />
+          </Key>
+          <Property Name="TimeTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeTypeNameTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeTypeNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="WorkTable201806">
+          <Key>
+            <PropertyRef Name="WorkID" />
+          </Key>
+          <Property Name="WorkID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="Int64" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="CreatorDept" Type="Int64" />
+          <Property Name="CreatorDeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDept" Type="Int64" />
+          <Property Name="ReviserDeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="OwnerDept" Type="Int64" />
+          <Property Name="OwnerDeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="vw_EmpSpecialGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EmpID" Type="Int64" />
+          <Property Name="DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vw_rpt_WorkDocs">
+          <Key>
+            <PropertyRef Name="WorkID" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="WorkTransID" />
+          </Key>
+          <Property Name="WorkID" Type="Int64" Nullable="false" />
+          <Property Name="WorkNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkDate" Type="DateTime" Precision="3" />
+          <Property Name="TimeTypeID" Type="Int64" />
+          <Property Name="TimeTypeNameTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WorkTypeID" Type="Int64" />
+          <Property Name="WorkTypeNameTH" Type="String" MaxLength="159" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DeptDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CP_ADDR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CP_PHONE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CP_FAX" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="WorkDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerMobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WorkTransID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_SendEmail">
+          <Key>
+            <PropertyRef Name="WorkID" />
+            <PropertyRef Name="WorkTransID" />
+          </Key>
+          <Property Name="DocumentStatusID" Type="Int32" />
+          <Property Name="WorkID" Type="Int64" Nullable="false" />
+          <Property Name="WorkTransID" Type="Int64" Nullable="false" />
+          <Property Name="WorkNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="Owner_DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Owner_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Creator_DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Creator_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_TimeTable">
+          <Key>
+            <PropertyRef Name="TimeID" />
+          </Key>
+          <Property Name="TimeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Timer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vw_WorkDocument">
+          <Key>
+            <PropertyRef Name="WorkID" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="Time_RPT" />
+            <PropertyRef Name="UserActive" />
+            <PropertyRef Name="SendeMailOpen" />
+            <PropertyRef Name="SendeMailCance" />
+            <PropertyRef Name="WorkTransID" />
+            <PropertyRef Name="EmpGroupID" />
+            <PropertyRef Name="GroupEmpOwner" />
+            <PropertyRef Name="GroupEmpCreate" />
+          </Key>
+          <Property Name="OwnerDeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeptCode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WorkID" Type="Int64" Nullable="false" />
+          <Property Name="WorkNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="Int64" />
+          <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerRoad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerDistrict" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WorkDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StartTime" Type="Int64" />
+          <Property Name="EndTime" Type="Int64" />
+          <Property Name="OwnerName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="STime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkTypeNameTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Time_RPT" Type="String" MaxLength="108" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MessengerNameTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentStatusTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkDate" Type="DateTime" Precision="3" />
+          <Property Name="MessengerID" Type="Int64" />
+          <Property Name="WorkTypeID" Type="Int64" />
+          <Property Name="STimeID" Type="Int32" />
+          <Property Name="ETimeID" Type="Int32" />
+          <Property Name="DocumentStatusID" Type="Int32" />
+          <Property Name="TimeTypeID" Type="Int64" />
+          <Property Name="WorkTypeText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="TimeTypeNameTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerMobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="UserActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="ClassID" Type="Int64" />
+          <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="SendeMailOpen" Type="Int64" Nullable="false" />
+          <Property Name="SendeMailCance" Type="Int64" Nullable="false" />
+          <Property Name="DeptDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CP_TNAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CP_ENAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CP_ADDR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CP_BUILD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CP_ROAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CP_PLACE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CP_FAX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CP_POSTCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CP_PHONE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CP_EBUILD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="WorkTransID" Type="Int64" Nullable="false" />
+          <Property Name="Expr1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="DeptId" Type="Int64" />
+          <Property Name="WorkTypeTimes" Type="String" MaxLength="159" FixedLength="false" Unicode="false" />
+          <Property Name="EmpGroupID" Type="Int32" Nullable="false" />
+          <Property Name="GroupEmpOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GroupEmpCreate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_emp_DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="R_emp_DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="C_emp_Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="R_emp_Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="EMSGEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DocumentStatusTables" EntityType="Self.DocumentStatusTable" />
+          <EntitySet Name="EmpGroupTables" EntityType="Self.EmpGroupTable" />
+          <EntitySet Name="EmpSpecialTables" EntityType="Self.EmpSpecialTable" />
+          <EntitySet Name="MessengerTables" EntityType="Self.MessengerTable" />
+          <EntitySet Name="TimeTables" EntityType="Self.TimeTable" />
+          <EntitySet Name="WorkTables" EntityType="Self.WorkTable" />
+          <EntitySet Name="WorkTrans" EntityType="Self.WorkTran" />
+          <EntitySet Name="WorkTypeTables" EntityType="Self.WorkTypeTable" />
+          <EntitySet Name="TimeTypeTables" EntityType="Self.TimeTypeTable" />
+          <EntitySet Name="WorkTable201806" EntityType="Self.WorkTable201806" />
+          <EntitySet Name="vw_EmpSpecialGroup" EntityType="Self.vw_EmpSpecialGroup" />
+          <EntitySet Name="vw_rpt_WorkDocs" EntityType="Self.vw_rpt_WorkDocs" />
+          <EntitySet Name="vw_SendEmail" EntityType="Self.vw_SendEmail" />
+          <EntitySet Name="vw_TimeTable" EntityType="Self.vw_TimeTable" />
+          <EntitySet Name="vw_WorkDocument" EntityType="Self.vw_WorkDocument" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EMSGModelStoreContainer" CdmEntityContainer="EMSGEntities">
+          <EntitySetMapping Name="DocumentStatusTables">
+            <EntityTypeMapping TypeName="EMSGModel.DocumentStatusTable">
+              <MappingFragment StoreEntitySet="DocumentStatusTable">
+                <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+                <ScalarProperty Name="DocumentStatusTH" ColumnName="DocumentStatusTH" />
+                <ScalarProperty Name="DocumentStatusEN" ColumnName="DocumentStatusEN" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpGroupTables">
+            <EntityTypeMapping TypeName="EMSGModel.EmpGroupTable">
+              <MappingFragment StoreEntitySet="EmpGroupTable">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpSpecialTables">
+            <EntityTypeMapping TypeName="EMSGModel.EmpSpecialTable">
+              <MappingFragment StoreEntitySet="EmpSpecialTable">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="DeptsID" ColumnName="DeptsID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessengerTables">
+            <EntityTypeMapping TypeName="EMSGModel.MessengerTable">
+              <MappingFragment StoreEntitySet="MessengerTable">
+                <ScalarProperty Name="MessengerID" ColumnName="MessengerID" />
+                <ScalarProperty Name="MessengerNameTH" ColumnName="MessengerNameTH" />
+                <ScalarProperty Name="MessengerNameEN" ColumnName="MessengerNameEN" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeTables">
+            <EntityTypeMapping TypeName="EMSGModel.TimeTable">
+              <MappingFragment StoreEntitySet="TimeTable">
+                <ScalarProperty Name="TimeID" ColumnName="TimeID" />
+                <ScalarProperty Name="Timer" ColumnName="Timer" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkTables">
+            <EntityTypeMapping TypeName="EMSGModel.WorkTable">
+              <MappingFragment StoreEntitySet="WorkTable">
+                <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+                <ScalarProperty Name="WorkNO" ColumnName="WorkNO" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreatorDept" ColumnName="CreatorDept" />
+                <ScalarProperty Name="CreatorDeptCode" ColumnName="CreatorDeptCode" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDept" ColumnName="ReviserDept" />
+                <ScalarProperty Name="ReviserDeptCode" ColumnName="ReviserDeptCode" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="OwnerDept" ColumnName="OwnerDept" />
+                <ScalarProperty Name="OwnerDeptCode" ColumnName="OwnerDeptCode" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkTrans">
+            <EntityTypeMapping TypeName="EMSGModel.WorkTran">
+              <MappingFragment StoreEntitySet="WorkTrans">
+                <ScalarProperty Name="WorkTransID" ColumnName="WorkTransID" />
+                <ScalarProperty Name="WorkNO" ColumnName="WorkNO" />
+                <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+                <ScalarProperty Name="WorkDate" ColumnName="WorkDate" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerRoad" ColumnName="CustomerRoad" />
+                <ScalarProperty Name="CustomerDistrict" ColumnName="CustomerDistrict" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="WorkTypeText" ColumnName="WorkTypeText" />
+                <ScalarProperty Name="WorkDetail" ColumnName="WorkDetail" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="TimeTypeID" ColumnName="TimeTypeID" />
+                <ScalarProperty Name="SpecialOrder" ColumnName="SpecialOrder" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="OwnerPhone" ColumnName="OwnerPhone" />
+                <ScalarProperty Name="OwnerMobile" ColumnName="OwnerMobile" />
+                <ScalarProperty Name="MessengerID" ColumnName="MessengerID" />
+                <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="SendeMailOpen" ColumnName="SendeMailOpen" />
+                <ScalarProperty Name="SendeMailCancel" ColumnName="SendeMailCancel" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkTypeTables">
+            <EntityTypeMapping TypeName="EMSGModel.WorkTypeTable">
+              <MappingFragment StoreEntitySet="WorkTypeTable">
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="WorkTypeNameTH" ColumnName="WorkTypeNameTH" />
+                <ScalarProperty Name="WorkTypeNameEN" ColumnName="WorkTypeNameEN" />
+                <ScalarProperty Name="IsText" ColumnName="IsText" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="IsTime" ColumnName="IsTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeTypeTables">
+            <EntityTypeMapping TypeName="EMSGModel.TimeTypeTable">
+              <MappingFragment StoreEntitySet="TimeTypeTable">
+                <ScalarProperty Name="TimeTypeID" ColumnName="TimeTypeID" />
+                <ScalarProperty Name="TimeTypeNameTH" ColumnName="TimeTypeNameTH" />
+                <ScalarProperty Name="TimeTypeNameEN" ColumnName="TimeTypeNameEN" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkTable201806">
+            <EntityTypeMapping TypeName="EMSGModel.WorkTable201806">
+              <MappingFragment StoreEntitySet="WorkTable201806">
+                <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+                <ScalarProperty Name="WorkNO" ColumnName="WorkNO" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreatorDept" ColumnName="CreatorDept" />
+                <ScalarProperty Name="CreatorDeptCode" ColumnName="CreatorDeptCode" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDept" ColumnName="ReviserDept" />
+                <ScalarProperty Name="ReviserDeptCode" ColumnName="ReviserDeptCode" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="OwnerDept" ColumnName="OwnerDept" />
+                <ScalarProperty Name="OwnerDeptCode" ColumnName="OwnerDeptCode" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_EmpSpecialGroup">
+            <EntityTypeMapping TypeName="EMSGModel.vw_EmpSpecialGroup">
+              <MappingFragment StoreEntitySet="vw_EmpSpecialGroup">
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_rpt_WorkDocs">
+            <EntityTypeMapping TypeName="EMSGModel.vw_rpt_WorkDocs">
+              <MappingFragment StoreEntitySet="vw_rpt_WorkDocs">
+                <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+                <ScalarProperty Name="WorkNO" ColumnName="WorkNO" />
+                <ScalarProperty Name="WorkDate" ColumnName="WorkDate" />
+                <ScalarProperty Name="TimeTypeID" ColumnName="TimeTypeID" />
+                <ScalarProperty Name="TimeTypeNameTH" ColumnName="TimeTypeNameTH" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="WorkTypeNameTH" ColumnName="WorkTypeNameTH" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="DeptDescription" ColumnName="DeptDescription" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CP_ADDR" ColumnName="CP_ADDR" />
+                <ScalarProperty Name="CP_PHONE" ColumnName="CP_PHONE" />
+                <ScalarProperty Name="CP_FAX" ColumnName="CP_FAX" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="WorkDetail" ColumnName="WorkDetail" />
+                <ScalarProperty Name="OwnerPhone" ColumnName="OwnerPhone" />
+                <ScalarProperty Name="OwnerMobile" ColumnName="OwnerMobile" />
+                <ScalarProperty Name="WorkTransID" ColumnName="WorkTransID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SendEmail">
+            <EntityTypeMapping TypeName="EMSGModel.vw_SendEmail">
+              <MappingFragment StoreEntitySet="vw_SendEmail">
+                <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+                <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+                <ScalarProperty Name="WorkTransID" ColumnName="WorkTransID" />
+                <ScalarProperty Name="WorkNO" ColumnName="WorkNO" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="Owner_DisplayName" ColumnName="Owner_DisplayName" />
+                <ScalarProperty Name="Owner_Email" ColumnName="Owner_Email" />
+                <ScalarProperty Name="Creator_DisplayName" ColumnName="Creator_DisplayName" />
+                <ScalarProperty Name="Creator_Email" ColumnName="Creator_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_TimeTable">
+            <EntityTypeMapping TypeName="EMSGModel.vw_TimeTable">
+              <MappingFragment StoreEntitySet="vw_TimeTable">
+                <ScalarProperty Name="TimeID" ColumnName="TimeID" />
+                <ScalarProperty Name="Timer" ColumnName="Timer" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_WorkDocument">
+            <EntityTypeMapping TypeName="EMSGModel.vw_WorkDocument">
+              <MappingFragment StoreEntitySet="vw_WorkDocument">
+                <ScalarProperty Name="OwnerDeptCode" ColumnName="OwnerDeptCode" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+                <ScalarProperty Name="WorkNO" ColumnName="WorkNO" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerRoad" ColumnName="CustomerRoad" />
+                <ScalarProperty Name="CustomerDistrict" ColumnName="CustomerDistrict" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="WorkDetail" ColumnName="WorkDetail" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="OwnerPhone" ColumnName="OwnerPhone" />
+                <ScalarProperty Name="SpecialOrder" ColumnName="SpecialOrder" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+                <ScalarProperty Name="ETime" ColumnName="ETime" />
+                <ScalarProperty Name="WorkTypeNameTH" ColumnName="WorkTypeNameTH" />
+                <ScalarProperty Name="Time_RPT" ColumnName="Time_RPT" />
+                <ScalarProperty Name="MessengerNameTH" ColumnName="MessengerNameTH" />
+                <ScalarProperty Name="DocumentStatusTH" ColumnName="DocumentStatusTH" />
+                <ScalarProperty Name="WorkDate" ColumnName="WorkDate" />
+                <ScalarProperty Name="MessengerID" ColumnName="MessengerID" />
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="STimeID" ColumnName="STimeID" />
+                <ScalarProperty Name="ETimeID" ColumnName="ETimeID" />
+                <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+                <ScalarProperty Name="TimeTypeID" ColumnName="TimeTypeID" />
+                <ScalarProperty Name="WorkTypeText" ColumnName="WorkTypeText" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="TimeTypeNameTH" ColumnName="TimeTypeNameTH" />
+                <ScalarProperty Name="OwnerMobile" ColumnName="OwnerMobile" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="UserActive" ColumnName="UserActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SendeMailOpen" ColumnName="SendeMailOpen" />
+                <ScalarProperty Name="SendeMailCance" ColumnName="SendeMailCance" />
+                <ScalarProperty Name="DeptDescription" ColumnName="DeptDescription" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="CP_TNAME" ColumnName="CP_TNAME" />
+                <ScalarProperty Name="CP_ENAME" ColumnName="CP_ENAME" />
+                <ScalarProperty Name="CP_ADDR" ColumnName="CP_ADDR" />
+                <ScalarProperty Name="CP_BUILD" ColumnName="CP_BUILD" />
+                <ScalarProperty Name="CP_ROAD" ColumnName="CP_ROAD" />
+                <ScalarProperty Name="CP_PLACE" ColumnName="CP_PLACE" />
+                <ScalarProperty Name="CP_FAX" ColumnName="CP_FAX" />
+                <ScalarProperty Name="CP_POSTCODE" ColumnName="CP_POSTCODE" />
+                <ScalarProperty Name="CP_PHONE" ColumnName="CP_PHONE" />
+                <ScalarProperty Name="CP_EBUILD" ColumnName="CP_EBUILD" />
+                <ScalarProperty Name="WorkTransID" ColumnName="WorkTransID" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="WorkTypeTimes" ColumnName="WorkTypeTimes" />
+                <ScalarProperty Name="EmpGroupID" ColumnName="EmpGroupID" />
+                <ScalarProperty Name="GroupEmpOwner" ColumnName="GroupEmpOwner" />
+                <ScalarProperty Name="GroupEmpCreate" ColumnName="GroupEmpCreate" />
+                <ScalarProperty Name="C_emp_DisplayName" ColumnName="C_emp_DisplayName" />
+                <ScalarProperty Name="R_emp_DisplayName" ColumnName="R_emp_DisplayName" />
+                <ScalarProperty Name="C_emp_Company" ColumnName="C_emp_Company" />
+                <ScalarProperty Name="R_emp_Company" ColumnName="R_emp_Company" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,386 @@
+﻿@* ----------------------------------------------------Is Head Page List-------------------------------------------------------------- *@
+<div class="row wrapper border-bottom white-bg page-heading" style="padding-bottom:5px">
+    <div class="col-lg-8" style="padding-top:5px">
+        <h3 style="margin-bottom:5px"><label id="application" style="font-weight:700"></label></h3>
+        <ol class="breadcrumb">
+            <li>
+                @* url on click back to page *@
+                <a id="Back2Menu" data-url-back="'@Url.Action("ViewName","ControllerName")'" href="#"><label id="menu" style="font-weight:100"></label></a>
+            </li>
+            <li class="active">
+                <strong><label id="submenu"></label></strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action" style="padding-top:15px">
+            @*<button id="btnAddNew" data-id="0" data-no="0" class="btn btn-primary"><i class="fa fa-file-text"></i>&nbsp;&nbsp; Add New Document</button>*@
+        </div>
+    </div>
+</div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ----------------------------------------------------Is Searching Tab--------------------------------------------------------------- *@
+<div class="wrapper wrapper-content" style="padding-bottom: 0px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins" style="margin-bottom:10px">
+                <div class="ibox-title">
+                    <h5>Search</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ibox-content">
+                    <div class="row">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="width:80px"></td>
+                                    <td style="text-align:right"><label>โครงการ : </label></td>
+                                    <td style="width:10px"></td>
+                                    <td>
+                                        <div style="margin-bottom: 5px;">
+                                            @Html.DropDownList("dll_Project", null, "Please Select", new { @class = "select2_dll_Project form-control", style = "width:278px" })
+                                        </div>
+                                    </td>
+                                    <td style="width:50px"></td>
+                                    <td style="text-align:right"><label>Developer : </label></td>
+                                    <td style="width:10px"></td>
+                                    <td>
+                                        <div style="margin-bottom: 5px;">
+                                            @Html.DropDownList("dll_Developer", null, "Please Select", new { @class = "select2_dll_Developer form-control", style = "width:278px" })
+                                        </div>
+                                    </td>
+                                    <td style="width:10px"></td>
+                                    <td></td>
+                                    
+                                </tr>
+
+                                <tr>
+                                    <td style="width:80px"></td>
+                                    <td style="text-align:right"><label>ประเภทเอกสาร : </label>  <label for="lblColor" id="lblColor" style="color:red"> *</label> </td>
+                                    <td style="width:10px"></td>
+                                    <td>
+                                        <div style="margin-bottom: 5px;">
+                                            @Html.DropDownList("dll_DocType", null, "Please Select", new { @class = "select2_dll_DocType form-control", style = "width:278px" })
+                                        </div>
+                                    </td>
+                                    <td style="width:50px"></td>
+                                    <td style="text-align:right"><label>สถานะห้อง : </label></td>
+                                    <td style="width:10px"></td>
+                                    <td>
+                                        <div style="margin-bottom: 5px;">
+                                            @Html.DropDownList("dll_Status", null, "Please Select", new { @class = "select2_dll_Status form-control", style = "width:278px" })
+                                        </div>
+                                    </td>
+                                    <td style="width:10px"></td>
+                                    <td></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td style="width: 100px;"></td>
+                                    <td style="text-align:right"><label> วันที่เริ่มต้น : </label></td>
+                                    <td style="width:10px"></td>
+                                    <td>
+                                        <div class="form-group" id="data_1" style="margin-bottom: 5px;">
+                                            <div class="input-group date">
+                                                <input id="StartDate" type="text" class="form-control" style="width: 241px;" value="@System.DateTime.Now.AddDays(-30).ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="width: 30px;"></td>
+                                    <td style="text-align:right"><label> วันที่สิ้นสุด : </label></td>
+                                    <td style="width:10px"></td>
+
+                                    <td>
+                                        <div class="form-group" id="data_1" style="margin-bottom: 5px;">
+                                            <div class="input-group date">
+                                                <input id="EndDate" type="text" class="form-control" style="width: 241px;" value="@System.DateTime.Now.AddDays(1).ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="width:10px"></td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width:80px"></td>
+                                                                       
+                                    <td style="text-align:right"><label> ค้นหา </label></td>
+                                    <td style="width:10px"></td>
+                                    <td>
+                                        <div>
+                                            <input type="text" id="txtSKeyIn" class="form-control" />
+                                        </div>
+                                    </td>
+                                    <td style="width: 30px;"></td>
+                                    <td style="text-align:right"><label>  </label></td>
+                                    <td style="width:10px"></td>
+                                    <td>
+                                        <button type="button" id="btnSearch" class="btn btn-primary" style="margin-bottom:3px"><i class="fa fa-search"></i>&nbsp;&nbsp; Search</button>
+                                    </td>
+                                    <td style="width:10px"></td>
+                                    <td></td>
+
+
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+          
+                    
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ----------------------------------------------------Is Searching Tab--------------------------------------------------------------- *@
+<div id="DataListView"></div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ------------------------------------------------------Is Modal Tab----------------------------------------------------------------- *@
+@*@Html.Partial("LoadModal")*@
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@*----------------------- Import CSS---------------------- *@
+@Styles.Render("~/plugins/dataPickerStyles")
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+@Styles.Render("~/plugins/select2Styles")
+@Styles.Render("~/plugins/sweetAlertStyles")
+@Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+@*-------------------------------------------------------- *@
+
+@*------------------ Import JavaScript-------------------- *@
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/dataTables")
+@Scripts.Render("~/plugins/select2")
+@Scripts.Render("~/plugins/sweetAlert")
+@Scripts.Render("~/plugins/iCheck")
+@*-------------------------------------------------------- *@
+
+<script src="~/waitMe/waitMe.min.js?0"></script>
+<link href="~/waitMe/waitMe.min.css?0" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //--------------------------------------------------On Load-------------------------------------------------//
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+
+        $(".select2_dll_Project,.select2_dll_Developer,.select2_dll_DocType,.select2_dll_Status").select2();
+        $('.select2-container').css("z-index", "auto");
+
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+
+
+        $('#StartDate').attr("disabled", true);
+        $('#EndDate').attr("disabled", true);
+        //-----------------------------------------------End On Load-------------------------------------------------//
+
+        //--------------------------------------------------On Search-------------------------------------------------//
+        $('#btnSearch').click(function () {
+            if ($('#dll_DocType').val() == "") {
+                swal({
+                    title: "คำเตือน",
+                    text: "กรุณาเลือกประเภทเอกสาร!",
+                    icon: "warning",
+                    button: "Ok"
+                });
+            } else {
+                var _Project = $('#dll_Project').val();
+                var _Developer = $('#dll_Developer').val();
+                var _DocType = $('#dll_DocType').val();
+                var _Status = $('#dll_Status').val();
+                var _StartDate = ConvertString2DatetimeFormatInDate($('#StartDate').val());
+                var _EndDate = ConvertString2DatetimeFormatInDate($('#EndDate').val());
+                var _KeyIn = $('#txtSKeyIn').val();
+
+                //alert(_StartDate);
+
+                LoadDataListView(_Project, _Developer, _DocType, _Status, _StartDate, _EndDate, _KeyIn);
+            }
+
+            
+        });
+
+       
+        LoadDataListView(0, 0, '', 99, null, null, '');
+       
+
+        function LoadDataListView(_Project, _Developer, _DocType, _Status, _StartDate, _EndDate, _KeyIn) {
+            ShowHideLoading(1);
+
+            var EmpID = $("#EmployeeID").data("emp-id");
+
+            var url = '@Url.Action("LoadDataListView", "DMPS_Report")';
+            $('#DataListView').load(url,
+             {
+                 Project: _Project,
+                 Developer: _Developer,
+                 DocType: _DocType,
+                 Status: _Status,
+                 StartDate: _StartDate,
+                 EndDate: _EndDate,
+                 KeyIn: _KeyIn
+                }, function (result) {
+                 $('.dataTables-example').DataTable({
+                     //"order": [[0, "asc"]],
+                     //retrieve: true,
+                     //paging: false,
+                     "scrollX": true,
+                     "sScrollX": "2500px",
+                     "autoWidth": true,
+                     //"bDestroy": true,
+                     dom: '<"html5buttons"B>lTfgitp',
+                     buttons: [
+                         { extend: 'excel', title: 'ExcelFile' },
+                         //{ extend: 'copyHtml5', text: 'Copy' },
+                     ]
+
+                 });
+
+                 ShowHideLoading(0);
+
+             });
+        }
+        //-------------------------------------------------End On Search-------------------------------------------------//
+
+        //--------------------------------------------------On Binding-------------------------------------------------//
+        $('#btnAddNew').click(function () {
+            ShowModalBlinding(0);
+        });
+
+        $('#DataListView').on("click", ".confirm-View", function () {
+            var thisID = $(this).data("id");
+            ShowModalBlinding(thisID);
+        });
+
+        function ShowModalBlinding(thisID) {
+            var url = '@Url.Action("LoadData2Modal", "ControllerName")';
+            $.post(url,
+                {
+                    thisID: thisID
+                }, function (result) {
+                    var obj = $.parseJSON(result);
+                    //-------------------------Bind Data to Object---------------------------//
+                    $('#txtThisID').val(obj[0].DefectTypeID);
+
+                    if (obj[0].IsDelete == 0 || obj[0].IsDelete == "false" || obj[0].IsDelete == false || obj[0].IsDelete == "False") { $('#chkIsdelete').iCheck('uncheck'); }
+                    else { $('#chkIsdelete').iCheck('check'); }
+                    //--------------Creater-------------//
+                    $('#txtCreator').val(obj[1].DisplayName);
+                    $('#txtCreatorCompany').val(obj[1].CompanyName);
+                    $('#txtCreateDateTime').val(ConvertJson2DatetimeFormatOrNull(obj[0].CreateDate));
+                    //--------------Reviser-------------//
+                    $('#txtReviser').val(obj[2].DisplayName);
+                    $('#txtReviserCompany').val(obj[2].CompanyName);
+                    $('#txtReviserDateTime').val(ConvertJson2DatetimeFormatOrNull(obj[0].RevizeDate));
+                    //-----------------------End Bind Data to Object---------------------------//
+                    $('#myModal').modal('show');
+                });
+        }
+        //-------------------------------------------------End On Binding-------------------------------------------------//
+
+        //-----------------------------------------------On Modal Control-------------------------------------------------//
+        $('#btnSave').click(function () {
+            swal({
+                title: "Are you sure?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Save Data",
+                closeOnConfirm: true
+            }, function () {
+                Save();
+            });
+        });
+
+        function Save() {
+            //-------------------------get Data to Save---------------------------//
+            var EmpID = $("#EmployeeID").data("emp-id");
+            var ThisID = $('#txtThisID').val();
+
+            var IsDelete = $('#chkIsdelete').prop('checked');
+            //-----------------------End get Data to Save---------------------------//
+            var url = '@Url.Action("Save", "ControllerName")';
+            $.post(url, {
+                EmpID: EmpID
+            }, function (result) {
+                if (result == "0") {
+                    swal({
+                        title: "การบันทึกข้อมูลมีการผิดพลาด!",
+                        type: "error",
+                    });
+                }
+                else {
+                    swal({
+                        title: "การบันทึกข้อมูลสำเร็จ!",
+                        type: "success",
+                    });
+                    $('#myModal').modal('hide');
+                    LoadDataListView(result);
+                }
+            });
+        }
+
+        $('#btnClose').click(function () {
+            $('#myModal').modal('hide');
+        });
+
+        //--------------------------------------------End On Modal Control-------------------------------------------------//
+
+
+
+        /*======================================================= Loading ========================================================*/
+        function ShowHideLoading(_isShow) {
+            if (_isShow == 1) {
+                $('body').waitMe({
+                    effect: 'progressBar',
+                    text: 'Please wait..',
+                    color: '#000',
+                    maxSize: '',
+                    waitTime: -1,
+                    textPos: 'vertical',
+                });
+            } else {
+                $('body').waitMe("hide");
+            }
+        }
+        /*======================================================= End Loading ========================================================*/
+
+
+
+
+
+    });
+</script>
+

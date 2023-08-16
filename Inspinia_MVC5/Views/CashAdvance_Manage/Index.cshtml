@@ -1,0 +1,1262 @@
+﻿@* ----------------------------------------------------Is Head Page List-------------------------------------------------------------- *@
+<div class="row wrapper border-bottom white-bg page-heading" style="padding-bottom:5px">
+    <div class="row">
+        <div class="col-md-8" style="padding-top:15px">
+            <strong><i class="fa fa-tags">&nbsp;&nbsp;</i><label id="application"></label> / <label id="submenu"></label> / <label id="menu"></label></strong>
+        </div>
+        <div class="col-md-4">
+            <div class="title-action" style="padding-top:10px;padding-bottom:5px">
+                <button id="btnAddNew" data-id="0" data-no="0" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+            </div>
+        </div>
+    </div>    
+</div>
+
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+@*<button id="btntest">test</button>*@
+
+@* ----------------------------------------------------Is Searching Tab--------------------------------------------------------------- *@
+<div class="wrapper wrapper-content" style="padding-bottom: 0px;padding-top:10px">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins" style="margin-bottom:0px; padding-bottom:10px">
+                <div class="ibox-title">
+                    <h5>Search</h5>
+                    @*<div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>*@
+                </div>
+                <div class="ibox-content">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="width:80px"></td>
+                                <td style="text-align:right">
+                                    <label id="lbl" class="" style="padding-bottom:10px">Start Date : </label>
+                                </td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div class="form-group" id="data_1">
+                                        <div class="input-group date">
+                                            <input id="StartDate" type="text" class="form-control" value="@ViewBag.StartDate.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:50px"></td>
+                                <td style="text-align:right"><label style="padding-bottom:10px">End Date : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div class="form-group" id="data_1">
+                                        <div class="input-group date">
+                                            <input id="EndDate" type="text" class="form-control" value="@ViewBag.EndDate.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:10px"></td>
+                                <td><button type="button" id="btnSearch" class="btn btn-primary" style="margin-bottom:15px"><i class="fa fa-search"></i>&nbsp;&nbsp; Search</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<input type="text" id="RowSelected" value="" />*@
+@*<input type="text" id="RowSelected" value="" hidden="hidden" />*@
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ----------------------------------------------------Is DataList Tab---------------------------------------------------------------- *@
+<div id="DataListView"></div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ------------------------------------------------------Is Modal Tab----------------------------------------------------------------- *@
+@Html.Partial("LoadModal")
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+
+@*----------------------- Import CSS---------------------- *@
+@Styles.Render("~/plugins/footableStyles")
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+@Styles.Render("~/plugins/select2Styles")
+@Styles.Render("~/plugins/dataPickerStyles")
+@Styles.Render("~/plugins/sweetAlertStyles")
+@*-------------------------------------------------------- *@
+
+@*------------------ Import JavaScript-------------------- *@
+@Scripts.Render("~/plugins/footable")
+@Scripts.Render("~/plugins/dataTables")
+@Scripts.Render("~/plugins/select2")
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/sweetAlert")
+@*-------------------------------------------------------- *@
+
+<script src="~/Scripts/Main/JS_Main.js"></script>
+<script src="~/Scripts/Main/Utility.js"></script>
+<script src="~/Scripts/Main/date.format.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+
+        @*$('#btntest').click(function () {
+            var url = '@Url.Action("GenerateAdvancePaymentNO", "CashAdvance_Manage")';
+            $.post(url, { CompanyId: 13 }, function (result) {
+                alert(result);
+            });
+        });*@
+
+        $(".select2_paymenttype,.select2_department,.select2_position,.select2_project,.select2_costCenter,.select2_PaymentOwner,.select2_Company,.select2_budgetaccount,.select2_budgetmodel").select2();
+
+        $('#txtReceiveCashDate,#txtChequeDate').change(function () {
+            var IsDate = ConvertString2DatetimeFormat($(this).val());
+            var url = '@Url.Action("ClearDate", "CashAdvance_Manage")';
+            $.post(url, { IsDate: IsDate }, function (result) {
+                var foo = $.parseJSON(result);
+                $('#txtClearCashDate').val(ConvertJson2DatetimeFormat(foo));
+            });
+        });
+
+        $('#ddlCompanyOfEmp').attr('disabled', true);
+        $('#ddlDepartment').attr("disabled", true);
+        $('#ddlPosition').attr("disabled", true);
+        $('#txtReceiveCashDate').prop('readonly', true);
+        $('#txtClearCashDate').prop('readonly', true);
+        $('#txtChequeDateIn').prop('readonly', true);
+        $('#txtChequeDate').prop('readonly', true);
+        $('#txtRefundDate').prop('readonly', true);
+        
+        //$('.confirm-View').click(function () {
+        //    var data = $(this).data("id");
+        //    alert(data);
+        //});
+
+        $('#DataListView').on("click", ".confirm-View", function () {
+            var id = $(this).data("id");
+            var no = $(this).data("no");
+            ShowModalBlinding(id);
+        });
+
+        $('#DataListView').on("click", ".confirm-Print", function () {
+            var id = $(this).data("id");
+            var no = $(this).data("no");
+            OutReport(id);
+        });
+
+
+        function validate() {
+            var result = true;
+            var Project = $('#ddlProject').val();
+            var BudgetAccount = $('#ddlBudgetAccount').val();
+            var BudgetModel = $('#ddlBudgetModel').val();
+            var Amount = $('#txtAmount').val();
+            var PaymentType = $('#ddlPaymentType').val();
+
+
+            //var aaa = $('#txtReceiveCashDate').val();
+            ////var nowdate = new Date();
+            //var nowdate = $.datepicker.formatDate('yyyyMMdd', new Date());
+            //alert(aaa + "-----" + nowdate)
+
+
+
+
+            if (Project == 0 || Project == "0" || Project == "") {
+                swal('กรุณาเลือก รหัสโครงการ');
+                $("#ddlProject").focus();
+                return false;
+            }
+            if (BudgetAccount == 0 || BudgetAccount == "0" || BudgetAccount == "") {
+                swal('กรุณาเลือก งบประมาณ');
+                $("#ddlBudgetAccount").focus();
+                return false;
+            }
+            if (BudgetModel == 0 || BudgetModel == "0" || BudgetModel == "") {
+                swal('กรุณาเลือก รหัสงบประมาณ');
+                $("#ddlBudgetModel").focus();
+                return false;
+            }
+            if (Amount == 0 || Amount == "0.00" || Amount == "") {
+                swal('กรุณาระบุยอดเงินทดรองจ่าย');
+                $("#txtAmount").focus();
+                return false;
+            }
+            if (PaymentType == 0 || PaymentType == "0" || PaymentType == "") {
+                swal('กรุณาเลือก ประเภทเงินที่ต้องการรับ');
+                $("#ddlPaymentType").focus();
+                return false;
+            }
+            //if (txtReceiveCashDate )
+
+
+            return true;
+        }
+
+        @*$('#SendMail').click(function () {
+
+
+            var url = '@Url.Action("SendMail", "CashAdvance_Manage")';
+
+
+            $.post(url, {}, function (result) {
+                alert(result);
+            });
+        });*@
+
+
+        function populateDropdown(select, data) {
+            select.html('');
+            select.append($('<option></option>').val(0).html('Please Select'));
+            $.each(data, function (id, option) {
+                select.append($('<option></option>').val(option.value).html(option.name));
+            });
+        }
+
+        LoadDataListView();
+
+        function LoadAuthenFinance() {
+            //var DeptID = $("#EmployeeID").data("dept-id");
+            var ParentDeptID = $("#EmployeeID").data("parent-dept");
+
+            var url = '@Url.Action("chkAuthenFinance", "CashAdvance_Manage")';
+            $.post(url, { ParentDeptID: ParentDeptID }, function (result) {
+                //alert(result);
+                if (result == "True") {
+                    $('#btnReceiveCheque').show();
+                }
+                else {
+                    $('#btnReceiveCheque').hide();
+                }
+            });
+        }
+
+        $('#btnSearch').click(function () {
+            LoadDataListView();
+        });
+
+        //DataListView
+
+        $('#DataListView').on("click", "#btnReceiveCheque", function () {
+            swal({
+                title: "Are you sure?",
+                //text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Receive Cheque it!",
+                closeOnConfirm: true
+            }, function () {
+                ReceiveCheque();
+            });
+        });
+
+        function LoadDataListView() {
+            var EmpID = $("#EmployeeID").data("emp-id");
+            var ParentDeptID = $("#EmployeeID").data("parent-dept");
+            var ParentDeptCode = $("#EmployeeID").data("parent-deptcode");
+
+            var StartDate = ConvertString2DatetimeFormat($('#StartDate').val());
+            var EndDate = ConvertString2DatetimeFormat($('#EndDate').val());
+
+            var url = '@Url.Action("LoadDataListView", "CashAdvance_Manage")';
+
+            $('#DataListView').load(url,
+            {
+                EmployeeID: EmpID, ParentDeptID: ParentDeptID, StartDate: StartDate, EndDate: EndDate, ParentDeptCode: ParentDeptCode
+            }, function (result) {
+                $('.dataTables-example').DataTable({
+                    "order": [[0, "desc"]],
+                    "scrollX": true,
+                    "sScrollX": "3500px",
+                    "autoWidth": true,
+                    dom: '<"html5buttons"B>lTfgitp',
+                    buttons: [
+                        { extend: 'excel', title: 'ExcelFile' },                       
+                    ]
+                });
+
+                LoadAuthenFinance();
+            });
+        }
+
+        $('#btnAddNew').click(function () {
+            ShowModalBlinding(0);
+        });
+
+        $('#DataListView').on("dblclick", ".IsRows", function () {
+            var id = $(this).data("id");
+            var no = $(this).data("no");
+            ShowModalBlinding(id);
+        });
+
+        function ShowModalBlinding(id) {
+            var EmpID = $("#EmployeeID").data("emp-id");
+            var ComID = $("#EmployeeID").data("com-id");
+            var ParentDeptID = $("#EmployeeID").data("parent-dept");
+            var ParentDeptCode = $("#EmployeeID").data("parent-deptcode");
+            var DeptID = $("#EmployeeID").data("dept-id");
+            var PositionID = $("#EmployeeID").data("position-id");
+
+            var url = '@Url.Action("LoadData2Modal", "CashAdvance_Manage")';
+            $.post(url,
+                {
+                    id: id, EmpID: EmpID, ComID: ComID, ParentDeptID: ParentDeptID, DeptID: DeptID, PositionID: PositionID, ParentDeptCode: ParentDeptCode
+                }, function (result) {
+                    var obj = $.parseJSON(result);
+                    LoadAdvancePayment(obj[0]);
+                    LoadRefund(obj[1]);
+                    LoadRefundTrans(obj[2]);
+                    LoadObject(obj[0].DocumentStatusID);
+                    $('#myModal5').modal('show');
+                });
+        }
+
+        $('#ddlCompany').change(function () {
+            var CompanyID = $(this).val();
+            LoadCostCenter(CompanyID, 0);
+            //LoadDepartment(CompanyID, 0);
+            //LoadEmployee(CompanyID, 0);
+            //LoadCostCenter(CompanyID, 0);
+        });
+
+        //$('#ddlCompanyOfEmp').change(function () {
+        //    var CompanyID = $(this).val();
+        //    LoadCostCenter(CompanyID, 0);
+        //});
+
+        @*function LoadDepartment(comID, DeptId) {
+            var url = '@Url.Action("getDepartment", "CashAdvance_Manage")';
+            $("#ddlDepartment").select2({ data: null });
+            $.post(url, { CompanyID: comID }, function (result) {
+                var foo = $.parseJSON(result);
+                $("#ddlDepartment").select2({ data: foo });
+                $("#ddlDepartment").select2("val", DeptId);
+            });
+        }
+
+        function LoadEmployee(comID, EmpID) {
+            var url = '@Url.Action("getEmployee", "CashAdvance_Manage")';
+            $("#ddlPaymentOwner").select2({ data: null });
+            $.post(url, { CompanyID: comID }, function (result) {
+                var foo = $.parseJSON(result);
+                $("#ddlPaymentOwner").select2({ data: foo });
+                $("#ddlPaymentOwner").select2("val", EmpID);
+            });
+        }*@
+
+        function LoadCostCenter(comID, DeptId) {
+            var url = '@Url.Action("getCostCenter", "CashAdvance_Manage")';
+            $("#ddlCostCenter").select2({ data: null });
+            $.post(url, { CompanyID: comID }, function (result) {
+                var foo = $.parseJSON(result);
+                $("#ddlCostCenter").select2({ data: foo });
+                $("#ddlCostCenter").select2("val", DeptId);
+            });
+        }
+
+        $('#ddlPaymentOwner').change(function () {
+            var empID = $(this).val();
+            LoadEmpDetail(empID);
+        });
+
+        function LoadEmpDetail(EmpID) {
+            var url = '@Url.Action("getDetailEmployee", "CashAdvance_Manage")';
+            $.post(url, { EmployeeID: EmpID }, function (result) {
+                var sp = result.split("|");
+                $('#ddlCompanyOfEmp').select2("val", sp[2]);
+                $('#ddlDepartment').select2("val", sp[0]);
+                $('#ddlPosition').select2("val", sp[1]);
+            });
+        }
+
+
+        @*function LoadPosition(DeptID, PositionID) {
+            var url = '@Url.Action("getPostion", "CashAdvance_Manage")';
+            $("#ddlPosition").select2({ data: null });
+            $.post(url, { DepartmentID: DeptID }, function (result) {
+                var foo = $.parseJSON(result);
+                $("#ddlPosition").select2({ data: foo });
+                $("#ddlPosition").select2("val", PositionID);
+            });
+        }*@
+
+
+
+        function LoadAdvancePayment(obj) {
+            //รายละเอียดผู้ขอเบิก
+            $('#lblAdvancePaymentID').text(obj.AdvancePaymentID);
+            $('#lblAdvancePaymentNo').text(obj.AdvancePaymentNO);
+            $('#lblDocumentDate').text(ConvertJson2DatetimeFormat(obj.DocumentDate));
+            //$('#ddlCostCenter').select2("val", obj.DeptofCost);
+            $('#ddlCompany').select2("val", obj.CompanyId);
+
+            LoadEmpDetail(obj.PaymentOwner);
+            //$('#ddlDepartment').select2("val", obj.DeptId);
+            //LoadDepartment(obj.CompanyId, obj.DeptId);
+
+            $('#ddlPaymentOwner').select2("val", obj.PaymentOwner);
+            //LoadEmployee(obj.CompanyId, obj.PaymentOwner);
+
+            //LoadCostCenter(obj.CompanyId, obj.DeptofCost);
+            LoadCostCenter(obj.CompanyId, obj.DeptofCostCode);
+
+
+            //LoadPosition(obj.DeptId, obj.PositionTransID);
+            //$('#ddlPaymentOwner').select2("val", obj.PaymentOwner);
+            //$('#ddlPosition').select2("val", obj.PositionTransID);
+            //$('#ddlDepartment').select2("val", obj.DeptId);
+
+            $('#ddlProject').select2("val", obj.ProjectID);
+            $('#ddlBudgetAccount').select2("val", obj.BudgetAccountID);
+            $('#ddlBudgetModel').select2("val", obj.BudgetModelID);
+            $('#txtAmount').val(ConvertString2DecimalFormat(parseFloat(obj.Amount).toFixed(2)));
+            $('#txtPaymentRemark').val(obj.PaymentRemark);
+            $('#txtReceiveCashDate').val(ConvertJson2DatetimeFormat(obj.ReceiveCashDate));
+            $('#ddlPaymentType').select2("val", obj.PaymentTypeID);
+            $('#txtClearCashDate').val(ConvertJson2DatetimeFormat(obj.ClearCashDate));
+            $('#lblDocumentStatusID').text(obj.DocumentStatusID);
+            $('#lblDocumentStatusDisplay').text(getStatusDesc(obj.AdvancePaymentID, obj.DocumentStatusID));
+
+            //ข้อมูลการอนุม้ติการขอเบิก
+            $('#txtPVNo').val(obj.PVNo);
+            //alert(obj.ChequeDateIn);
+
+            if (obj.ChequeDateIn == null || obj.ChequeDateIn == "") {
+                $('#txtChequeDateIn').val(ConvertJson2DatetimeFormat(obj.ReceiveCashDate));
+            }
+            else {
+                $('#txtChequeDateIn').val(ConvertJson2DatetimeFormat(obj.ChequeDateIn));
+            }
+            if (obj.ChequeDate == null || obj.ChequeDate == "") {
+                $('#txtChequeDate').val(ConvertJson2DatetimeFormat(obj.ReceiveCashDate));
+            }
+            else {
+                $('#txtChequeDate').val(ConvertJson2DatetimeFormat(obj.ChequeDate));
+            }
+
+            //$('#txtChequeDateIn').val(ConvertJson2DatetimeFormat(obj.ChequeDateIn));
+            //$('#txtChequeDate').val(ConvertJson2DatetimeFormat(obj.ChequeDate));
+
+            //
+            $('#txtCreator').val(obj.Creator);
+            //alert(obj.IsDelete);
+            $('#txtIsDelete').val(obj.IsDelete);
+            $('#txtAmount2').val(ConvertString2DecimalFormat(parseFloat(obj.Amount).toFixed(2)))
+
+            if ($('#txtIsDelete').val() == "true") {
+                $('#lblDocumentStatusDisplay').text("เอกสารถูกยกเลิก");
+                $('#lblDocumentStatusDisplay').css('color', 'red');
+            }
+            else {
+                $('#lblDocumentStatusDisplay').css('color', 'dodgerblue');
+            }
+        }
+
+        function LoadRefundTrans(obj) {
+            //รายการเคลียรเงินทดลองจ่าย
+            var IsDate = "";
+            $(".RefundDetail").remove();
+            $.each(obj, function (id, option) {
+                AddNewRowTable(option.RefundDetail, option.Amount, option.Withholding_Tax);
+                IsDate = ConvertJson2DatetimeFormat2(option.CreateDate, "dd/mm/yyyy HH:MM");
+            });
+            SumTotal();
+            $('#txtClearDate').val(IsDate);
+        }
+
+        function LoadRefund(obj) {
+            //ข้อมูลการเคลียร์เงิน
+            $('#lblRefundID').text(obj.RefundID);
+            $('#txtJVNo').val(obj.JVNo);
+
+            var link = '@Url.Action("GetFile", "CashAdvance_Manage")' + "?filename=" + obj.AttachFile;
+            //$('#lblFilename').text(obj.AttachFile);
+            $('#btnPreviewFile').show();
+
+            if (obj.AttachFile == null || obj.AttachFile == "") {
+                link = "";
+                //$('#lblFilename').text("No File");
+                $('#btnPreviewFile').hide();
+            }
+            $('#btnPreviewFile').data("link", link);
+
+            if (obj.RefundDate == null || obj.RefundDate == "") {
+
+            }
+            else {
+                $('#txtRefundDate').val(ConvertJson2DatetimeFormat(obj.RefundDate));
+            }
+        }
+
+        function LoadObject(DocumentStatusID) {
+            //alert(DocumentStatusID);
+            var _creator = $('#txtCreator').val();
+            var _owner = $('#ddlPaymentOwner').val();
+            var EmpID = $("#EmployeeID").data("emp-id");
+            var _isdelete = $('#txtIsDelete').val();
+
+            $('#btnSave').hide();
+            $('#btnCancel').hide();
+
+            //var DeptID = $("#EmployeeID").data("dept-id");
+            var ParentDeptID = $("#EmployeeID").data("parent-dept");
+            var url = '@Url.Action("chkAuthenFinance", "CashAdvance_Manage")';
+            $.post(url, { ParentDeptID: ParentDeptID }, function (result) {
+                if (DocumentStatusID == 0) {
+                    $('.modal-body').hide();
+
+                    $('#btnSaveDaft').hide();
+                    $('#btnSubmit').hide();
+                    $('#btnClose').show();
+                    $('#btnApprove').hide();
+                    $('#btnReject').hide();
+                    $('#btnCancel').hide();
+                    if (EmpID == _creator || EmpID == _owner) {
+                        $('#btnSaveDaft').show();
+                        $('#btnSubmit').show();
+                    }
+
+                }
+                else if (DocumentStatusID == 1) {
+                    $('.modal-body').show();
+                    $('#rowPV').show();
+                    $('#rowButDetail').hide();
+                    $('#rowDetail').hide();
+                    $('#rowJV').hide();
+
+                    $('#btnSaveDaft').hide();
+                    $('#btnSubmit').show();
+                    $('#btnClose').show();
+                    $('#btnApprove').hide();
+                    $('#btnReject').hide();
+
+                    if (EmpID == _creator || EmpID == _owner) {
+                        $('#btnSave').show();
+                        $('#btnCancel').show();
+                    }
+                    else {
+                        $('#btnSave').hide();
+                        $('#btnCancel').hide();
+                    }
+
+                    if (result == "True") {
+                        $('#btnSubmit').show();
+                        $('#btnReject').show();
+                    }
+                    else {
+                        $('.modal-body').hide();
+                        $('#btnSubmit').hide();
+                    }
+
+                }
+                else if (DocumentStatusID == 2) {
+                    $('.modal-body').show();
+                    $('#rowPV').show();
+                    $('#rowButDetail').hide();
+                    $('#rowDetail').hide();
+                    $('#rowJV').hide();
+
+                    $('#btnSaveDaft').hide();
+                    //$('#btnSubmit').show();
+                    //$('#btnClose').show();
+                    $('#btnApprove').hide();
+                    $('#btnReject').hide();
+
+                    if (result == "True") {
+                        $('#btnSubmit').show();
+                        $('#btnClose').show();
+                    }
+                    else {
+                        $('#btnSubmit').hide();
+                    }
+                    if (EmpID == _creator || EmpID == _owner) {
+                        $('#btnCancel').show();
+                    }
+                    else {
+                        $('#btnCancel').hide();
+                    }
+                }
+                else if (DocumentStatusID == 3) {
+                    $('.modal-body').show();
+                    $('#rowPV').show();
+                    $('#rowButDetail').show();
+                    $('#rowDetail').show();
+                    $('#rowJV').hide();
+
+                    $('#btnSaveDaft').hide();
+                    //$('#btnSubmit').show();
+                    $('#btnClose').show();
+                    $('#btnApprove').hide();
+                    $('#btnReject').hide();
+
+                    if (EmpID == _creator || EmpID == _owner) {
+                        $('#btnSubmit').show();
+                        $('#btnCancel').show();
+                    }
+                    else {
+                        $('#btnSubmit').hide();
+                        $('#btnCancel').hide();
+                    }
+
+                }
+                else if (DocumentStatusID == 4) {
+                    $('.modal-body').show();
+                    $('#rowPV').show();
+                    $('#rowButDetail').show();
+                    $('#rowDetail').show();
+                    $('#rowJV').show();
+
+                    $('#btnSaveDaft').hide();
+                    $('#btnSubmit').hide();
+                    $('#btnClose').show();
+                    //$('#btnApprove').show();
+                    //$('#btnReject').show();
+                    $('#rowButDetail').hide();
+
+                    if (result == "True") {
+                        $('#btnApprove').show();
+                        $('#btnReject').show();
+                    }
+                    else {
+                        $('#btnApprove').hide();
+                        $('#btnReject').hide();
+                    }
+                    if (EmpID == _creator || EmpID == _owner) {
+                        $('#btnCancel').show();
+                    }
+                    else {
+                        $('#btnCancel').hide();
+                    }
+                }
+                else {
+                    $('.modal-body').show();
+                    $('#rowPV').show();
+                    $('#rowButDetail').show();
+                    $('#rowDetail').show();
+                    $('#rowJV').show();
+
+                    $('#btnSaveDaft').hide();
+                    $('#btnSubmit').hide();
+                    $('#btnClose').show();
+                    $('#btnApprove').hide();
+                    $('#btnReject').hide();
+                    $('#rowButDetail').hide();
+                    $('#btnCancel').hide();
+                }
+
+                if (_isdelete == "true") {
+                    $('#btnSaveDaft').hide();
+                    $('#btnSave').hide();
+                    $('#btnSubmit').hide();
+                    $('#btnClose').show();
+                    $('#btnApprove').hide();
+                    $('#btnReject').hide();
+                    $('#rowButDetail').hide();
+                    $('#btnCancel').hide();
+                }
+            });
+        }
+
+        $('#btnSaveDaft').click(function () {
+            SaveAdvancePayment(0);
+        });
+
+        $('#btnSave').click(function () {
+            var vali = validate();
+            if (vali == false || vali == "false") { return; }
+
+            swal({
+                title: "Are you sure?",
+                //text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Save it!",
+                closeOnConfirm: true
+            }, function () {
+                SaveAdvancePayment(1);
+                //OutReport();
+            });
+            //SaveAdvancePayment(1);
+        });
+
+        $('#btnSubmit').click(function () {
+            var DocumentStatusID = $('#lblDocumentStatusID').text();
+            if (DocumentStatusID == 0) {
+                var PaymentOwner = $('#ddlPaymentOwner').val();
+                var ParentDeptID = $("#EmployeeID").data("parent-dept");
+                var ParentDeptCode = $("#EmployeeID").data("parent-deptcode");
+
+                var url = '@Url.Action("chkAuthenAdvance", "CashAdvance_Manage")';
+                $.post(url, { PaymentOwner: PaymentOwner, ParentDeptID: ParentDeptID, ParentDeptCode: ParentDeptCode }, function (result) {
+                    if (result == "True") {
+                        var vali = validate();
+                        if (vali == false || vali == "false") { return; }
+
+                        swal({
+                            title: "Are you sure?",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Yes, Submit it!",
+                            closeOnConfirm: true
+                        }, function () {
+                            SaveAdvancePayment(1);
+                        });
+                    }
+                    else {
+                        swal('กรุณาเคลียร์เงินทดรองจ่ายก่อนทำรายการเบิก');
+                        return;
+                    }
+                });
+            }
+            else if (DocumentStatusID == 1 || DocumentStatusID == 2) {
+                var PVNo = $('#txtPVNo').val();
+                if (PVNo == "") {
+                    swal('กรุณากรอกข้อมูล PV No.');
+                    $("#txtPVNo").focus();
+                    return false;
+                }
+                swal({
+                    title: "Are you sure?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Submit it!",
+                    closeOnConfirm: true
+                }, function () {
+                    SavePV();
+                });
+            }
+            else if (DocumentStatusID == 3) {
+
+                swal({
+                    title: "Are you sure?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Submit it!",
+                    closeOnConfirm: true
+                }, function () {
+                    SaveClearDetail();
+                });
+
+
+                //var Total = $('#txtTotal').val();
+                //if (Total == 0 || Total == 0.00 || Total == "0" || Total == "0.00") {
+                //    //alert('a');
+                //    swal('กรุณากรอกข้อมูลรายการเคลียร์เงินทดรองจ่าย');
+                //    return false;
+                //}
+                //swal({
+                //    title: "Are you sure?",
+                //    type: "warning",
+                //    showCancelButton: true,
+                //    confirmButtonColor: "#DD6B55",
+                //    confirmButtonText: "Yes, Submit it!",
+                //    closeOnConfirm: true
+                //}, function () {
+                //    SaveClearDetail();
+                //});
+            }
+
+
+            @*swal({
+                title: "Are you sure?",
+                //text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Submit it!",
+                closeOnConfirm: true
+            }, function () {
+                var DocumentStatusID = $('#lblDocumentStatusID').text();
+                if (DocumentStatusID == 0) {
+                    var PaymentOwner = $('#ddlPaymentOwner').val();
+                    var url = '@Url.Action("chkAuthenAdvance", "CashAdvance_Manage")';
+                    $.post(url, { PaymentOwner: PaymentOwner }, function (result) {
+                        if (result == "True") {
+                            SaveAdvancePayment(1);
+                            //OutReport();
+                        }
+                        else {
+                            alert("เบิกไปแล้ว");
+                            return;
+                        }
+                    });
+                }
+                else if (DocumentStatusID == 1 || DocumentStatusID == 2) {
+                    SavePV();
+                }
+                else if (DocumentStatusID == 3) {
+                    SaveClearDetail();
+                }
+            });*@
+        });
+
+        $('#btnTestUp').click(function () {
+            SaveClearDetail();
+        });
+
+        $('#txtAttachFile').change(function () {
+            var a = $('#txtAttachFile').val();
+        });
+
+        $('#btnPreviewFile').click(function () {
+            var url = $(this).data("link");
+            if (url == "") { swal("ยังไม่มี File upload"); return; }
+            window.open(url, '_blank');
+        });
+
+        //$('#btnPrint').click(function () {
+        //    OutReport();
+        //});
+
+        function OutReport(AdvancePaymentID) {
+            var url = '@Url.Action("PrintReport", "CashAdvance_Manage")' + "?AdvancePaymentID=" + AdvancePaymentID;
+            window.open(url, '_blank');
+        }
+
+        function chkAuthenAdvance() {
+            var PaymentOwner = $('#ddlPaymentOwner').val();
+            var ParentDeptID = $("#EmployeeID").data("parent-dept");
+
+            var url = '@Url.Action("chkAuthenAdvance", "CashAdvance_Manage")';
+            $.post(url, { PaymentOwner: PaymentOwner, ParentDeptID: ParentDeptID }, function (result) {
+                if (result == "True") {
+                    alert("เบิกได้");
+                    //SaveAdvancePayment(1);
+                }
+                else {
+                    alert("เบิกไปแล้ว");
+                    return;
+                }
+                return result;
+            });
+        }
+
+        $('#btnCancel').click(function () {
+            swal({
+                title: "Are you sure?",
+                //text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Cancel it!",
+                closeOnConfirm: true
+            }, function () {
+                CancelDocument();
+            });
+            //CancelDocument();
+        });
+
+        $('#btnClose').click(function () {
+            $('#myModal5').modal('hide');
+        });
+
+        $('#btnApprove').click(function () {
+            var JVNo = $('#txtJVNo').val();
+            if (JVNo == "") {
+                swal('กรุณาระบุเลข JV No.');
+                $("#txtJVNo").focus();
+                return false;
+            }
+
+            swal({
+                title: "Are you sure?",
+                //text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Approve it!",
+                closeOnConfirm: true
+            }, function () {
+                //CancelDocument();
+                SaveJV();
+            });
+
+            //SaveJV();
+        });
+
+        $('#btnReject').click(function () {
+            swal({
+                title: "Are you sure?",
+                //text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Reject it!",
+                closeOnConfirm: true
+            }, function () {
+                //CancelDocument();
+                RejectDocument();
+            });
+
+            //RejectDocument();
+        });
+
+        //save รายละเอียดผู้ขอเบิก
+        function SaveAdvancePayment(_DocumentStatusID) {
+            var AdvancePaymentID = $('#lblAdvancePaymentID').text();
+            var AdvancePaymentNO = $('#lblAdvancePaymentNo').text();
+            var DocumentDate = ConvertString2DatetimeFormat($('#lblDocumentDate').text());
+            //var DocumentDate = $('#lblDocumentDate').text();
+
+
+            var DeptofCost = $('#ddlCostCenter').val();
+            var CompanyId = $('#ddlCompany').val();
+            var PaymentOwner = $('#ddlPaymentOwner').val();
+            var PositionTransID = $('#ddlPosition').val();
+            var DeptId = $('#ddlDepartment').val();
+            var ProjectID = $('#ddlProject').val();
+            var BudgetAccountID = $('#ddlBudgetAccount').val();
+            var BudgetModelID = $('#ddlBudgetModel').val();
+            var Amount = $('#txtAmount').val().replace(/\,/g, '');
+            var PaymentRemark = $('#txtPaymentRemark').val();
+
+            var DeptCode = $('#ddlDepartment').val();
+            var DeptofCostCode = $('#ddlCostCenter').val();
+
+            var ReceiveCashDate = ConvertString2DatetimeFormat($('#txtReceiveCashDate').val());
+            //var ReceiveCashDate = $('#txtReceiveCashDate').val();
+
+            var PaymentTypeID = $('#ddlPaymentType').val();
+
+
+            var ClearCashDate = ConvertString2DatetimeFormat($('#txtClearCashDate').val());
+            //var ClearCashDate = $('#txtClearCashDate').val();
+
+            var Creator = $("#EmployeeID").data("emp-id");
+            var Reviser = $("#EmployeeID").data("emp-id");
+            var DocumentStatusID = _DocumentStatusID;
+
+            //var vali = validate();
+            //if (vali == false || vali == "false") { return; }
+
+            var url = '@Url.Action("SaveAdvancePayment", "CashAdvance_Manage")';
+            $.post(url, {
+                AdvancePaymentID: AdvancePaymentID, AdvancePaymentNO: AdvancePaymentNO, DocumentDate: DocumentDate
+                //, DeptofCost: DeptofCost
+                , CompanyId: CompanyId, PaymentOwner: PaymentOwner, PositionTransID: PositionTransID
+                //, DeptId: DeptId
+                , ProjectID: ProjectID, BudgetAccountID: BudgetAccountID, BudgetModelID: BudgetModelID, Amount: Amount, PaymentRemark: PaymentRemark, ReceiveCashDate: ReceiveCashDate, PaymentTypeID: PaymentTypeID, ClearCashDate: ClearCashDate
+                , Creator: Creator, Reviser: Reviser, DocumentStatusID: DocumentStatusID, DeptCode: DeptCode, DeptofCostCode: DeptofCostCode
+            }, function (result) {
+                if (_DocumentStatusID != 0) {
+                    //alert(result);
+                    OutReport(result);
+                    SendMail(AdvancePaymentID);
+                }
+                LoadDataListView();
+                $('#myModal5').modal('hide');
+            });
+        }
+
+        //save ข้อมูลการอนุมัติการขอเบิก
+        function SavePV() {
+            var AdvancePaymentID = $('#lblAdvancePaymentID').text();
+            var PVNo = $('#txtPVNo').val();
+            var ChequeDateIn = ConvertString2DatetimeFormat($('#txtChequeDateIn').val());
+            var ChequeDate = ConvertString2DatetimeFormat($('#txtChequeDate').val());
+            var Reviser = $("#EmployeeID").data("emp-id");
+
+            //var PVNo = $('#txtPVNo').val();
+            //if (PVNo == "") {
+            //    swal('Please Input PV No.');
+            //    $("#txtPVNo").focus();
+            //    return false;
+            //}
+
+
+
+            var url = '@Url.Action("SavePV", "CashAdvance_Manage")';
+            $.post(url, {
+                AdvancePaymentID: AdvancePaymentID, PVNo: PVNo, ChequeDateIn: ChequeDateIn, ChequeDate: ChequeDate, Reviser: Reviser
+            }, function (result) {
+                LoadDataListView();
+                SendMail(AdvancePaymentID);
+                $('#myModal5').modal('hide');
+            })
+        }
+
+        //save ข้อมูลการมารับเช็ค
+        function ReceiveCheque() {
+            var Revizer = $("#EmployeeID").data("emp-id");
+            var LstAdvancePaymentID = "";
+
+            $('.ChkReceiveCash:checked').each(function () {
+                LstAdvancePaymentID += $(this).data("adv-id") + "|";
+            });
+
+            //alert(LstAdvancePaymentID);
+
+            var url = '@Url.Action("SaveReceiveCheque", "CashAdvance_Manage")';
+            $.post(url, {
+                LstAdvancePaymentID: LstAdvancePaymentID, Revizer: Revizer
+            }, function (result) {
+                LoadDataListView();
+            });
+        }
+
+
+
+        //save รายการเคลียร์เงินทดรองจ่าย
+        function SaveClearDetail() {
+            var AdvancePaymentID = $('#lblAdvancePaymentID').text();
+            var RefundID = $('#lblRefundID').text();
+            var Creator = $("#EmployeeID").data("emp-id");
+            var Reviser = $("#EmployeeID").data("emp-id");
+            var LstRefundDetail = getDataList(".RefundDetailDesc");
+            var LstRefundDetailAmount = getDataList(".RefundDetailAmount");
+            var LstWithholding_Tax = getDataList(".Withholding_Tax");
+            var FileTest = $('#txtAttachFile').val();
+            //alert(FileTest);
+
+            //-----------------------------------
+            //var fileData = new FormData();
+            //var fileUpload = $("#txtAttachFile").get(0);
+            //alert(fileUpload.files);
+            //var files = fileUpload.files;
+            //if (files.length > 0) {
+            //    for (var i = 0; i < files.length; i++) {
+            //        fileData.append(files[i].name, files[i]);
+            //    }
+            //}
+            //alert(fileData[0]);
+            //-----------------------------------
+
+
+            var url = '@Url.Action("SaveClearDetail", "CashAdvance_Manage")';
+            $.post(url, {
+                AdvancePaymentID: AdvancePaymentID, RefundID: RefundID, Creator: Creator, Reviser: Reviser, LstRefundDetail: LstRefundDetail, LstRefundDetailAmount: LstRefundDetailAmount, LstWithholding_Tax: LstWithholding_Tax
+                //, F: fileData
+            }, function (result) {
+                saveFileUpload(AdvancePaymentID, result);
+                SendMail(AdvancePaymentID);
+                LoadDataListView();
+                $('#myModal5').modal('hide');
+            });
+        }
+
+        function SendMail(AdvancePaymentID) {
+            var url = '@Url.Action("IsSendMail", "CashAdvance_Manage")';
+            $.post(url, { AdvancePaymentID: AdvancePaymentID }, function (result) {
+
+            });
+        }
+
+        //save ข้อมูลการเคลียร์เงิน
+        function SaveJV() {
+            var AdvancePaymentID = $('#lblAdvancePaymentID').text();
+            var RefundID = $('#lblRefundID').text();
+            var JVNo = $('#txtJVNo').val();
+            var RefundDate = ConvertString2DatetimeFormat($('#txtRefundDate').val());
+            var Reviser = $("#EmployeeID").data("emp-id");
+
+            var url = '@Url.Action("SaveJV", "CashAdvance_Manage")';
+            $.post(url, {
+                AdvancePaymentID: AdvancePaymentID, RefundID: RefundID, JVNo: JVNo, RefundDate: RefundDate, Reviser: Reviser
+            }, function (result) {
+                LoadDataListView();
+                SendMail(AdvancePaymentID);
+                $('#myModal5').modal('hide');
+            });
+        }
+
+        function saveFileUpload(AdvancePaymentID, RefundID) {
+            //alert(RefundID);
+            var fileData = new FormData();
+            var fileUpload = $("#txtAttachFile").get(0);
+            var files = fileUpload.files;
+
+            if (files.length > 0) {
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+                fileData.append("AdvancePaymentID", AdvancePaymentID);
+                fileData.append("RefundID", RefundID);
+            }
+
+            $.ajax({
+
+                url: '@Url.Action("FileUploadHandler", "CashAdvance_Manage")',
+                type: "POST",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                //data: fileData,
+                data: fileData,
+                success: function (result2) {
+                    // alert(result2);
+                },
+                error: function (err) {
+                    // alert(err.statusText);
+                }
+            });
+        }
+
+        //Reject เอกสารให้ย้อนกลับไป DocumentStatusID = 3 ให้ผู้ขอเบิกคีรายละเอียดใหม่
+        function RejectDocument() {
+            var AdvancePaymentID = $('#lblAdvancePaymentID').text();
+            var Reviser = $("#EmployeeID").data("emp-id");
+            var DocumentStatusID = $("#lblDocumentStatusID").text();
+
+            var url = '@Url.Action("RejectDocument", "CashAdvance_Manage")';
+            $.post(url, {
+                AdvancePaymentID: AdvancePaymentID, Reviser: Reviser, DocumentStatusID: DocumentStatusID
+            }, function (result) {
+                LoadDataListView();
+                SendMail(AdvancePaymentID);
+                $('#myModal5').modal('hide');
+            });
+        }
+
+        //Cancel เอกสาร คือการยกเลิกเอกสารนี้ทิ้ง
+        function CancelDocument() {
+            var AdvancePaymentID = $('#lblAdvancePaymentID').text();
+            var Reviser = $("#EmployeeID").data("emp-id");
+
+            var url = '@Url.Action("CancelDocument", "CashAdvance_Manage")'
+            $.post(url, {
+                AdvancePaymentID: AdvancePaymentID, Reviser: Reviser
+            }, function (result) {
+                LoadDataListView();
+                SendMail(AdvancePaymentID);
+                $('#myModal5').modal('hide');
+            });
+        }
+
+        function getDataList(selector) {
+            var result = "";
+            $(selector).each(function () {
+                result += $(this).val().replace(/\,/g, '') + "|";
+            });
+            return result;
+        }
+
+        $('#btnAddDetail').click(function () {
+            AddNewRowTable('', '0', '0');
+        });
+
+        $('#btnDeleteDetail').click(function () {
+            var rowFocustID = '#' + $('#RowSelected').val();
+            $(rowFocustID).remove();
+            autoReRunning();
+            SumTotal();
+        });
+
+
+        $(document).delegate('.RefundDetailDesc,.RefundDetailAmount,.Withholding_Tax', 'click', function () {
+            var trid = $(this).closest('tr').attr('id');
+            $('#RowSelected').val(trid);
+        });
+
+        function autoReRunning() {
+            var Counting = 0;
+            $(".ClblRefundDetailRunning").each(function () {
+                var temp = Counting + 1;
+                $(this).text(temp);
+                Counting += 1;
+            });
+        }
+
+        function AddNewRowTable(RefundDetail, RefundDetailAmount, Withholding_Tax) {
+            var newrow = $('#TbRefundTrans tr:last').data('row-number') + 1;
+            if (newrow.toString() == "NaN") { newrow = 1; }
+            var IsNewRow = ('<tr id="Rft' + newrow + '" class="RefundDetail" data-row-number="' + newrow + '">' +
+            '<td><label id="RefundDetailRunning" class="ClblRefundDetailRunning">' + newrow + '</label></td>' +
+                                '<td><input type="text" id="txtRefundDetail" class="form-control input-mini RefundDetailDesc" value="' + RefundDetail + '"></td>' +
+                                '<td><input type="text" id="txtRefundDetailAmount" class="form-control input-mini RefundDetailAmount numbersOnly " style="text-align:right" value=' + ConvertString2DecimalFormat(parseFloat(RefundDetailAmount).toFixed(2)) + '></td>' +
+                                '<td><input type="text" id="txtRefundDetailWithholding_Tax" class="form-control input-mini Withholding_Tax numbersOnly" style="text-align:right" value=' + ConvertString2DecimalFormat(parseFloat(Withholding_Tax).toFixed(2)) + '></td>' +
+                                //'<td><input type="text" id="txtRefundDetailAttachFile" class="form-control input-mini RefundDetailAttachFile" value=' + "" + '></td>' +
+                                //'<td><input type="text" id="txtRefundDetailAttachFile" class="form-control input-mini RefundDetailAttachFile" value=' + RefundDetailAttachFile + '></td>' +
+                            '</tr>')
+            $('#TbRefundTrans').append(IsNewRow);
+            autoReRunning();
+        }
+
+        $(document).delegate('.numbersOnly', 'keypress', function (e) {
+            if (String.fromCharCode(e.keyCode).match(/[^0-9\.\,]/g)) return false;
+        });
+
+        $(document).delegate('.numbersOnly', 'focusout', function () {
+            var IsVal = parseFloat($(this).val().replace(/\,/g, ''));
+            $(this).val(ConvertString2DecimalFormat(IsVal.toFixed(2)));
+        });
+
+        $(document).delegate('.RefundDetailAmount,.Withholding_Tax', 'keyup', function () {
+            SumTotal();
+        });
+
+        function SumTotal() {
+            var Total = 0;
+            $(".RefundDetailAmount").each(function () {
+                Total += parseFloat($(this).val().replace(/\,/g, ''));
+            });
+            $(".Withholding_Tax").each(function () {
+                Total -= parseFloat($(this).val().replace(/\,/g, ''));
+            });
+            var Amount = parseFloat($('#txtAmount2').val().replace(/\,/g, ''));
+            var GrandTotal = Amount - Total;
+
+            $('#txtTotal').val(ConvertString2DecimalFormat(Total.toFixed(2)));
+            $('#txtGrandTotal').val(ConvertString2DecimalFormat(GrandTotal.toFixed(2)));
+
+            if (GrandTotal > 0) {
+                $('#chkRefundType1').prop("checked", true);
+                $('#chkRefundType2').prop("checked", false);
+            }
+            else if (GrandTotal < 0) {
+                $('#chkRefundType1').prop("checked", false);
+                $('#chkRefundType2').prop("checked", true);
+            }
+            else {
+                $('#chkRefundType1').prop("checked", false);
+                $('#chkRefundType2').prop("checked", false);
+            }
+        }
+
+
+
+        function getStatusDesc(AdvancePaymentID, DocumentStatusID) {
+            var result = "";
+            if (DocumentStatusID == "0" && AdvancePaymentID == "0") {
+                result = "New Document";
+            }
+            else if (DocumentStatusID == "0") {
+                result = "Draft";
+            }
+            else if (DocumentStatusID == "1") {
+                result = "Open";
+            }
+            else if (DocumentStatusID == "2") {
+                result = "กรุณามารับเงิน";
+            }
+            else if (DocumentStatusID == "3") {
+                result = "รับเงินแล้ว";
+            }
+            else if (DocumentStatusID == "4") {
+                result = "รออนุมัติการเคลียร์เงิน";
+            }
+            else if (DocumentStatusID == "5") {
+                result = "อนุมัติจบ";
+            }
+            return result;
+        }
+    });
+</script>

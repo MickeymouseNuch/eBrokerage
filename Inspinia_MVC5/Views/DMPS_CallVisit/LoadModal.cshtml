@@ -1,0 +1,760 @@
+﻿
+<div class="modal inmodal fade" id="modCallVisit" role="dialog" aria-hidden="true"  @*data-backdrop="static" data-keyboard="false"*@>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:10px">
+                <button type="button" class="close" id="BtnCloseTop"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body" style="padding-bottom:0px">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">แบบสอบถามลูกค้าสนใจเช่า/ซื้อ ต่อห้องชุด</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-8" style="text-align:right">
+                                                <label style="padding-top: 5px;">พนักงานขาย</label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtSaleName" name="txtSaleName" class="form-control" readonly style="cursor: not-allowed;" />
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top:5px">
+                                            <div class="col-lg-8" style="text-align:right">
+                                                <label style="padding-top: 5px;">วันที่</label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtDate" name="txtDate" class="form-control" readonly @*value="@System.DateTime.Now.ToString("dd/MM/yyyy")"*@ style="cursor: not-allowed;" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <hr />
+                                        <br />
+                                        <br />
+                                        <div class="row" id="" style="">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;">  </label>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">ลูกค้าต่างประเทศ  </label>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label class="checkbox-inline i-checks"><input type="checkbox" id="chkForeign" name="chkForeign" class="chkForeign" style="transform: scale(1.5);">&nbsp;&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <input type="text" id="txtChkName" name="txtChkName" hidden />
+                                                <label style="padding-top: 5px;">ชื่อ  : <b style="color:red">*</b></label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtName" name="txtName" class="form-control" maxlength="200" onkeypress="return /^[ก-๛a-zA-Z\-_\s]+$/i.test(event.key)" />
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label style="padding-top: 5px;">เบอร์โทรศัพท์ : <b style="color:red">*</b></label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtTel" name="txtTel" class="form-control allownumericwithoutdecimal" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align: left; margin-left: -26px;">
+                                                <button id="BtnSchTel" class="btn" title="ตรวจสอบข้อมูลซ้ำ"><i class="fa fa-search" style="color: currentcolor;"></i></button>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <input type="text" id="txtChkSurName" name="txtChkSurName" hidden />
+                                                <label style="padding-top: 5px;">นามสกุล : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtSurName" name="txtSurName" class="form-control" maxlength="200" onkeydown="return /^[ก-๛a-zA-Z\-_\s]+$/i.test(event.key)" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align: left; margin-left: -26px;">
+                                                <button id="BtnSchName" class="btn" title="ตรวจสอบข้อมูลซ้ำ"><i class="fa fa-search" style="color: currentcolor;"></i></button>
+                                            </div>
+                                            <div class="col-lg-2" style="text-align: right; margin-left: -20px; width: 146px;">
+                                                <label id="IDCardName" style="padding-top: 5px;">เลขบัตรประชาชน :  </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtIDCard" name="txtIDCard" class="form-control" maxlength="13" allownumericwithoutdecimal onkeypress="return /[0-9]/i.test(event.key)" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align: left; margin-left: -26px;">
+                                                <button id="BtnIDCard" class="btn" title="ตรวจสอบข้อมูลซ้ำ"><i class="fa fa-search" style="color: currentcolor;"></i></button>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;">Line ID : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtLineID" name="txtLineID" class="form-control" maxlength="500" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align: right;margin-left: 101px;">
+                                                <label style="padding-top: 5px;">E-mail :  </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtEmail" name="txtEmail" class="form-control" maxlength="500" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align:right">
+                                                <input type="text" id="txtChkTel" name="txtChkTel" hidden />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align:right">
+                                                <input type="text" id="txtChkIDCard" name="txtChkIDCard" hidden />
+                                            </div>
+
+                                        </div>
+                                        <br />
+                                        <br />
+
+                                        @*address*@
+
+                                        <div class="row" id="" style="">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;"> ที่อยู่ที่ติดต่อได้  </label>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">ต่างประเทศ  </label>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label class="checkbox-inline i-checks"><input type="checkbox" id="chkAddForeign" name="chkAddForeign" class="chkAddForeign" style="transform: scale(1.5);">&nbsp;&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div id="RealAddress1">
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">เลขที่ : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtAddress" name="txtAddress" class="form-control" maxlength="50" @*onkeypress="return /[0-9]/i.test(event.key)"*@ />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">หมู่บ้าน/อาคาร : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <input type="text" id="txtBuilding" name="txtBuilding" class="form-control" maxlength="500" />
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">หมู่ที่ : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtMoo" name="txtMoo" class="form-control" maxlength="50" onkeypress="return /[0-9]/i.test(event.key)" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">ถนน : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <input type="text" id="txtRoad" name="txtRoad" class="form-control " maxlength="500" />
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">ชั้น : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtFloor" name="txtFloor" class="form-control" maxlength="50" @*onkeypress="return /[0-9]/i.test(event.key)"*@ />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">จังหวัด: </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    @Html.DropDownList("ddlRealAdressProvince", null, "Please Select", new { @class = "ddlRealAdressProvince js-ddl-single form-control", style = "width:100%" })
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">ซอย : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtSoi" name="txtSoi" class="form-control" maxlength="500" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">เขต/อำเภอ : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <select class="js-ddl-single" name="ddlRealAdressDistrict" id="ddlRealAdressDistrict" style="margin-top: 5px;width: 100%; " disabled="disabled">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">รหัสไปรษณีย์ : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtZipCode" name="txtZipCode" class="form-control" maxlength="5" onkeypress="return /[0-9]/i.test(event.key)" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">แขวง/ตำบล : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <select class="js-ddl-single" name="ddlRealAdressSubDistrict" id="ddlRealAdressSubDistrict" style="margin-top: 5px;width: 100%; " disabled="disabled">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div id="RealAddress2" style="display:none">
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">ที่อยู่ : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtRealAddressDetails" name="txtRealAddressDetails" class="form-control" style="width: 22pc;" maxlength="10000" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">ประเทศ : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    @Html.DropDownList("ddlRealAddress2Country", null, "Please Select", new { @class = "ddlRealAddress2Country js-ddl-single form-control", style = "width:100%" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <br />
+
+                                        @*work address*@
+                                        <div class="row" id="" style="">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;"> ที่อยู่ที่ทำงาน  </label>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <label id="" class="" data-id="" style="padding-top: 5px;">ต่างประเทศ  </label>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label class="checkbox-inline i-checks"><input type="checkbox" id="chkWorkAddForeign" name="chkWorkAddForeign" class="chkWorkAddForeign" style="transform: scale(1.5);">&nbsp;&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;">บริษัท : </label>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" id="txtCompany" name="txtCompany" class="form-control" style="" maxlength="10000" />
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label style="padding-top: 5px;">ตำแหน่งงาน : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtPosition" name="txtPosition" class="form-control " style="" maxlength="500" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div id="AddressCompany1">
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">เลขที่ : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtAddressCom" name="txtAddressCom" class="form-control" style="" maxlength="50" @*onkeypress="return /[0-9]/i.test(event.key)"*@ />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">หมู่บ้าน/อาคาร : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <input type="text" id="txtBuildingCom" name="txtBuildingCom" class="form-control " style="" maxlength="500" />
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">หมู่ที่ : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtMooCom" name="txtMooCom" class="form-control" style="" maxlength="50" onkeypress="return /[0-9]/i.test(event.key)" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">ถนน : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <input type="text" id="txtRoadCom" name="txtRoadCom" class="form-control " style="" maxlength="500" />
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">ชั้น : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtFloorCom" name="txtFloorCom" class="form-control" style="" maxlength="50" @*onkeypress="return /[0-9]/i.test(event.key)"*@ />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">จังหวัด : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    @Html.DropDownList("ddlWorkAdressProvince", null, "Please Select", new { @class = "ddlWorkAdressProvince js-ddl-single form-control", style = "width:100%" })
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">ซอย : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtSoiCom" name="txtSoiCom" class="form-control" style="" maxlength="500" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">เขต/อำเภอ : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <select class="js-ddl-single" name="ddlWorkAdressDistrict" id="ddlWorkAdressDistrict" style="margin-top: 5px;width: 100%; " disabled="disabled">
+                                                    </select>
+                                                    @*@Html.DropDownList("ddlWorkAdressDistrict", null, "Please Select", new { @class = "ddlWorkAdressDistrict js-ddl-single form-control", style = "width:100%" })*@
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">รหัสไปรษณีย์ : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtZipCodeCom" name="txtZipCodeCom" class="form-control" style="" maxlength="5" onkeypress="return /[0-9]/i.test(event.key)" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">แขวง/ตำบล: </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    <select class="js-ddl-single" name="ddlWorkAdressSubDistrict" id="ddlWorkAdressSubDistrict" style="margin-top: 5px;width: 100%;" disabled="disabled">
+                                                    </select>
+                                                    @*@Html.DropDownList("ddlWorkAdressSubDistrict", null, "Please Select", new { @class = "ddlWorkAdressSubDistrict js-ddl-single form-control", style = "width:100%" })*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div id="AddressCompany2" style="display:none">
+                                            <div class="row">
+                                                <div class="col-lg-3" style="text-align:right">
+                                                    <label style="padding-top: 5px;">ที่อยู่ : </label>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <input type="text" id="txtAddressCompanyDetails" name="txtAddressCompanyDetails" class="form-control" style="width: 22pc;" maxlength="10000" />
+                                                </div>
+                                                <div class="col-lg-2" style="text-align:right">
+                                                    <label style="padding-top: 5px;">ประเทศ : </label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    @Html.DropDownList("ddlWorkAdressCountry", null, "Please Select", new { @class = "ddlWorkAddressCountry js-ddl-single form-control", style = "width:100%" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-lg-8" style="text-align:left">
+                                                <label style="padding-top: 5px; padding-left: 3pc"> ข้อมูลการรับรู้สื่อประชาสัมพันธ์ (ท่านทราบข่าวโครงการจากสิ่งใด) </label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;">สื่อ : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlMediaName", null, null, new { @class = "ddlMediaName js-ddl-single form-control", style = "width:100%", multiple = "multiple" })
+                                            </div>
+                                            <div id="dvMediaMore" class="col-lg-2" style="text-align:right;display:none">
+                                                <label style="margin-right: 130px; padding-top: 5px;">ระบุ :</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align: left; margin-left: -9pc">
+                                                <input type="text" id="txtMediaOther" name="txtMediaOther" class="form-control " style="display:none" data-id="" value="" maxlength="500" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <hr />
+                                        <div class="row" id="" style="">
+                                            <div class="col-lg-8" style="text-align:left">
+                                                <label style="padding-top: 5px; padding-left: 4pc"> ข้อมูลส่วนบุคคล  </label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;">สถานะ : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlMaritalStatus", null, "Please Select", new { @class = "ddlMaritalStatus js-ddl-single form-control", style = "width:100%" })
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;">อายุ : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlAges", null, "Please Select", new { @class = "ddlAges js-ddl-single form-control", style = "width:100%" })
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;">อาชีพ : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlOccupations", null, "Please Select", new { @class = "ddlOccupations js-ddl-single form-control", style = "width:100%" })
+                                            </div>
+                                            <div id="dvOccMore" class="col-lg-2" style="text-align:right;display:none">
+                                                <label style="margin-right: 130px; padding-top: 5px;">ระบุ :</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align: left; margin-left: -9pc">
+                                                <input type="text" id="txtOccOther" name="txtOccOther" class="form-control " style="display:none" data-id="" value="" maxlength="500" />
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 2px;">รายได้ต่อเดือน : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlSalaries", null, "Please Select", new { @class = "ddlSalaries js-ddl-single form-control", style = "width:100%" })
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 2px;">งบประมาณในการเช่าห้องชุด : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlBudgets", null, "Please Select", new { @class = "ddlBudgets js-ddl-single form-control", style = "width:100%" })
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;">วัตถุประสงค์หลักในการเช่า : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlPurposes", null, null, new { @class = "ddlPurposes js-ddl-single form-control", style = "width:100%", multiple = "multiple" })
+                                            </div>
+                                            <div id="dvPPMore" class="col-lg-2" style="text-align:right;display:none">
+                                                <label style="margin-right: 130px; padding-top: 5px;">ระบุ :</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align: left; margin-left: -9pc">
+                                                <input type="text" id="txtPPOther" name="txtPPther" class="form-control " style="display:none" data-id="" value="" maxlength="500" />
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;">สาเหตุยังตัดสินใจ : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlReasonName", null, null, new { @class = "ddlReasonName js-ddl-single form-control", style = "width:100%", multiple = "multiple" })
+                                            </div>
+                                            <div id="dvReasonMore" class="col-lg-2" style="text-align:right;display:none">
+                                                <label style="margin-right: 130px; padding-top: 5px;">ระบุ :</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align: left; margin-left: -9pc">
+                                                <input type="text" id="txtReasonOther" name="txtReasonOther" class="form-control " style="display:none" data-id="" value="" maxlength="500" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 9px; margin-top: 10px">โครงการ/คอนโดที่ท่านดูเปรียบเทียบ : </label>
+                                            </div>
+                                            <div class="col-lg-9" style="padding-top: 8px; padding-left: 0px;">
+                                                <table style="text-align: left; width:90%">
+                                                    <tr>
+                                                        <td style="margin-top:3px ; text-align:center; width:10px">1.&nbsp; </td>
+                                                        <td><input id="Compare1" type="text" class="Compare form-control" maxlength="500" style="margin: 5px;" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="margin-top:3px; text-align:center; width:10px">2.&nbsp; </td>
+                                                        <td><input id="Compare2" type="text" class="Compare form-control" maxlength="500" style="margin: 5px;" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="margin-top:3px; text-align:center; width:10px">3.&nbsp; </td>
+                                                        <td><input id="Compare3" type="text" class="Compare form-control" maxlength="500" style="margin: 5px;" /></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <br />
+                                        <br />
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <br />
+                                                <label style="padding-left: 0px; font-size: 14px; ">การขอความยินยอมข้อมูลส่วนบุคคล</label>
+                                                <br />
+                                                <div style="padding-left: 0px; padding-top: 2pc; " class="row">
+                                                    <div class="col-sm-12" style="border-style: groove; width: 100%; height: 38pc; border-color: #f7f7f7; border-style: solid;">
+                                                        <br />
+                                                        <div id="dvPDPA"></div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="pull-right" style="padding:15px">
+                                                                    <input type="hidden" id="txtPDPAID" />
+                                                                    @*<button type="button" id="btnSavePDPA" class="btn btn-warning right"><i class="fa fa-save"></i>&nbsp;&nbsp;Save Concent</button>*@
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-9" style="text-align:right">
+                                                <label style="padding-top: 5px;"> พนักงานขาย : </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlSaleName", null, "Please Select", new { @class = "ddlSaleName js-ddl-single form-control", style = "width:100%"  })
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-12" style="text-align:right">
+                                                <input type="hidden" id="txtCallvisitID" />
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="pull-right" style="padding:15px">
+                                                    <button type="button" id="btnSave" class="btn btn-primary right"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="rowButDetail">
+                        <div class="col-sm-10" style="padding-right:0px;padding-left:15px;margin-bottom: 2px;">
+                            <button id="btnAddActivityDetail" class="btn btn-success" title="เพิ่มActivity"><i class="fa fa-plus-circle"></i></button>
+                            <button id="btnDeleteActivityDetail" name="btnDeleteActivityDetail" class="btn btn-danger" title="ลบActivity"><i class="fa fa-minus-circle"></i></button>
+                            <input type="hidden" id="txtCallVisitActivityID" />
+                        </div>
+                    </div>
+
+                    <div class="row" id="" style="">
+                        <div id="" class="col-lg-12" style="">
+                            <div class="panel-group" id="accordionName">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordionName" href="#collapseName">Activity Details</a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseName" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="ibox float-e-margins">
+                                                        <div class="ibox-content">
+                                                            <div style="overflow-x:scroll; ">
+                                                                <table id="tbCustUnits" class="table table-striped table-bordered table-hover dataTables-Activity dataTable" style="width:2000px">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th style="width:40px ">No.</th>
+                                                                            <th style="width:26px"></th>
+                                                                            <th hidden>CallVisitActivityID</th>
+                                                                            <th style="width: 26px; text-align: center;"></th>
+                                                                            <th style="text-align: center;">โครงการ</th>
+                                                                            <th style="width: 160px; text-align: center;">Activity</th>
+                                                                            <th style="width: 160px; text-align: center;">หัวข้อสนทนา</th>
+                                                                            <th style="text-align: center;">รายละเอียดลูกค้า</th>
+                                                                            <th style="width: 100px; text-align: center;">วันที่</th>
+                                                                            <th style="width: 150px; text-align: center;">ผู้บันทึก</th>
+                                                                            <th style="width: 150px; text-align: center;">ผู้แก้ไข</th>
+
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="tbLoadDataActivityDetails"></tbody>
+
+                                                                    <tfoot>
+                                                                        <tr></tr>
+                                                                    </tfoot>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row" id="" style="">
+                    <div id="" class="col-lg-12" style="text-align:right">
+                        @*<button type="button" id="btnSaveModel" class="btn btn-primary right"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>*@
+                        <button type="button" id="btnClose" class="btn btn-default-close" data-id="" ><i class="fa fa-close"></i>&nbsp;&nbsp;Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- popup activity -->
+
+<div class="modal inmodal fade" id="ActivityDetailsModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:10px">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body" style="padding-bottom:0px">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel-group">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse">Call-Visit Acitity </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body" style=" padding-left: 55px;">
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;"> Developer : <b style="color:red">*</b></label>
+                                                <input type="hidden" id="txtCallVisitActivityDetailsID" />
+                                            </div>
+                                            <div id="dvProjectName" class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlDeveloper", null, "Please Select", new { @class = "ddlDeveloper js-ddl-single form-control", style = "width:100%" })
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;"> โครงการ : <b style="color:red">*</b></label>
+                                            </div>
+                                            <div id="dvProjectName" class="col-lg-3" style="text-align:left">
+                                                <select class="js-ddl-single" name="ddlProjectName" id="ddlProjectName" style="margin-top: 5px;width: 100%;" disabled="disabled"></select>
+                                                @*@Html.DropDownList("ddl_Project", null, "Please Select", new { @class = "ddl_Project js-ddl-single form-control", style = "width:100%" })*@
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;"> Activity : <b style="color:red">*</b></label>
+                                                <input type="hidden" id="txtCurrentActivityID" readonly/>
+                                            </div>
+                                            <div id="dvAcitivity" class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlActivity", null, "Please Select", new { @class = "ddlActivity js-ddl-single form-control", style = "width:100%" })
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 11px;"> วันที่ : <b style="color:red">*</b></label>
+                                            </div>
+                                            <div id="dvDate" class="col-lg-3" style="text-align:left">
+                                                <div class="form-group" id="data_date" style="margin-top: 5px;">
+                                                    <div class="input-group date">
+                                                        <input id="ActivityDate" type="text" class="form-control" value=""><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;">หัวข้อสนทนา : <b style="color:red">*</b></label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlTopic", null, "Please Select", new { @class = "ddlTopic js-ddl-single form-control", style = "width:100%" })
+                                            </div>
+                                            <div id="dvTopicOther" class="col-lg-3" style="text-align: right; padding-right: 95px; display: none">
+                                                <label style="margin-right: 130px; padding-top: 5px;">ระบุ :<b style="color:red">*</b></label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align: left; margin-left: -14pc">
+                                                <input type="text" id="txtTopicOther" name="txtTopicOther" class="form-control " style="display:none" maxlength="500" />
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-lg-3" style="text-align:right">
+                                                <label style="padding-top: 5px;"> รายละเอียดลูกค้า : <b style="color:red">*</b></label>
+                                            </div>
+                                            <div id="dvActivityDetails" class="col-lg-3" style="text-align:start">
+                                                <textarea  type="text" id="txtActivityDetailsOther" name="txtActivityDetailsOther" class="form-control" style="width: 100%; height: 80px; margin-top: 10px;" maxlength="500" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row" id="" style="">
+                    <div id="" class="col-lg-12" style="text-align:right">
+                        <button type="button" id="btnAcitivityDetailsSave" class="btn btn-primary right"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
+                        <button type="button" id="btnAcitivityDetailsClose" class="btn btn-default-close" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;&nbsp;Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*----------------------- Import CSS---------------------- *@
+@Styles.Render("~/plugins/footableStyles")
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+@Styles.Render("~/plugins/select2Styles")
+@Styles.Render("~/plugins/dataPickerStyles")
+@Styles.Render("~/plugins/sweetAlertStyles")
+@Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+@*-------------------------------------------------------- *@
+
+@*------------------ Import JavaScript-------------------- *@
+@Scripts.Render("~/plugins/footable")
+@Scripts.Render("~/plugins/dataTables")
+@Scripts.Render("~/plugins/select2")
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/sweetAlert")
+@Scripts.Render("~/plugins/iCheck")
+@*-------------------------------------------------------- *@
+
+<script src="~/Scripts/Main/JS_Main.js"></script>
+<script src="~/Scripts/Main/Utility.js"></script>
+<script src="~/Scripts/Main/date.format.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+</script>

@@ -1,0 +1,684 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CADModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdvancePayment">
+          <Key>
+            <PropertyRef Name="AdvancePaymentID" />
+          </Key>
+          <Property Name="AdvancePaymentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdvancePaymentNO" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentDate" Type="datetime" />
+          <Property Name="DeptofCost" Type="bigint" />
+          <Property Name="PaymentOwner" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="bigint" />
+          <Property Name="DeptId" Type="bigint" />
+          <Property Name="PositionTransID" Type="bigint" />
+          <Property Name="ProjectID" Type="nvarchar" MaxLength="15" />
+          <Property Name="BudgetAccountID" Type="bigint" />
+          <Property Name="BudgetModelID" Type="bigint" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PaymentRemark" Type="varchar(max)" />
+          <Property Name="ClearCashDate" Type="datetime" />
+          <Property Name="PaymentTypeID" Type="bigint" />
+          <Property Name="ReceiveCashDate" Type="datetime" />
+          <Property Name="PVNo" Type="varchar" MaxLength="50" />
+          <Property Name="ChequeDateIn" Type="datetime" />
+          <Property Name="ChequeDate" Type="datetime" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+          <Property Name="DocumentStatusID" Type="int" />
+          <Property Name="DeptofCostCode" Type="varchar" MaxLength="50" />
+          <Property Name="DeptCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Config_Employee">
+          <Key>
+            <PropertyRef Name="RunningID" />
+          </Key>
+          <Property Name="RunningID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConfigID" Type="bigint" />
+          <Property Name="EmployeeID" Type="varchar" MaxLength="50" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="ConfigCAD">
+          <Key>
+            <PropertyRef Name="ConfigID" />
+          </Key>
+          <Property Name="ConfigID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptID" Type="varchar" MaxLength="50" />
+          <Property Name="DeptCode" Type="varchar" MaxLength="50" />
+          <Property Name="IsFN" Type="bit" />
+          <Property Name="IsGA" Type="bit" />
+          <Property Name="AmountMax" Type="money" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="isDelete" Type="bit" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="Createdate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DocumentStatusTable">
+          <Key>
+            <PropertyRef Name="DocumentStatusID" />
+          </Key>
+          <Property Name="DocumentStatusID" Type="int" Nullable="false" />
+          <Property Name="DocumentStatusName" Type="nvarchar(max)" />
+          <Property Name="DocumentStatusNameEN" Type="nvarchar" MaxLength="100" />
+          <Property Name="Creator" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreateDateTime" Type="datetime" />
+          <Property Name="Reviser" Type="nvarchar" MaxLength="100" />
+          <Property Name="ReviserDateTime" Type="datetime" />
+          <Property Name="Action" Type="char" MaxLength="2" />
+          <Property Name="LableStyle" Type="nvarchar(max)" />
+          <Property Name="FontColor" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="PaymentTypeTable">
+          <Key>
+            <PropertyRef Name="PaymentTypeID" />
+          </Key>
+          <Property Name="PaymentTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentNameTH" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentNameEN" Type="varchar" MaxLength="50" />
+          <Property Name="Cretor" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+        </EntityType>
+        <EntityType Name="RefundTable">
+          <Key>
+            <PropertyRef Name="RefundID" />
+          </Key>
+          <Property Name="RefundID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefundNO" Type="varchar" MaxLength="50" />
+          <Property Name="AdvancePaymentID" Type="bigint" />
+          <Property Name="RefundDate" Type="datetime" />
+          <Property Name="JVNo" Type="varchar" MaxLength="50" />
+          <Property Name="AttachFile" Type="varchar(max)" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+        </EntityType>
+        <EntityType Name="RefundTrans">
+          <Key>
+            <PropertyRef Name="RefundTransID" />
+          </Key>
+          <Property Name="RefundTransID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefundTransNO" Type="varchar" MaxLength="50" />
+          <Property Name="RefundID" Type="bigint" />
+          <Property Name="RefundDetail" Type="varchar(max)" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Withholding_Tax" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+        </EntityType>
+        <EntityType Name="RefundTypeTable">
+          <Key>
+            <PropertyRef Name="RefundTypeID" />
+          </Key>
+          <Property Name="RefundTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefundNameTH" Type="varchar" MaxLength="50" />
+          <Property Name="RefundNameEN" Type="varchar" MaxLength="50" />
+          <Property Name="Cretor" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Reviser" Type="bigint" />
+          <Property Name="ReviserDate" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteBy" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAD.dbo.vw_AdvancePaymentList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_AdvancePaymentList">
+          <Key>
+            <PropertyRef Name="AdvancePaymentID" />
+            <PropertyRef Name="AdvancePaymentAmt" />
+            <PropertyRef Name="Balance" />
+          </Key>
+          <Property Name="AdvancePaymentID" Type="bigint" Nullable="false" />
+          <Property Name="AdvancePaymentNO" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentDate" Type="datetime" />
+          <Property Name="PaymentOwner" Type="varchar" MaxLength="50" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="255" />
+          <Property Name="ProjectID" Type="nvarchar" MaxLength="15" />
+          <Property Name="AdvancePaymentAmt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PVNo" Type="varchar" MaxLength="50" />
+          <Property Name="ChequeDateIn" Type="datetime" />
+          <Property Name="RefundDate" Type="datetime" />
+          <Property Name="JVNo" Type="varchar" MaxLength="50" />
+          <Property Name="RefundAmt" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="OtheAmt" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DocumentStatusID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="Creator" Type="bigint" />
+          <Property Name="StampDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAD.dbo.vw_ReportAdvancePayment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_ReportAdvancePayment">
+          <Key>
+            <PropertyRef Name="AdvancePaymentID" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="AdvancePaymentID" Type="bigint" Nullable="false" />
+          <Property Name="AdvancePaymentNO" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentDate" Type="datetime" />
+          <Property Name="CostCenter" Type="varchar" MaxLength="50" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="255" />
+          <Property Name="PositionName" Type="varchar" MaxLength="255" />
+          <Property Name="DeptDescription" Type="varchar(max)" />
+          <Property Name="ProjectName" Type="nvarchar(max)" />
+          <Property Name="BudgetAccountNameTH" Type="varchar" MaxLength="200" />
+          <Property Name="BudgetModelNameTH" Type="varchar" MaxLength="200" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PaymentRemark" Type="varchar(max)" />
+          <Property Name="ReceiveCashDate" Type="datetime" />
+          <Property Name="PaymentTypeID" Type="bigint" />
+          <Property Name="DeptCode" Type="varchar" MaxLength="50" />
+          <Property Name="DeptofCostCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="CADModelStoreContainer">
+          <EntitySet Name="AdvancePayment" EntityType="Self.AdvancePayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Config_Employee" EntityType="Self.Config_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConfigCAD" EntityType="Self.ConfigCAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentStatusTable" EntityType="Self.DocumentStatusTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTypeTable" EntityType="Self.PaymentTypeTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefundTable" EntityType="Self.RefundTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefundTrans" EntityType="Self.RefundTrans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefundTypeTable" EntityType="Self.RefundTypeTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_AdvancePaymentList" EntityType="Self.vw_AdvancePaymentList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_AdvancePaymentList].[AdvancePaymentID] AS [AdvancePaymentID], 
+    [vw_AdvancePaymentList].[AdvancePaymentNO] AS [AdvancePaymentNO], 
+    [vw_AdvancePaymentList].[DocumentDate] AS [DocumentDate], 
+    [vw_AdvancePaymentList].[PaymentOwner] AS [PaymentOwner], 
+    [vw_AdvancePaymentList].[DisplayName] AS [DisplayName], 
+    [vw_AdvancePaymentList].[ProjectID] AS [ProjectID], 
+    [vw_AdvancePaymentList].[AdvancePaymentAmt] AS [AdvancePaymentAmt], 
+    [vw_AdvancePaymentList].[PVNo] AS [PVNo], 
+    [vw_AdvancePaymentList].[ChequeDateIn] AS [ChequeDateIn], 
+    [vw_AdvancePaymentList].[RefundDate] AS [RefundDate], 
+    [vw_AdvancePaymentList].[JVNo] AS [JVNo], 
+    [vw_AdvancePaymentList].[RefundAmt] AS [RefundAmt], 
+    [vw_AdvancePaymentList].[OtheAmt] AS [OtheAmt], 
+    [vw_AdvancePaymentList].[Balance] AS [Balance], 
+    [vw_AdvancePaymentList].[DocumentStatusID] AS [DocumentStatusID], 
+    [vw_AdvancePaymentList].[IsDelete] AS [IsDelete], 
+    [vw_AdvancePaymentList].[Creator] AS [Creator], 
+    [vw_AdvancePaymentList].[StampDate] AS [StampDate]
+    FROM [dbo].[vw_AdvancePaymentList] AS [vw_AdvancePaymentList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ReportAdvancePayment" EntityType="Self.vw_ReportAdvancePayment" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ReportAdvancePayment].[AdvancePaymentID] AS [AdvancePaymentID], 
+    [vw_ReportAdvancePayment].[AdvancePaymentNO] AS [AdvancePaymentNO], 
+    [vw_ReportAdvancePayment].[DocumentDate] AS [DocumentDate], 
+    [vw_ReportAdvancePayment].[CostCenter] AS [CostCenter], 
+    [vw_ReportAdvancePayment].[DisplayName] AS [DisplayName], 
+    [vw_ReportAdvancePayment].[PositionName] AS [PositionName], 
+    [vw_ReportAdvancePayment].[DeptDescription] AS [DeptDescription], 
+    [vw_ReportAdvancePayment].[ProjectName] AS [ProjectName], 
+    [vw_ReportAdvancePayment].[BudgetAccountNameTH] AS [BudgetAccountNameTH], 
+    [vw_ReportAdvancePayment].[BudgetModelNameTH] AS [BudgetModelNameTH], 
+    [vw_ReportAdvancePayment].[Amount] AS [Amount], 
+    [vw_ReportAdvancePayment].[PaymentRemark] AS [PaymentRemark], 
+    [vw_ReportAdvancePayment].[ReceiveCashDate] AS [ReceiveCashDate], 
+    [vw_ReportAdvancePayment].[PaymentTypeID] AS [PaymentTypeID], 
+    [vw_ReportAdvancePayment].[DeptCode] AS [DeptCode], 
+    [vw_ReportAdvancePayment].[DeptofCostCode] AS [DeptofCostCode]
+    FROM [dbo].[vw_ReportAdvancePayment] AS [vw_ReportAdvancePayment]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CADModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdvancePayment">
+          <Key>
+            <PropertyRef Name="AdvancePaymentID" />
+          </Key>
+          <Property Name="AdvancePaymentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdvancePaymentNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentDate" Type="DateTime" Precision="3" />
+          <Property Name="DeptofCost" Type="Int64" />
+          <Property Name="PaymentOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyId" Type="Int64" />
+          <Property Name="DeptId" Type="Int64" />
+          <Property Name="PositionTransID" Type="Int64" />
+          <Property Name="ProjectID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="BudgetAccountID" Type="Int64" />
+          <Property Name="BudgetModelID" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PaymentRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClearCashDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentTypeID" Type="Int64" />
+          <Property Name="ReceiveCashDate" Type="DateTime" Precision="3" />
+          <Property Name="PVNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChequeDateIn" Type="DateTime" Precision="3" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="3" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+          <Property Name="DocumentStatusID" Type="Int32" />
+          <Property Name="DeptofCostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Config_Employee">
+          <Key>
+            <PropertyRef Name="RunningID" />
+          </Key>
+          <Property Name="RunningID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigID" Type="Int64" />
+          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ConfigCAD">
+          <Key>
+            <PropertyRef Name="ConfigID" />
+          </Key>
+          <Property Name="ConfigID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsFN" Type="Boolean" />
+          <Property Name="IsGA" Type="Boolean" />
+          <Property Name="AmountMax" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isDelete" Type="Boolean" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="Createdate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DocumentStatusTable">
+          <Key>
+            <PropertyRef Name="DocumentStatusID" />
+          </Key>
+          <Property Name="DocumentStatusID" Type="Int32" Nullable="false" />
+          <Property Name="DocumentStatusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentStatusNameEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Creator" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ReviserDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Action" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="LableStyle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FontColor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PaymentTypeTable">
+          <Key>
+            <PropertyRef Name="PaymentTypeID" />
+          </Key>
+          <Property Name="PaymentTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentNameTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cretor" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="RefundTable">
+          <Key>
+            <PropertyRef Name="RefundID" />
+          </Key>
+          <Property Name="RefundID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefundNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdvancePaymentID" Type="Int64" />
+          <Property Name="RefundDate" Type="DateTime" Precision="3" />
+          <Property Name="JVNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AttachFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="RefundTran">
+          <Key>
+            <PropertyRef Name="RefundTransID" />
+          </Key>
+          <Property Name="RefundTransID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefundTransNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RefundID" Type="Int64" />
+          <Property Name="RefundDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Withholding_Tax" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="RefundTypeTable">
+          <Key>
+            <PropertyRef Name="RefundTypeID" />
+          </Key>
+          <Property Name="RefundTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefundNameTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RefundNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cretor" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int64" />
+          <Property Name="ReviserDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="vw_AdvancePaymentList">
+          <Key>
+            <PropertyRef Name="AdvancePaymentID" />
+            <PropertyRef Name="AdvancePaymentAmt" />
+            <PropertyRef Name="Balance" />
+          </Key>
+          <Property Name="AdvancePaymentID" Type="Int64" Nullable="false" />
+          <Property Name="AdvancePaymentNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="AdvancePaymentAmt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PVNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChequeDateIn" Type="DateTime" Precision="3" />
+          <Property Name="RefundDate" Type="DateTime" Precision="3" />
+          <Property Name="JVNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RefundAmt" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="OtheAmt" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DocumentStatusID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="Creator" Type="Int64" />
+          <Property Name="StampDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vw_ReportAdvancePayment">
+          <Key>
+            <PropertyRef Name="AdvancePaymentID" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="AdvancePaymentID" Type="Int64" Nullable="false" />
+          <Property Name="AdvancePaymentNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentDate" Type="DateTime" Precision="3" />
+          <Property Name="CostCenter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PositionName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DeptDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BudgetAccountNameTH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BudgetModelNameTH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PaymentRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiveCashDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentTypeID" Type="Int64" />
+          <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeptofCostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CADEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdvancePayments" EntityType="Self.AdvancePayment" />
+          <EntitySet Name="Config_Employee" EntityType="Self.Config_Employee" />
+          <EntitySet Name="ConfigCADs" EntityType="Self.ConfigCAD" />
+          <EntitySet Name="DocumentStatusTables" EntityType="Self.DocumentStatusTable" />
+          <EntitySet Name="PaymentTypeTables" EntityType="Self.PaymentTypeTable" />
+          <EntitySet Name="RefundTables" EntityType="Self.RefundTable" />
+          <EntitySet Name="RefundTrans" EntityType="Self.RefundTran" />
+          <EntitySet Name="RefundTypeTables" EntityType="Self.RefundTypeTable" />
+          <EntitySet Name="vw_AdvancePaymentList" EntityType="Self.vw_AdvancePaymentList" />
+          <EntitySet Name="vw_ReportAdvancePayment" EntityType="Self.vw_ReportAdvancePayment" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CADModelStoreContainer" CdmEntityContainer="CADEntities">
+          <EntitySetMapping Name="AdvancePayments">
+            <EntityTypeMapping TypeName="CADModel.AdvancePayment">
+              <MappingFragment StoreEntitySet="AdvancePayment">
+                <ScalarProperty Name="AdvancePaymentID" ColumnName="AdvancePaymentID" />
+                <ScalarProperty Name="AdvancePaymentNO" ColumnName="AdvancePaymentNO" />
+                <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+                <ScalarProperty Name="DeptofCost" ColumnName="DeptofCost" />
+                <ScalarProperty Name="PaymentOwner" ColumnName="PaymentOwner" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="PositionTransID" ColumnName="PositionTransID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="BudgetAccountID" ColumnName="BudgetAccountID" />
+                <ScalarProperty Name="BudgetModelID" ColumnName="BudgetModelID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentRemark" ColumnName="PaymentRemark" />
+                <ScalarProperty Name="ClearCashDate" ColumnName="ClearCashDate" />
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
+                <ScalarProperty Name="ReceiveCashDate" ColumnName="ReceiveCashDate" />
+                <ScalarProperty Name="PVNo" ColumnName="PVNo" />
+                <ScalarProperty Name="ChequeDateIn" ColumnName="ChequeDateIn" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+                <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+                <ScalarProperty Name="DeptofCostCode" ColumnName="DeptofCostCode" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Config_Employee">
+            <EntityTypeMapping TypeName="CADModel.Config_Employee">
+              <MappingFragment StoreEntitySet="Config_Employee">
+                <ScalarProperty Name="RunningID" ColumnName="RunningID" />
+                <ScalarProperty Name="ConfigID" ColumnName="ConfigID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfigCADs">
+            <EntityTypeMapping TypeName="CADModel.ConfigCAD">
+              <MappingFragment StoreEntitySet="ConfigCAD">
+                <ScalarProperty Name="ConfigID" ColumnName="ConfigID" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="IsFN" ColumnName="IsFN" />
+                <ScalarProperty Name="IsGA" ColumnName="IsGA" />
+                <ScalarProperty Name="AmountMax" ColumnName="AmountMax" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentStatusTables">
+            <EntityTypeMapping TypeName="CADModel.DocumentStatusTable">
+              <MappingFragment StoreEntitySet="DocumentStatusTable">
+                <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+                <ScalarProperty Name="DocumentStatusName" ColumnName="DocumentStatusName" />
+                <ScalarProperty Name="DocumentStatusNameEN" ColumnName="DocumentStatusNameEN" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDateTime" ColumnName="ReviserDateTime" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="LableStyle" ColumnName="LableStyle" />
+                <ScalarProperty Name="FontColor" ColumnName="FontColor" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypeTables">
+            <EntityTypeMapping TypeName="CADModel.PaymentTypeTable">
+              <MappingFragment StoreEntitySet="PaymentTypeTable">
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
+                <ScalarProperty Name="PaymentNameTH" ColumnName="PaymentNameTH" />
+                <ScalarProperty Name="PaymentNameEN" ColumnName="PaymentNameEN" />
+                <ScalarProperty Name="Cretor" ColumnName="Cretor" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefundTables">
+            <EntityTypeMapping TypeName="CADModel.RefundTable">
+              <MappingFragment StoreEntitySet="RefundTable">
+                <ScalarProperty Name="RefundID" ColumnName="RefundID" />
+                <ScalarProperty Name="RefundNO" ColumnName="RefundNO" />
+                <ScalarProperty Name="AdvancePaymentID" ColumnName="AdvancePaymentID" />
+                <ScalarProperty Name="RefundDate" ColumnName="RefundDate" />
+                <ScalarProperty Name="JVNo" ColumnName="JVNo" />
+                <ScalarProperty Name="AttachFile" ColumnName="AttachFile" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefundTrans">
+            <EntityTypeMapping TypeName="CADModel.RefundTran">
+              <MappingFragment StoreEntitySet="RefundTrans">
+                <ScalarProperty Name="RefundTransID" ColumnName="RefundTransID" />
+                <ScalarProperty Name="RefundTransNO" ColumnName="RefundTransNO" />
+                <ScalarProperty Name="RefundID" ColumnName="RefundID" />
+                <ScalarProperty Name="RefundDetail" ColumnName="RefundDetail" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Withholding_Tax" ColumnName="Withholding_Tax" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefundTypeTables">
+            <EntityTypeMapping TypeName="CADModel.RefundTypeTable">
+              <MappingFragment StoreEntitySet="RefundTypeTable">
+                <ScalarProperty Name="RefundTypeID" ColumnName="RefundTypeID" />
+                <ScalarProperty Name="RefundNameTH" ColumnName="RefundNameTH" />
+                <ScalarProperty Name="RefundNameEN" ColumnName="RefundNameEN" />
+                <ScalarProperty Name="Cretor" ColumnName="Cretor" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="ReviserDate" ColumnName="ReviserDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_AdvancePaymentList">
+            <EntityTypeMapping TypeName="CADModel.vw_AdvancePaymentList">
+              <MappingFragment StoreEntitySet="vw_AdvancePaymentList">
+                <ScalarProperty Name="AdvancePaymentID" ColumnName="AdvancePaymentID" />
+                <ScalarProperty Name="AdvancePaymentNO" ColumnName="AdvancePaymentNO" />
+                <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+                <ScalarProperty Name="PaymentOwner" ColumnName="PaymentOwner" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="AdvancePaymentAmt" ColumnName="AdvancePaymentAmt" />
+                <ScalarProperty Name="PVNo" ColumnName="PVNo" />
+                <ScalarProperty Name="ChequeDateIn" ColumnName="ChequeDateIn" />
+                <ScalarProperty Name="RefundDate" ColumnName="RefundDate" />
+                <ScalarProperty Name="JVNo" ColumnName="JVNo" />
+                <ScalarProperty Name="RefundAmt" ColumnName="RefundAmt" />
+                <ScalarProperty Name="OtheAmt" ColumnName="OtheAmt" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="StampDate" ColumnName="StampDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ReportAdvancePayment">
+            <EntityTypeMapping TypeName="CADModel.vw_ReportAdvancePayment">
+              <MappingFragment StoreEntitySet="vw_ReportAdvancePayment">
+                <ScalarProperty Name="AdvancePaymentID" ColumnName="AdvancePaymentID" />
+                <ScalarProperty Name="AdvancePaymentNO" ColumnName="AdvancePaymentNO" />
+                <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="DeptDescription" ColumnName="DeptDescription" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="BudgetAccountNameTH" ColumnName="BudgetAccountNameTH" />
+                <ScalarProperty Name="BudgetModelNameTH" ColumnName="BudgetModelNameTH" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentRemark" ColumnName="PaymentRemark" />
+                <ScalarProperty Name="ReceiveCashDate" ColumnName="ReceiveCashDate" />
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="DeptofCostCode" ColumnName="DeptofCostCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

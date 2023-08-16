@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="efb1b7acd3044f7fa35cbfd6a33d6f1a" Name="Diagram1" ZoomLevel="46">
+        <EntityTypeShape EntityType="PMdbModel.CheckRoomBrokenPayment" Width="2.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.CheckRoomBrokenTran" Width="2.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.CheckRoomMasterTable" Width="2.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.CheckRoomTran" Width="2.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PMdbModel.CheckTypeMasterTable" Width="2.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PMdbModel.ContactBankTable" Width="2.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PMdbModel.CRM_Lead" Width="2.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.CRM_Master_NamePrefix" Width="2.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="PMdbModel.CustomerTypeTable" Width="2.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="PMdbModel.DataSourceTable" Width="2.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.DepositTable" Width="2.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PMdbModel.DevelopmentTable" Width="2.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.DocumentCodeTable" Width="2.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PMdbModel.FacilityMasterTable" Width="2.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="PMdbModel.FacilityTran" Width="2.5" PointX="11.25" PointY="13.75" />
+        <EntityTypeShape EntityType="PMdbModel.ImageRoomTable" Width="2.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="PMdbModel.ImageTable" Width="2.5" PointX="2.75" PointY="13.75" />
+        <EntityTypeShape EntityType="PMdbModel.ProjectDetailTable" Width="2.5" PointX="8.75" PointY="13.75" />
+        <EntityTypeShape EntityType="PMdbModel.RentTypeMasterTable" Width="2.5" PointX="8.75" PointY="16.75" />
+        <EntityTypeShape EntityType="PMdbModel.ResaleTable" Width="2.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.UnitsDetialTable" Width="2.5" PointX="11.25" PointY="16.375" />
+        <EntityTypeShape EntityType="PMdbModel.UnitsTable" Width="2.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="PMdbModel.DMPS_UnitTypeTable" Width="2.5" PointX="2.75" PointY="17.75" />
+        <EntityTypeShape EntityType="PMdbModel.VisitTypeTable" Width="2.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.ModelTable" Width="2.5" PointX="18.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PMdbModel.UnitStatusMasterTable" Width="2.5" PointX="18.75" PointY="8.75" />
+        <EntityTypeShape EntityType="PMdbModel.vw_CheckFacility" Width="2.5" PointX="8.75" PointY="18.75" />
+        <EntityTypeShape EntityType="PMdbModel.vw_CheckRoomlist" Width="2.5" PointX="18.75" PointY="11.75" />
+        <EntityTypeShape EntityType="PMdbModel.vw_CRM_LeadData" Width="2.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.vw_Project" Width="2.5" PointX="20.75" PointY="14.75" />
+        <EntityTypeShape EntityType="PMdbModel.vw_Resale" Width="2.5" PointX="20.75" PointY="18.75" />
+        <EntityTypeShape EntityType="PMdbModel.vw_rpt_Deposit" Width="1.625" PointX="2.125" PointY="21.25" />
+        <EntityTypeShape EntityType="PMdbModel.vw_rpt_Rent" Width="2" PointX="3.75" PointY="21.25" />
+        <EntityTypeShape EntityType="PMdbModel.vw_rpt_Resale" Width="2.5" PointX="22.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.vw_rpt_Reservations" PointX="11.25" PointY="21.25" Width="2.125" />
+        <EntityTypeShape EntityType="PMdbModel.vw_rptCheckroom" Width="2.5" PointX="24.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.RoleAdminMenu" Width="1.5" PointX="28.375" PointY="16.125" />
+        <EntityTypeShape EntityType="PMdbModel.DepositAttachment" Width="1.5" PointX="28.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.RentAttachment" Width="1.5" PointX="28.375" PointY="2.875" />
+        <EntityTypeShape EntityType="PMdbModel.ReservationsAttachment" Width="1.5" PointX="28.375" PointY="5" />
+        <EntityTypeShape EntityType="PMdbModel.DraftDocumentAttachment" Width="1.5" PointX="28.375" PointY="7.125" />
+        <EntityTypeShape EntityType="PMdbModel.AttachmentStatusType" Width="1.5" PointX="28.375" PointY="12.75" />
+        <EntityTypeShape EntityType="PMdbModel.DepositAttachmentHistory" Width="1.5" PointX="28.375" PointY="14.125" />
+        <EntityTypeShape EntityType="PMdbModel.vw_DepositAttachmentHistory" Width="1.5" PointX="28.375" PointY="9.25" />
+        <EntityTypeShape EntityType="PMdbModel.DraftDocumentAttachmentHistory" Width="1.5" PointX="30.375" PointY="13.5" />
+        <EntityTypeShape EntityType="PMdbModel.RentAttachmentHistory" Width="1.5" PointX="28.375" PointY="18.5" />
+        <EntityTypeShape EntityType="PMdbModel.ReservationsAttachmentHistory" Width="1.5" PointX="30.375" PointY="15.375" />
+        <EntityTypeShape EntityType="PMdbModel.vw_DraftDocumentAttachmentHistory" Width="1.5" PointX="28.375" PointY="27.375" />
+        <EntityTypeShape EntityType="PMdbModel.vw_RentAttachmentHistory" Width="1.5" PointX="28.375" PointY="23.875" />
+        <EntityTypeShape EntityType="PMdbModel.vw_ReservationsAttachmentHistory" Width="1.5" PointX="28.375" PointY="20.375" />
+        <EntityTypeShape EntityType="PMdbModel.MasCountry" Width="1.5" PointX="30.375" PointY="19.75" />
+        <EntityTypeShape EntityType="PMdbModel.MasMedia" Width="1.5" PointX="30.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.MasAge" Width="1.5" PointX="30.375" PointY="2.875" />
+        <EntityTypeShape EntityType="PMdbModel.MasBudget" Width="1.5" PointX="30.375" PointY="5" />
+        <EntityTypeShape EntityType="PMdbModel.MasOccupation" Width="1.5" PointX="30.375" PointY="7.125" />
+        <EntityTypeShape EntityType="PMdbModel.MasPurpose" Width="1.5" PointX="30.375" PointY="9.25" />
+        <EntityTypeShape EntityType="PMdbModel.MasSalary" Width="1.5" PointX="30.375" PointY="24.25" />
+        <EntityTypeShape EntityType="PMdbModel.MasMaritalStatu" Width="1.5" PointX="30.375" PointY="11.375" />
+        <EntityTypeShape EntityType="PMdbModel.MasReason" Width="1.5" PointX="30.375" PointY="22" />
+        <EntityTypeShape EntityType="PMdbModel.CallVisitMedia" Width="1.5" PointX="32.375" PointY="5.125" />
+        <EntityTypeShape EntityType="PMdbModel.CallVisitPurpose" Width="1.5" PointX="32.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.CallVisitReason" Width="1.5" PointX="32.375" PointY="3" />
+        <EntityTypeShape EntityType="PMdbModel.CallVisitCompareProject" Width="2.125" PointX="30.125" PointY="17.375" />
+        <EntityTypeShape EntityType="PMdbModel.MasAcitivity" Width="1.5" PointX="32.375" PointY="9.375" />
+        <EntityTypeShape EntityType="PMdbModel.MasTopic" Width="1.5" PointX="32.375" PointY="7.25" />
+        <EntityTypeShape EntityType="PMdbModel.CallVisitActivity" Width="1.625" PointX="25.875" PointY="26.625" />
+        <EntityTypeShape EntityType="PMdbModel.vw_CallVisitActivity" Width="2.125" PointX="23.75" PointY="26.625" />
+        <EntityTypeShape EntityType="PMdbModel.MasPDPA" Width="1.5" PointX="34" PointY="17.875" />
+        <EntityTypeShape EntityType="PMdbModel.CallVisitPDPA" Width="1.5" PointX="34" PointY="15.125" />
+        <EntityTypeShape EntityType="PMdbModel.PDPALog" Width="1.5" PointX="34" PointY="20.25" />
+        <EntityTypeShape EntityType="PMdbModel.vw_MainCallVisit" Width="1.5" PointX="34" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.MasSale" Width="1.5" PointX="32.375" PointY="26.875" />
+        <EntityTypeShape EntityType="PMdbModel.vw_UnitsDetails" Width="2.375" PointX="24.875" PointY="4.25" />
+        <EntityTypeShape EntityType="PMdbModel.vw_LeadCallVisit" Width="1.5" PointX="32.375" PointY="11.625" />
+        <EntityTypeShape EntityType="PMdbModel.CallVisit" Width="1.5" PointX="32.375" PointY="18.125" />
+        <EntityTypeShape EntityType="PMdbModel.vw_Rental" Width="1.75" PointX="9.5" PointY="21.25" />
+        <EntityTypeShape EntityType="PMdbModel.vw_Reservations" Width="1.5" PointX="0.625" PointY="21.25" />
+        <EntityTypeShape EntityType="PMdbModel.CRM_Contacts" Width="1.5" PointX="7.25" PointY="0.75" />
+        <EntityTypeShape EntityType="PMdbModel.vw_CRM_Contract" Width="1.75" PointX="19" PointY="18.75" />
+        <EntityTypeShape EntityType="PMdbModel.ReservationsShop" Width="1.5" PointX="13.375" PointY="21.25" />
+        <EntityTypeShape EntityType="PMdbModel.ReservationsTable" Width="2" PointX="14.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PMdbModel.RentTable" Width="1.5" PointX="15.375" PointY="19.75" />
+        <EntityTypeShape EntityType="PMdbModel.MasZipCode" Width="1.5" PointX="6.375" PointY="26.75" />
+        <EntityTypeShape EntityType="PMdbModel.ContactReasonCancel" Width="1.5" PointX="17.375" PointY="28.75" />
+        <EntityTypeShape EntityType="PMdbModel.MasReasonCancelForm" Width="1.5" PointX="15.75" PointY="15.625" />
+        <EntityTypeShape EntityType="PMdbModel.ProjectTable" Width="2.125" PointX="14.625" PointY="0.75" />
+
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

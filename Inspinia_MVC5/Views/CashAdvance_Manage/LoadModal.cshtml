@@ -1,0 +1,550 @@
+﻿<div class="modal inmodal fade" id="myModal5" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:10px">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                @* --------------------------------Modal Heading 1------------------------------------- *@
+                <div class="row">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-8">
+                        <h4 class="modal-title">บริษัท แกรนด์ ยูนิตี้ ดิเวลล็อปเมนท์ จำกัด</h4>
+                        <h4 class="modal-title">ใบเบิกเงินทดรองจ่าย</h4>
+                    </div>
+                    <div class="col-lg-2">
+                    </div>
+                </div>
+                <hr />
+                @* --------------------------------End Modal Heading 1---------------------------------- *@
+
+
+                @* --------------------------------Modal Heading 2-------------------------------------- *@
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row" hidden="hidden">
+                            <div class="col-lg-3" style="text-align:right">
+                                <label>ผู้คีย์เอกสาร</label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <input type="text" id="txtCreator" class="form-control" hidden="hidden" />
+                            </div>
+                            <div class="col-lg-3" style="text-align:right">
+                                <label>รหัสเอกสาร </label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <label id="lblAdvancePaymentID"></label>
+                            </div>
+                        </div>
+                        <div class="row" hidden="hidden">
+                            <div class="col-lg-3" style="text-align:right">
+                                <label hidden="hidden">สถานะการลบ</label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <input type="text" id="txtIsDelete" class="form-control" hidden="hidden" />
+                            </div>
+                            <div class="col-lg-3" style="text-align:right">
+                                <label>DocumentStatusID</label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <label id="lblDocumentStatusID"></label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3" style="text-align:right">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:right">
+                                <label>เลขที่ใบเบิก : </label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <label id="lblAdvancePaymentNo" style="color:dodgerblue">GU-1301-001</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3" style="text-align:right">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:right">
+                                <label>วันที่ : </label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <label id="lblDocumentDate" style="color:dodgerblue">23/03/2017</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3" style="text-align:right">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:right">
+                                <label>สถานะเอกสาร : </label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <label id="lblDocumentStatusDisplay" style="color:dodgerblue"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3" style="text-align:right">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:right">
+                                <label>บริษัท : </label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                @Html.DropDownList("ddlCompany", null, "Please Select", new { @class = "select2_Company form-control", style = "width:100%" })
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top:5px">
+                            <div class="col-lg-3" style="text-align:right">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:right">
+                                <label>Cost Center : </label>
+                            </div>
+                            <div class="col-lg-3" style="text-align:left">
+                                <input id="ddlCostCenter" style="width:100%" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <strong>&nbsp;&nbsp;รายละเอียดผู้ขอเบิก</strong>
+                            </div>
+                            <div class="panel-body" style="padding:0px 0px 0px 0px;margin-top:-10px">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>บริษัท</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlCompanyOfEmp", null, "Please Select", new { @class = "select2_Company form-control", style = "width:100%" })
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>ฝ่าย</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlDepartment", null, "Please Select", new { @class = "select2_department form-control", style = "width:100%" })
+                                                @*<input id="ddlDepartment" style="width:100%" />*@
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>ข้าพเจ้า</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlPaymentOwner", null, "Please Select", new { @class = "select2_PaymentOwner form-control", style = "width:100%" })
+                                                @*<input id="ddlPaymentOwner" style="width:100%" />*@
+                                            </div>
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>ตำแหน่ง</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlPosition", null, "Please Select", new { @class = "select2_position form-control", style = "width:100%" })
+                                                @*<input id="ddlPosition" style="width:100%" />*@
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>รหัสโครงการ</label>
+                                            </div>
+                                            <div class="col-lg-5" style="text-align:left">
+                                                @Html.DropDownList("ddlProject", null, "Please Select", new { @class = "select2_project form-control", style = "width:100%" })
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>งบประมาณ</label>
+                                            </div>
+                                            <div class="col-lg-5" style="text-align:left">
+                                                @Html.DropDownList("ddlBudgetAccount", null, "Please Select", new { @class = "select2_budgetaccount form-control", style = "width:100%" })
+                                            </div>
+                                            @*<div class="col-lg-2" style="text-align:right">
+                                                    <label>รหัสงบประมาณ</label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    @Html.DropDownList("ddlBudgetModel", null, "Please Select", new { @class = "select2_budgetmodel form-control", style = "width:100%" })
+                                                </div>*@
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>รหัสงบประมาณ</label>
+                                            </div>
+                                            <div class="col-lg-5" style="text-align:left">
+                                                @Html.DropDownList("ddlBudgetModel", null, "Please Select", new { @class = "select2_budgetaccount form-control", style = "width:100%" })
+                                            </div>
+                                            @*<div class="col-lg-2" style="text-align:right">
+                                                    <label>รหัสงบประมาณ</label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    @Html.DropDownList("ddlBudgetModel", null, "Please Select", new { @class = "select2_budgetmodel form-control", style = "width:100%" })
+                                                </div>*@
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>ขอเบิกเงินทดรองจ่าย จำนวน</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <input type="text" id="txtAmount" class="form-control numbersOnly" />
+                                            </div>
+                                            <div class="col-lg-1" style="text-align:left">
+                                                <label>บาท</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>เพื่อ</label>
+                                            </div>
+                                            <div class="col-lg-8" style="text-align:left">
+                                                @*<input type="text" id="txtPaymentRemark" class="form-control" />*@
+                                                <textarea class="form-control" rows="3" id="txtPaymentRemark"></textarea>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>ต้องการรับเงินวันที่</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <div class="form-group" id="data_1">
+                                                    <div class="input-group date">
+                                                        <input id="txtReceiveCashDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>ประเภทเงินที่ต้องการรับ</label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                @Html.DropDownList("ddlPaymentType", null, "Please Select", new { @class = "select2_paymenttype form-control", style = "width:100%" })
+                                            </div>
+                                            @*<div class="col-lg-2" style="text-align:right">
+                                                    <label>aaaaa</label>
+                                                </div>
+                                                <div class="col-lg-3" style="text-align:left">
+                                                    @Html.DropDownList("ddlPaymentType", null, "Please Select", new { @class = "select2_paymenttype form-control", style = "width:100%" })
+                                                </div>*@
+                                        </div>
+                                        <br />
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-lg-12" style="text-align:left">
+                                                <label>โดยข้าพเจ้าจะเคลียร์เงินทดรองจ่ายกับฝ่ายการเงินภายใน 7 วัน นับจากวันที่ได้รับเงิน โดยจะนำส่งเอกสารประกอบค่าใช้จ่ายที่สมบูรณ์</label>
+                                            </div>
+                                            @*<div class="col-lg-2">
+                                                    <div class="form-group" id="data_1">
+                                                        <div class="input-group date">
+                                                            <input id="txtClearCashDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>*@
+                                            @*<div class="col-lg-5" style="text-align:left">
+                                                    <label></label>
+                                                </div>*@
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-2" style="text-align:right">
+                                                <label>ณ วันที่ </label>
+                                            </div>
+                                            <div class="col-lg-3" style="text-align:left">
+                                                <div class="form-group" id="data_1">
+                                                    <div class="input-group date">
+                                                        <input id="txtClearCashDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* --------------------------------End Modal Heading 2---------------------------------- *@
+            <div class="modal-body">
+                <div class="row" id="rowPV">
+                    <div class="col-sm-12">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">ข้อมูลการอนุมัติการขอเบิก</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>PV No.</label>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <input type="text" id="txtPVNo" class="form-control input-mini" />
+                                                    </div>
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label></label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>วันที่หน้าเช็ค</label>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <div class="form-group" id="data_1">
+                                                            <div class="input-group date">
+                                                                <input id="txtChequeDateIn" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>วันที่รับเช็ค</label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        <div class="form-group" id="data_1">
+                                                            <div class="input-group date">
+                                                                <input id="txtChequeDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @*<br />*@
+                                                <div class="row" hidden="hidden">
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>ผู้ขอเบิก</label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        <input type="text" id="" class="form-control" />
+                                                    </div>
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>ผู้รับเงิน</label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        <input type="text" id="" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                @*<br />*@
+                                                <div class="row" hidden="hidden">
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>ผู้อนุมัติ</label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        <input type="text" id="" class="form-control" />
+                                                    </div>
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>ผู้จ่ายเงิน</label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        <input type="text" id="" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="rowButDetail">
+                    <div class="col-sm-12" style="padding-right:0px;padding-left:15px;margin-bottom: 2px;">
+                        <button id="btnAddDetail" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
+                        <button id="btnDeleteDetail" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
+                        <label id="lblRefundID" hidden="hidden">lblRefundID</label>
+                    </div>
+                </div>
+
+                <div class="row" id="rowDetail">
+                    <div class="col-sm-12">
+                        <div class="panel-group" id="accordion2">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2"><strong>&nbsp;&nbsp;รายการเคลียร์เงินทดรองจ่าย</strong></a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne2" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <table id="TbRefundTrans" class="table invoice-table">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:15px">ลำดับที่</th>
+                                                    <th style="width:75%;text-align:left">รายการค่าใช้จ่าย&nbsp;&nbsp;</th>
+                                                    <th style="width:10%">จำนวนเงิน</th>
+                                                    <th style="width:10%">หัก ณ ที่จ่าย</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                    <div class="panel-footer" style="padding-bottom:0px">
+                                        <table class="table invoice-total">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="padding-top:15px;"><label>ยอดรวมค่าใช้จ่าย : </label></td>
+                                                    <td><input type="text" id="txtTotal" class="form-control input-mini " style="text-align:right;" readonly="readonly" value="0.00" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding-top:15px;"><label>ยอดเงินทดรองจ่าย : </label></td>
+                                                    <td><input type="text" id="txtAmount2" class="form-control input-mini" style="text-align:right" readonly="readonly" value="0.00" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding-top:15px;">
+                                                        <label class="radio-inline i-checks"> <input type="radio" id="chkRefundType1" name="chkRefundType" readonly="readonly" value="1">คืนบริษัท </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <label class="radio-inline i-checks"> <input type="radio" id="chkRefundType2" name="chkRefundType" readonly="readonly" value="2">เบิกชดเชยเพิ่มเติม </label>
+                                                    </td>
+                                                    <td><input type="text" id="txtGrandTotal" class="form-control input-mini" style="text-align:right" readonly="readonly" value="0.00" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding-top:15px;"><label>วันที่เคลียร์เงิน : </label></td>
+                                                    <td><input type="text" id="txtClearDate" class="form-control input-mini" style="text-align:right" readonly="readonly" value="@DateTime.Now.ToString("dd/MM/yyyy HH:mm")" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding-top:15px;"><label>แนบไฟล์ : </label></td>
+                                                    <td><input type="file" id="txtAttachFile" class="form-control input-mini " style="text-align:right;" readonly="readonly" value="" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding-top:15px;"><label id="lblFilename"></label></td>
+                                                    <td><button id="btnPreviewFile" class="btn btn-info btn-sm" data-path="">Preview File</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="rowJV">
+                    <div class="col-sm-12">
+                        <div class="panel-group" id="accordion3">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3">ข้อมูลการเคลียร์เงิน</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne3" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>JV No.</label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        <input type="text" id="txtJVNo" class="form-control" />
+                                                    </div>
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>วันที่</label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        <div class="form-group" id="data_1">
+                                                            <div class="input-group date">
+                                                                <input id="txtRefundDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="row" hidden="hidden">
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>ผู้เคลียร์เงิน</label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        <input type="text" id="" class="form-control" />
+                                                    </div>
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label>ผู้อนุมัติ</label>
+                                                    </div>
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        <input type="text" id="" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <input type="text" id="txtTest" />*@
+
+                @*<input id="e10" style="width:300px" />
+                    <input id="dllDepartment2" style="width:300px" />
+                    <button id="btnTest1">Test1</button>
+                    <button id="btnTest2">Test2</button>
+                    <button id="btnTest3">Test3</button>*@
+
+                <div hidden="hidden">
+                    <input type="text" id="txtWorkflowStatus" value="" data-url-Wf="@*@Url.Action("getControlWorkflow", "UVGWorkflow")*@" />
+                    <input type="text" id="txtStateID" value="" />
+                    <input type="text" id="txtIsFinish" value="" />
+                    <input type="text" id="txtIsDelete" value="" />
+                </div>
+                <div class="text-right">
+                    <button id="btnApprove" class="btn btn-primary" data-url-Wf="@*@Url.Action("WfApprove", "UVGWorkflow")*@"><i class="fa fa-save"></i>&nbsp;&nbsp;Approve</button>
+                    <button id="btnReject" class="btn btn-danger" data-url-Wf="@*@Url.Action("WfReject", "UVGWorkflow")*@"><i class="fa fa-save"></i>&nbsp;&nbsp;Reject</button>
+                    @*<button id="btnRecall" hidden="hidden" class="btn btn-warning" data-url-Wf="@Url.Action("WfRecall", "UVGWorkflow")"><i class="fa fa-save"></i>&nbsp;&nbsp;Recall</button>*@
+                    <button id="btnSaveDaft" hidden="hidden" class="btn btn-primary" data-url-Wf="@*@Url.Action("WfSavetoDaft", "UVGWorkflow")*@"><i class="fa fa-save"></i>&nbsp;&nbsp;Save to Draft</button>
+                    <button id="btnSave" hidden="hidden" class="btn btn-success" data-url-Wf="@*@Url.Action("WfSavetoDaft", "UVGWorkflow")*@"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
+                    <button id="btnSubmit" class="btn btn-success" style="color:black" data-url-Wf="@*@Url.Action("WfSubmit", "UVGWorkflow")*@"><i class="fa fa-send"></i>&nbsp;&nbsp;Submit</button>
+                    <button id="btnCancel" class="btn btn-danger" data-url-Wf="@*@Url.Action("WfSubmit", "UVGWorkflow")*@"><i class="fa fa-ban"></i>&nbsp;&nbsp;Cancel</button>
+                    @*<button id="btnPrint" class="btn btn-default"><i class="fa fa-save"></i>&nbsp;&nbsp;Print</button>*@
+                    <button id="btnClose" class="btn btn-default"><i class="fa fa-save"></i>&nbsp;&nbsp;Close</button>
+                </div>
+                <div style="height:20px"></div>
+                <div class="text-right">
+                    @*<button id="btnTestUp">upload</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

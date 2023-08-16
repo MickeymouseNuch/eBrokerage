@@ -1,0 +1,55 @@
+﻿<div class="row border-bottom white-bg">
+    <nav class="navbar navbar-static-top" role="navigation">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                <i class="fa fa-reorder"></i>
+            </button>
+            <a href="#" id="btnUVlogoGo2ppportal" class="navbar-brand" style="padding-top:10px"><img src="~/Images/Main/logo.png" height="30" /></a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                @if (ViewBag.LstSubMenu != null && ViewBag.LstMainMenu != null)
+                {
+                    foreach (Inspinia_MVC5.Models.MainClass.MenuList itemMain in ViewBag.LstMainMenu)
+                    {
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="@itemMain.ImageIcon"></span>&nbsp;&nbsp;&nbsp;@itemMain.MenuNameTH <span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                @foreach (Inspinia_MVC5.Models.MainClass.MenuList itemsSub in ((IEnumerable<Inspinia_MVC5.Models.MainClass.MenuList>)ViewBag.LstSubMenu).Where(s => s.MenuParentId == itemMain.MenuId).OrderBy(s => s.SortID))
+                                {
+                                    <li class="actions clsmenuclick" data-applicationid="@itemMain.AppicationID" data-applicationname="@itemMain.ApplicationNameTH" data-menuid="@itemsSub.MenuId" data-menu="@itemMain.MenuNameTH" data-submanu="@itemsSub.MenuNameTH" data-con="@itemsSub.ControllerName" data-view="@itemsSub.VeiwName" data-reporturl="@itemsSub.ReportURL"><a href="#"><span class="@itemsSub.ImageIcon"></span>&nbsp;&nbsp;@itemsSub.MenuNameTH</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+
+                @*<li class="dropdown">
+                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item <span class="caret"></span></a>
+                <ul role="menu" class="dropdown-menu">
+                    <li><a href="">Menu item</a></li>
+                    <li><a href="">Menu item</a></li>
+                    <li><a href="">Menu item</a></li>
+                    <li><a href="">Menu item</a></li>
+                </ul>
+            </li>*@
+
+            </ul>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="#" id="btnGo2Appportal">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="#" id="btnHelp">
+                        <i class="fa fa-book"></i>คู่มือใช้งานระบบ
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,1388 @@
+﻿<div class="modal inmodal fade" id="myModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:10px">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                @* --------------------------------Modal Heading 1------------------------------------- *@
+                <div class="row">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-8">
+                        <h4 class="modal-title">รายละเอียดการฝากเช่า / ฝากขายห้อง</h4>
+                    </div>
+                    <div class="col-lg-2">
+                    </div>
+                </div>
+                <hr />
+                @* --------------------------------End Modal Heading 1---------------------------------- *@
+
+
+                @* --------------------------------Modal Heading 2-------------------------------------- *@
+                <div class="row">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:right">
+                        <label>เลขที่ : </label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label id="lblDepositNo" style="color:dodgerblue">DS-1801-001</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:right">
+                        <label>วันที่ : </label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <div class="form-group" id="data_1" style="margin-bottom: 5px;">
+                            <div class="input-group date">
+                                <input id="ddlDS_DepositDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")" readonly="readonly"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:right">
+                        <label>เลขที่เอกสารอ้างอิง : </label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left;margin-bottom: 5px;">
+                        @*<input type="text" id="txtDocsRef" name="txtDocsRef" class="form-control" style="" data-id="" value="" />*@
+                        <textarea id="txtDocsRef" class="form-control" style="" data-id="" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3" style="text-align:right">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:right">
+                        <label>สถานะเอกสาร : </label>
+                    </div>
+                    <div class="col-lg-3" style="text-align:left">
+                        <label id="lblDepositStatus" style="color:dodgerblue"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row" hidden="hidden">
+                            <div id="" class="col-lg-12" style="">
+                                <label id="lblDocID" class="" data-id="" style="padding-bottom: 10px;">LableDescription : </label>
+                                <label id="lblCreator" class="" data-id="" style="padding-bottom: 10px;">LableDescription : </label>
+                                <label id="lblIsDelete" class="" data-id="" style="padding-bottom: 10px;">LableDescription : </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* --------------------------------End Modal Heading 2---------------------------------- *@
+            <div class="modal-body">
+                @*ข้อมูลผู้ฝากเช่า / ฝากขาย*@
+                @*<div class="row" id="rowPVCustDS">
+                        <div class="col-sm-12">
+                            <div class="panel-group" id="accordionCustDS">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordionCustDS" href="#collapseOneCustDS">ข้อมูลผู้ฝากเช่า / ฝากขาย</a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOneCustDS" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">ชื่อ - สกุล : </label>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <input type="text" id="txtDS_CustomerName" name="txtDS_CustomerName" class="form-control" style="" data-id="" value="นายไพศาล สวัสดี" />
+                                                        </div>
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">อายุ : </label>
+                                                        </div>
+                                                        <div class="col-lg-3" style="text-align:left">
+                                                            <input type="text" id="txtDS_Age" name="txtDS_Age" class="form-control" style="" data-id="" value="30" />
+                                                        </div>
+                                                        <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                                            <input type="text" id="txtDS_ContractID" name="txtDS_ContractID" class="form-control" style="" data-id="" />
+                                                        </div>
+                                                        <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                                            <input type="text" id="txtDS_DepositID" name="txtDS_DepositID" class="form-control" style="" data-id="" />
+                                                        </div>
+                                                        <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                                            <input type="text" id="txtDS_UnitID" name="txtDS_DepositID" class="form-control" style="" data-id="" />
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">เลขที่บัตรประชาชน : </label>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <input type="text" id="txtDS_CardID" name="txtDS_CardID" class="form-control" style="" data-id="" value="1230273003xxx" />
+                                                        </div>
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">ออกเมื่อวันที่ : </label>
+                                                        </div>
+                                                        <div class="col-lg-3" style="text-align:left">
+                                                            <div class="form-group" id="data_1">
+                                                                <div class="input-group date">
+                                                                    <input id="ddlDS_CardIssue" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">สัญชาติ : </label>
+                                                        </div>
+                                                        <div class="col-lg-3" style="text-align:left">
+                                                            <input type="text" id="txtDS_Nationality" name="ObjName" class="form-control" style="" data-id="" value="ไทย" />
+                                                        </div>
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">หมดอายุวันที่ : </label>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group" id="data_1">
+                                                                <div class="input-group date">
+                                                                    <input id="ddlDS_CardExpire" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")">
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">ณ จังหวัด : </label>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <input type="text" id="txtDS_CardIDProvince" name="ObjName" class="form-control" style="" data-id="" value="ตราด" />
+                                                        </div>
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">ที่อยู่ : </label>
+                                                        </div>
+                                                        <div class="col-lg-3" style="text-align:left">
+                                                            <input type="text" id="txtDS_AddressNo" name="ObjName" class="form-control" style="" data-id="" value="198/10" />
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">หมู่ : </label>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <input type="text" id="txtDS_Moo" name="ObjName" class="form-control" style="" data-id="" value="9" />
+                                                        </div>
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">ตรอก/ซอย : </label>
+                                                        </div>
+                                                        <div class="col-lg-3" style="text-align:left">
+                                                            <input type="text" id="txtDS_Soi" name="ObjName" class="form-control" style="" data-id="" value="-" />
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">ถนน : </label>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <input type="text" id="txtDS_Road" name="ObjName" class="form-control" style="" data-id="" value="-" />
+                                                        </div>
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">ตำบล/แขวง : </label>
+                                                        </div>
+                                                        <div class="col-lg-3" style="text-align:left">
+                                                            <input type="text" id="txtDS_SubDistinct" name="ObjName" class="form-control" style="" data-id="" value="คลองใหญ่" />
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">เขต/อำเภอ : </label>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <input type="text" id="txtDS_Distinct" name="ObjName" class="form-control" style="" data-id="" value="คลองใหญ่" />
+                                                        </div>
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">จังหวัด : </label>
+                                                        </div>
+                                                        <div class="col-lg-3" style="text-align:left">
+                                                            <input type="text" id="txtDS_Province" name="ObjName" class="form-control" style="" data-id="" value="ตราด" />
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">รหัสไปรษณีย์ : </label>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <input type="text" id="txtDS_ZipCode" name="ObjName" class="form-control" style="" data-id="" value="23110" />
+                                                        </div>
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">เบอร์โทร : </label>
+                                                        </div>
+                                                        <div class="col-lg-3" style="text-align:left">
+                                                            <input type="text" id="txtDS_Tel" name="ObjName" class="form-control" style="" data-id="" value="093-07566xx" />
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-lg-2" style="text-align:right">
+                                                            <label id="" class="" data-id="" style="padding-top: 5px;">รายละเอียดเพิ่มเติม : </label>
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                            <textarea id="txtDS_Details" class="form-control" style="" data-id="" rows="3"> </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+                <div class="panel-group" id="accordionBankDS">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordionBankDS" href="#collapseBankDS">ข้อมูลผู้ฝากเช่า / ฝากขาย</a>
+                            </h5>
+                        </div>
+                        <div id="collapseBankDS" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row" id="" style="">
+                                    <div class="col-lg-2" style="text-align:right">
+                                        <label id="" class="" data-id="" style="padding-top: 5px;">ชื่อ - สกุล : </label>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <input type="text" id="txtDS_CustomerName" name="txtDS_CustomerName" class="form-control" style="" data-id="" value="นายไพศาล สวัสดี" readonly="readonly" />
+                                    </div>
+                                    <div class="col-lg-2" style="text-align:right;padding-left: 5px;">
+                                        <label id="" class="" data-id="" style="padding-top: 5px;">เลขที่บัตรประชาชน : </label>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <input type="text" id="txtDS_CardID" name="txtDS_CardID" class="form-control" style="" data-id="" value="1230273003xxx" readonly="readonly"  />
+                                    </div>
+
+                                    <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                        <input type="text" id="txtDS_ContractID" name="txtDS_ContractID" class="form-control" style="" data-id="" />
+                                    </div>
+                                    <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                        <input type="text" id="txtDS_DepositID" name="txtDS_DepositID" class="form-control" style="" data-id="" />
+                                    </div>
+                                    <div class="col-lg-1" style="text-align:left" hidden="hidden">
+                                        <input type="text" id="txtDS_UnitID" name="txtDS_DepositID" class="form-control" style="" data-id="" />
+                                    </div>
+                                </div>
+                                <br />
+                                @*<div class="row" id="" style="">
+                                        <div id="" class="col-lg-2" style="text-align:right">
+                                            <label id="lbl" class="" data-id="" style="padding-top: 5px;">ประเภทบัญชี : </label>
+                                        </div>
+                                        <div id="" class="col-lg-3"  style="text-align:left">
+                                         @Html.DropDownList("ddlDS_AccountType", null, "Please Select", new { @class = "select2_DSAccountType form-control", style = "width:100%" })
+
+                                        </div>
+                                    </div>
+                                    <br />*@
+
+                                <div class="row" id="" style="">
+                                    <div class="col-lg-2" style="text-align:right">
+                                        <label id="" class="" data-id="" style="padding-top: 5px;">เบอร์โทร : </label>
+                                    </div>
+                                    <div class="col-lg-3" style="text-align:left">
+                                        <input type="text" id="txtDS_Tel" name="ObjName" class="form-control allownumericwithoutdecimal" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)"  style="" data-id="" value="09307566xx" readonly="readonly" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel-group" id="accordionBank">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordionBank" href="#collapseBank">รายละเอียดบัญชีธนาคาร</a>
+                            </h5>
+                        </div>
+                        <div id="collapseBank" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">บัญชีธนาคาร : </label><label for="lblColor" id="lblColor" style="color:red"> </label>
+                                    </div>
+                                    <div id="" class="col-lg-4" style="">
+                                        @*<input type="text" id="txtBankName" name="txtBankName" class="form-control" style="" data-id="" value="@_CustData[0].BankID" />*@
+                                        @*@Html.DropDownList("ddlBank", null, "Please Select", new { @class = "select2_Bank form-control", style = "width:100%" })*@
+
+                                        @Html.DropDownList("ddlBank", null, "Please Select", new { @class = "select2_Bank form-control", style = "width:100%" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ประเภทบัญชี : </label><label for="lblColor" id="lblColor" style="color:red"> </label>
+                                    </div>
+                                    <div id="" class="col-lg-4" style="">
+                                        @*<input type="text" id="txtAccountType" name="txtAccountType" class="form-control" style="" data-id="" value="@_CustData[0].BankTypeID" />*@
+                                        @Html.DropDownList("ddlAccountType", null, "Please Select", new { @class = "select2_AccountType form-control", style = "width:100%" })
+
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">เลขที่บัญชี : </label><label for="lblColor" id="lblColor" style="color:red"> </label>
+                                    </div>
+                                    <div id="" class="col-lg-4" style="">
+                                        <input type="text" id="txtAccountNo" name="txtAccountNo" class="form-control" style="" data-id="" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ชื่อบัญชี : </label><label for="lblColor" id="lblColor" style="color:red"> </label>
+                                    </div>
+                                    <div id="" class="col-lg-4" style="">
+                                        <input type="text" id="txtAccountName" name="txtAccountName" class="form-control" style="" data-id="" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*รายละเอียดห้อง*@
+                <div class="panel-group" id="pnDSRoomDetails">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordionName" href="#collapseName">รายละเอียดห้อง</a>
+                            </h5>
+                        </div>
+                        <div id="dvDSRoomDetails" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ประเภทการเช่า : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-4" style="text-align:left">
+                                        @*<select class="form-control">
+                                                <option value="volvo">เจ้าของร่วม</option>
+                                                <option value="saab">Property</option>
+                                                <option value="mercedes">Shop</option>
+                                                <option value="audi">Other</option>
+                                            </select>*@
+                                        @Html.DropDownList("ddlDS_RentType", null, "Please Select", new { @class = "select2_RentType form-control", style = "width:100%" })
+                                    </div>
+                                    @*<div class="col-lg-3" style="text-align:left">
+                                            @Html.DropDownList("ddlPosition", null, "Please Select", new { @class = "select2_position form-control", style = "width:100%" })
+                                        </div>*@
+
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="" class="" data-id="" style="padding-top: 5px;">Developer : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="dvddlDS_Developer" class="col-lg-4" style="text-align:left">
+
+                                        @Html.DropDownList("ddlDS_Developer", null, "Please Select", new { @class = "select2_Developer form-control", style = "width:100%" })
+
+                                    </div>
+
+                                    <div id="dvtxtAddDeveloper" class="col-lg-4" style="text-align:left">
+
+                                        <input type="text" id="txtAddDeveloper" name="ObjName" class="form-control" style="" data-id="" hidden="hidden" />
+                                    </div>
+                                    <button id="btnAddDeveloper" class="btn btn-success btn-sm" title="เพิ่มข้อมูล Developer"><i class="fa fa-plus-circle"></i></button>
+                                    @*<button id="btnEditDeveloper" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>*@
+                                    <button id="btnSaveDeveloper" class="btn btn-primary btn-sm" title="บันทึกข้อมูล Developer"><i class="fa fa-save"></i></button>
+                                    <button id="btnClearDeveloper" class="btn btn-warning btn-sm" title="ปิด"><i class="fa fa-chevron-circle-left"></i></button>
+                                    @*<button id="btnDeleteDeveloper" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button>*@
+
+                                </div>
+                                <br />
+
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">โครงการ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="dvddlDS_Project" class="col-lg-4" style="text-align:left">
+                                        @Html.DropDownList("ddlDS_Project", null, "Please Select", new { @class = "select2_Project form-control", style = "width:100%" })
+
+                                    </div>
+                                    <div id="dvtxtDS_Project" class="col-lg-4" style="text-align:left">
+                                        <input type="text" id="txtDS_Project" name="ObjName" class="form-control" style="" data-id="" />
+                                    </div>
+
+                                    <button id="btnAddProject" class="btn btn-success btn-sm" title="เพิ่มข้อมูลโครงการ"><i class="fa fa-plus-circle"></i></button>
+                                    <button id="btnSaveProject" class="btn btn-primary btn-sm" title="บันทึกข้อมูลโครงการ"><i class="fa fa-save"></i></button>
+                                    <button id="btnClearProject" class="btn btn-warning btn-sm" title="ปิด"><i class="fa fa-chevron-circle-left"></i></button>
+
+                                </div>
+                                <br />
+
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ห้องชุดเลขที่ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="text-align:right">
+                                        <input type="text" id="txtDS_UnitNo" name="ObjName" class="form-control" style="" data-id="" />
+                                    </div>
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">บ้านเลขที่ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="text-align:right">
+                                        <input type="text" id="txtDS_UnitAddressNo" name="ObjName" class="form-control" style="" data-id="" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ชั้น : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="text-align:right">
+                                        <input type="text" id="txtDS_Floor" name="ObjName" class="form-control" style="" data-id="" />
+                                    </div>
+
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">รูปแบบห้องชุด : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="dvtxtDS_UnitType" class="col-lg-3" style="text-align:left">
+                                        @*<input type="text" id="txtDS_UnitType" name="ObjName" class="form-control" style="" data-id="" />*@
+                                        @Html.DropDownList("ddlDS_UnitType", null, "Please Select", new { @class = "select2_UnitType form-control", style = "width:100%" })
+                                    </div>
+                                    <div id="dvtxtAddUnitType" class="col-lg-3" style="text-align:left" hidden="hidden">
+                                        <input type="text" id="txtDS_UnitType" name="ObjName" class="form-control" style="" data-id="" />
+                                    </div>
+
+                                    <button id="btnAddUnitType" class="btn btn-success btn-sm" title="เพิ่มข้อมูลรูปแบบห้องชุด"><i class="fa fa-plus-circle"></i></button>
+                                    <button id="btnSaveUnitType" class="btn btn-primary btn-sm" title="บันทึกข้อมูลรูปแบบห้องชุด"><i class="fa fa-save"></i></button>
+                                    <button id="btnClearUnitType" class="btn btn-warning btn-sm" title="ปิด"><i class="fa fa-chevron-circle-left"></i></button>
+
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">อาคาร : </label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="text-align:right">
+                                        <input type="text" id="txtDS_Building" name="ObjName" class="form-control" style="" data-id="" />
+                                    </div>
+
+
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">เนื้อที่ห้องชุด : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="text-align:right">
+                                        <input type="text" id="txtDS_UnitArea" name="ObjName" class="form-control allow_decimal" style="" data-id="" />
+                                    </div>
+                                    <div id="" class="col-lg-2" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ตารางเมตร</label>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ตั้งอยู่ที่ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-8" style="text-align:right">
+                                        <textarea id="txtRoomAddress" class="form-control" style="" data-id="" rows="3" value=""></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                @*สิ่งอำนวยความสะดวกในห้อง*@
+                <div class="panel-group" id="pnDSCheckRoom">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordionName" href="#collapseName">ข้อมูลการตรวจสภาพห้องชุดของผู้เช่าก่อนเข้า / สิ้นสุดการเช่า</a>
+                            </h5>
+                        </div>
+                        <div id="dvDSCheckRoom" class="panel-collapse collapse in" style="border-top-width: 0px;padding-top: 0px;padding-bottom: 0px;">
+                            <div class="panel-body">
+                                @*<div class="row" id="" style="">
+                                        <div id="" class="col-lg-2" style="text-align:right">
+                                            <label id="lbl" class="" data-id="" style="padding-top: 5px;">มิเตอร์น้ำประปา : </label>
+                                        </div>
+                                        <div id="" class="col-lg-3" style="">
+                                            <input type="text" id="txtDS_WaterMeter" name="ObjName" class="form-control" style="" data-id="" />
+                                        </div>
+                                        <div id="" class="col-lg-3" style="">
+                                            <label id="lbl" class="" data-id="" style="padding-top: 5px;">หน่วย</label>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-2" style="text-align:right">
+                                            <label id="lbl" class="" data-id="txtDS_ElectricMeter" style="padding-top: 5px;">มิเตอร์ไฟฟ้า : </label>
+                                        </div>
+                                        <div id="" class="col-lg-3" style="">
+                                            <input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" />
+                                        </div>
+                                        <div id="" class="col-lg-3" style="">
+                                            <label id="lbl" class="" data-id="" style="padding-top: 5px;">หน่วย</label>
+                                        </div>
+                                    </div>*@
+                                @*<hr />*@
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="ibox float-e-margins" style="height: 513px;  border-top-width: 0px; margin-top:0px;overflow-Y: scroll;margin-bottom: 0px;">
+                                                    @*<div class="ibox-title">
+                                                            <h5>Custom responsive table </h5>
+                                                            <div class="ibox-tools">
+                                                                <a class="collapse-link">
+                                                                    <i class="fa fa-chevron-up"></i>
+                                                                </a>
+                                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                                    <i class="fa fa-wrench"></i>
+                                                                </a>
+                                                                <ul class="dropdown-menu dropdown-user">
+                                                                    <li>
+                                                                        <a href="#">Config option 1</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">Config option 2</a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a class="close-link">
+                                                                    <i class="fa fa-times"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>*@
+                                                    <div class="ibox-content" style="border-top-width: 0px;padding-top: 0px; padding-bottom: 0px;">
+                                                        @*<div class="ibox-content" style="height: 513.500px; overflow-X: scroll">*@
+                                                        @*<div class="row">
+                                                                <div class="col-sm-5 m-b-xs">
+                                                                    <select class="input-sm form-control input-s-sm inline">
+                                                                        <option value="0">Option 1</option>
+                                                                        <option value="1">Option 2</option>
+                                                                        <option value="2">Option 3</option>
+                                                                        <option value="3">Option 4</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-4 m-b-xs">
+                                                                    <div data-toggle="buttons" class="btn-group">
+                                                                        <label class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> Day </label>
+                                                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> Week </label>
+                                                                        <label class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> Month </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="input-group">
+                                                                        <input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                                                            <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>*@
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped" id="CheckRoomMasterTB">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="width:50px;">No.</th>
+                                                                        <th style="padding-top: 0px;align-items:center;text-align:center;margin-top:0px">
+                                                                            <div class="checkbox i-checks"><input type="checkbox" id="ChkAllRoomMaster" class="clsCheckRoomID"></div>
+                                                                        </th>
+                                                                        <th>รายการ </th>
+                                                                        <th style="text-align:right;">จำนวน </th>
+                                                                        <th>หน่วย</th>
+
+                                                                    </tr>
+                                                                </thead>
+
+                                                                @if (ViewBag.lstCheckRoomMaster != null)
+                                                                        {
+                                                                    <tbody>
+                                                                        @{int i = 1; }
+                                                                        @foreach (Inspinia_MVC5.Models.DMPS.CheckRoomMasterTable item in ViewBag.lstCheckRoomMaster)
+                                                                                {
+                                                                                    var nameTAP = "RCC" + item.CheckRoomID;
+                                                                                    var nameText = "RCT" + item.CheckRoomID;
+                                                                            <tr style="height: 20px;">
+                                                                                @*<td class="text-center" style="width:120px" data-UN="@item.CheckRoomID" >
+                                                                                        <button data-id="@item.CheckRoomID"  class="confirm-View btnVED btn-primary" type="button"><i class="fa fa-search"></i></button>
+                                                                                        <button data-id="@item.CheckRoomID"  class="confirm-Print btnVED btn-warning" type="button"><i class="fa fa fa-print"></i></button>
+                                                                                    </td>*@
+
+
+                                                                                <td>@i</td>
+                                                                                <td style="padding-top: 0px;align-items:center;text-align:center;margin-top:0px">
+                                                                                    <div class="checkbox i-checks"><input type="checkbox" value="@item.CheckRoomID" id="@nameTAP" name="CheckRoom" class="clsCheckRoomID"></div>
+                                                                                </td>
+
+                                                                                <td class="clsCheckRoomDesc">@item.CheckRoomDesc</td>
+
+
+                                                                                @if (@item.IsQty == true)
+                                                                                        {
+                                                                                    <td>
+                                                                                        <input type="number" id="@nameText" name="ObjName" class="form-control clsCheckQty" style="width: 30%; text-align:right; float:right;height: 28px;" min="0" data-id="" />
+                                                                                    </td>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                    <td></td>
+                                                                                        }
+
+
+                                                                                <td>@item.CheckRoomUnit</td>
+                                                                            </tr>
+
+                                                                            @*@foreach (var items in ViewBag.LstData)
+                                                                                {
+                                                                                    <tr id="" class="" data-id="" data-rownumber="" style="">
+                                                                                        <td></td>
+                                                                                    </tr>
+                                                                                }*@
+                                                                                    i++;
+                                                                                }
+                                                                    </tbody>
+
+
+                                                                                    }
+                                                            </table>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                @*<div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:140px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ทีวี </label></div></td>
+                                                    <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                                    <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;เครื่อง</label></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;โซฟา + โต๊ะกลาง </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;อุปกรณ์ทำความสะอาด</label></div></td>
+                                                    <td><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:140px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;รีโมททีวี </label></div></td>
+                                                    <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                                    <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;อัน</label></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;โต๊ะทานอาหารพร้อมเก้าอี้ </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ชุดผ้าม่าน </label></div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ชั้นวางทีวี </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ชุดผ้าปูที่นอน / ผ้าห่ม </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;วอลเปเปอร์ </label></div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:140px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เครื่องปรับอากาศ </label></div></td>
+                                                    <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                                    <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;เครื่อง</label></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ที่นอน / หมอน </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;กุญแจหน้าห้อง  </label></div></td>
+                                                    <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                                    <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;ดอก</label></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:140px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;รีโมทแอร์ </label></div></td>
+                                                    <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                                    <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;อัน</label></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;โต๊ะเครื่องแป้ง </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;กุญแจห้องนอน  </label></div></td>
+                                                    <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                                    <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;ดอก</label></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เตาไฟฟ้า </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เครื่องทำน้ำอุ่น </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;กุญแจ Mail box  </label></div></td>
+                                                    <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                                    <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;ดอก</label></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เครื่องดูดควัน </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;โต๊ะทำงาน </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;Key Card ลิฟท์  </label></div></td>
+                                                    <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                                    <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;ใบ</label></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ไมโครเวฟ </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เครื่องดูดฝุ่น </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:170px"><div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;Key Card ที่จอดรถ  </label></div></td>
+                                                    <td style="width:50px"><input type="text" id="ObjID" name="ObjName" class="form-control" style="" data-id="" /></td>
+                                                    <td><label id="lbl" class="" data-id="" style="padding-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;ใบ</label></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ตู้เย็น </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;พรมรองพื้น / พรมเช็ดเท้า </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;Digital Door Lock </label></div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;เครื่องซักผ้า </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ถังขยะ </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                        </div>
+                                    </div>
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ตู้เสื้อผ้า </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                            <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;ราวตากผ้า </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-4" style="">
+                                        </div>
+                                    </div>*@
+                                <hr />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 10px;"> </label>
+                                    </div>
+                                    <div class="col-lg-2" style="">
+                                        <div id="" class="checkbox i-checks"><label style="padding-left:0px"> <input id="ChkForRent" type="checkbox" name="ChkForRent" value=""> <i></i>&nbsp;&nbsp;สำหรับเช่า </label><label for="lblColor" id="lblColor" style="color:red"> *</label></div>
+                                    </div>
+                                    <div class="col-lg-3" style="">
+                                        <div id="" class="checkbox i-checks"><label style="padding-left:0px"> <input id="ChkForSale" type="checkbox" name="ChkForSale" value=""> <i></i>&nbsp;&nbsp;สำหรับขาย </label><label for="lblColor" id="lblColor" style="color:red"> *</label></div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="text-align:right">
+                                    <div id="" class="col-lg-2" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-bottom: 10px;">วันเริ่มสัญญา : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <div class="form-group" id="data_1">
+                                            <div class="input-group date">
+                                                <input id="ddlDS_StartContact" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")" readonly="readonly">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="" class="col-lg-2" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-bottom: 10px;">วันจบสัญญา : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <div class="form-group" id="data_1">
+                                            <div class="input-group date">
+                                                <input id="ddlDS_EndContact" type="text" class="form-control" value="@System.DateTime.Now.ToString("dd/MM/yyyy")" readonly="readonly">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br />
+                                <div class="row" id="" style="text-align:right">
+                                    <div id="" class="col-lg-2" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-bottom: 10px;">รายละเอียด : </label>
+                                    </div>
+                                    <div id="" class="col-lg-10" style="">
+                                        <textarea id="txtCheckRoomRemarkDeposit" class="form-control" style="" data-id="" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*รายละเอียดห้อง*@
+                <div class="panel-group" id="accordionName">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordionName" href="#collapseName">รายละเอียดห้อง</a>
+                            </h5>
+                        </div>
+                        <div id="collapseName" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                @*<div class="row" id="" style="">
+                                        <div id="" class="col-lg-2" style="text-align:right">
+                                            <label id="lbl" class="" data-id="" style="padding-top: 5px;">ชั้น : </label>
+                                        </div>
+                                        <div id="" class="col-lg-2" style="">
+                                            <input type="number" id="ObjID" name="ObjName" class="form-control" style="" data-id="" />
+                                        </div>
+                                    </div>
+                                    <br />*@
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ห้องนอน : </label>
+                                    </div>
+                                    <div id="" class="col-lg-2" style="">
+                                        <input type="text" id="txtDS_BedRoom" name="ObjName" class="form-control allow_decimal" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">นั่งเล่น : </label>
+                                    </div>
+                                    <div id="" class="col-lg-2" style="">
+                                        <input type="text" id="txtDS_LvingRoom" name="ObjName" class="form-control allow_decimal" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ห้องน้ำ : </label>
+                                    </div>
+                                    <div id="" class="col-lg-2" style="">
+                                        <input type="text" id="txtDS_ToiletRoom" name="ObjName" class="form-control allow_decimal" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ครัว : </label>
+                                    </div>
+                                    <div id="" class="col-lg-2" style="">
+                                        <input type="text" id="txtDS_KitchenRoom" name="ObjName" class="form-control allow_decimal" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">กุญแจ : </label>
+                                    </div>
+                                    <div id="" class="col-lg-2" style="">
+                                        <input type="number" id="txtDS_CountKey" name="ObjName" class="form-control" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                    <div id="" class="col-lg-2" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px; margin-top: 4px;">ฝากกุญแจห้องไว้กับ : </label>
+                                    </div>
+                                        <div id="" class="col-lg-2" style="">
+                                            <div class="radio i-checks"><label style="padding-left:5px"> <input id="rdoKeyIsAgent" type="radio" name="rdoKey" value=""> <i></i>&nbsp;&nbsp;นายหน้า </label></div>
+                                        </div>
+                                        <div id="" class="col-lg-2" style="">
+                                            <div class="radio i-checks"><label style="padding-left:0px"> <input id="rdoKeyIsJuristic" type="radio" name="rdoKey" value=""> <i></i>&nbsp;&nbsp;นิติบุคคล </label></div>
+                                        </div>
+                                    </div>
+                                    @*<div class="row" id="" style="">
+            <div id="" class="col-lg-2" style="text-align:right">
+                <label id="lbl" class="" data-id="" style="padding-top: 10px;">รูป : </label>
+            </div>
+            <div id="" class="col-lg-2" style="">
+                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" value=""> <i></i>&nbsp;&nbsp;มี </label></div>
+            </div>
+        </div>
+        <div class="row" id="" style="">
+            <div id="" class="col-lg-2" style="text-align:right">
+                <label id="lbl" class="" data-id="" style="padding-top: 10px;">สถานะห้อง : </label>
+            </div>
+            <div id="" class="col-lg-2" style="">
+                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" name="rdoKey" value=""> <i></i>&nbsp;&nbsp;สถานะห้องว่าง </label></div>
+            </div>
+            <div id="" class="col-lg-3" style="">
+                <div class="checkbox i-checks"><label style="padding-left:0px"> <input type="checkbox" name="rdoKey" value=""> <i></i>&nbsp;&nbsp;สถานะห้องปล่อยแล้ว </label></div>
+            </div>
+        </div>*@
+                                    <br />
+                                    <div class="col-lg-12">
+
+
+                                        <div id="" class="col-lg-2" style="text-align:right">
+                                            <label id="lbl" class="" data-id="" style="padding-top: 5px;">แนบไฟล์ 1 : </label>
+                                        </div>
+                                        <div id="" class="col-lg-8" style="">
+                                            <input type="file" id="txtAttachFile" data-running="1" class="form-control input-mini clsAttachFile" style="text-align:right;" readonly="readonly" value="" />
+                                        </div>
+                                        <div id="" class="col-lg-2" style="">
+                                            <button id="btnPreviewFile" class="btn btn-info btn-sm clsPreviewFile" data-running="1" data-path="">Preview File</button>
+                                        </div>
+
+                                    </div>
+                                    <br />
+                                    <div class="col-lg-12">
+
+
+                                        <div id="" class="col-lg-2" style="text-align:right">
+                                            <label id="lbl" class="" data-id="" style="padding-top: 5px;">แนบไฟล์ 2 : </label>
+                                        </div>
+                                        <div id="" class="col-lg-8" style="">
+                                            <input type="file" id="txtAttachFile2" data-running="2" class="form-control input-mini clsAttachFile" style="text-align:right;" readonly="readonly" value="" />
+                                        </div>
+                                        <div id="" class="col-lg-2" style="">
+                                            <button id="btnPreviewFile2" class="btn btn-info btn-sm clsPreviewFile" data-running="2" data-path="">Preview File</button>
+                                        </div>
+
+                                    </div>
+                                    <br />
+                                    <div class="col-lg-12">
+
+
+                                        <div id="" class="col-lg-2" style="text-align:right">
+                                            <label id="lbl" class="" data-id="" style="padding-top: 5px;">แนบไฟล์ 3 : </label>
+                                        </div>
+                                        <div id="" class="col-lg-8" style="">
+                                            <input type="file" id="txtAttachFile3" data-running="3" class="form-control input-mini clsAttachFile" style="text-align:right;" readonly="readonly" value="" />
+                                        </div>
+                                        <div id="" class="col-lg-2" style="">
+                                            <button id="btnPreviewFile3" class="btn btn-info btn-sm clsPreviewFile" data-running="3" data-path="">Preview File</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*สิ่งอำนวยความสะดวกส่วนกลาง*@
+                <div class="panel-group" id="accordionName">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordionName" href="#collapseName">สิ่งอำนวยความสะดวกส่วนกลาง</a>
+                            </h5>
+                        </div>
+                        <div id="collapseName" class="panel-collapse collapse in">
+                            <div class="panel-body">
+
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="ibox float-e-margins" style="margin-bottom: 0px;">
+                                                    @*<div class="ibox-title">
+                                                            <h5>Custom responsive table </h5>
+                                                            <div class="ibox-tools">
+                                                                <a class="collapse-link">
+                                                                    <i class="fa fa-chevron-up"></i>
+                                                                </a>
+                                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                                    <i class="fa fa-wrench"></i>
+                                                                </a>
+                                                                <ul class="dropdown-menu dropdown-user">
+                                                                    <li>
+                                                                        <a href="#">Config option 1</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">Config option 2</a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a class="close-link">
+                                                                    <i class="fa fa-times"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>*@
+                                                    <div class="ibox-content" style="border-top-width: 0px;margin-top:0px;padding-bottom: 0px;padding-top: 0px;">
+                                                        @*<div class="row">
+                                                                <div class="col-sm-5 m-b-xs">
+                                                                    <select class="input-sm form-control input-s-sm inline">
+                                                                        <option value="0">Option 1</option>
+                                                                        <option value="1">Option 2</option>
+                                                                        <option value="2">Option 3</option>
+                                                                        <option value="3">Option 4</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-4 m-b-xs">
+                                                                    <div data-toggle="buttons" class="btn-group">
+                                                                        <label class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> Day </label>
+                                                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> Week </label>
+                                                                        <label class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> Month </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="input-group">
+                                                                        <input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                                                            <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>*@
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped" id="FacilityMasterTB">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="width:50px;">No.</th>
+                                                                        <th style="padding-top: 0px;align-items:center;text-align:center;margin-top:0px">
+                                                                            <div class="checkbox i-checks"><input type="checkbox" id="ChkAllFac" class="ClsFACCheck"></div>
+                                                                        </th>
+
+                                                                        <th>รายการ </th>
+                                                                        @*<th>จำนวน </th>
+                                                                            <th>หน่วย</th>*@
+
+                                                                    </tr>
+                                                                </thead>
+
+                                                                @if (ViewBag.lstFacilityMaster != null)
+                                                                        {
+                                                                    <tbody>
+                                                                        @{int a = 1; }
+                                                                        @foreach (Inspinia_MVC5.Models.DMPS.FacilityMasterTable item in ViewBag.lstFacilityMaster)
+                                                                                {
+
+                                                                                    var nameTAP = "ChkFac" + item.FacilityID;
+                                                                            <tr>
+                                                                                <td> @a </td>
+                                                                                <td style="padding-top: 0px;padding-bottom: 0px;text-align:center;height: 33px;width: 57px;">
+                                                                                    <div class="checkbox i-checks"><input type="checkbox" value="@item.FacilityID" id="@nameTAP" name="CheckFac" class="ClsFACCheck"></div>
+                                                                                </td>
+
+                                                                                <td class="FACDESC">
+                                                                                    @item.FacilityDesc
+                                                                                    @*<label id="FACDESC" > @item.FacilityDesc </label>*@
+                                                                                </td>
+
+                                                                                @*<td>
+                                                                                        <input type="number" id="txtQty" name="ObjName" class="form-control" style="width: 50%" data-id="" />
+                                                                                    </td>
+
+
+                                                                                    <td>@item.CheckRoomUnit</td>*@
+                                                                            </tr>
+
+                                                                            @*@foreach (var items in ViewBag.LstData)
+                                                                                {
+                                                                                    <tr id="" class="" data-id="" data-rownumber="" style="">
+                                                                                        <td></td>
+                                                                                    </tr>
+                                                                                }*@
+                                                                                    a++;
+                                                                                }
+                                                                    </tbody>
+
+                                                                                    }
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <br />
+                                <div class="col-lg-12">
+
+
+                                    <div class="row" id="" style="">
+                                        <div id="" class="col-lg-2" style="text-align:right;padding-right: 30px;">
+                                            <label id="lbl" class="" data-id="" style="padding-top: 5px;">อื่น ๆ : </label>
+                                        </div>
+                                        <div id="" class="col-lg-9" style="padding-left: 0px;">
+                                            <textarea id="txtFacilityOther" class="form-control" style="" data-id="" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*หมายเหตุ*@
+                <div class="panel-group" id="accordionName">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordionName" href="#collapseName">หมายเหตุ</a>
+                            </h5>
+                        </div>
+                        <div id="collapseName" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ค่าส่วนกลาง : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <input type="text" id="txtDS_MaintenaceFee" name="ObjName" class="form-control allow_decimal" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท / ตารางเมตร</label>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ค่าน้ำ : </label><label for="lblColor" id="lblColor" style="color:red"> *</label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <input type="text" id="txtDS_WaterBill" name="ObjName" class="form-control allow_decimal" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท / ยูนิต</label>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">รายละเอียด : </label>
+                                    </div>
+                                    <div id="" class="col-lg-9" style="">
+                                        <textarea id="txtFacilityRemark" class="form-control" style="" data-id="" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*รายละเอียดการให้เช่า / ขายห้องชุด*@
+                <div class="panel-group" id="accordionName">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordionName" href="#collapseName">รายละเอียดการให้เช่า / ขายห้องชุด</a>
+                            </h5>
+                        </div>
+                        <div id="collapseName" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">อัตราค่าเช่าเริ่มต้น : <b style="color:red">*</b></label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <input type="text" id="txtDS_RentPriceStart" name="ObjName" class="form-control allow_decimal" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                    <div id="" class="col-lg-1" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;"> ถึง <b style="color:red">*</b></label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <input type="text" id="txtDS_RentPriceEnd" name="ObjName" class="form-control allow_decimal" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท / เดือน</label>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" id="" style="">
+                                    <div id="" class="col-lg-2" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">ราคาขายเริ่มต้น : </label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <input type="text" id="txtDS_SalePriceStart" name="ObjName" class="form-control allow_decimal" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                    <div id="" class="col-lg-1" style="text-align:right">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;"> ถึง </label>
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <input type="text" id="txtDS_SalePriceEnd" name="ObjName" class="form-control allow_decimal" style="text-align:right" data-id="" min="0" />
+                                    </div>
+                                    <div id="" class="col-lg-3" style="">
+                                        <label id="lbl" class="" data-id="" style="padding-top: 5px;">บาท</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*ข้อมูลผู้ดูแลห้อง*@
+                <div class="row" id="rowPV">
+                    <div class="col-sm-12">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">ข้อมูลผู้ฝากเช่า / ฝากขาย</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label id="" class="" data-id="" style="padding-top: 5px;">บริษัท : </label>
+                                                    </div>
+                                                    @*<div class="col-lg-3">
+                                                            <input type="text" id="ddlDS_Company" name="ObjName" class="form-control" style="" data-id="" value="บริษัท ยูนิเวนเจอร์ จำกัด (มหาชน)" readonly="readonly"/>
+                                                        </div>*@
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        @Html.DropDownList("ddlCompany", null, "Please Select", new { @class = "select2_Company form-control", style = "width:100%" })
+                                                    </div>
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label id="" class="" data-id="" style="padding-top: 5px;">ฝ่าย : </label>
+                                                    </div>
+                                                    @*<div class="col-lg-3" style="text-align:left">
+                                                            <input type="text" id="ddlDS_Departments" name="ObjName" class="form-control" style="" data-id="" value="เทคโนโลยีสารสนเทศ" readonly="readonly"/>
+                                                        </div>*@
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        @Html.DropDownList("ddlDepartment", null, "Please Select", new { @class = "select2_department form-control", style = "width:100%" })
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label id="" class="" data-id="" style="padding-top: 5px;">ชื่อผู้ดูแล : </label>
+                                                    </div>
+                                                    @*<div class="col-lg-3">
+                                                            <select class="form-control">
+                                                                <option value="volvo">10590111 นายบิ๊ก</option>
+                                                                <option value="saab">10590112 นายอ๋อ</option>
+                                                                <option value="mercedes">10590113 นายกรอบ</option>
+                                                            </select>
+                                                        </div>*@
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        @Html.DropDownList("ddlInChargeBy", null, "Please Select", new { @class = "select2_InChargeBy form-control", style = "width:100%" })
+                                                    </div>
+                                                    <div class="col-lg-2" style="text-align:right">
+                                                        <label id="" class="" data-id="" style="padding-top: 5px;">ตำแหน่ง : </label>
+                                                    </div>
+                                                    @*<div class="col-lg-3" style="text-align:left">
+                                                            <input type="text" id="ddlDS_Position" name="ObjName" class="form-control" style="" data-id="" value="เจ้าหน้าที่" readonly="readonly"/>
+                                                        </div>*@
+                                                    <div class="col-lg-3" style="text-align:left">
+                                                        @Html.DropDownList("ddlPosition", null, "Please Select", new { @class = "select2_position form-control", style = "width:100%" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row" id="" style="">
+                    <div id="" class="col-lg-12" style="text-align:right">
+                        <button type="button" id="btnSaveDeposit" class="btn btn-success" data-id="0" title="บันทึกข้อมูลการฝากเช่า / ฝากขายห้อง"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
+                        <button type="button" id="btnPrint" class="btn btn-warning" data-id="0" title="บันทึกและพิมพ์ข้อมูลการฝากเช่า / ฝากขายห้อง"><i class="fa fa-print"></i>&nbsp;&nbsp;Save & Print</button>
+                        <button type="button" id="btnCancel" class="btn btn-danger" data-id="0" title="ยกเลิกข้อมูลการฝากเช่า / ฝากขายห้อง"><i class="fa fa-ban"></i>&nbsp;&nbsp;Cancel</button>
+                        <button type="button" id="btnClose" class="btn btn-default" data-id="0" title="ปิด"><i class="fa fa-close"></i>&nbsp;&nbsp;Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

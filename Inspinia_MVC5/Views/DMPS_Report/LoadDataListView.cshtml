@@ -1,0 +1,262 @@
+﻿<div class="wrapper wrapper-content" style="padding-top: 0px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Transaction</h5>
+                    <div class="ibox-tools">
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+                    @{
+                        var IsshowTab = ViewBag.IsshowTab;
+
+                        if (ViewBag.DataListView == null || ViewBag.DataListView.Count == 0)
+                        {
+                            @Html.Raw("ไม่พบข้อมูล");
+                        };
+
+                        if (IsshowTab == "DS")
+                        {
+
+                            <table class="table table-striped table-bordered table-hover dataTables-example">
+                                <thead>
+                                    <tr style="background-color:#0275d8;color: white;">
+                                        <th style="width:25px">No.</th>
+                                        <th>เลขที่เอกสาร</th>
+                                        <th>วันที่เอกสาร</th>
+                                        <th>สถานะห้อง</th>
+                                        <th>เจ้าของห้อง</th>
+                                        <th>เบอร์โทร</th>
+                                        <th>โครงการ</th>
+                                        <th>Developer</th>
+                                        <th>UnitsCode</th>
+                                        <th>RoomArea</th>
+                                        <th>ห้องเลขที่</th>
+                                        <th>ชั้น</th>
+                                        <th>ราคาเช่า</th>
+                                        <th>ราคาขาย</th>
+                                        <th>เหตุผลการยกเลิก</th>
+                                        <th>พนักงานดูแล</th>
+                                        <th>วันที่แก้ไขล่าสุด</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{int i = 1; }
+                                    @foreach (Inspinia_MVC5.Models.DMPS.vw_rpt_Deposit sItems in ViewBag.DataListView)
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td style="color:blue">@sItems.DepositNo</td>
+                                            <td>@sItems.DepositDate.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                                            <td>@sItems.DescriptionTH</td>
+                                            <td>@sItems.FirstName</td>
+                                            <td>@sItems.Tel1</td>
+                                            <td>@sItems.ProjectName</td>
+                                            <td>@sItems.DevelopmentName</td>
+                                            <td>@sItems.UnitsCode</td>
+                                            <td>@sItems.RoomNo</td>
+                                            <td>@sItems.RoomArea.GetValueOrDefault().ToString("###,##0.00")</td>
+                                            <td>@sItems.Floor</td>
+                                            <td>@sItems.RentPriceStart.GetValueOrDefault().ToString("###,###,###,##0.00") - @sItems.RentPriceEnd.GetValueOrDefault().ToString("###,###,###,##0.00")  </td>
+                                            <td>@sItems.SalePriceStart.GetValueOrDefault().ToString("###,###,###,##0.00") - @sItems.SalePriceEnd.GetValueOrDefault().ToString("###,###,###,##0.00")  </td>
+                                            <td>@sItems.ReasonCancel</td>
+                                            <td>@sItems.InChargeByName</td>
+                                            <td>@sItems.ReviseDateTime.GetValueOrDefault().ToString("dd/MM/yyyy HH:mm")</td>
+                                        </tr>
+                                        i++;
+                                    }
+                                </tbody>
+                            </table>
+
+                        };
+
+                        if (IsshowTab == "RV")
+                        {
+                            <table class="table table-striped table-bordered table-hover dataTables-example">
+                                <thead>
+                                    <tr style="background-color:#0275d8;color: white;">
+                                        <th style="width:25px">No.</th>
+                                        <th>เลขที่เอกสาร</th>
+                                        <th>วันที่เอกสาร</th>
+                                        <th>วันที่นัดเซ็นสัญญา</th>
+                                        <th>ประเภทการจอง</th>
+                                        <th>เจ้าของห้อง</th>
+                                        <th>เบอร์โทร (เจ้าของห้อง) </th>
+                                        <th>ชื่อผู้จอง</th>
+                                        <th>เบอร์โทร (ผู้จอง) </th>
+                                        <th>โครงการ</th>
+                                        <th>Developer</th>
+                                        <th>UnitsCode</th>
+                                        <th>ห้องเลขที่</th>
+                                        <th>RoomArea</th>
+                                        <th>ชั้น</th>
+                                        <th>เงินจอง</th>
+                                        <th>ราคาเช่า/ราคาขาย</th>
+                                        <th>พนักงานดูแล</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{int i = 1; }
+                                    @foreach (Inspinia_MVC5.Models.DMPS.vw_rpt_Reservations sItems in ViewBag.DataListView)
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td style="color:blue">@sItems.ReservationsNo</td>
+                                            <td>@sItems.ReservationsDate.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                                            <td>@sItems.DueDateSignContact.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                                            @if (sItems.ReservationsType.Trim() == "2")
+                                            {
+                                                <td><label class="label label-primary"> จอง (เช่า) </label></td>
+                                            }
+                                            else
+                                            {
+                                                <td><label class="label label-success"> จอง (ซื้อ) </label></td>
+                                            }
+                                            <td>@sItems.DS_FirstName</td>
+                                            <td>@sItems.DS_Tel1_Show</td>
+                                            <td>@sItems.RV_FirstName</td>
+                                            <td>@sItems.RV_Tel1_Show</td>
+                                            <td>@sItems.ProjectName</td>
+                                            <td>@sItems.DevelopmentName</td>
+                                            <td>@sItems.UnitsCode</td>
+                                            <td>@sItems.RoomNo</td>
+                                            <td>@sItems.RoomArea.GetValueOrDefault().ToString("###,##0.00")</td>
+                                            <td>@sItems.Floor</td>
+                                            <td>@sItems.ReservationsAmt.GetValueOrDefault().ToString("###,##0.00")</td>
+
+                                            @if (sItems.ReservationsType.Trim() == "2")
+                                            {
+                                                <td> @sItems.RentPrice.GetValueOrDefault().ToString("###,##0.00") </td>
+                                            }
+                                            else
+                                            {
+
+                                                <td> @sItems.SaleAmt.GetValueOrDefault().ToString("###,###,###,##0.00")</td>
+                                            }
+
+                                            <td>@sItems.CreatorName</td>
+                                        </tr>
+                                        i++;
+                                    }
+                                </tbody>
+                            </table>
+                        };
+
+                        if (IsshowTab == "RN")
+                        {
+                            <table class="table table-striped table-bordered table-hover dataTables-example">
+                                <thead>
+                                    <tr style="background-color:#0275d8;color: white;">
+                                        <th style="width:25px">No.</th>
+                                        <th>เลขที่เอกสาร</th>
+                                        <th>วันที่เอกสาร</th>
+                                        <th>วันที่เริ่ม - สิ้นสุดสัญญา</th>
+                                        <th>ระยะเวลาเช่า (เดือน)</th>
+                                        <th>ราคาเช่า</th>
+                                        <th>เจ้าของห้อง</th>
+                                        <th>เบอร์โทร (เจ้าของห้อง)</th>
+                                        <th>ผู้เช่าห้อง</th>
+                                        <th>เบอร์โทร (ผู้เช่าห้อง)</th>
+                                        <th>โครงการ</th>
+                                        <th>Developer</th>
+                                        <th>UnitsCode</th>
+                                        <th>ห้องเลขที่</th>
+                                        <th>ชั้น</th>
+                                        <th>RoomArea</th>
+                                        <th>พนักงานดูแล</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{int i = 1; }
+                                    @foreach (Inspinia_MVC5.Models.DMPS.vw_rpt_Rent sItems in ViewBag.DataListView)
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td style="color:blue">@sItems.RentNo</td>
+                                            <td>@sItems.RentDate.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                                            <td>@sItems.RentStartDate.GetValueOrDefault().ToString("dd/MM/yyyy") - @sItems.RentEndDate.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                                            <td>@sItems.RentPeriod</td>
+                                            <td>@sItems.RentPrice.GetValueOrDefault().ToString("###,##0.00")</td>
+                                            <td>@sItems.DS_FirstName</td>
+                                            <td>@sItems.DS_Tel1_Show</td>
+                                            <td>@sItems.RN_FirstName</td>
+                                            <td>@sItems.RN_Tel1_Show</td>
+                                            <td>@sItems.ProjectName</td>
+                                            <td>@sItems.DevelopmentName</td>
+                                            <td>@sItems.UnitsCode</td>
+                                            <td>@sItems.RoomNo</td>
+                                            <td>@sItems.Floor</td>
+                                            <td>@sItems.RoomArea.GetValueOrDefault().ToString("###,##0.00")</td>
+                                            <td>@sItems.CreatorName</td>
+                                        </tr>
+                                        i++;
+                                    }
+                                </tbody>
+                            </table>
+                        };
+
+                        if (IsshowTab == "RS")
+                        {
+                            <table class="table table-striped table-bordered table-hover dataTables-example">
+                                <thead>
+                                    <tr style="background-color:#0275d8;color: white;">
+                                        <th style="width:25px">No.</th>
+                                        <th>เลขที่เอกสาร</th>
+                                        <th>วันที่เอกสาร</th>
+                                        <th>เจ้าของห้อง</th>
+                                        <th>เบอร์โทร (เจ้าของห้อง) </th>
+                                        <th>ผู้ซื้อห้อง</th>
+                                        <th>เบอร์โทร (ผู้ซื้อห้อง)</th>
+                                        <th>โครงการ</th>
+                                        <th>Developer</th>
+                                        <th>UnitsCode</th>
+                                        <th>ห้องเลขที่</th>
+                                        <th>RoomArea</th>
+                                        <th>ชั้น</th>
+                                        <th>ราคาขาย</th>
+                                        <th>พนักงานดูแล</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{int i = 1; }
+                                    @foreach (Inspinia_MVC5.Models.DMPS.vw_rpt_Resale sItems in ViewBag.DataListView)
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td style="color:blue">@sItems.ResaleNo</td>
+                                            <td>@sItems.ResaleDate.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                                            <td>@sItems.DS_FirstName</td>
+                                            <td>@sItems.DS_Tel1</td>
+                                            <td>@sItems.RS_FirstName</td>
+                                            <td>@sItems.RS_Tel1</td>
+                                            <td>@sItems.ProjectName</td>
+                                            <td>@sItems.DevelopmentName</td>
+                                            <td>@sItems.UnitsCode</td>
+                                            <td>@sItems.RoomNo</td>
+                                            <td>@sItems.RoomArea.GetValueOrDefault().ToString("###,##0.00")</td>
+                                            <td>@sItems.Floor</td>
+                                            <td>@sItems.SalePrice.GetValueOrDefault().ToString("###,##0.00")</td>
+                                            <td>@sItems.CreatorName</td>
+                                        </tr>
+                                        i++;
+                                    }
+                                </tbody>
+                            </table>
+                        };
+
+
+
+
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

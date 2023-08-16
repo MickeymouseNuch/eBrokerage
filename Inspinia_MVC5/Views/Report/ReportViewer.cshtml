@@ -1,0 +1,15 @@
+﻿@using Stimulsoft.Report.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+
+<body style="height:1400px">
+    @Html.Stimulsoft().StiMvcViewer(new StiMvcViewerOptions()
+{
+    Actions =
+                    {
+                        GetReport = "GetReport",
+                        ViewerEvent = "ViewerEvent"
+                    }
+})
+</body>

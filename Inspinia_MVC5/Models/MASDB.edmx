@@ -1,0 +1,924 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WH-MAS_Dev.dbo.AmphurTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AmphurTable">
+          <Key>
+            <PropertyRef Name="AMPHUR_ID" />
+          </Key>
+          <Property Name="AMPHUR_ID" Type="int" Nullable="false" />
+          <Property Name="AMPHUR_CODE" Type="nvarchar" MaxLength="4" />
+          <Property Name="AMPHUR_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="GEO_ID" Type="int" />
+          <Property Name="PROVINCE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="BankTable">
+          <Key>
+            <PropertyRef Name="BankID" />
+          </Key>
+          <Property Name="BankID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="BankCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="255" />
+          <Property Name="BankName_Eng" Type="nvarchar" MaxLength="255" />
+          <Property Name="AbBankName" Type="nvarchar" MaxLength="20" />
+          <Property Name="isNonBank" Type="bit" />
+          <Property Name="hasCreditCard" Type="bit" />
+          <Property Name="isDelete" Type="bit" />
+          <Property Name="VendorCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoanRate" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ContactEmail" Type="nvarchar(max)" />
+          <Property Name="ContactName" Type="nvarchar(max)" />
+          <Property Name="ContactTel" Type="nvarchar(max)" />
+          <Property Name="EmailBody" Type="varchar(max)" />
+          <Property Name="EmailHeader" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BankTypeTable">
+          <Key>
+            <PropertyRef Name="BankTypeID" />
+          </Key>
+          <Property Name="BankTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankTypeCode" Type="varchar" MaxLength="20" />
+          <Property Name="BankTypeNameTH" Type="varchar" MaxLength="200" />
+          <Property Name="BankTypeNameEN" Type="varchar" MaxLength="200" />
+          <Property Name="BankTypeDescription" Type="varchar(max)" />
+          <Property Name="Creator" Type="int" />
+          <Property Name="CreateDateTime" Type="datetime" />
+          <Property Name="Reviser" Type="int" />
+          <Property Name="ReviseDateTime" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WH-MAS_Dev.dbo.DistrictTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DistrictTable">
+          <Key>
+            <PropertyRef Name="DISTRICT_ID" />
+          </Key>
+          <Property Name="DISTRICT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DISTRICT_CODE" Type="nvarchar" MaxLength="6" />
+          <Property Name="DISTRICT_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="AMPHUR_ID" Type="int" />
+          <Property Name="PROVINCE_ID" Type="int" />
+          <Property Name="GEO_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProvinceTable">
+          <Key>
+            <PropertyRef Name="PROVINCE_ID" />
+          </Key>
+          <Property Name="PROVINCE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROVINCE_CODE" Type="nvarchar" MaxLength="2" />
+          <Property Name="PROVINCE_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="GEO_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ReportCriteriaTable">
+          <Key>
+            <PropertyRef Name="CriteriaID" />
+          </Key>
+          <Property Name="CriteriaID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportCode" Type="varchar" MaxLength="50" />
+          <Property Name="CriteriaType" Type="varchar" MaxLength="50" />
+          <Property Name="CriteriaName" Type="varchar" MaxLength="255" />
+          <Property Name="CriteriaLabel" Type="varchar" MaxLength="255" />
+          <Property Name="CriteriaRow" Type="int" />
+          <Property Name="CriteriaIndex" Type="varchar" MaxLength="50" />
+          <Property Name="EventOn" Type="varchar" MaxLength="255" />
+          <Property Name="CriteriaQuery" Type="varchar(max)" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="ReportForAutoMailTable">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReportNameTH" Type="varchar" MaxLength="250" />
+          <Property Name="ReportNameEN" Type="varchar" MaxLength="250" />
+          <Property Name="ReportType" Type="int" />
+          <Property Name="ReportPath" Type="varchar(max)" />
+          <Property Name="ReportFileName" Type="varchar(max)" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="urlAutoMail" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ReportTable">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReportNameTH" Type="varchar" MaxLength="250" />
+          <Property Name="ReportNameEN" Type="varchar" MaxLength="250" />
+          <Property Name="ReportType" Type="int" />
+          <Property Name="ReportFileName" Type="varchar(max)" />
+          <Property Name="ReportPath" Type="varchar(max)" />
+          <Property Name="ReportDBConnection" Type="varchar" MaxLength="50" />
+          <Property Name="ReportProcedure" Type="varchar(max)" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="STG-EMPLOYEEVw">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CP_CODE" Type="varchar" MaxLength="255" />
+          <Property Name="EM_CODE" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PRENAME_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PRENAME_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_NAME_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_NAME_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SURNAME_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SURNAME_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_NICKNAME" Type="varchar" MaxLength="255" />
+          <Property Name="EM_BIRTHDATE" Type="datetime" />
+          <Property Name="EM_SEX" Type="varchar" MaxLength="255" />
+          <Property Name="EM_MOBILE" Type="varchar" MaxLength="255" />
+          <Property Name="EM_MAIL" Type="varchar" MaxLength="255" />
+          <Property Name="EM_POSITION_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_POSITION_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PositionCode" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SUBPOSITION_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SUBPOSITION_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_JobroleCode" Type="varchar" MaxLength="255" />
+          <Property Name="EM_UNIT_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_UNIT_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_COMPANY_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_COMPANY_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PICTURE_PATH" Type="varchar" MaxLength="255" />
+          <Property Name="EM_STARTJOBD" Type="datetime" />
+          <Property Name="EM_SERVICEDATE" Type="datetime" />
+          <Property Name="EL_TNAME" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Iden" Type="varchar" MaxLength="255" />
+          <Property Name="EM_UNIT_T_Code" Type="varchar" MaxLength="255" />
+          <Property Name="EM_GROUP_CODE" Type="varchar" MaxLength="255" />
+          <Property Name="EM_GROUP_NAME_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_GROUP_NAME_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_ENDJOBDATE" Type="datetime" />
+          <Property Name="EM_INACTIVE" Type="bit" />
+          <Property Name="EM_SL_UNIT_CODE_U1" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U1" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U1" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_UNIT_CODE_U2" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U2" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U2" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_UNIT_CODE_U3" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U3" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U3" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_UNIT_CODE_U4" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U4" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U4" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_UNIT_CODE_U5" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U5" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U5" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_UNIT_CODE_U6" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U6" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U6" Type="varchar" MaxLength="255" />
+          <Property Name="EM_USERNAME" Type="varchar" MaxLength="255" />
+          <Property Name="EM_EmployeeTypeCode" Type="varchar" MaxLength="255" />
+          <Property Name="EM_EmployeeTypeName" Type="varchar" MaxLength="255" />
+          <Property Name="EM_CombinationCode" Type="varchar" MaxLength="255" />
+          <Property Name="EM_CombinationName" Type="varchar" MaxLength="255" />
+          <Property Name="EM_AddressTypeCode_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_AddressTypeName_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Address1_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Address2_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_CityArea_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_City_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_State_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Country_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PostelCode_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_AddressTypeCode_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_AddressTypeName_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Address1_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Address2_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_CityArea_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_City_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_State_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Country_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PostelCode_02" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="STG-EMPLOYEEVw_ALL">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CP_CODE" Type="varchar" MaxLength="255" />
+          <Property Name="EM_CODE" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PRENAME_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PRENAME_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_NAME_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_NAME_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SURNAME_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SURNAME_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_NICKNAME" Type="varchar" MaxLength="255" />
+          <Property Name="EM_BIRTHDATE" Type="datetime" />
+          <Property Name="EM_SEX" Type="varchar" MaxLength="255" />
+          <Property Name="EM_MOBILE" Type="varchar" MaxLength="255" />
+          <Property Name="EM_MAIL" Type="varchar" MaxLength="255" />
+          <Property Name="EM_POSITION_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_POSITION_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PositionCode" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SUBPOSITION_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SUBPOSITION_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_JobroleCode" Type="varchar" MaxLength="255" />
+          <Property Name="EM_UNIT_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_UNIT_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_COMPANY_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_COMPANY_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PICTURE_PATH" Type="varchar" MaxLength="255" />
+          <Property Name="EM_STARTJOBD" Type="datetime" />
+          <Property Name="EM_SERVICEDATE" Type="datetime" />
+          <Property Name="EL_TNAME" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Iden" Type="varchar" MaxLength="255" />
+          <Property Name="EM_UNIT_T_Code" Type="varchar" MaxLength="255" />
+          <Property Name="EM_GROUP_CODE" Type="varchar" MaxLength="255" />
+          <Property Name="EM_GROUP_NAME_T" Type="varchar" MaxLength="255" />
+          <Property Name="EM_GROUP_NAME_E" Type="varchar" MaxLength="255" />
+          <Property Name="EM_ENDJOBDATE" Type="datetime" />
+          <Property Name="EM_INACTIVE" Type="bit" />
+          <Property Name="EM_SL_UNIT_CODE_U1" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U1" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U1" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_UNIT_CODE_U2" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U2" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U2" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_UNIT_CODE_U3" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U3" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U3" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_UNIT_CODE_U4" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U4" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U4" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_UNIT_CODE_U5" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U5" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U5" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_UNIT_CODE_U6" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_TNAME_U6" Type="varchar" MaxLength="255" />
+          <Property Name="EM_SL_ENAME_U6" Type="varchar" MaxLength="255" />
+          <Property Name="EM_USERNAME" Type="varchar" MaxLength="255" />
+          <Property Name="EM_EmployeeTypeCode" Type="varchar" MaxLength="255" />
+          <Property Name="EM_EmployeeTypeName" Type="varchar" MaxLength="255" />
+          <Property Name="EM_CombinationCode" Type="varchar" MaxLength="255" />
+          <Property Name="EM_CombinationName" Type="varchar" MaxLength="255" />
+          <Property Name="EM_AddressTypeCode_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_AddressTypeName_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Address1_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Address2_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_CityArea_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_City_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_State_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Country_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PostelCode_01" Type="varchar" MaxLength="255" />
+          <Property Name="EM_AddressTypeCode_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_AddressTypeName_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Address1_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Address2_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_CityArea_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_City_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_State_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_Country_02" Type="varchar" MaxLength="255" />
+          <Property Name="EM_PostelCode_02" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="BankTable" EntityType="Self.BankTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankTypeTable" EntityType="Self.BankTypeTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProvinceTable" EntityType="Self.ProvinceTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportCriteriaTable" EntityType="Self.ReportCriteriaTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportForAutoMailTable" EntityType="Self.ReportForAutoMailTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportTable" EntityType="Self.ReportTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STG-EMPLOYEEVw" EntityType="Self.STG-EMPLOYEEVw" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STG-EMPLOYEEVw_ALL" EntityType="Self.STG-EMPLOYEEVw_ALL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AmphurTable" EntityType="Self.AmphurTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AmphurTable].[AMPHUR_ID] AS [AMPHUR_ID], 
+    [AmphurTable].[AMPHUR_CODE] AS [AMPHUR_CODE], 
+    [AmphurTable].[AMPHUR_NAME] AS [AMPHUR_NAME], 
+    [AmphurTable].[GEO_ID] AS [GEO_ID], 
+    [AmphurTable].[PROVINCE_ID] AS [PROVINCE_ID]
+    FROM [dbo].[AmphurTable] AS [AmphurTable]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DistrictTable" EntityType="Self.DistrictTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DistrictTable].[DISTRICT_ID] AS [DISTRICT_ID], 
+    [DistrictTable].[DISTRICT_CODE] AS [DISTRICT_CODE], 
+    [DistrictTable].[DISTRICT_NAME] AS [DISTRICT_NAME], 
+    [DistrictTable].[AMPHUR_ID] AS [AMPHUR_ID], 
+    [DistrictTable].[PROVINCE_ID] AS [PROVINCE_ID], 
+    [DistrictTable].[GEO_ID] AS [GEO_ID]
+    FROM [dbo].[DistrictTable] AS [DistrictTable]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MASDBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="AmphurTables" EntityType="Model.AmphurTable" />
+          <EntitySet Name="BankTables" EntityType="Model.BankTable" />
+          <EntitySet Name="BankTypeTables" EntityType="Model.BankTypeTable" />
+          <EntitySet Name="DistrictTables" EntityType="Model.DistrictTable" />
+          <EntitySet Name="ProvinceTables" EntityType="Model.ProvinceTable" />
+          <EntitySet Name="ReportForAutoMailTables" EntityType="Model.ReportForAutoMailTable" />
+          <EntitySet Name="ReportCriteriaTables" EntityType="Model.ReportCriteriaTable" />
+          <EntitySet Name="ReportTables" EntityType="Model.ReportTable" />
+          <EntitySet Name="STG_EMPLOYEEVw" EntityType="Model.STG_EMPLOYEEVw" />
+          <EntitySet Name="STG_EMPLOYEEVw_ALL" EntityType="Model.STG_EMPLOYEEVw_ALL" />
+        </EntityContainer>
+        <EntityType Name="AmphurTable">
+          <Key>
+            <PropertyRef Name="AMPHUR_ID" />
+          </Key>
+          <Property Name="AMPHUR_ID" Type="Int32" Nullable="false" />
+          <Property Name="AMPHUR_CODE" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="AMPHUR_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GEO_ID" Type="Int32" />
+          <Property Name="PROVINCE_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BankTable">
+          <Key>
+            <PropertyRef Name="BankID" />
+          </Key>
+          <Property Name="BankID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BankName_Eng" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AbBankName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="isNonBank" Type="Boolean" />
+          <Property Name="hasCreditCard" Type="Boolean" />
+          <Property Name="isDelete" Type="Boolean" />
+          <Property Name="VendorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoanRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ContactEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactTel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmailHeader" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BankTypeTable">
+          <Key>
+            <PropertyRef Name="BankTypeID" />
+          </Key>
+          <Property Name="BankTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankTypeCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BankTypeNameTH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BankTypeNameEN" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BankTypeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Creator" Type="Int32" />
+          <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Reviser" Type="Int32" />
+          <Property Name="ReviseDateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="DistrictTable">
+          <Key>
+            <PropertyRef Name="DISTRICT_ID" />
+          </Key>
+          <Property Name="DISTRICT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DISTRICT_CODE" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AMPHUR_ID" Type="Int32" />
+          <Property Name="PROVINCE_ID" Type="Int32" />
+          <Property Name="GEO_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProvinceTable">
+          <Key>
+            <PropertyRef Name="PROVINCE_ID" />
+          </Key>
+          <Property Name="PROVINCE_ID" Type="Int32" Nullable="false" />
+          <Property Name="PROVINCE_CODE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="PROVINCE_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GEO_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ReportForAutoMailTable">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReportNameTH" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ReportNameEN" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ReportType" Type="Int32" />
+          <Property Name="ReportPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReportFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="urlAutoMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ReportCriteriaTable">
+          <Key>
+            <PropertyRef Name="CriteriaID" />
+          </Key>
+          <Property Name="CriteriaID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CriteriaType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CriteriaName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CriteriaLabel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CriteriaRow" Type="Int32" />
+          <Property Name="CriteriaIndex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EventOn" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CriteriaQuery" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ReportTable">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReportNameTH" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ReportNameEN" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ReportType" Type="Int32" />
+          <Property Name="ReportFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReportPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReportDBConnection" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReportProcedure" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="STG_EMPLOYEEVw">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CP_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PRENAME_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PRENAME_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_NAME_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_NAME_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SURNAME_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SURNAME_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_NICKNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_BIRTHDATE" Type="DateTime" Precision="3" />
+          <Property Name="EM_SEX" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_MOBILE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_MAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_POSITION_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_POSITION_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PositionCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SUBPOSITION_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SUBPOSITION_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_JobroleCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_UNIT_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_UNIT_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_COMPANY_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_COMPANY_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PICTURE_PATH" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_STARTJOBD" Type="DateTime" Precision="3" />
+          <Property Name="EM_SERVICEDATE" Type="DateTime" Precision="3" />
+          <Property Name="EL_TNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Iden" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_UNIT_T_Code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_GROUP_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_GROUP_NAME_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_GROUP_NAME_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_ENDJOBDATE" Type="DateTime" Precision="3" />
+          <Property Name="EM_INACTIVE" Type="Boolean" />
+          <Property Name="EM_SL_UNIT_CODE_U1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_UNIT_CODE_U2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_UNIT_CODE_U3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_UNIT_CODE_U4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_UNIT_CODE_U5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_UNIT_CODE_U6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_EmployeeTypeCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_EmployeeTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_CombinationCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_CombinationName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_AddressTypeCode_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_AddressTypeName_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Address1_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Address2_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_CityArea_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_City_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_State_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Country_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PostelCode_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_AddressTypeCode_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_AddressTypeName_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Address1_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Address2_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_CityArea_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_City_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_State_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Country_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PostelCode_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="STG_EMPLOYEEVw_ALL">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CP_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PRENAME_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PRENAME_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_NAME_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_NAME_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SURNAME_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SURNAME_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_NICKNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_BIRTHDATE" Type="DateTime" Precision="3" />
+          <Property Name="EM_SEX" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_MOBILE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_MAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_POSITION_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_POSITION_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PositionCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SUBPOSITION_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SUBPOSITION_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_JobroleCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_UNIT_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_UNIT_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_COMPANY_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_COMPANY_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PICTURE_PATH" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_STARTJOBD" Type="DateTime" Precision="3" />
+          <Property Name="EM_SERVICEDATE" Type="DateTime" Precision="3" />
+          <Property Name="EL_TNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Iden" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_UNIT_T_Code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_GROUP_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_GROUP_NAME_T" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_GROUP_NAME_E" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_ENDJOBDATE" Type="DateTime" Precision="3" />
+          <Property Name="EM_INACTIVE" Type="Boolean" />
+          <Property Name="EM_SL_UNIT_CODE_U1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_UNIT_CODE_U2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_UNIT_CODE_U3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_UNIT_CODE_U4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_UNIT_CODE_U5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_UNIT_CODE_U6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_TNAME_U6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_SL_ENAME_U6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_EmployeeTypeCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_EmployeeTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_CombinationCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_CombinationName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_AddressTypeCode_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_AddressTypeName_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Address1_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Address2_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_CityArea_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_City_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_State_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Country_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PostelCode_01" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_AddressTypeCode_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_AddressTypeName_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Address1_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Address2_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_CityArea_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_City_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_State_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_Country_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EM_PostelCode_02" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="MASDBEntities" >
+          <EntitySetMapping Name="AmphurTables">
+            <EntityTypeMapping TypeName="Model.AmphurTable">
+              <MappingFragment StoreEntitySet="AmphurTable">
+                <ScalarProperty Name="PROVINCE_ID" ColumnName="PROVINCE_ID" />
+                <ScalarProperty Name="GEO_ID" ColumnName="GEO_ID" />
+                <ScalarProperty Name="AMPHUR_NAME" ColumnName="AMPHUR_NAME" />
+                <ScalarProperty Name="AMPHUR_CODE" ColumnName="AMPHUR_CODE" />
+                <ScalarProperty Name="AMPHUR_ID" ColumnName="AMPHUR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankTables">
+            <EntityTypeMapping TypeName="Model.BankTable">
+              <MappingFragment StoreEntitySet="BankTable">
+                <ScalarProperty Name="EmailHeader" ColumnName="EmailHeader" />
+                <ScalarProperty Name="EmailBody" ColumnName="EmailBody" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="LoanRate" ColumnName="LoanRate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="hasCreditCard" ColumnName="hasCreditCard" />
+                <ScalarProperty Name="isNonBank" ColumnName="isNonBank" />
+                <ScalarProperty Name="AbBankName" ColumnName="AbBankName" />
+                <ScalarProperty Name="BankName_Eng" ColumnName="BankName_Eng" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="BankID" ColumnName="BankID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankTypeTables">
+            <EntityTypeMapping TypeName="Model.BankTypeTable">
+              <MappingFragment StoreEntitySet="BankTypeTable">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="ReviseDateTime" ColumnName="ReviseDateTime" />
+                <ScalarProperty Name="Reviser" ColumnName="Reviser" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="BankTypeDescription" ColumnName="BankTypeDescription" />
+                <ScalarProperty Name="BankTypeNameEN" ColumnName="BankTypeNameEN" />
+                <ScalarProperty Name="BankTypeNameTH" ColumnName="BankTypeNameTH" />
+                <ScalarProperty Name="BankTypeCode" ColumnName="BankTypeCode" />
+                <ScalarProperty Name="BankTypeID" ColumnName="BankTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistrictTables">
+            <EntityTypeMapping TypeName="Model.DistrictTable">
+              <MappingFragment StoreEntitySet="DistrictTable">
+                <ScalarProperty Name="GEO_ID" ColumnName="GEO_ID" />
+                <ScalarProperty Name="PROVINCE_ID" ColumnName="PROVINCE_ID" />
+                <ScalarProperty Name="AMPHUR_ID" ColumnName="AMPHUR_ID" />
+                <ScalarProperty Name="DISTRICT_NAME" ColumnName="DISTRICT_NAME" />
+                <ScalarProperty Name="DISTRICT_CODE" ColumnName="DISTRICT_CODE" />
+                <ScalarProperty Name="DISTRICT_ID" ColumnName="DISTRICT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProvinceTables">
+            <EntityTypeMapping TypeName="Model.ProvinceTable">
+              <MappingFragment StoreEntitySet="ProvinceTable">
+                <ScalarProperty Name="GEO_ID" ColumnName="GEO_ID" />
+                <ScalarProperty Name="PROVINCE_NAME" ColumnName="PROVINCE_NAME" />
+                <ScalarProperty Name="PROVINCE_CODE" ColumnName="PROVINCE_CODE" />
+                <ScalarProperty Name="PROVINCE_ID" ColumnName="PROVINCE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportForAutoMailTables">
+            <EntityTypeMapping TypeName="Model.ReportForAutoMailTable">
+              <MappingFragment StoreEntitySet="ReportForAutoMailTable">
+                <ScalarProperty Name="urlAutoMail" ColumnName="urlAutoMail" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="ReportFileName" ColumnName="ReportFileName" />
+                <ScalarProperty Name="ReportPath" ColumnName="ReportPath" />
+                <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+                <ScalarProperty Name="ReportNameEN" ColumnName="ReportNameEN" />
+                <ScalarProperty Name="ReportNameTH" ColumnName="ReportNameTH" />
+                <ScalarProperty Name="ReportCode" ColumnName="ReportCode" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportCriteriaTables">
+            <EntityTypeMapping TypeName="Model.ReportCriteriaTable">
+              <MappingFragment StoreEntitySet="ReportCriteriaTable">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CriteriaQuery" ColumnName="CriteriaQuery" />
+                <ScalarProperty Name="EventOn" ColumnName="EventOn" />
+                <ScalarProperty Name="CriteriaIndex" ColumnName="CriteriaIndex" />
+                <ScalarProperty Name="CriteriaRow" ColumnName="CriteriaRow" />
+                <ScalarProperty Name="CriteriaLabel" ColumnName="CriteriaLabel" />
+                <ScalarProperty Name="CriteriaName" ColumnName="CriteriaName" />
+                <ScalarProperty Name="CriteriaType" ColumnName="CriteriaType" />
+                <ScalarProperty Name="ReportCode" ColumnName="ReportCode" />
+                <ScalarProperty Name="CriteriaID" ColumnName="CriteriaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportTables">
+            <EntityTypeMapping TypeName="Model.ReportTable">
+              <MappingFragment StoreEntitySet="ReportTable">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ReportProcedure" ColumnName="ReportProcedure" />
+                <ScalarProperty Name="ReportDBConnection" ColumnName="ReportDBConnection" />
+                <ScalarProperty Name="ReportPath" ColumnName="ReportPath" />
+                <ScalarProperty Name="ReportFileName" ColumnName="ReportFileName" />
+                <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+                <ScalarProperty Name="ReportNameEN" ColumnName="ReportNameEN" />
+                <ScalarProperty Name="ReportNameTH" ColumnName="ReportNameTH" />
+                <ScalarProperty Name="ReportCode" ColumnName="ReportCode" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STG_EMPLOYEEVw">
+            <EntityTypeMapping TypeName="Model.STG_EMPLOYEEVw">
+              <MappingFragment StoreEntitySet="STG-EMPLOYEEVw">
+                <ScalarProperty Name="EM_PostelCode_02" ColumnName="EM_PostelCode_02" />
+                <ScalarProperty Name="EM_Country_02" ColumnName="EM_Country_02" />
+                <ScalarProperty Name="EM_State_02" ColumnName="EM_State_02" />
+                <ScalarProperty Name="EM_City_02" ColumnName="EM_City_02" />
+                <ScalarProperty Name="EM_CityArea_02" ColumnName="EM_CityArea_02" />
+                <ScalarProperty Name="EM_Address2_02" ColumnName="EM_Address2_02" />
+                <ScalarProperty Name="EM_Address1_02" ColumnName="EM_Address1_02" />
+                <ScalarProperty Name="EM_AddressTypeName_02" ColumnName="EM_AddressTypeName_02" />
+                <ScalarProperty Name="EM_AddressTypeCode_02" ColumnName="EM_AddressTypeCode_02" />
+                <ScalarProperty Name="EM_PostelCode_01" ColumnName="EM_PostelCode_01" />
+                <ScalarProperty Name="EM_Country_01" ColumnName="EM_Country_01" />
+                <ScalarProperty Name="EM_State_01" ColumnName="EM_State_01" />
+                <ScalarProperty Name="EM_City_01" ColumnName="EM_City_01" />
+                <ScalarProperty Name="EM_CityArea_01" ColumnName="EM_CityArea_01" />
+                <ScalarProperty Name="EM_Address2_01" ColumnName="EM_Address2_01" />
+                <ScalarProperty Name="EM_Address1_01" ColumnName="EM_Address1_01" />
+                <ScalarProperty Name="EM_AddressTypeName_01" ColumnName="EM_AddressTypeName_01" />
+                <ScalarProperty Name="EM_AddressTypeCode_01" ColumnName="EM_AddressTypeCode_01" />
+                <ScalarProperty Name="EM_CombinationName" ColumnName="EM_CombinationName" />
+                <ScalarProperty Name="EM_CombinationCode" ColumnName="EM_CombinationCode" />
+                <ScalarProperty Name="EM_EmployeeTypeName" ColumnName="EM_EmployeeTypeName" />
+                <ScalarProperty Name="EM_EmployeeTypeCode" ColumnName="EM_EmployeeTypeCode" />
+                <ScalarProperty Name="EM_USERNAME" ColumnName="EM_USERNAME" />
+                <ScalarProperty Name="EM_SL_ENAME_U6" ColumnName="EM_SL_ENAME_U6" />
+                <ScalarProperty Name="EM_SL_TNAME_U6" ColumnName="EM_SL_TNAME_U6" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U6" ColumnName="EM_SL_UNIT_CODE_U6" />
+                <ScalarProperty Name="EM_SL_ENAME_U5" ColumnName="EM_SL_ENAME_U5" />
+                <ScalarProperty Name="EM_SL_TNAME_U5" ColumnName="EM_SL_TNAME_U5" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U5" ColumnName="EM_SL_UNIT_CODE_U5" />
+                <ScalarProperty Name="EM_SL_ENAME_U4" ColumnName="EM_SL_ENAME_U4" />
+                <ScalarProperty Name="EM_SL_TNAME_U4" ColumnName="EM_SL_TNAME_U4" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U4" ColumnName="EM_SL_UNIT_CODE_U4" />
+                <ScalarProperty Name="EM_SL_ENAME_U3" ColumnName="EM_SL_ENAME_U3" />
+                <ScalarProperty Name="EM_SL_TNAME_U3" ColumnName="EM_SL_TNAME_U3" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U3" ColumnName="EM_SL_UNIT_CODE_U3" />
+                <ScalarProperty Name="EM_SL_ENAME_U2" ColumnName="EM_SL_ENAME_U2" />
+                <ScalarProperty Name="EM_SL_TNAME_U2" ColumnName="EM_SL_TNAME_U2" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U2" ColumnName="EM_SL_UNIT_CODE_U2" />
+                <ScalarProperty Name="EM_SL_ENAME_U1" ColumnName="EM_SL_ENAME_U1" />
+                <ScalarProperty Name="EM_SL_TNAME_U1" ColumnName="EM_SL_TNAME_U1" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U1" ColumnName="EM_SL_UNIT_CODE_U1" />
+                <ScalarProperty Name="EM_INACTIVE" ColumnName="EM_INACTIVE" />
+                <ScalarProperty Name="EM_ENDJOBDATE" ColumnName="EM_ENDJOBDATE" />
+                <ScalarProperty Name="EM_GROUP_NAME_E" ColumnName="EM_GROUP_NAME_E" />
+                <ScalarProperty Name="EM_GROUP_NAME_T" ColumnName="EM_GROUP_NAME_T" />
+                <ScalarProperty Name="EM_GROUP_CODE" ColumnName="EM_GROUP_CODE" />
+                <ScalarProperty Name="EM_UNIT_T_Code" ColumnName="EM_UNIT_T_Code" />
+                <ScalarProperty Name="EM_Iden" ColumnName="EM_Iden" />
+                <ScalarProperty Name="EL_TNAME" ColumnName="EL_TNAME" />
+                <ScalarProperty Name="EM_SERVICEDATE" ColumnName="EM_SERVICEDATE" />
+                <ScalarProperty Name="EM_STARTJOBD" ColumnName="EM_STARTJOBD" />
+                <ScalarProperty Name="EM_PICTURE_PATH" ColumnName="EM_PICTURE_PATH" />
+                <ScalarProperty Name="EM_COMPANY_E" ColumnName="EM_COMPANY_E" />
+                <ScalarProperty Name="EM_COMPANY_T" ColumnName="EM_COMPANY_T" />
+                <ScalarProperty Name="EM_UNIT_E" ColumnName="EM_UNIT_E" />
+                <ScalarProperty Name="EM_UNIT_T" ColumnName="EM_UNIT_T" />
+                <ScalarProperty Name="EM_JobroleCode" ColumnName="EM_JobroleCode" />
+                <ScalarProperty Name="EM_SUBPOSITION_E" ColumnName="EM_SUBPOSITION_E" />
+                <ScalarProperty Name="EM_SUBPOSITION_T" ColumnName="EM_SUBPOSITION_T" />
+                <ScalarProperty Name="EM_PositionCode" ColumnName="EM_PositionCode" />
+                <ScalarProperty Name="EM_POSITION_E" ColumnName="EM_POSITION_E" />
+                <ScalarProperty Name="EM_POSITION_T" ColumnName="EM_POSITION_T" />
+                <ScalarProperty Name="EM_MAIL" ColumnName="EM_MAIL" />
+                <ScalarProperty Name="EM_MOBILE" ColumnName="EM_MOBILE" />
+                <ScalarProperty Name="EM_SEX" ColumnName="EM_SEX" />
+                <ScalarProperty Name="EM_BIRTHDATE" ColumnName="EM_BIRTHDATE" />
+                <ScalarProperty Name="EM_NICKNAME" ColumnName="EM_NICKNAME" />
+                <ScalarProperty Name="EM_SURNAME_E" ColumnName="EM_SURNAME_E" />
+                <ScalarProperty Name="EM_SURNAME_T" ColumnName="EM_SURNAME_T" />
+                <ScalarProperty Name="EM_NAME_E" ColumnName="EM_NAME_E" />
+                <ScalarProperty Name="EM_NAME_T" ColumnName="EM_NAME_T" />
+                <ScalarProperty Name="EM_PRENAME_E" ColumnName="EM_PRENAME_E" />
+                <ScalarProperty Name="EM_PRENAME_T" ColumnName="EM_PRENAME_T" />
+                <ScalarProperty Name="EM_CODE" ColumnName="EM_CODE" />
+                <ScalarProperty Name="CP_CODE" ColumnName="CP_CODE" />
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STG_EMPLOYEEVw_ALL">
+            <EntityTypeMapping TypeName="Model.STG_EMPLOYEEVw_ALL">
+              <MappingFragment StoreEntitySet="STG-EMPLOYEEVw_ALL">
+                <ScalarProperty Name="EM_PostelCode_02" ColumnName="EM_PostelCode_02" />
+                <ScalarProperty Name="EM_Country_02" ColumnName="EM_Country_02" />
+                <ScalarProperty Name="EM_State_02" ColumnName="EM_State_02" />
+                <ScalarProperty Name="EM_City_02" ColumnName="EM_City_02" />
+                <ScalarProperty Name="EM_CityArea_02" ColumnName="EM_CityArea_02" />
+                <ScalarProperty Name="EM_Address2_02" ColumnName="EM_Address2_02" />
+                <ScalarProperty Name="EM_Address1_02" ColumnName="EM_Address1_02" />
+                <ScalarProperty Name="EM_AddressTypeName_02" ColumnName="EM_AddressTypeName_02" />
+                <ScalarProperty Name="EM_AddressTypeCode_02" ColumnName="EM_AddressTypeCode_02" />
+                <ScalarProperty Name="EM_PostelCode_01" ColumnName="EM_PostelCode_01" />
+                <ScalarProperty Name="EM_Country_01" ColumnName="EM_Country_01" />
+                <ScalarProperty Name="EM_State_01" ColumnName="EM_State_01" />
+                <ScalarProperty Name="EM_City_01" ColumnName="EM_City_01" />
+                <ScalarProperty Name="EM_CityArea_01" ColumnName="EM_CityArea_01" />
+                <ScalarProperty Name="EM_Address2_01" ColumnName="EM_Address2_01" />
+                <ScalarProperty Name="EM_Address1_01" ColumnName="EM_Address1_01" />
+                <ScalarProperty Name="EM_AddressTypeName_01" ColumnName="EM_AddressTypeName_01" />
+                <ScalarProperty Name="EM_AddressTypeCode_01" ColumnName="EM_AddressTypeCode_01" />
+                <ScalarProperty Name="EM_CombinationName" ColumnName="EM_CombinationName" />
+                <ScalarProperty Name="EM_CombinationCode" ColumnName="EM_CombinationCode" />
+                <ScalarProperty Name="EM_EmployeeTypeName" ColumnName="EM_EmployeeTypeName" />
+                <ScalarProperty Name="EM_EmployeeTypeCode" ColumnName="EM_EmployeeTypeCode" />
+                <ScalarProperty Name="EM_USERNAME" ColumnName="EM_USERNAME" />
+                <ScalarProperty Name="EM_SL_ENAME_U6" ColumnName="EM_SL_ENAME_U6" />
+                <ScalarProperty Name="EM_SL_TNAME_U6" ColumnName="EM_SL_TNAME_U6" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U6" ColumnName="EM_SL_UNIT_CODE_U6" />
+                <ScalarProperty Name="EM_SL_ENAME_U5" ColumnName="EM_SL_ENAME_U5" />
+                <ScalarProperty Name="EM_SL_TNAME_U5" ColumnName="EM_SL_TNAME_U5" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U5" ColumnName="EM_SL_UNIT_CODE_U5" />
+                <ScalarProperty Name="EM_SL_ENAME_U4" ColumnName="EM_SL_ENAME_U4" />
+                <ScalarProperty Name="EM_SL_TNAME_U4" ColumnName="EM_SL_TNAME_U4" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U4" ColumnName="EM_SL_UNIT_CODE_U4" />
+                <ScalarProperty Name="EM_SL_ENAME_U3" ColumnName="EM_SL_ENAME_U3" />
+                <ScalarProperty Name="EM_SL_TNAME_U3" ColumnName="EM_SL_TNAME_U3" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U3" ColumnName="EM_SL_UNIT_CODE_U3" />
+                <ScalarProperty Name="EM_SL_ENAME_U2" ColumnName="EM_SL_ENAME_U2" />
+                <ScalarProperty Name="EM_SL_TNAME_U2" ColumnName="EM_SL_TNAME_U2" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U2" ColumnName="EM_SL_UNIT_CODE_U2" />
+                <ScalarProperty Name="EM_SL_ENAME_U1" ColumnName="EM_SL_ENAME_U1" />
+                <ScalarProperty Name="EM_SL_TNAME_U1" ColumnName="EM_SL_TNAME_U1" />
+                <ScalarProperty Name="EM_SL_UNIT_CODE_U1" ColumnName="EM_SL_UNIT_CODE_U1" />
+                <ScalarProperty Name="EM_INACTIVE" ColumnName="EM_INACTIVE" />
+                <ScalarProperty Name="EM_ENDJOBDATE" ColumnName="EM_ENDJOBDATE" />
+                <ScalarProperty Name="EM_GROUP_NAME_E" ColumnName="EM_GROUP_NAME_E" />
+                <ScalarProperty Name="EM_GROUP_NAME_T" ColumnName="EM_GROUP_NAME_T" />
+                <ScalarProperty Name="EM_GROUP_CODE" ColumnName="EM_GROUP_CODE" />
+                <ScalarProperty Name="EM_UNIT_T_Code" ColumnName="EM_UNIT_T_Code" />
+                <ScalarProperty Name="EM_Iden" ColumnName="EM_Iden" />
+                <ScalarProperty Name="EL_TNAME" ColumnName="EL_TNAME" />
+                <ScalarProperty Name="EM_SERVICEDATE" ColumnName="EM_SERVICEDATE" />
+                <ScalarProperty Name="EM_STARTJOBD" ColumnName="EM_STARTJOBD" />
+                <ScalarProperty Name="EM_PICTURE_PATH" ColumnName="EM_PICTURE_PATH" />
+                <ScalarProperty Name="EM_COMPANY_E" ColumnName="EM_COMPANY_E" />
+                <ScalarProperty Name="EM_COMPANY_T" ColumnName="EM_COMPANY_T" />
+                <ScalarProperty Name="EM_UNIT_E" ColumnName="EM_UNIT_E" />
+                <ScalarProperty Name="EM_UNIT_T" ColumnName="EM_UNIT_T" />
+                <ScalarProperty Name="EM_JobroleCode" ColumnName="EM_JobroleCode" />
+                <ScalarProperty Name="EM_SUBPOSITION_E" ColumnName="EM_SUBPOSITION_E" />
+                <ScalarProperty Name="EM_SUBPOSITION_T" ColumnName="EM_SUBPOSITION_T" />
+                <ScalarProperty Name="EM_PositionCode" ColumnName="EM_PositionCode" />
+                <ScalarProperty Name="EM_POSITION_E" ColumnName="EM_POSITION_E" />
+                <ScalarProperty Name="EM_POSITION_T" ColumnName="EM_POSITION_T" />
+                <ScalarProperty Name="EM_MAIL" ColumnName="EM_MAIL" />
+                <ScalarProperty Name="EM_MOBILE" ColumnName="EM_MOBILE" />
+                <ScalarProperty Name="EM_SEX" ColumnName="EM_SEX" />
+                <ScalarProperty Name="EM_BIRTHDATE" ColumnName="EM_BIRTHDATE" />
+                <ScalarProperty Name="EM_NICKNAME" ColumnName="EM_NICKNAME" />
+                <ScalarProperty Name="EM_SURNAME_E" ColumnName="EM_SURNAME_E" />
+                <ScalarProperty Name="EM_SURNAME_T" ColumnName="EM_SURNAME_T" />
+                <ScalarProperty Name="EM_NAME_E" ColumnName="EM_NAME_E" />
+                <ScalarProperty Name="EM_NAME_T" ColumnName="EM_NAME_T" />
+                <ScalarProperty Name="EM_PRENAME_E" ColumnName="EM_PRENAME_E" />
+                <ScalarProperty Name="EM_PRENAME_T" ColumnName="EM_PRENAME_T" />
+                <ScalarProperty Name="EM_CODE" ColumnName="EM_CODE" />
+                <ScalarProperty Name="CP_CODE" ColumnName="CP_CODE" />
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

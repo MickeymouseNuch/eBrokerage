@@ -1,0 +1,275 @@
+﻿@* ----------------------------------------------------Is Head Page List-------------------------------------------------------------- *@
+<div class="row wrapper border-bottom white-bg page-heading" style="padding-bottom:5px">
+    <div class="col-lg-8" style="padding-top:5px">
+        <h3 style="margin-bottom:5px"><label id="application" style="font-weight:700"></label></h3>
+        <ol class="breadcrumb">
+            <li>
+                @* url on click back to page *@
+                <a id="Back2Menu" data-url-back="'@Url.Action("ViewName","ControllerName")'" href="#"><label id="menu" style="font-weight:100"></label></a>
+            </li>
+            <li class="active">
+                <strong><label id="submenu"></label></strong>
+            </li>
+        </ol>
+    </div>
+</div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+<div class="wrapper wrapper-content" style="padding-bottom: 0px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins" style="margin-bottom:10px">
+                <div class="ibox-title">
+                    <h5 id="rptName" data-reportcode="RPT-TS001" data-proc="@ViewBag.dataReport.ReportProcedure">Report Name : (@ViewBag.dataReport.ReportCode) @ViewBag.dataReport.ReportNameTH</h5>
+                    <div class="ibox-tools">
+                    </div>
+                </div>
+                <div class="ibox-content" id="TabSearch">
+                    @for (int i = 0; i < (int)ViewBag.maxRow; i++)
+                    {
+                        var rowindex = i + 1;
+                        var rowid = "row" + rowindex.ToString();
+                        <div class="row" style="padding-bottom:10px" id="@rowid">
+                            @foreach (UVG_Main.Models.MainClass.ReportCriteriaTable item in ((IEnumerable<UVG_Main.Models.MainClass.ReportCriteriaTable>)ViewBag.lstCri).Where(s => s.CriteriaRow == rowindex).ToList())
+                            {
+                                //F is Full object inline
+                                if (item.CriteriaIndex == "F")
+                                {
+                                    var lblID = "lbl" + rowid.ToString() + item.CriteriaIndex;
+                                    var objID = "obj" + rowid.ToString() + item.CriteriaIndex;
+                                    <div class="row">
+                                        <div class="col-lg-2" id="@lblID" style="text-align:right"></div>
+                                        <div class="col-lg-8" id="@objID"></div>
+                                    </div>
+                                }
+                                //L or R split 2 column for object inline
+                                else if (item.CriteriaIndex == "L" || item.CriteriaIndex == "R")
+                                {
+                                    var lblLID = "lbl" + rowid.ToString() + "L";
+                                    var objLID = "obj" + rowid.ToString() + "L";
+                                    var lblRID = "lbl" + rowid.ToString() + "R";
+                                    var objRID = "obj" + rowid.ToString() + "R";
+                                    <div class="row">
+                                        <div class="col-lg-2" id="@lblLID" style="text-align:right"></div>
+                                        <div class="col-lg-3" id="@objLID"></div>
+                                        <div class="col-lg-2" id="@lblRID" style="text-align:right"></div>
+                                        <div class="col-lg-3" id="@objRID"></div>
+                                    </div>
+                                    break;
+                                }
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="ibox-footer">
+                    <button id="btnPreview" class="btn btn-success"><i class="fa fa-list"></i>&nbsp;&nbsp;Preview</button>
+                    <button id="btnPrint" class="btn btn-warning"><i class="fa fa-print"></i>&nbsp;&nbsp;Print</button>
+                    @*<button id="btnPrintForm" class="btn btn-warning"><i class="fa fa-print"></i>&nbsp;&nbsp;Print Form</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="Criteria"></div>
+<div id="DataPreview"></div>
+
+
+
+@*<table>
+    <tr>
+        <td class="reports" valign="top">
+            <div style="width: 150px;">
+                @Html.ActionLink("Simple List", "Index", new { id = "1" })
+                <br />Report Snapshot
+
+                <br /><br />
+                @Html.ActionLink("Two Simple Lists", "Index", new { id = "2" })
+                <br />Report Template
+
+                <br /><br />
+                @Html.ActionLink("Master Detail", "Index", new { id = "3" })
+                <br />Compiled Report Class
+
+                <br /><br />
+                @Html.ActionLink("Selecting Country", "Index", new { id = "4" })
+                <br />Compiled Report Class
+            </div>
+        </td>
+        <td style="width: 100%;" valign="top">
+            @Html.Stimulsoft().StiMvcViewer(new StiMvcViewerOptions()
+       {
+           Actions =
+                    {
+                        GetReport = "GetReport",
+                        ViewerEvent = "ViewerEvent"
+                    }
+       })
+        </td>
+    </tr>
+</table>*@
+
+@*----------------------- Import CSS---------------------- *@
+@Styles.Render("~/plugins/dataPickerStyles")
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+@Styles.Render("~/plugins/select2Styles")
+@Styles.Render("~/plugins/sweetAlertStyles")
+@Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+@*-------------------------------------------------------- *@
+
+@*------------------ Import JavaScript-------------------- *@
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/dataTables")
+@Scripts.Render("~/plugins/select2")
+@Scripts.Render("~/plugins/sweetAlert")
+@Scripts.Render("~/plugins/iCheck")
+<script src="~/Scripts/moment.js"></script>
+@*-------------------------------------------------------- *@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //--------------------------------------------------On Load-------------------------------------------------//
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+        //-----------------------------------------------End On Load-------------------------------------------------//
+        getListCriteria();
+
+        function getListCriteria() {
+            var ReportCode = $('#rptName').data('reportcode');
+
+            var url = '@Url.Action("getListCriteria", "Report")';
+            $.post(url, { ReportCode: ReportCode }, function (result) {
+                var obj = $.parseJSON(result);
+                $.each(obj, function (id, option) {
+                    var lblID = "#lblrow" + option.CriteriaRow + option.CriteriaIndex;
+                    var objID = "#objrow" + option.CriteriaRow + option.CriteriaIndex;
+
+                    //gen Label
+                    var lbl = getLabel(option);
+                    $(lblID).append(lbl);
+
+                    //gen Object
+                    if (option.CriteriaType == "TEXT") {
+                        var obj = getTextbox(option);
+                        $(objID).append(obj);
+                    }
+                    else if (option.CriteriaType == "DATETIME") {
+                        var obj = getDatetime(option);
+                        $(objID).append(obj);
+                        $('#data_1 .input-group.date').datepicker({
+                            todayBtn: "linked",
+                            keyboardNavigation: false,
+                            forceParse: false,
+                            calendarWeeks: true,
+                            autoclose: true,
+                            format: 'dd/mm/yyyy'
+                        });
+                    }
+                    else if (option.CriteriaType == "DDL") {
+                        var obj = getDDL(option);
+                        $(objID).append(obj);
+                        var objName = '#TabSearch  #' + option.CriteriaName;
+                        getData2DDL(objName, option.CriteriaQuery);
+                    }
+                });
+            });
+        }
+
+        function getLabel(option) {
+            var result = "";
+            result += '<label id="lbl" class="" style="padding-top:5px">' + option.CriteriaLabel + '</label>';
+            return result;
+        }
+
+        function getTextbox(option) {
+            var line = "";
+            line += '<input type="text" id="' + option.CriteriaName + '" class="form-control input-mini cObject" />';
+            return line;
+        }
+
+        function getDatetime(option) {
+            var d = new Date();
+            var line = "";
+            line += '<div class="form-group" id="data_1" style="margin-bottom:0px">';
+            line += '<div class="input-group date">';
+            line += '<input id="' + option.CriteriaName + '" type="text" class="form-control cObject" value="' + moment().format('DD/MM/YYYY') + '"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>';
+            line += '</div>';
+            line += '</div>';
+            return line;
+        }
+
+        function getDDL(option) {
+            var line = "";
+            line += '<input id="' + option.CriteriaName + '" class="cddl cObject" style="width:100%" />';
+            return line;
+        }
+
+        function getData2DDL(objName, CriteriaQuery) {
+            var url = '@Url.Action("getData2DDL", "Report")';
+            $(objName).select2({ data: null });
+            $.post(url, { CriteriaQuery: CriteriaQuery }, function (result) {
+                var foo = $.parseJSON(result);
+                $(objName).select2({ data: foo });
+                $(objName).select2("val", "0");
+                $('.select2-container').css("z-index", '123');
+            });
+        }
+
+        $('#btnPreview').click(function () {
+            var rptName = $('#rptName').data('reportcode');
+            var objName = [];
+            var objValue = [];
+            $('#TabSearch').find('.cObject').each(function () {
+                objName.push($(this).attr('id'));
+                objValue.push($(this).val());
+            });
+            Preview(rptName, objName, objValue);
+        });
+
+        function Preview(rptName, objName, objValue) {
+            var url = '@Url.Action("Preview", "Report")';
+            $('#DataPreview').load(url, {
+                ReportCode: rptName, objName: objName, objValue: objValue
+            }, function (result) {
+                $('.dataTables-example').DataTable({
+                    "order": [[0, "asc"]],
+                    "scrollX": true,
+                    "sScrollX": "3500px",
+                    "autoWidth": true,
+                    dom: '<"html5buttons"B>lTfgitp',
+                    buttons: [
+                        { extend: 'excel', title: 'ExcelFile' },
+                    ]
+                });
+            });
+        }
+
+        $('#btnPrint').click(function () {
+            var rptName = $('#rptName').data('reportcode');
+            var objName = [];
+            var objValue = [];
+            $('#TabSearch').find('.cObject').each(function () {
+                objName.push($(this).attr('id'));
+                objValue.push($(this).val());
+            });
+            var url = '@Url.Action("ReportViewer", "Report")' + "?ReportCode=" + rptName + "&objName=" + objName + "&objValue=" + objValue;
+            loadNewPage(url);
+        });
+
+    });
+</script>

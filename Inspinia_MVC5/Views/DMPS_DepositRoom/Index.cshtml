@@ -1,0 +1,2722 @@
+﻿@* ----------------------------------------------------Is Head Page List-------------------------------------------------------------- *@
+<div class="row wrapper border-bottom white-bg page-heading" style="padding-bottom:5px">
+    <div class="col-lg-8" style="padding-top:5px">
+        <h3 style="margin-bottom:5px"><label id="application"></label></h3>
+        <ol class="breadcrumb">
+            <li>
+                <a id="Back2Menu" data-url-back="'@Url.Action("ViewName","ControllerName")'" href="#"><label id="menu"></label></a>
+            </li>
+            <li class="active">
+                <strong><label id="submenu"></label></strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action" style="padding-top:15px">
+            <button id="btnPrintAgentDraft" data-id="0" data-no="0" class="btn btn-default" title="เอกสารฝากทรัพย์ (Draft)"><i class="fa fa-file-text"></i>&nbsp;&nbsp; เอกสารฝากทรัพย์ (Draft) </button>
+            <button id="btnAddNew" data-id="0" data-no="0" class="btn btn-primary" title="เพิ่มข้อมูลผู้ฝากเช่า / ฝากขาย"><i class="fa fa-file-text"></i>&nbsp;&nbsp; Add New Document</button>
+        </div>
+        <div class="col-lg-2" style="text-align:right">
+            <label id="lblCustID" class="" data-id="" style="padding-top: 5px;" hidden="hidden"> @ViewBag.lblCustID</label>
+        </div>
+    </div>
+</div>
+
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+
+@* ----------------------------------------------------Is Searching Tab--------------------------------------------------------------- *@
+<div class="wrapper wrapper-content" style="padding-bottom: 0px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Search</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table>
+                        <tbody>
+                            <tr id="datetab1" >
+                                <td style="width:350px"></td>
+                                <td style="text-align:right">
+                                    @*<label style="padding-bottom: 10px;">Start Date : </label>*@
+                                </td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div class="form-group" id="data_1">
+                                        <div class="input-group date">
+                                            <input id="StartDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("01/01/yyyy")" hidden="hidden"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:50px"></td>
+                                <td style="text-align:right">
+                                    @*<label id="lblCustID"  hidden="hidden">@ViewBag.lblCustID </label>*@
+                                </td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div class="form-group" id="data_1">
+
+                                        <div class="input-group date">
+                                            <input id="EndDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("31/12/yyyy")" hidden="hidden"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:10px"></td>
+                                <td id="tdbtnSearch"><button type="button" id="btnSearch" class="btn btn-primary" style="margin-bottom:15px"><i class="fa fa-search"></i>&nbsp;&nbsp; Search</button></td>
+                                <td style="width:10px"></td>
+
+                                @*<td style="padding-bottom: 10px; padding-left: 24px;">
+                <div id="showDSshop" hidden>
+                    <input type="checkbox"  id="chkDSShop" name="chkDSShop" class="chkDSShop" style="transform: scale(1.5);">&nbsp;&nbsp;
+                    <label style="padding-top: 5px;"> SHOP </label>
+                </div>
+            </td>*@
+                            </tr>
+                            <tr id="TpyeSearch">
+                                <td style="width: 270px; "></td>
+                                <td style="text-align:right"><label style="padding-bottom: 10px;padding-top: 15px;">ประเภทห้อง : </label></td>
+                                <td style="width:10px"></td>
+                                <td style="width: 200px;">
+                                    <div>
+                                        @Html.DropDownList("ddlUnitType", null, "Please Select", new { @class = "select2_ddlUnitType form-control", style = "width:100%" })
+                                    </div>
+                                </td>
+
+                                <td style="width:50px"></td>
+                                <td style="text-align:right"><label style="padding-bottom: 10px;padding-top: 15px;">สถานะ  : </label></td>
+                                <td style="width:10px"></td>
+                                <td style="width: 200px;">
+                                    <div>
+                                        @Html.DropDownList("ddlUnitStatus", null, "Please Select", new { @class = "select2_ddlUnitStatus form-control", style = "width:100%" })
+                                    </div>
+                                </td>
+                                <td style="width:10px"></td>
+                                <td style="text-align:right"><label style="padding-bottom: 10px;padding-top: 15px;">ค้นหาวันที่ </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <input type="checkbox" id="chkDate" name="chkDate" class="chkDate" style="transform: scale(1.5); margin-left: 10px;">&nbsp;&nbsp;
+                                </td>
+                                <td style="width:10px"></td>
+                                <td><button type="button" id="btnSearch2" class="btn btn-primary"><i class="fa fa-search"></i>&nbsp;&nbsp; Search</button></td>
+                            </tr>
+                            <tr id="spacebr">
+                                <td>
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr id="DateSearch" style="display:none">
+                                <td style="width:80px"></td>
+                                <td style="text-align:right"><label style="padding-bottom: 10px;">Start Date : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div class="form-group" id="data_1">
+                                        <div class="input-group date">
+                                            <input id="StartDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("01/01/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:50px"></td>
+                                <td style="text-align:right"><label>End Date : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div class="form-group" id="data_1">
+                                        <div class="input-group date">
+                                            <input id="EndDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("31/12/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ------------------------------------------------------------------------------------------------------------------------------------------------ *@
+
+<!--model dialog-->
+
+<div class="modal" tabindex="-1" id="UploadModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:800px;margin:30px  auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="padding-top:3px ; margin-bottom:10px">
+                    <div class="row">
+                        <div class="col-md-10col-md-offset-1 col-xs-12">
+                            <table id="tableDespoiteRec" style="width:100%">
+                                <thead>
+                                    <tr style="font-size: 15px;">
+                                        @*<td style="padding-left: 1px; padding-bottom: 10px; "></td>*@
+                                        <td style="padding-left: 10px; padding-bottom: 10px; text-align: center; border-bottom: solid 1px #efefef; ">ไฟล์เอกสาร</td>
+                                        <td style="padding-left: 10px; padding-bottom: 10px; text-align: center; border-bottom: solid 1px #efefef;">ผู้อัพโหลด</td>
+                                        <td style="padding-left: 10px; padding-bottom: 10px; text-align: center; border-bottom: solid 1px #efefef;">วันที่</td>
+                                        <td style="padding-left: 10px; padding-bottom: 10px; border-bottom: solid 1px #efefef;"></td>
+                                        <td style="padding-left: 10px; padding-bottom: 10px; border-bottom: solid 1px #efefef;"></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody2Deposite"></tbody>
+                            </table>
+                            <div id="load" style="display:none ;text-align:center ; margin: 15px;font-size:15px">
+                                Please wait...
+                                <img src="//s.svgbox.net/loaders.svg?fill=maroon&ic=tail-spin" style="width:24px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <br />
+                    <input type="hidden" id="txtDSID" />
+                    <input id="depositFileUpload" name="FileUpload" style="font-size: 15px; margin-left:7px" type="file" accept="image/png, image/jpeg,.pdf"><br />
+                    <p style="margin-left: 7px; margin-top: -15px; margin-bottom: 15px; color: red ; font-size: 12px; "> *เฉพาะไฟล์ .pdf, .png, .jpeg (ขนาดไฟล์ไม่เกิน 5 MB ) </p>
+                    &nbsp;
+                    <input id="insertNewFile" style="font-size: 15px;color:black" type="submit" value="เพิ่มไฟล์">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnHistory" style="margin: 1px;" class="btnHistory">
+                    <i class="fa fa-history" style="font-size:24px;margin-right:10px"></i><font style="top: -5px;position: relative;">ประวัติ</font>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--History model dialog-->
+<div class="modal" tabindex="-1" id="HistoryModel" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" style="width:1000px;margin:10px  auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" id="HistoryClose">
+                    <span aria-hidden="true">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="padding-top: 3px; margin-bottom: 10px; height: 600px; overflow-y: auto; overflow-x: hidden; ">
+                    <div class="row">
+                        <div class="col-md-10col-md-offset-1 col-xs-12">
+                            <table id="tableDespoiteHistoryRec" style="width:100%">
+                                <thead>
+                                    <tr style="font-size: 15px;">
+                                        <td style="padding: 8px; background: lightgray; color: black; border-top-left-radius: 10px; border-bottom-left-radius: 10px; text-align: center; border-bottom: solid 1px #efefef;">ไฟล์เอกสาร</td>
+                                        <td style="padding: 8px; background: lightgray; color: black; text-align: center; border-bottom: solid 1px #efefef; ">ประเภท</td>
+                                        <td style="padding: 8px; background: lightgray; color: black; border-top-right-radius: 10px; border-bottom-right-radius: 10px; text-align: center; border-bottom: solid 1px #efefef; ">ผู้แก้ไขเอกสาร</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody2HistoryDP"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@*<input type="text" id="RowSelected" value="" />*@
+@*<input type="text" id="RowSelected" value="" hidden="hidden" />*@
+<input type="text" id="txttab" hidden="hidden" value="Cust" />
+<input type="text" id="txtAddmin" name="txtAddmin" hidden="hidden" />
+
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ----------------------------------------------------Is DataList Tab---------------------------------------------------------------- *@
+<div id="DataListView"></div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ------------------------------------------------------Is Modal Tab----------------------------------------------------------------- *@
+@Html.Partial("LoadModal")
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+
+
+@*----------------------- Import CSS---------------------- *@
+@Styles.Render("~/plugins/footableStyles")
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+@Styles.Render("~/plugins/select2Styles")
+@Styles.Render("~/plugins/dataPickerStyles")
+@Styles.Render("~/plugins/sweetAlertStyles")
+@Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+
+@*-------------------------------------------------------- *@
+
+@*------------------ Import JavaScript-------------------- *@
+@Scripts.Render("~/plugins/footable")
+@Scripts.Render("~/plugins/dataTables")
+@Scripts.Render("~/plugins/select2")
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/sweetAlert")
+@Scripts.Render("~/plugins/iCheck")
+@*-------------------------------------------------------- *@
+
+<script src="~/Scripts/Main/JS_Main.js?0"></script>
+<script src="~/Scripts/Main/Utility.js?0"></script>
+<script src="~/Scripts/Main/date.format.js?0"></script>
+
+<script src="~/waitMe/waitMe.min.js?0"></script>
+<link href="~/waitMe/waitMe.min.css?0" rel="stylesheet" />
+
+<div hidden="hidden">
+    <input type="text" id="controlDupplicate" value="0" hidden />
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+
+        });
+
+        $(".allow_decimal").on("input", function (evt) {
+            var self = $(this);
+            self.val(self.val().replace(/[^0-9\.]/g, ''));
+            if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+                evt.preventDefault();
+            }
+        });
+
+        $(".allownumericwithoutdecimal").on("keypress keyup blur", function (event) {
+            $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+
+        $(document).delegate('.numbersOnly', 'keypress', function (e) {
+            if (String.fromCharCode(e.keyCode).match(/[^0-9\.\,]/g)) return false;
+        });
+
+        $(document).delegate('.numbersOnly', 'focusout', function () {
+            var IsVal = parseFloat($(this).val().replace(/\,/g, ''));
+            if (isNaN(IsVal)) { IsVal = 0; }
+            $(this).val(ConvertString2DecimalFormat(IsVal.toFixed(2)));
+        });
+
+
+        $(".select2_Bank,.select2_AccountType,.select2_position,.select2_InChargeBy,.select2_department,.select2_Company,.select2_Developer,.select2_RentType,.select2_Project,.select2_Provice,.select2_Distict,.select2_SubDistinct,.select2_CardFrom,.select2_UnitType").select2();
+
+
+        $('#ddlDepartment').attr("disabled", true);
+        $('#ddlPosition').attr("disabled", true);
+        $('#ddlCompany').attr("disabled", true);
+
+        //$('#ddlDistrict').attr("disabled", true);
+        //$('#ddlSubDistrict').attr("disabled", true);
+        $('.select2-container').css("z-index", "auto");
+        GetAdminSys($('#EmployeeID').data("emp-id"), 30)
+
+
+
+
+        $('#DataListView').on("click", ".confirm-View", function () {
+            var id = $(this).data("id");
+            var no = $(this).data("no");
+            ShowModalBlinding(id);
+            //ShowModalBlinding(id);
+        });
+
+
+        $('#DataListView').on("click", ".confirm-Print", function () {
+            var id = $(this).data("id");
+            var no = $(this).data("no");
+            OutReport(id);
+        });
+
+        $('#btnPrintAgentDraft').click(function () {
+            var url = '@Url.Action("loadAgentDraft", "DMPS_DepositRoom")'
+            window.open(url);
+        });
+
+        function OutReport(id) {
+
+            var url1 = '@Url.Action("ReportViewer", "Report")' + "?ReportCode=" + "DS_AgentContact" + "&objName=" + "DepositID" + "&objValue=" + id;
+            loadNewPage(url1);
+
+            @*var url = '@Url.Action("PrintReport", "DMPS_DepositRoom")' + "?ReportID=" + id;
+            window.open(url, '_blank');*@
+        }
+
+        function OutReportSHOP(id) {
+
+            var url = '@Url.Action("ReportViewer", "Report")' + "?ReportCode=" + "DS_AgentContactShop" + "&objName=" + "DepositID" + "&objValue=" + id;
+            loadNewPage(url);
+
+            @*var url = '@Url.Action("PrintReport", "DMPS_DepositRoom")' + "?ReportID=" + id;
+            window.open(url, '_blank');*@
+        }
+
+
+
+        function GetAdminSys(EmpCode, AppCode) {
+
+            //ShowHideLoading(1);
+            var _CRMContactID = $('#txtContractID').val();
+
+
+            var url = '@Url.Action("GetAdminSys", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    EmpCode: EmpCode,
+                    AppCode: AppCode,
+                }, function (result) {
+                    if (result != "") {
+                        $('#txtAddmin').val(1);
+                        LoadEmployeelst($('#IsRowAdmin').val(), $("#EmployeeID").data("parent-deptcode"), $("#EmployeeID").data("emp-id"))
+                    }
+                    else {
+                        $('#txtAddmin').val(0);
+                        LoadEmployeelst($('#IsRowAdmin').val(), $("#EmployeeID").data("parent-deptcode"), $("#EmployeeID").data("emp-id"))
+                    }
+                });
+
+        }
+
+
+        function LoadDepartment(comID, DeptId) {
+            var url = '@Url.Action("getDepartment", "EMSG_DocumentStatus")';
+            $("#ddlDepartment").select2({ data: null });
+            $.post(url, { CompanyID: comID }, function (result) {
+                var foo = $.parseJSON(result);
+                $("#ddlDepartment").select2({ data: foo });
+                $("#ddlDepartment").select2("val", DeptId);
+            });
+        }
+
+        function LoadEmployeelst(_SysAdmin, _Depts, EmpID) {
+            var url = '@Url.Action("LoadEMP", "DMPS_DepositRoom")';
+            $("#ddlInChargeBy").select2({ data: null });
+            $("#ddlInChargeBy").empty();
+            $.post(url, { SysAdmin: _SysAdmin, Depts: _Depts, EmpCode: EmpID }, function (result) {
+
+                var foo = $.parseJSON(result);
+                $("#ddlInChargeBy").select2({ data: foo });
+                $("#ddlInChargeBy").select2("val", EmpID);
+
+            });
+        };
+
+        function LoadEmployee(comID, EmpID) {
+            var url = '@Url.Action("getEmployee", "EMSG_DocumentStatus")';
+            $("#ddlWorkOwner").select2({ data: null });
+            $.post(url, { CompanyID: comID }, function (result) {
+                var foo = $.parseJSON(result);
+                $("#ddlInChargeBy").select2({ data: foo });
+                $("#ddlInChargeBy").select2("val", EmpID);
+            });
+        }
+
+        function LoadPosition(empID) {
+            var url = '@Url.Action("getDetailEmployee", "EMSG_DocumentStatus")';
+            $.post(url, { EmployeeID: empID }, function (result) {
+                var sp = result.split("|");
+                $('#ddlPosition').val(sp[1]).change();
+            });
+        }
+
+        $('#ddlInChargeBy').change(function () {
+            var empID = $('#ddlInChargeBy').val();
+            var url = '@Url.Action("getDetailEmployee", "EMSG_DocumentStatus")';
+            $.post(url, { EmployeeID: empID }, function (result) {
+                var sp = result.split("|");
+
+                var comID = $('#ddlCompany').val();
+
+                $('#ddlPosition').select2("val", sp[1]);
+                $('#ddlDepartment').select2("val", sp[0]);
+                $('#ddlCompany').select2("val", sp[2]);
+            });
+        });
+
+
+        //$('#txtDS_UnitArea').change(function () {
+        //    var _data = $('#txtDS_UnitArea').val()
+        //    num
+
+        //    $('#txtDS_UnitArea').val(String(_data).replace(/(\d)(?=(\d{3})+$)/g, "$1,"))
+
+        //});
+
+        $('#txtDS_RentPriceEnd').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txtDS_RentPriceStart').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txtDS_SalePriceStart').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txtDS_SalePriceEnd').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txtDS_MaintenaceFee').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txtDS_WaterBill').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txtDS_UnitArea').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+
+
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+        }
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1)
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+
+        function populateDropdown(select, data) {
+            select.html('');
+            select.append($('<option></option>').val(0).html('Please Select'));
+            $.each(data, function (id, option) {
+                select.append($('<option></option>').val(option.value).html(option.name));
+            });
+        }
+
+
+        function SetDistinct(_ProviceID) {
+            if (_ProviceID != 0) {
+
+                var url = '@Url.Action("getDistinct", "DMPS_DepositRoom")';
+                $('#ddlDistrict').empty();
+                $("#ddlDistrict").select2({ data: null });
+
+                $.post(url,
+                    {
+                        ProviceID: _ProviceID
+                    }, function (result) {
+
+                        var foo = $.parseJSON(result);
+                        $("#ddlDistrict").select2({ data: foo });
+                        $("#ddlDistrict").select2("val", 0);
+
+                        $('#ddlDistrict').attr("disabled", false);
+                        $('#ddlSubDistrict').attr("disabled", true);
+                    });
+            }
+            else {
+                $("#ddlDistrict").select2("val", 0);
+                $('#ddlDistrict').attr("disabled", false);
+                $("#ddlSubDistrict").select2("val", 0);
+                $('#ddlSubDistrict').attr("disabled", true);
+            };
+
+
+        }
+
+        function SetSubDistinct(_ProviceID, _DistinctID) {
+            if (_DistinctID != 0) {
+
+                var url = '@Url.Action("getSubDistinct", "DMPS_DepositRoom")';
+                $('#ddlSubDistrict').empty();
+                $("#ddlSubDistrict").select2({ data: null });
+
+                $.post(url,
+                    {
+                        ProviceID: _ProviceID,
+                        DistinctID: _DistinctID
+                    }, function (result) {
+
+                        var foo = $.parseJSON(result);
+                        $("#ddlSubDistrict").select2({ data: null });
+                        $("#ddlSubDistrict").select2({ data: foo });
+                        $("#ddlSubDistrict").select2("val", 0);
+
+                        $('#ddlSubDistrict').attr("disabled", false);
+                    });
+            }
+            else {
+                $("#ddlSubDistrict").select2("val", 0);
+                $('#ddlSubDistrict').attr("disabled", false);
+            };
+
+
+        }
+
+        function SetddlProject(_ID, _DevID) {
+            var url = '@Url.Action("getProject", "DMPS_DepositRoom")';
+
+            $("#ddlDS_Project").empty();
+            $("#ddlDS_Project").select2({ data: null });
+
+            $.post(url,
+                {
+                    DeveloperID: _DevID
+                }, function (result) {
+
+                    var foo = $.parseJSON(result);
+                    $("#ddlDS_Project").select2({ data: foo });
+                    $("#ddlDS_Project").select2("val", _ID);
+
+                    $('#dvddlDS_Project').show();
+                    $('#dvtxtDS_Project').hide();
+
+                    $('#btnAddProject').show();
+
+                    $('#btnSaveProject').hide();
+                    $('#btnClearProject').hide();
+
+                });
+
+        }
+
+        function SetddlDeveloper(_ID) {
+
+            var url = '@Url.Action("getDevelopment", "DMPS_DepositRoom")';
+
+            $("#ddlDS_Developer").empty();
+            $("#ddlDS_Developer").select2({ data: null });
+
+            $.post(url, {
+                _ID: _ID,
+            }, function (result) {
+                var foo = $.parseJSON(result);
+                $("#ddlDS_Developer").select2({ data: foo });
+                $("#ddlDS_Developer").select2("val", _ID);
+
+                $('#dvddlDS_Developer').show();
+                $('#dvtxtAddDeveloper').hide();
+
+                $('#btnAddDeveloper').show();
+
+                $('#btnSaveDeveloper').hide();
+                $('#btnClearDeveloper').hide();
+
+
+                if (_ID != 0) {
+                    ShowModalBlindingDS(_ID);
+
+                } else {
+                    ShowModalBlinding(0);
+                }
+
+
+            });
+
+        }
+
+        function validate() {
+            var result = true;
+
+            //if (Project == 0 || Project == "0" || Project == "") {
+            //    swal('กรุณาเลือก รหัสโครงการ');
+            //    $("#ddlProject").focus();
+            //    return false;
+            //}
+            //if (BudgetAccount == 0 || BudgetAccount == "0" || BudgetAccount == "") {
+            //    swal('กรุณาเลือก งบประมาณ');
+            //    $("#ddlBudgetAccount").focus();
+            //    return false;
+            //}
+            //if (BudgetModel == 0 || BudgetModel == "0" || BudgetModel == "") {
+            //    swal('กรุณาเลือก รหัสงบประมาณ');
+            //    $("#ddlBudgetModel").focus();
+            //    return false;
+            //}
+            //if (Amount == 0 || Amount == "0.00" || Amount == "") {
+            //    swal('กรุณาระบุยอดเงินทดรองจ่าย');
+            //    $("#txtAmount").focus();
+            //    return false;
+            //}
+            //if (PaymentType == 0 || PaymentType == "0" || PaymentType == "") {
+            //    swal('กรุณาเลือก ประเภทเงินที่ต้องการรับ');
+            //    $("#ddlPaymentType").focus();
+            //    return false;
+            //}
+
+            return true;
+        }
+        var _id = $("#lblCustID").text();
+
+        LoadDataListView(_id, null, null, 0);
+
+        $('#btnSearch').click(function () {
+            var _Sdate = ConvertString2DatetimeFormat($('#StartDate').val());
+            var _Edate = ConvertString2DatetimeFormat($('#EndDate').val());
+
+            LoadDataListView(0, _Sdate, _Edate, 0);
+        });
+
+        $('#btnSearch2').click(function () {
+            var _Sdate = ConvertString2DatetimeFormat($('#StartDate').val());
+            var _Edate = ConvertString2DatetimeFormat($('#EndDate').val());
+
+            LoadDataListView(0, _Sdate, _Edate, 0);
+        });
+
+        function LoadEmployee(comID, EmpID) {
+            var url = '@Url.Action("getEmployee", "EMSG_DocumentStatus")';
+            $("#ddlWorkOwner").select2({ data: null });
+            $.post(url, { CompanyID: comID }, function (result) {
+                var foo = $.parseJSON(result);
+                $("#ddlWorkOwner").select2({ data: foo });
+                $("#ddlWorkOwner").select2("val", EmpID);
+            });
+        }
+
+        function LoadData2Upload(DS) {
+
+            var url = '@Url.Action("LoadData2Upload", "DMPS_DepositRoom")';
+
+            $.post(url,
+                {
+                    DS: DS,
+
+                }, function (result) {
+                    var obj = $.parseJSON(result);
+
+                    $("#tbody2Deposite").empty();
+
+                    for (var i = 0; i < obj.length; i++) {
+
+                        //realtime DateTime
+                        var dt = obj[i].RevisedDateTime;
+                        var datef = dt.substr(6, 10);
+
+                        var timestamp = datef * 1000;
+                        var date = new Date(timestamp);
+                        var df = date.format('dd/mm/yyyy');
+
+                        //filepath
+                        var fp = obj[i].FilePath.replace(/^.*[\\\/]/, '');
+
+
+                        $("#tableDespoiteRec").append(
+                            '<tr class="tr2Deposite" style="padding: 10px; border-bottom: solid 1px #efefef;text-align:center"><td class="tddpsAtid" style="padding: 10px; text-align: left;" hidden>' + obj[i].DepositAttachmentID
+                            + '</td><td class="tdFilePath" style="padding: 10px; text-align: left;"><a name = "btnDPSView"' + i + ' href="../' + obj[i].FilePath + '" target="_blank">' + fp
+                            + '</a></td><td class="tdUser" style="padding: 10px; text-align: center;">' + obj[i].RevisedBy
+                            + '</td><td class="tdDateTime" style="padding: 10px; text-align: center;">' + df
+                            + '</td><td  name="tdButtDownload" class="tdButtDownload" style="padding-bottom: 10px;padding-top: 10px" data-link="' + obj[i].FilePath + '"><button name ="btnDraftDocumentDownload"' + i + ' style="font-size:15px"><i class="fa fa-cloud-download"></i></button>'
+                            + '</td><td  name="tdButtDel" class="tdButtDel" style="padding-bottom: 10px;padding-top: 10px;"><button name ="btnDPSDel"' + i + ' style="font-size:15px"><i class="fa fa-trash-o"></i></button></td></tr>');
+
+                    }
+
+                    $('.tdButtDownload').click(function () {
+                        var btnload = $(this).data("link");
+                        var filename = encodeURIComponent(btnload);
+                        var url = '@Url.Action("LoadDraftDocument", "DMPS_DraftDocument")?Filename=' + filename;
+                        var a = document.createElement("a");
+                        document.body.appendChild(a);
+                        a.href = url;
+                        a.download = btnload.replace(/^.*[\\\/]/, '') || "download-" + $.now()
+                        a.click();
+
+
+                        var DespostieAttID = $(this).closest('tr.tr2Deposite').find('.tddpsAtid').html();
+                        DepositAttachmentHistory(DespostieAttID, 3);
+                        LoadDataHistory(DS);
+                    });
+
+                    $("[name^='btnDPSDel']").click(function () {
+                        var btn = $(this);
+                        swal({
+                            title: "ยืนยันการลบข้อมูล?",
+                            text: "คุณต้องการลบข้อมูลนี้",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#64dd54",
+                            confirmButtonText: "Yes, Delete it!",
+                            closeOnConfirm: true
+                        }, function () {
+
+                            var DespostieAttID = btn.closest('tr.tr2Deposite').find('.tddpsAtid').html();
+                            DeleteDepositAttachments(DespostieAttID);
+
+                            var DespostieFP = btn.closest('tr.tr2Deposite').find('a').attr('href');
+                            DeleteDepositFiltPath(DespostieFP);
+
+                            DepositAttachmentHistory(DespostieAttID, 4);
+                            LoadDataHistory(DS);
+
+                        });
+
+                    });
+
+                    $("[name^='btnDPSView']").click(function () {
+                        var btn = $(this);
+                        var DespostieAttID = btn.closest('tr.tr2Deposite').find('.tddpsAtid').html();
+                        DepositAttachmentHistory(DespostieAttID, 2);
+                        LoadDataHistory(DS);
+                    });
+
+                })
+        };
+
+
+        function LoadDataHistory(DS) {
+            var url = '@Url.Action("LoadDataHistory", "DMPS_DepositRoom")';
+
+            $.post(url, {
+                DS: DS,
+
+            }, function (result) {
+                var obj = $.parseJSON(result);
+
+                $("#tbody2HistoryDP").empty();
+
+                for (var i = 0; i < obj.length; i++) {
+
+                    //Newtime Realtime
+                    var dth = obj[i].RevisedDateTime;
+                    var datefh = dth.substr(6, 10);
+
+                    var timestamp = datefh * 1000;
+                    var date = new Date(timestamp);
+                    var dfh = date.format('dd/mm/yyyy');
+
+                    var times = new Date(timestamp).toLocaleTimeString("en-GB")
+
+                    //time at create
+                    var dtc = obj[i].RevisedDateTime_create;
+                    var dtcreate = dtc.substr(6, 10);
+
+                    var timescreate = dtcreate * 1000;
+                    var date = new Date(timescreate);
+                    var dtcrate = date.format('dd/mm/yyyy');
+
+                    var times_create = new Date(timescreate).toLocaleTimeString("en-GB")
+
+                    //filepath
+                    var fph = obj[i].FilePath.replace(/^.*[\\\/]/, '');
+
+                    $("#tableDespoiteHistoryRec").append(
+                        '<tr class="tr2HistoryDeposite"><td class="tddpsHistoryAtid" style="padding: 10px; text-align: left;" hidden>' + obj[i].DepositAttachmentID
+                        + '</td><td class="tdHistoryFilepath" style="border-bottom: solid 1px #efefef; padding: 10px;"><font style="font-size: 15px; text-align: left;">' + fph
+                        + '</font><br /><font style="font-size: 12px;color:gray; text-align: left;">โดย ' + obj[i].em_name_t_create + "  " + obj[i].em_surname_t_create + " เมื่อ " + dtcrate + " " + times_create
+                        + '</font></td ><td class="tdHistoryStatus" style="font-size: 15px; padding: 10px; text-align: center; border-bottom: solid 1px #efefef;"><font style="font-size: 15px;"><button type="button" disabled>' + obj[i].StatusDescription
+                        + '</button ></font></td><td class="tdHistoryName" style="border-bottom: solid 1px #efefef; text-align: center; padding: 10px;"><font style="font-size: 15px; ">' + obj[i].em_name_t + "  " + obj[i].em_surname_t
+                        + '</font><br /><font style="font-size: 12px;color:gray; ">เมื่อ ' + dfh + " " + times
+                        + '</font></td></tr >');
+
+                }
+            });
+
+        }
+
+        /* loading*/
+        $(document).ajaxSend(function () {
+            $("#load").show();
+        });
+
+        $(document).ajaxComplete(function () {
+            $('#load').hide();
+        });
+
+        /* เพิ่มไลฟ์*/
+        $('#insertNewFile').click(function () {
+
+            var msg = validate();
+            if (msg != "") {
+                swal({
+                    title: "ผิดพลาด",
+                    text: msg,
+                    icon: "warning",
+                    button: "Ok"
+                });
+
+            } else {
+                swal({
+                    title: "ยืนยันการบันทึกข้อมูล?",
+                    text: "คุณต้องการบันทึกข้อมูลนี้",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#64dd54",
+                    confirmButtonText: "Yes, Save it!",
+                    closeOnConfirm: true
+                }, function () {
+
+                    var fileUpload = $("#depositFileUpload").get(0);
+                    var path = "Attachment/Deposit/" + $("#txtDSID").val() + "/";
+                    var files = fileUpload.files;
+
+                    UploadFile("depositFileUpload", path);
+
+                    // path = path + files[0].name;  //Decode url
+                    AddDepositAttachments();
+
+
+                });
+
+            }
+
+        });
+
+
+        function UploadFile(fluID, path) {
+            if (window.FormData !== undefined) {
+
+                var fileUpload = $("#" + fluID).get(0);
+                var files = fileUpload.files;
+                // Create FormData object
+                var fileData = new FormData();
+
+                // Looping over all files and add it to FormData object
+                for (var i = 0; i < files.length; i++) {
+                    //fileData.append(replaceFileName(files[i].name), files[i]);
+                    fileData.append("file" + i, files[i]);
+                }
+
+                // Adding one more key to FormData object
+                fileData.append('key', fluID);
+                fileData.append('strPath', path);
+
+                return $.ajax({
+                    // url: '/DMPS_DepositRoom/UploadFiles',
+                    url: '@Url.Action("UploadFiles", "DMPS_DepositRoom")',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (result) {
+                        return result
+                    },
+                    error: function (err) {
+                        return "False";
+                    }
+                });
+            }
+        }
+
+
+        function validate() {
+            var MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+            var msg = "";
+            /* var _checkfist = 0;
+             * for (var i = 0; i < $(".tdFilePath").length; i++) {
+                var FilePathName = $(".tdFilePath")[i].textContent;
+                if ((_checkfist == 0) && ($("#depositFileUpload").val().replace(/C:\\fakepath\\/, '')) == FilePathName) {
+                    msg = "ไฟล์นี้มีอยู่แล้ว";
+                } else if ((_checkfist != 0) && ($("#depositFileUpload").val().replace(/C:\\fakepath\\/, '')) == FilePathName){
+                    msg = "ไฟล์นี้มีอยู่แล้ว";
+                }
+            }*/
+
+            for (var i = 0; i < $(".tdFilePath").length; i++) {
+                var FilePathName = $(".tdFilePath")[i].textContent;
+                if ($("#depositFileUpload").val().replace(/^.*[\\\/]/, '') == FilePathName) {
+                    msg = "ไฟล์นี้มีอยู่แล้ว";
+                    break;
+                }
+
+            }
+
+            if ($("#depositFileUpload").val().length == 0) {
+                msg = "กรุณาเลือกไฟล์";
+            }
+            else if ($("#tableDespoiteRec tr").length > 5) {
+                msg = "เกินขีดจำกัดการเพิ่มไฟล์ กรุณาลบไฟล์ก่อนทำการเพิ่มไฟล์ใหม่";
+            }
+            else if ($("#depositFileUpload")[0].files[0].size > MAX_FILE_SIZE) {
+                msg = "ขนาดไฟล์เกิน 5 MB";
+            }
+
+            return msg;
+
+        }
+
+
+
+
+        function AddDepositAttachments() {
+            var url = '@Url.Action("AddDepositAttachments", "DMPS_DepositRoom")';
+
+            var emp_id = $("#EmpID").val();
+            var dpsid = $("#txtDSID").val();
+            var dpspath = "Attachment/Deposit/" + $("#txtDSID").val() + "/" + $("#depositFileUpload").val().replace(/^.*[\\\/]/, '');
+
+            $.post(url, {
+                emp_id: emp_id,
+                dpsid: dpsid,
+                dpspath: dpspath,
+
+            }, function (result) {
+                var obj = $.parseJSON(result);
+                var DPSah = obj.toString();
+
+                var DS = $("#txtDSID").val();
+                LoadData2Upload(DS);
+
+                $("#depositFileUpload").val("");
+                DepositAttachmentHistory(DPSah, 1);
+            });
+
+        }
+
+
+        function DeleteDepositAttachments(DespostieAttID) {
+            var url = '@Url.Action("DeleteDepositAttachments", "DMPS_DepositRoom")';
+
+            var dpsAtid = DespostieAttID;
+
+            $.post(url, {
+                dpsAtid: dpsAtid,
+
+            }, function (result) {
+
+                var DS = $("#txtDSID").val();
+
+                LoadData2Upload(DS);
+
+            });
+
+        }
+
+
+        function DepositAttachmentHistory(DespostieAttHistoryID, StatusID) {
+            var url = '@Url.Action("DepositAttachmentHistory", "DMPS_DepositRoom")';
+
+            var emp_id = $("#EmpID").val();
+            var staID = StatusID;
+            var dpsAHID = DespostieAttHistoryID;
+
+            $.post(url, {
+                dpsAHID: dpsAHID,
+                emp_id: emp_id,
+                staID: staID,
+
+            }, function (result) {
+
+            });
+
+        }
+
+        function DeleteDepositFiltPath(DespostieFP) {
+            var url = '@Url.Action("DeleteDepositFiltPath", "DMPS_DepositRoom")';
+
+            var dpsFilePath = DespostieFP;
+
+            $.post(url, {
+                dpsFilePath: dpsFilePath,
+
+            }, function (result) {
+
+            });
+
+        }
+
+        /*/History click show/hide popup*/
+        $("#btnHistory").click(function () {
+            $('#HistoryModel').modal('show');
+            $('#UploadModal').modal('hide');
+            LoadDataHistory($("#txtDSID").val());
+
+        });
+
+        $("#HistoryClose").click(function () {
+            $('#HistoryModel').modal('hide');
+            $('#UploadModal').modal('show');
+        });
+
+
+        $('#DataListView').on("click", ".confirm-ViewDS", function () {
+            var DS = $(this).data("ds");
+            $("#ddlDS_Developer").prop("disabled", true);
+            $("#ddlDS_Project").prop("disabled", true);
+            SetddlDeveloper(DS);
+            //ShowModalBlinding(DS);
+
+        });
+
+        $('#DataListView').on("click", ".confirm-UploadDS", function () {
+            var DS = $(this).data("ds");
+            //var UN = $(this).data("un");
+            //var CT = $(this).data("ds");
+            //LoadData2Upload(DS, UN, CT);
+            $("#txtDSID").val(DS);
+            LoadData2Upload(DS);
+            LoadDataHistory(DS);
+            $("#tbody2Deposite").empty();
+
+            $("#depositFileUpload").val("");
+            $('#UploadModal').modal('show');
+
+        });
+
+
+
+        $('#DataListView').on("click", ".confirm-PrintDS", function () {
+            //alert('b');
+            var DS = $(this).data("ds");
+            OutReport(DS);
+            //PrintInvoice();
+        });
+
+        $('#DataListView').on("click", ".confirm-PrintDSSHOP", function () {
+            //alert('b');
+            var DS = $(this).data("ds");
+            OutReportSHOP(DS);
+            //PrintInvoice();
+        });
+
+
+
+        $('#btnClose').click(function () {
+            $('#myModal').modal('hide');
+        });
+
+
+        $('#DataListView').on("click", ".tabshow", function () {
+            $('#txttab').val($(this).data("tab"));
+            var _id = $("#lblCustID").text();
+            LoadDataListView(_id, null, null, 0);
+        });
+
+
+        function ShowModalBlindingDS(id) {
+            var url = '@Url.Action("LoadData2Modal", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    _DepositID: id
+                }, function (result) {
+                    var obj = $.parseJSON(result);
+
+
+                    /// หัวเอกสาร
+                    $('#lblDepositNo').text(obj.DepositNo);
+                    $("#ddlDS_DepositDate").val(ConvertJson2DatetimeFormat2(obj.DepositDate, "dd/mm/yyyy"));
+                    $("#lblDepositStatus").text(obj.DescriptionTH);
+
+                    $('#txtDS_ContractID').val(obj.DSContactID);
+                    $('#txtDS_DepositID').val(obj.DepositID);
+                    $('#txtDS_UnitID').val(obj.UnitsID);
+
+                    //alert(obj.DocRef);
+                    $('#txtDocsRef').val(obj.DocRef);
+
+                    $("#ddlInChargeBy").select2("val", obj.InChargeBy);
+                    //$('#ddlCompany').select2("val", ComID);
+                    //$("#ddlDepartment").select2("val", DeptID);
+
+                    /// Customer Details
+                    $('#txtDS_CustomerName').val(obj.NameFullPre);
+                    //$('#txtDS_Age').val(obj.Age);
+                    $('#txtDS_CardID').val(obj.CitizenID);
+                    //$('#ddlDS_CardIssue').val(ConvertJson2DatetimeFormat2(obj.CitizenIssue, "dd/mm/yyyy"));
+                    //$('#txtDS_Nationality').val(obj.Nationality);
+                    //$('#ddlDS_CardExpire').val(ConvertJson2DatetimeFormat2(obj.CitizenExp, "dd/mm/yyyy"));
+                    //$('#txtDS_CardIDProvince').val(obj.CitizenProvince);
+                    //$('#txtDS_AddressNo').val(obj.AddressNo);
+                    //$('#txtDS_Moo').val(obj.Moo);
+                    //$('#txtDS_Soi').val(obj.Soi);
+                    //$('#txtDS_Road').val(obj.Road);
+                    //$('#txtDS_SubDistinct').val(obj.SubDistrict);
+                    //$('#txtDS_Distinct').val(obj.District);
+                    //$('#txtDS_Province').val(obj.Province);
+                    //$('#txtDS_ZipCode').val(obj.ZipCode);
+                    $('#txtDS_Tel').val(obj.Tel1);
+                    //$('#txtDS_Details').val(obj.Remark);
+
+
+                    ///Bank
+                    $("#ddlBank").select2("val", obj.BankID);
+                    $("#ddlAccountType").select2("val", obj.BankTypeID);
+                    $('#txtAccountNo').val(obj.BankNo);
+                    $('#txtAccountName').val(obj.BankName);
+
+
+                    //$('#collapseOneCustDS').collapse();
+                    //$('#collapseBankDS').collapse();
+
+                    ///Unit Details
+                    $('#ddlDS_RentType').select2("val", obj.DSTypeID)
+                    setTimeout(
+                        function () {
+                            $("#ddlDS_Developer").select2("val", obj.DevelopmentID);
+                            setTimeout(function () {
+                                $("#ddlDS_Project").select2("val", obj.ProjectID);
+                            }, 1500);
+                        }, 2000);
+                    $('#txtDS_UnitNo').val(obj.UnitsCode);
+                    $('#txtDS_UnitAddressNo').val(obj.RoomNo);
+                    //$('#txtDS_UnitType').val(obj.RoomType);
+                    $("#ddlDS_UnitType").select2("val", obj.RoomType);
+                    $('#txtDS_Floor').val(obj.Floor);
+                    $('#txtDS_UnitArea').val(formatNumber(obj.RoomArea));
+                    $('#txtDS_Building').val(obj.Building)
+                    $('#txtRoomAddress').val(obj.ProjectAddress);
+                    ///Gridview Room Check list
+
+
+                    //ChkForRent
+
+                    if (obj.KeyIsAgent == true) { $('#rdoKeyIsAgent').iCheck('check'); }
+                    else { $('#rdoKeyIsAgent').iCheck('uncheck'); };
+
+                    if (obj.KeyIsJuristic == true) { $('#rdoKeyIsJuristic').iCheck('check'); }
+                    else { $('#rdoKeyIsJuristic').iCheck('uncheck'); };
+
+                    if (obj.IsRent == true) { $('#ChkForRent').iCheck('check'); }
+                    else { $('#ChkForRent').iCheck('uncheck'); };
+
+                    if (obj.IsSale == true) { $('#ChkForSale').iCheck('check'); }
+                    else { $('#ChkForSale').iCheck('uncheck'); };
+
+                    //ddlDS_StartContact
+                    $('#ddlDS_StartContact').val(ConvertJson2DatetimeFormat2(obj.DepositStart, "dd/mm/yyyy"))
+                    //ddlDS_EndContact
+                    $('#ddlDS_EndContact').val(ConvertJson2DatetimeFormat2(obj.DepositEnd, "dd/mm/yyyy"))
+                    //txtCheckRoomRemarkDeposit
+                    $('#txtCheckRoomRemarkDeposit').val(obj.CheckRoomRemarkDeposit);
+
+                    ///Facility Condo
+                    $('#txtDS_BedRoom').val(obj.BedRoomQty);
+                    $('#txtDS_LvingRoom').val(obj.LivingRoomQty);
+                    $('#txtDS_ToiletRoom').val(obj.ToiletRoomQty);
+                    $('#txtDS_KitchenRoom').val(obj.KitchenRoomQty);
+                    $('#txtDS_CountKey').val(obj.CountKey);
+
+                    // Gridview Facility condo
+                    //txtFacilityOther
+                    $('#txtFacilityOther').val(obj.FacilityOther);
+
+                    ///Maintenace Fee
+                    $('#txtDS_MaintenaceFee ').val(formatNumber(obj.MaintenanceCharge));
+                    $('#txtDS_WaterBill').val(formatNumber(obj.WaterCharge));
+                    $('#txtFacilityRemark').val(obj.FacilityRemark);
+
+                    ///Rent Price & Sale Price
+                    $('#txtDS_RentPriceStart').val(formatNumber(obj.RentPriceStart));
+                    $('#txtDS_RentPriceEnd').val(formatNumber(obj.RentPriceEnd));
+
+                    $('#txtDS_SalePriceStart').val(formatNumber(obj.SalePriceStart));
+                    $('#txtDS_SalePriceEnd').val(formatNumber(obj.SalePriceEnd));
+
+                    ///ข้อมูลผู้ฝากขาย/ฝากเช่า
+                    $("#ddlInChargeBy").select2("val", obj.InChargeBy);
+
+
+
+
+                    //$('#collapseOneCustDS').collapse();
+                    //$('#collapseBankDS').collapse();
+
+
+                    $('#btnSaveDeveloper').hide();
+                    $('#btnClearDeveloper').hide();
+                    $('#btnSaveProject').hide();
+                    $('#btnClearProject').hide();
+
+
+                    $('#btnSaveUnitType').hide();
+                    $('#btnSaveUnitType').hide();
+
+                    $('#dvtxtAddDeveloper').hide();
+                    $('#btnClearUnitType').hide();
+
+
+                    $('.clsCheckRoomID').iCheck('uncheck');
+                    $('.ClsFACCheck').iCheck('uncheck');
+                    $('.clsCheckQty').val("");
+                    SetCheckRoomList(obj.DepositID, 1);
+                    SetFacility(obj.DepositID);
+
+                    $('#btnPreviewFile').hide();
+                    $('#btnPreviewFile2').hide();
+                    $('#btnPreviewFile3').hide();
+
+                    $('#txtAttachFile').val("");
+                    $('#txtAttachFile2').val("");
+                    $('#txtAttachFile3').val("");
+
+                    LoadDataForPreview(obj.DepositID, "DS");
+
+
+                    //LoadPreview(obj.FilePath)
+                    //LoadPreview(obj.FilePath)
+                    //ChkFac
+
+                    LoadObject(obj.DepositStatus)
+                    $('#myModal').modal('show');
+                });
+        };
+
+        function LoadObject(_Status) {
+
+            var _EmpID = $('#EmployeeID').data("emp-id");
+            var _RoleCode = "AD_DS"
+
+            var url = '@Url.Action("GetRoleAdminMenu", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    EmpID: _EmpID,
+                    RoleCode: _RoleCode
+
+                }, function (result) {
+
+
+
+                    if (_Status == 0) {
+                        $("#btnSaveDeposit").show();
+                        $("#btnPrint").show();
+                        $("#btnCancel").show();
+                    }
+                    if (_Status == 1) {
+                        $("#btnSaveDeposit").hide();
+                        $("#btnPrint").hide();
+                        $("#btnCancel").hide();
+                    }
+                    if (_Status == 2 || _Status == 4) {
+                        $("#btnSaveDeposit").hide();
+                        $("#btnPrint").hide();
+                        $("#btnCancel").hide();
+                    }
+                    if (_Status == -1 || _Status == 5) {
+                        $("#btnSaveDeposit").hide();
+                        $("#btnPrint").hide();
+                        $("#btnCancel").hide();
+                    }
+                    if (result == 1) {
+                        $("#btnSaveDeposit").show();
+                        $("#btnPrint").show();
+                        $("#btnCancel").show();
+
+                    }
+
+
+                });
+
+
+            ////if (_Status == 0) {
+            ////    $("#btnSaveDeposit").show();
+            ////    $("#btnPrint").show();
+            ////    $("#btnCancel").show();
+            ////}
+            ////if (_Status == 1) {
+            ////    $("#btnSaveDeposit").hide();
+            ////    $("#btnPrint").hide();
+            ////    $("#btnCancel").hide();
+            ////}
+            ////if (_Status == 2 || _Status == 4) {
+            ////    $("#btnSaveDeposit").hide();
+            ////    $("#btnPrint").hide();
+            ////    $("#btnCancel").hide();
+            ////}
+            ////if (_Status == -1) {
+            ////    $("#btnSaveDeposit").hide();
+            ////    $("#btnPrint").hide();
+            ////    $("#btnCancel").hide();
+            ////}
+        }
+
+
+        $('#btnAddDeveloper').click(function () {
+
+            $('#btnAddDeveloper').hide();
+
+            $('#btnSaveDeveloper').show();
+            $('#btnClearDeveloper').show();
+
+            $('#dvddlDS_Developer').hide();
+            $('#dvtxtAddDeveloper').show();
+            $('#txtAddDeveloper').val("");
+            $('#txtAddDeveloper').focus();
+
+
+            ///btnClearDeveloper
+
+        });
+
+        $('#btnClearDeveloper').click(function () {
+            $('#btnAddDeveloper').show();
+
+            $('#btnSaveDeveloper').hide();
+            $('#btnClearDeveloper').hide();
+
+            $('#dvddlDS_Developer').show();
+            $('#dvtxtAddDeveloper').hide();
+
+            $("#ddlDS_Developer").select2("val", "");
+        });
+
+
+        ///Add New UnitType
+        $('#btnAddUnitType').click(function () {
+
+            $('#btnAddUnitType').hide();
+
+            $('#btnSaveUnitType').show();
+            $('#btnClearUnitType').show();
+
+            $('#dvtxtDS_UnitType').hide();
+            $('#dvtxtAddUnitType').show();
+
+            $('#txtDS_UnitType').val("");
+            $('#txtDS_UnitType').focus();
+
+
+            ///btnClearDeveloper
+
+        });
+
+        $('#btnClearUnitType').click(function () {
+            $('#btnAddUnitType').show();
+
+            $('#btnSaveUnitType').hide();
+            $('#btnClearUnitType').hide();
+
+            $('#dvtxtDS_UnitType').show();
+            $('#dvtxtAddUnitType').hide();
+
+            $("#ddlDS_UnitType").select2("val", "");
+        });
+
+
+        $('#btnClearProject').click(function () {
+            $('#btnAddProject').show();
+
+            $('#btnSaveProject').hide();
+            $('#btnClearProject').hide();
+
+            $('#dvddlDS_Project').show();
+            $('#dvtxtDS_Project').hide();
+
+            $("#ddlDS_Project").select2("val", "");
+        });
+
+        ///Add New Project
+        $('#btnAddProject').click(function () {
+
+            $('#btnAddProject').hide();
+
+            $('#btnSaveProject').show();
+            $('#btnClearProject').show();
+
+            $('#dvddlDS_Project').hide();
+            $('#dvtxtDS_Project').show();
+            $('#txtDS_Project').val("");
+            $('#txtDS_Project').focus();
+
+
+        });
+
+        ///Add New Project
+        $('#btnSaveUnitType').click(function () {
+
+            if ($("#txtDS_UnitType").val() == "") {
+                swal("Warnning !", "กรุณาเลือกกรอก UnitType !", "warning");
+            }
+            else {
+                var _strUnitType = $("#txtDS_UnitType").val();
+                var _UnitType;
+                swal({
+                    title: "Are you sure?",
+                    text: "Would you like to save this record?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Save it!",
+                    closeOnConfirm: false
+                }, function () {
+                    var _controlDupplicate = $('#controlDupplicate').val();
+                    if (_controlDupplicate == 0) {
+                        $('#controlDupplicate').val(1);
+                        CheckExistUnitType(_strUnitType);
+                    }
+                });
+            }
+        });
+
+        function CheckExistUnitType(UnitType) {
+            var url = '@Url.Action("CheckExistUnitType", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    UnitType: UnitType,
+                }, function (result) {
+
+                    if (result == 0) {
+                        //_DeveloperID = SaveDeveloper(_strDeveloper, false);
+                        _UnitType = SaveUnitType(UnitType);
+                    }
+                    else {
+                        $('#controlDupplicate').val(0);
+                        setTimeout(function () {
+                            swal("Warnning !", "ไม่สามารถบันทึก UnitType ได้เนื่องจากมีแล้วอยู่ในระบบ !", "warning");
+                        }, 1500);
+                    }
+
+                });
+        }
+
+
+        function SaveDeveloper(_DeveloperName, _IsDelete) {
+            var _EmpID = $('#EmployeeID').data("emp-id");
+
+
+            var url = '@Url.Action("SaveDeveloper", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    DevelopmentName: _DeveloperName,
+                    DevelopmentStatus: 0,
+                    Creator: _EmpID,
+                    IsDelete: _IsDelete,
+
+                }, function (result) {
+
+                    SetddlDeveloper(result);
+
+
+                });
+        };
+
+
+        function GetNewDocuments(_DocType) {
+
+            var _DocNoNew;
+            var _YYYY = (new Date()).getFullYear();
+            var _MM = (new Date()).getMonth() + 1;
+            var _DD = (new Date()).getDay() + 1;
+
+            if (_DD < 10) { _DD = "0" + _DD };
+            if (_MM < 10) { _MM = "0" + _MM };
+
+            if (_DocType == 1) {
+                _DocNoNew = "SUP" + "-" + _YYYY + _MM + _DD + "-" + "xxxx"
+            }
+            else if (_DocType == 2) {
+
+                _DocNoNew = "RT" + "-" + _YYYY + _MM + "-" + "xxxx"
+            }
+            else if (_DocType == 3) {
+                _DocNoNew = "RS" + "-" + _YYYY + _MM + "-" + "xxxx"
+
+            }
+            return _DocNoNew;
+
+        }
+
+
+        function CheckExistDeveloper(Developer) {
+            var url = '@Url.Action("CheckExistDeveloper", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    Developer: Developer,
+                }, function (result) {
+
+                    if (result == 0) {
+                        _DeveloperID = SaveDeveloper(Developer, false);
+                    }
+                    else {
+
+                        setTimeout(function () {
+                            swal("Warnning !", "ไม่สามารถบันทึก Developer ได้เนื่องจากมีแล้วอยู่ในระบบ !", "warning");
+                        }, 1500);
+                    }
+
+                });
+        }
+
+
+
+        function SetUnitType(_ID, _Project) {
+
+            var url = '@Url.Action("getUnitType", "DMPS_DepositRoom")';
+            $("#ddlDS_UnitType").empty();
+            $("#ddlDS_UnitType").select2({ data: null });
+
+            $.post(url,
+                {
+                    ID: _ID,
+                    Project: _Project,
+                }, function (result) {
+
+                    var foo = $.parseJSON(result);
+                    $("#ddlDS_UnitType").select2({ data: foo });
+                    $("#ddlDS_UnitType").select2("val", _ID);
+
+                    $('#dvtxtDS_UnitType').show();
+                    $('#dvtxtAddUnitType').hide();
+
+                    $('#btnAddUnitType').show();
+
+                    $('#btnSaveUnitType').hide();
+                    $('#btnClearUnitType').hide();
+
+
+
+                });
+
+        }
+
+        function SaveUnitType(_UnitType) {
+            var _EmpID = $('#EmployeeID').data("emp-id");
+            var _Project = $('#ddlDS_Project').val();
+
+            var url = '@Url.Action("SaveUnitType", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    UnitType: _UnitType,
+                    Creator: _EmpID,
+                    IsDelete: 0,
+
+                }, function (result) {
+                    $('#controlDupplicate').val(0);
+                    //SetddlProject(result, 0);
+                    //alert(result + ":" + _Project )
+                    SetUnitType(result, _Project);
+                });
+        }
+
+
+        $('#btnSaveProject').click(function () {
+
+            if ($("#ddlDS_Developer").val() == "" || $("#ddlDS_Developer").val() == 0) {
+                swal("Warnning !", "กรุณาเลือก Developer !", "warning");
+            }
+            else {
+                var _strProject = $('#txtDS_Project').val();
+                var _ProjectID;
+                swal({
+                    title: "Are you sure?",
+                    text: "Would you like to save this record?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Save it!",
+                    closeOnConfirm: true
+                }, function () {
+
+
+                    CheckExistProject($("#ddlDS_Developer").val(), _strProject)
+
+
+
+                });
+            }
+        });
+
+        function CheckExistProject(Developer, ProjectName) {
+            var url = '@Url.Action("CheckExistProject", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    Developer: Developer,
+                    ProjectName: ProjectName,
+                }, function (result) {
+
+                    if (result == 0) {
+                        //_DeveloperID = SaveDeveloper(_strDeveloper, false);
+                        var _controlDupplicate = $('#controlDupplicate').val();
+                        if (_controlDupplicate == 0) {
+                            $('#controlDupplicate').val(1);
+                            _ProjectID = SaveProject(ProjectName);
+                        }
+                    }
+                    else {
+
+                        setTimeout(function () {
+                            swal("Warnning !", "ไม่สามารถบันทึก Project ได้เนื่องจากมีแล้วอยู่ในระบบ !", "warning");
+                        }, 1500);
+                    }
+                });
+        }
+
+        function SaveProject(_ProjectName, _IsDelete) {
+            var _EmpID = $('#EmployeeID').data("emp-id");
+            var _DeveloperID = $('#ddlDS_Developer').val();
+
+            var url = '@Url.Action("SaveProject", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    DevelopmentID: _DeveloperID,
+                    ProjectName: _ProjectName,
+                    ProjectStatus: 0,
+                    Creator: _EmpID,
+                    IsDelete: _IsDelete,
+
+                }, function (result) {
+                    $('#controlDupplicate').val(0);
+                    SetddlProject(result, _DeveloperID);
+                });
+        }
+
+
+        $('#btnPreviewFile').click(function () {
+
+            var url = $(this).data("link");
+            if (url == "") { swal("ยังไม่มี File upload"); return; }
+            window.open(url, '_blank');
+        });
+
+        $('#btnPreviewFile2').click(function () {
+
+            var url = $(this).data("link");
+            if (url == "") { swal("ยังไม่มี File upload"); return; }
+            window.open(url, '_blank');
+        });
+
+        $('#btnPreviewFile3').click(function () {
+
+            var url = $(this).data("link");
+            if (url == "") { swal("ยังไม่มี File upload"); return; }
+            window.open(url, '_blank');
+        });
+
+
+
+        $("#ddlProvince").change(function () {
+            var _ProvinceID = $("#ddlProvince").val();
+            SetDistinct(_ProvinceID);
+        });
+
+        $("#ddlDistrict").change(function () {
+            var _ProvinceID = $("#ddlProvince").val();
+            var _DistinctID = $("#ddlDistrict").val();
+            SetSubDistinct(_ProvinceID, _DistinctID);
+        });
+
+        $("#ddlDS_Developer").change(function () {
+            var _DevelopID = $("#ddlDS_Developer").val();
+            if (_DevelopID != "" || _DevelopID != 0 || _DevelopID != null) {
+                SetddlProject(0, _DevelopID);
+            }
+
+        });
+
+
+        $('#btnPrint').click(function () {
+
+            var _Validate = ValidateDeposit()
+            if (_Validate == "") {
+                swal({
+                    title: "Are you sure?",
+                    text: "Would you like to save this record?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Save it!",
+                    closeOnConfirm: false
+                }, function () {
+                    var _UnitNo = $('#txtDS_UnitNo').val();
+                    var _Project = $('#ddlDS_Project').val();
+                    var _UnitID = $('#txtDS_UnitID').val();
+
+                    CheckExistUnit(_UnitNo, _Project, _UnitID, "Print")
+
+
+
+                });
+            }
+            else {
+                swal("Warnning !", _Validate, "warning");
+            }
+        });
+
+
+        function SaveContactBank(_IsDelete, _DepositID) {
+
+            //var _CustomerWorkDate = ConvertString2DatetimeFormat($('#txtWorkDate').val());
+            var _EmpID = $('#EmployeeID').data("emp-id");
+            var _CreatorDept = $('#EmployeeID').data("parent-dept");
+            var _CRMContactID = $('#txtContractID').val();
+
+
+            var _BankCode = $('#ddlBank').val();
+            var _AccountType = $('#ddlAccountType').val();
+            var _AccountNo = $('#txtAccountNo').val();
+            var _AccountName = $('#txtAccountName').val();
+
+
+            var url = '@Url.Action("SaveContactBank", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    BankID: _BankCode,
+                    BankTypeID: _AccountType,
+                    BankNo: _AccountNo,
+                    BankName: _AccountName,
+                    ContactsID: _CRMContactID,
+                    Creator: _EmpID,
+                    Reviser: _EmpID,
+                    IsDelete: _IsDelete,
+                    DepositID: _DepositID,
+
+
+
+                }, function (result) {
+                    if (result != "") {
+                        //if (_Type == 1) {
+                        //    AddNewUnit(_CRMContactID);
+                        //}
+                        //else {
+                        //    SetCustomerContact(_CRMContactID);
+                        //    swal("Save Complete!!!", "", "success");
+                        //}
+                        //swal("Save Complete!!!", "", "success");
+
+                    }
+                    else {
+                        //swal("Save Error!!!", "", "success");
+                        //swal({
+                        //    title: "Save isn't Complete.",
+                        //    text: "Save Error!!!"
+                        //});
+                    }
+                });
+
+
+        };
+
+
+        function saveFileUpload(_DepositID) {
+            var _objAttachFile = $(".clsAttachFile");
+            $.each(_objAttachFile, function (i, e) {
+
+                var _objName = e.id;
+                var fileData = new FormData();
+                var fileUpload = $("#" + _objName).get(0);
+                var files = fileUpload.files;
+                var _Running = $("#" + _objName).data("running");
+
+
+                if (files.length > 0) {
+                    for (var i = 0; i < files.length; i++) {
+                        fileData.append(files[i].name, files[i]);
+                    }
+                    fileData.append("DepositID", _DepositID);
+                    fileData.append("Running", _Running);
+                    fileData.append("Type", "DS");
+                }
+                $.ajax({
+
+                    url: '@Url.Action("FileUploadHandler", "DMPS_DepositRoom")',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    ////data: fileData,
+                    data: fileData,
+                    success: function (result2) {
+                        // alert(result2);
+                    },
+                    error: function (err) {
+                        // alert(err.statusText);
+                    }
+                });
+            });
+
+        }
+
+        function SaveDeposit(_IsDelete, _DepositStatus, _Print) {
+
+
+
+            var tableFAC = $('#FacilityMasterTB tbody tr');
+            var param_items1 = "";
+            for (i = 0; i < tableFAC.length; i++) {
+                if (i != 0) {
+                    param_items1 += ",";
+                }
+                param_items1 += '{"FacilityID": "' + $(tableFAC[i]).find(".ClsFACCheck").val() + '", "FacilityDesc":"' + $(tableFAC[i]).find(".FACDESC").text() + '", "CheckFacility":"' + $(tableFAC[i]).find(".ClsFACCheck").is(':checked') + '"}';
+            };
+
+            var tableCHKRoom = $('#CheckRoomMasterTB tbody tr');
+            var param_items2 = "";
+            for (i = 0; i < tableCHKRoom.length; i++) {
+                if (i != 0) {
+                    param_items2 += ",";
+                }
+
+                var Qty;
+
+                if ($(tableCHKRoom[i]).find(".clsCheckQty").val() == null || $(tableCHKRoom[i]).find(".clsCheckQty").val() == "") {
+                    Qty = "0";
+                }
+                else {
+                    Qty = $(tableCHKRoom[i]).find(".clsCheckQty").val();
+                }
+
+                param_items2 += '{"CheckRoomID": "' + $(tableCHKRoom[i]).find(".clsCheckRoomID").val() + '", "CheckRoomDesc":"' + $(tableCHKRoom[i]).find(".clsCheckRoomDesc").text() + '","CheckQTY":"' + Qty + '","CheckCheckRoom":"' + $(tableCHKRoom[i]).find(".clsCheckRoomID").is(':checked') + '"}';
+            };
+
+            var _CRMContractID = $('#txtDS_ContractID').val();
+            var _DepositID = $('#txtDS_DepositID').val();
+            var _UnitID = $('#txtDS_UnitID').val();
+
+            var _EmpID = $('#EmployeeID').data("emp-id");
+            var _CreatorDept = $('#EmployeeID').data("parent-dept");
+
+
+            var _DepositNo = $('#lblDepositNo').text();
+            var _DepositDate = ConvertString2DatetimeFormat($('#ddlDS_DepositDate').val());
+            var _DocRef = $('#txtDocsRef').val();
+
+            var _CustomerName = $('#txtDS_CustomerName').val();
+            var _IDCard = $('#txtDS_CardID').val();
+            var _Tel = $('#txtDS_Tel').val();
+
+            //var _BankCode = $('#ddlDS_Bank').val();
+            var _AccountNo = $('#txtDS_AccountNo').val();
+            var _AccountName = $('#txtDS_AccountName').val();
+
+            var _RentType = $('#ddlDS_RentType').val();
+            var _Developer = $('#ddlDS_Developer').val();
+            var _Project = $('#ddlDS_Project').val();
+            var _Floor = $('#txtDS_Floor').val();
+            var _UnitNo = $('#txtDS_UnitNo').val();
+            var _UnitAddressNo = $('#txtDS_UnitAddressNo').val();
+            //var _UnitType = $('#txtDS_UnitType').val();
+            var _UnitType = $("#ddlDS_UnitType").val();
+            var _UnitArea = $('#txtDS_UnitArea').val().replace(/,\s?/g, "");
+            var _BedRoom = $('#txtDS_BedRoom').val();
+            var _Building = $('#txtDS_Building').val();
+            var _LvingRoom = $('#txtDS_LvingRoom').val();
+            var _ToiletRoom = $('#txtDS_ToiletRoom').val();
+            var _KitchenRoom = $('#txtDS_KitchenRoom').val();
+            var _CountKey = $('#txtDS_CountKey').val();
+            var _ProjectAddress = $('#txtRoomAddress').val();
+
+            var _KeyIsAgent = false;
+            if ($('#rdoKeyIsAgent').is(':checked') == true) {
+                _KeyIsAgent = true;
+            }
+
+            var _KeyIsJuristic = false;
+            if ($('#rdoKeyIsJuristic').is(':checked') == true) {
+                _KeyIsJuristic = true;
+            }
+
+            var _MaintenaceFee = $('#txtDS_MaintenaceFee').val().replace(/,\s?/g, "");
+            var _WaterBill = $('#txtDS_WaterBill').val().replace(/,\s?/g, "");
+            var _RentPriceStart = $('#txtDS_RentPriceStart').val().replace(/,\s?/g, "");
+            var _RentPriceEnd = $('#txtDS_RentPriceEnd').val().replace(/,\s?/g, "");
+            var _SalePriceStart = $('#txtDS_SalePriceStart').val().replace(/,\s?/g, "");
+            var _SalePriceEnd = $('#txtDS_SalePriceEnd').val().replace(/,\s?/g, "");
+
+
+            var _IsRent = false;
+            if ($('#ChkForRent').is(':checked') == true) {
+                _IsRent = true;
+            }
+
+            var _IsSale = false;
+            if ($('#ChkForSale').is(':checked') == true) {
+                _IsSale = true;
+            }
+
+            var _DateStartContact = ConvertString2DatetimeFormat($('#ddlDS_StartContact').val());
+            var _DateEndContact = ConvertString2DatetimeFormat($('#ddlDS_EndContact').val());
+
+            var _Company = $('#ddlCompany').val();
+            var _Departments = $('#ddlDepartment').val();
+            var _InchargeBy = $('#ddlInChargeBy').val();
+            var _Position = $('#ddlPosition').val();
+
+            var _CheckRoomRemarkDeposit = $('#txtCheckRoomRemarkDeposit').val();
+            var _FacilityOther = $('#txtFacilityOther').val();
+            var _FacilityRemark = $('#txtFacilityRemark').val();
+
+
+
+
+            var url = '@Url.Action("SaveDeposit", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    strFac: '[' + param_items1 + ']',
+                    strCheckRoom: '[' + param_items2 + ']',
+                    EmpID: _EmpID,
+                    //CustomerName: _CustomerName,
+                    ////Age: _Age,
+                    //IDCard: _IDCard,
+                    //IDCardDateIsuse: _IDCardDateIsuse,
+                    //IDCardDateExpire: _IDCardDateExpire,
+                    //Nationality: _Nationality,
+                    //CardProvice: _CardProvice,
+                    //Address: _Address,
+                    //Moo: _Moo,
+                    //Soi: _Soi,
+                    //Road: _Road,
+                    //SubDistrict: _SubDistrict,
+                    //District: _District,
+                    //Province: _Province,
+                    //ZipCode: _ZipCode,
+                    //Tel: _Tel,
+                    //BankName: _BankCode,
+                    //AccountType: _AccountType,
+                    //AccountNo: _AccountNo,
+                    //AccountName: _AccountName,
+                    RentType: _RentType,
+                    Project: _Project,
+                    Floor: _Floor,
+                    UnitNo: _UnitNo,
+                    UnitAddressNo: _UnitAddressNo,
+                    UnitType: _UnitType,
+                    UnitArea: _UnitArea,
+                    BedRoom: _BedRoom,
+                    LvingRoom: _LvingRoom,
+                    ToiletRoom: _ToiletRoom,
+                    KitchenRoom: _KitchenRoom,
+                    CountKey: _CountKey,
+                    MaintenaceFee: _MaintenaceFee,
+                    WaterBill: _WaterBill,
+                    RentPriceStart: _RentPriceStart,
+                    RentPriceEnd: _RentPriceEnd,
+                    SalePriceStart: _SalePriceStart,
+                    SalePriceEnd: _SalePriceEnd,
+                    Company: _Company,
+                    Departments: _Departments,
+                    InchargeBy: _InchargeBy,
+                    DepositNo: _DepositNo,
+                    DepositDate: _DepositDate,
+                    DepositStatus: _DepositStatus,
+                    DSContactID: _CRMContractID,
+                    DSTypeID: _RentType,
+                    IsRent: _IsRent,
+                    IsSale: _IsSale,
+                    CheckRoomRemarkDeposit: _CheckRoomRemarkDeposit,
+                    FacilityOther: _FacilityOther,
+                    FacilityRemark: _FacilityRemark,
+                    DepositStart: _DateStartContact,
+                    DepositEnd: _DateEndContact,
+                    IsDelete: _IsDelete,
+                    UnitID: _UnitID,
+                    DeveloperID: _Developer,
+                    DepositID: _DepositID,
+                    KeyIsAgent: _KeyIsAgent,
+                    KeyIsJuristic: _KeyIsJuristic,
+                    ProjectAddress: _ProjectAddress,
+                    DocRef: _DocRef,
+                    Building: _Building,
+
+                }, function (result) {
+                    if (result != "") {
+
+                        $('#controlDupplicate').val(0);
+
+                        var _data = result.split("|");
+
+                        swal({
+                            title: "Success!",
+                            text: "Save Complete!!!",
+                            icon: "success",
+                        }, function () {
+
+
+                            //saveFileUpload(_data[1], "#txtAttachFile", 1);
+                            //saveFileUpload(_data[1], "#txtAttachFile2", 2);
+                            //saveFileUpload(_data[1], "#txtAttachFile3", 3);
+                            //alert(_DepositStatus);
+                            if (_DepositStatus != 5)
+                            { saveFileUpload(_data[1]); }
+                            SaveContactBank(_IsDelete, _data[1]);
+
+                            if (_Print == "Print") {
+                                OutReport(_data[1]);
+
+                                setTimeout(
+                                        function () {
+                                        LoadDataListView(0, null, null, _data[1]);
+
+                                         }, 1000);
+                            }
+                            else { LoadDataListView(0, null, null, _data[1]); }
+
+
+
+                            $('#myModal').modal('hide');
+
+                        });
+                    }
+                    else {
+                        swal("Save Error!!!", "", "success");
+                        swal({
+                            title: "Save isn't Complete.",
+                            text: "Save Error!!!"
+                        });
+                    }
+                });
+        };
+
+        $('#btnCancel').click(function () {
+            swal({
+                title: "Are you sure?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Cancel it!",
+                closeOnConfirm: true
+            }, function () {
+                var _controlDupplicate = $('#controlDupplicate').val();
+                if (_controlDupplicate == 0) {
+                    $('#controlDupplicate').val(1);
+                    SaveDeposit(true, 5, "");
+                };
+            });
+        });
+
+
+
+        $('#btnSaveDeposit').click(function () {
+
+            //var vali = ValidateDeposit();
+            //if (vali == false || vali == "false") { return; }
+            //else {
+
+            var _Validate = ValidateDeposit()
+            if (_Validate == "") {
+                swal({
+                    title: "Are you sure?",
+                    text: "Would you like to save this record?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Save it!",
+                    closeOnConfirm: true
+                }, function () {
+                    var _UnitNo = $('#txtDS_UnitNo').val();
+                    var _Project = $('#ddlDS_Project').val();
+                    var _UnitID = $('#txtDS_UnitID').val();
+
+                    CheckExistUnit(_UnitNo, _Project, _UnitID, "");
+
+
+
+                });
+            }
+            else {
+                swal("Warnning !", _Validate, "warning");
+            }
+
+            //}
+        });
+
+
+        function CheckExistUnit(_Unitcode, _Project, _UnitID, _Print) {
+            var url = '@Url.Action("CheckExistUnit", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    UnitCode: _Unitcode,
+                    Project: _Project,
+                    UnitID: _UnitID,
+                }, function (result) {
+
+                    if (result == 0) {
+
+                        var _controlDupplicate = $('#controlDupplicate').val();
+                        if (_controlDupplicate == 0) {
+                            $('#controlDupplicate').val(1);
+                            SaveDeposit(false, 0, _Print);
+                        };
+
+                    }
+                    else {
+
+                        setTimeout(function () {
+                            swal("Warnning !", "ไม่สามารถบันทึก UnitCode ได้เนื่องจากมีแล้วอยู่ในระบบ !", "warning");
+                        }, 1500);
+                    }
+
+                });
+        }
+
+
+        function ValidateDeposit() {
+
+            var result = "";
+
+
+            //var currdate = dateFormat(new Date(), "dd/mm/yyyy");
+            //var vSTime = $('#ddlStime').val();
+            // Run at Server
+            //var aa = dateFormat(new Date(ConvertString2DatetimeFormat(vWorkDate)), "dd/mm/yyyy");
+
+            // Run at My Computer
+            //var aa = dateFormat(new Date(ConvertString2DatetimeFormatInDate(vWorkDate)), "dd/mm/yyyy");
+
+
+
+
+            if ($("#ddlDS_RentType").val() == "" || $("#ddlDS_RentType").val() == 0) { return "กรุณาเลือก ประเภทการเช่า !"; }
+            if ($("#ddlDS_Developer").val() == "" || $("#ddlDS_Developer").val() == 0) { return "กรุณาเลือก Development !"; }
+            if ($("#ddlDS_Project").val() == "" || $("#ddlDS_Project").val() == 0) { return "กรุณาเลือก โครงการ !"; }
+            if ($("#txtDS_UnitNo").val().trim() == "") { return "กรุณากรอก ห้องชุดเลขที่ !" }
+            if ($("#txtDS_UnitAddressNo").val().trim() == "") { return "กรุณากรอก บ้านเลขที่ !" }
+            //if ($("#txtDS_UnitType").val().trim() == "") { return "กรุณากรอก รูปแบบห้องชุด !" }
+            if ($("#ddlDS_UnitType").val() == "" || $("#ddlDS_UnitType").val() == 0) { return "กรุณาเลือก รูปแบบห้องชุด !"; }
+            if ($("#txtDS_Floor").val().trim() == "") { return "กรุณากรอก ชั้น !" }
+            if ($("#txtDS_UnitArea").val().trim() == "") { return "กรุณากรอก เนื้อที่ห้องชุด !" }
+            if ($("#txtRoomAddress").val().trim() == "") { return "กรุณากรอก ตั้งอยู่ที่ !" }
+
+            if ($('#ChkForRent').is(':checked') == false && $('#ChkForSale').is(':checked') == false) { return "กรุณาเลือก สำหรับเช่า หรือ สำหรับขาย !"; }
+
+            if ($("#txtDS_BedRoom").val().trim() == "") { return "กรุณากรอก จำนวนห้องนอน !" }
+            if ($("#txtDS_LvingRoom").val().trim() == "") { return "กรุณากรอก จำนวนห้องนั่งเล่น !" }
+            if ($("#txtDS_ToiletRoom").val().trim() == "") { return "กรุณากรอก จำนวนห้องน้ำ !" }
+            if ($("#txtDS_KitchenRoom").val().trim() == "") { return "กรุณากรอก จำนวนห้องครัว !" }
+            if ($("#txtDS_CountKey").val().trim() == "") { return "กรุณากรอก จำนวนกุญแจ !" }
+
+            if ($("#txtDS_MaintenaceFee").val().trim() == "") { return "กรุณากรอก ค่าส่วนกลาง !" }
+            if ($("#txtDS_WaterBill").val().trim() == "") { return "กรุณากรอก ค่าน้ำ !" }
+
+            if ($("#ddlBank").val().trim() == "" || $("#ddlBank").val().trim() == 0) { return "กรุณาเลือก บัญชีธนาคาร !" }
+            if ($("#ddlAccountType").val().trim() == "" || $("#ddlAccountType").val().trim() == 0) { return "กรุณาเลือก ประเภทบัญชี !" }
+            if ($("#txtAccountNo").val().trim() == "") { return "กรุณากรอก เลขที่บัญชี !" }
+            if ($("#txtAccountName").val().trim() == "") { return "กรุณากรอก ชื่อบัญชี !" }
+
+
+            if ($('#ChkForRent').is(':checked') == true && ($('#txtDS_RentPriceStart').val() == "" || $('#txtDS_RentPriceStart').val().trim() == 0 || $('#txtDS_RentPriceEnd').val().trim() == "" || $('#txtDS_RentPriceEnd').val() == 0)) {
+                return "กรุณากรอก ราคาเช่า !";
+            }
+
+            if ($('#ChkForSale').is(':checked') == true && ($('#txtDS_SalePriceStart').val() == "" || $('#txtDS_SalePriceStart').val().trim() == 0 || $('#txtDS_SalePriceEnd').val().trim() == "" || $('#txtDS_SalePriceEnd').val() == 0)) {
+                return "กรุณากรอก ราคาขาย !";
+            }
+
+            if ($("#ddlInChargeBy") == "" || $("#ddlInChargeBy") == 0) { return "กรุณาเลือก ชื่อผู้ดูแล !"; }
+
+            return "";
+        };
+
+        function SetCheckRoomList(_DSid, _CheckType) {
+            var url = '@Url.Action("GetRoomCheck", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    DepositID: _DSid,
+                    CheckType: _CheckType,
+                }, function (result) {
+                    var obj = $.parseJSON(result);
+
+                    //$('.clsCheckRoomID').iCheck('uncheck');
+                    //$('.clsCheckQty').val("");
+
+                    $.each(obj, function (i, e) {
+
+                        var selecter = '#RCC' + e.CheckRoomID;
+                        $(selecter).iCheck('check');
+
+                        if (e.IsQty == true) {
+                            $('#RCT' + e.CheckRoomID).val(e.CheckRoomQty);
+                        }
+                    });
+                });
+        }
+
+        function SetFacility(_DSid) {
+            var url = '@Url.Action("GetFacility", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    DepositID: _DSid,
+
+                }, function (result) {
+                    var obj = $.parseJSON(result);
+
+                    $.each(obj, function (i, e) {
+
+                        var selecter = '#ChkFac' + e.FacilityID;
+                        $(selecter).iCheck('check');
+
+                        //if (e.IsQty == true) {
+
+                        //    alert(e.CheckRoomQty);
+                        //    $('#RCT' + e.CheckRoomID).val(e.CheckRoomQty);
+                        //}
+                    });
+                });
+        }
+
+
+        function LoadDataForPreview(_DepositID, _Type) {
+            var url = '@Url.Action("GetImageTable", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    DepositID: _DepositID,
+                    Type: _Type,
+
+                }, function (result) {
+
+                    var obj = $.parseJSON(result);
+
+                    $.each(obj, function (a, c) {
+
+                        if (c.Running == 1) {
+                            LoadPreview(c.Path, "btnPreviewFile", "txtAttachFile");
+                        }
+
+                        if (c.Running == 2) {
+                            LoadPreview(c.Path, "btnPreviewFile2", "txtAttachFile2");
+                        }
+
+                        if (c.Running == 3) {
+                            LoadPreview(c.Path, "btnPreviewFile3", "txtAttachFile3");
+                        }
+
+                    });
+
+
+                });
+        }
+
+
+
+
+        function LoadPreview(_FilePath, _Btn, _txt) {
+            /// แนบไฟล์
+            //alert(_Btn + ":" + _FilePath);
+
+            var link = '@Url.Action("GetFile", "DMPS_DepositRoom")' + "?filename=" + _FilePath;
+
+            if (_FilePath == null || _FilePath == "") {
+
+                link = "";
+                //$("#" + _Btn).data("link", link);
+                $("#" + _Btn).hide();
+            }
+            else {
+
+                $("#" + _Btn).data("link", link);
+                $("#" + _Btn).show();
+            }
+
+
+            @*var link = '@Url.Action("GetFile", "DMPS_DepositRoom")' + "?filename=" + _FilePath;
+            $('#btnPreviewFile').show();
+
+            if (_FilePath == null || _FilePath == "") {
+                link = "";
+                $('#btnPreviewFile').hide();
+            }
+            $('#btnPreviewFile').data("link", link);*@
+            }
+
+
+        function LoadDataListView(_CustContract, _Sdate, _Edate, DS ) {
+
+            ShowHideLoading(1);
+            @*var EmpID = $("#EmployeeID").data("emp-id");
+            var ParentDeptID = $("#EmployeeID").data("parent-dept");
+
+               //var StartDate = ConvertString2DatetimeFormat($('#StartDate').val());
+            //var EndDate = ConvertString2DatetimeFormat($('#EndDate').val());
+
+            var url = '@Url.Action("LoadDataListView", "DMPS_DepositRoom")';
+            $('#DataListView').load(url,
+            {
+                id: _CustContract
+            }, function (result) {
+                $('.dataTables-example').DataTable({
+                    "order": [[0, "asc"]],
+                    "scrollX": true,
+                    "sScrollX": "3500px",
+                    "autoWidth": true,
+                    dom: '<"html5buttons"B>lTfgitp',
+                    buttons: [
+                        { extend: 'excel', title: 'ExcelFile' },
+                    ]
+                });
+            });*@
+
+
+            //alert(StartDate + " " + EndDate);
+            var url = '@Url.Action("LoadDataListView", "DMPS_DepositRoom")';
+
+            //var _isChkDS = false;
+            //if ($("#chkDSShop").is(":checked")) {
+            //    _isChkDS = true;
+            //}
+
+            var _chkDate = false;
+            if ($("#chkDate").is(":checked")) {
+                _chkDate = true;
+            }
+
+            var _ddlUnitType = $("#ddlUnitType").val();
+            var _ddlUnitStatus = $("#ddlUnitStatus").find("option:selected").text();
+
+            $('#DataListView').load(url,
+            {
+                id: _CustContract
+                , DS: DS
+                , IsshowTab: $('#txttab').val()
+                , SDate: _Sdate
+                , EDate: _Edate
+                //, _isChkDS: _isChkDS
+                , _chkDate: _chkDate
+                ,_ddlUnitType: _ddlUnitType
+                ,_ddlUnitStatus: _ddlUnitStatus
+            }, function (result) {
+                //alert(result);
+                checkshowTab();
+
+
+                $('.dataTableCust').DataTable({
+                    //pageLength: 10,
+                    dom: '<"html5buttons"B>lTfgitp',
+                    //dom: 'Bfrtip',
+                    "scrollX": true,
+                    "sScrollX": "2500px",
+                    "autoWidth": true,
+                    "order": [0, "asc"],
+                    //"order": [[4, "asc"]],
+                    buttons: [
+                        //{ extend: 'copy' },
+                        //{ extend: 'csv' },
+                        { extend: 'excel', title: 'Data Export' }//,
+                        //{ extend: 'pdf', title: 'ExampleFile' },
+                        //{
+                        //    extend: 'print',
+                        //    customize: function (win) {
+                        //        $(win.document.body).addClass('white-bg');
+                        //        $(win.document.body).css('font-size', '10px');
+
+                        //        $(win.document.body).find('table')
+                        //                .addClass('compact')
+                        //                .css('font-size', 'inherit');
+                        //    }
+                        //}
+                    ]
+                });
+
+                $('.dataTableUnit').DataTable({
+                    //pageLength: 10,
+                    dom: '<"html5buttons"B>lTfgitp',
+                    //dom: 'Bfrtip',
+                    "scrollX": true,
+                    "sScrollX": "2500px",
+                    "autoWidth": true,
+                    "order": [0, "asc"],
+                    //"order": [[4, "asc"]],
+                    buttons: [
+                        //{ extend: 'copy' },
+                        //{ extend: 'csv' },
+                        { extend: 'excel', title: 'Data Export' }//,
+                        //{ extend: 'pdf', title: 'ExampleFile' },
+                        //{
+                        //    extend: 'print',
+                        //    customize: function (win) {
+                        //        $(win.document.body).addClass('white-bg');
+                        //        $(win.document.body).css('font-size', '10px');
+
+                        //        $(win.document.body).find('table')
+                        //                .addClass('compact')
+                        //                .css('font-size', 'inherit');
+                        //    }
+                        //}
+                    ]
+                });
+
+
+                ShowHideLoading(0);
+
+            });
+        }
+
+
+        function checkshowTab() {
+            if ($('#txttab').val() == "Cust") {
+                document.getElementById('item').className = "active";
+                $('#Cust').css('background', 'white');
+                $('#showDSshop').hide();
+                $('#TpyeSearch').hide();
+                $('#DateSearch').hide();
+                $('#spacebr').hide();
+                $('#datetab1').show();
+                $('#tdbtnSearch').show();
+            } else if ($('#txttab').val() == "Unit") {
+                document.getElementById('price').className = "active";
+                $('#Unit').css('background', 'white');
+                $('#showDSshop').show();
+                $('#TpyeSearch').show();
+                $('#spacebr').show();
+                $('#tdbtnSearch').hide();
+                $('#datetab1').hide();
+            }
+        }
+
+        $('#btnAddNew').click(function () {
+            SetddlDeveloper(0);
+        });
+
+        $('#DataListView').on("dblclick", ".IsRows", function () {
+            var id = $(this).data("id");
+            var no = $(this).data("no");
+
+            ShowModalBlinding(id);
+
+        });
+
+        function SetBank(_id) {
+
+            var url = '@Url.Action("LoadCRMComtactData", "DMPS_DepositRoom")';
+
+            $.post(url,
+                {
+                    ContactsID: _id
+                }, function (result) {
+
+                    var obj = $.parseJSON(result);
+
+                    $("#ddlBank").select2("val", obj.BankID);
+                    $("#ddlAccountType").select2("val", obj.BankTypeID);
+                });
+
+        }
+
+        function populateDropdown(select, data) {
+            select.html('');
+            select.append($('<option></option>').val(0).html('Please Select'));
+            $.each(data, function (id, option) {
+                select.append($('<option></option>').val(option.value).html(option.name));
+            });
+        }
+
+
+
+        function ShowModalBlinding(id) {
+
+            var url = '@Url.Action("CustomerDeposit", "DMPS_DepositRoom")' + '?_CustContract=' + id;
+            loadInBodyPage(url);
+
+
+
+            @*_CustContract: id
+            var url = '@Url.Action("CustomerDeposit", "DMPS_DepositRoom")' + '?CustContract='+ id ;
+            $.post(url, {
+
+
+            }, function (result) {
+                loadInBodyPage(url);
+            });*@
+
+
+
+            @*var EmpID = $("#EmployeeID").data("emp-id");
+            var ComID = $("#EmployeeID").data("com-id");
+            var ParentDeptID = $("#EmployeeID").data("parent-dept");
+            var DeptID = $("#EmployeeID").data("dept-id");
+            var PositionID = $("#EmployeeID").data("position-id");
+
+            $('#txtFirstLoad').val(1);
+
+            var url = '@Url.Action("LoadData2Modal", "CashAdvance_Manage")';
+            $.post(url,
+                {
+
+                }, function (result) {
+                    var obj = $.parseJSON(result);
+                    $('#myModal5').modal('show');
+                });*@
+        }
+
+        //$("#chkDSShop").change(function () {
+        //    if ($(this).is(':checked')) {
+
+        //        LoadDataListView(0, null, null, 0);
+
+        //    } else {
+        //        LoadDataListView(0, null, null, 0);
+        //    }
+
+        //});
+
+        $("#chkDate").change(function () {
+            var check = $("#chkDate").is(":checked");
+            if (check) {
+                $('#DateSearch').show();
+            } else {
+                $('#DateSearch').hide();
+            }
+        });
+
+        $("#chkDate").change(function () {
+            if ($(this).is(':checked') != true) { //false
+                if ($("#ddlUnitStatus").val() == "Please Select") {
+
+                } else if ($("#ddlUnitType").val() == 0) {
+
+                } else if ($("#ddlUnitStatus").val() == "Please Select" && $("#ddlUnitType").val() != 0) {
+
+                } else {
+                    LoadDataListView(0, null, null, 0);
+
+                }
+            } else {
+                LoadDataListView($('#RowAdmin').val(), $("#EmployeeID").data("emp-id"), 0, _strDate, _endDate);
+            }
+
+        });
+
+        $("#ddlUnitStatus").change(function () {
+            if ($(this).val()) {
+                if ($("#chkDate").is(':checked')) {
+                    var _Sdate = ConvertString2DatetimeFormat($('#StartDate').val());
+                    var _Edate = ConvertString2DatetimeFormat($('#EndDate').val());
+
+                    LoadDataListView(0, _Sdate, _Edate, 0);
+                } else {
+                    LoadDataListView(0, null, null, 0);
+                }
+            } else {
+                LoadDataListView(0, null, null, 0);
+
+            }
+        });
+
+        $("#ddlUnitType").change(function () {
+            if ($(this).val()) {
+                if ($("#chkDate").is(':checked')) {
+                    var _Sdate = ConvertString2DatetimeFormat($('#StartDate').val());
+                    var _Edate = ConvertString2DatetimeFormat($('#EndDate').val());
+
+                    LoadDataListView(0, _Sdate, _Edate, 0);
+                } else {
+                    LoadDataListView(0, null, null, 0);
+                }
+            } else {
+                LoadDataListView(0, null, null, 0);
+
+            }
+        });
+
+
+
+        /*======================================================= Loading ========================================================*/
+        function ShowHideLoading(_isShow) {
+            if (_isShow == 1) {
+                $('body').waitMe({
+                    effect: 'progressBar',
+                    text: 'Please wait..',
+                    color: '#000',
+                    maxSize: '',
+                    waitTime: -1,
+                    textPos: 'vertical',
+                });
+            } else {
+                $('body').waitMe("hide");
+            }
+        }
+        /*======================================================= End Loading ========================================================*/
+
+    });
+
+</script>

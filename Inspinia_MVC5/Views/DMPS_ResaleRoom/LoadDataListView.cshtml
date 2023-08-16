@@ -1,0 +1,93 @@
+﻿<div class="wrapper wrapper-content" style="padding-top:0px">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title" style="padding-top:10px">
+                    <h4>รายการสัญญาขายห้องชุด</h4>
+
+                    <div class="ibox-tools">
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row" id="" style="">
+                        <div id="" class="col-lg-12" style="">
+                            <table id="" class="table table-striped table-bordered table-hover dataTables-example dataTable" style="width:1500px;">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th style="width:80px"></th>
+                                        <th>วันที่จอง</th>
+                                        <th>วันที่ทำสัญญา</th>
+                                        <th>เลขที่สัญญา</th>
+                                        <th>จำนวนเงินจอง</th>
+                                        <th>โครงการ</th>
+                                        <th>ห้อง</th>
+                                        <th>ประเภท</th>
+                                        <th>สถานะ</th>
+                                        <th>ชั้น</th>
+                                        <th>พื้นที่</th>
+                                        <th>ประเภทห้อง</th>
+                                        <th>ราคาขาย</th>
+                                        <th>ผู้ซื้อ</th>
+                                        <th>เบอร์โทร</th>
+                                        <th>ราคาสุทธิ</th>
+                                        <th>ราคา/ตรม.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{int i = 1; }
+                                    @foreach (Inspinia_MVC5.Models.DMPS.vw_Resale item in ViewBag.lstDataview)
+                                    {
+                                        <tr class="IsRows" data-dsid="@item.DepositID" data-cust="@item.DSContactID" data-uid="@item.UnitID" data-rntid="@item.ResaleID">
+                                            <td class="text-right"> @i </td>
+                                            <td class="text-left">
+                                                <button data-dsid="@item.DepositID" data-cust="@item.DSContactID" data-uid="@item.UnitID" data-saleid="@item.ResaleID" class="confirm-View btnVED btn-primary" title="แสดงข้อมูล" type="button"><i class="fa fa-search"></i></button>
+                                                @if (item.ResaleID != 0)
+                                                { <button data-dsid="@item.DepositID" data-cust="@item.DSContactID" data-uid="@item.UnitID" data-saleid="@item.ResaleID" class="confirm-Print btnVED btn-warning" title="พิมพ์สัญญา" type="button"><i class="fa fa fa-print"></i></button> }
+                                              
+                                            </td>
+
+                                            <td> </td>
+                                            @if (@item.ResaleDate != null)
+                                            {
+                                                <td>@item.ResaleDate.GetValueOrDefault().ToString("dd/MM/yyyy") </td>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+
+                                            <td style="color:blue">@item.ResaleNo</td>
+                                            <td> </td>
+                                            <td>@item.ProjectName </td>
+                                            <td>@item.UnitsCode </td>
+                                            <td><label class="label @item.RentCls">@item.RentTypeNameTH</label></td>
+                                            <td><label class="label @item.UnitCls">@item.DescriptionTH</label></td>
+
+                                            <td>@item.Floor </td>
+                                            <td>@item.RoomArea </td>
+                                            <td>@item.RoomType </td>
+
+                                            <td>@item.SalePriceStart.GetValueOrDefault().ToString("###,###,###,###,##0.00") - @item.SalePriceEnd.GetValueOrDefault().ToString("###,###,###,###,##0.00")  </td>
+                                            <td>@item.slFirstName </td>
+                                            <td>@item.slTel </td>
+                                            <td>@item.SaleAmt.GetValueOrDefault().ToString("###,###,###,###,##0.00") </td>
+                                            <td>@item.SalePerSqm.GetValueOrDefault().ToString("###,###,###,###,##0.00") </td>
+                                        </tr>
+                                        i++;
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

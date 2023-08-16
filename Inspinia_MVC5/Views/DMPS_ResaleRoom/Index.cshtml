@@ -1,0 +1,1250 @@
+﻿@* ----------------------------------------------------Is Head Page List-------------------------------------------------------------- *@
+<div class="row wrapper border-bottom white-bg page-heading" style="padding-bottom:5px">
+    <div class="col-lg-8" style="padding-top:5px">
+        <h3 style="margin-bottom:5px"><label id="application"></label></h3>
+        <ol class="breadcrumb">
+            <li>
+                <a id="Back2Menu" data-url-back="'@Url.Action("ViewName","ControllerName")'" href="#"><label id="menu"></label></a>
+            </li>
+            <li class="active">
+                <strong><label id="submenu"></label></strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action" style="padding-top:15px">
+            @*<button id="btnAddNew" data-id="0" data-no="0" class="btn btn-primary"><i class="fa fa-file-text"></i>&nbsp;&nbsp; Add New Document</button>*@
+        </div>
+    </div>
+</div>
+
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+
+@* ----------------------------------------------------Is Searching Tab--------------------------------------------------------------- *@
+<div class="wrapper wrapper-content" style="padding-bottom: 0px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Search</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="width:80px"></td>
+                                <td style="text-align:right"><label style="padding-bottom: 10px;">Start Date : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div class="form-group" id="data_1">
+                                        <div class="input-group date">
+                                            <input id="StartDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("01/01/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:50px"></td>
+                                <td style="text-align:right"><label>End Date : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div class="form-group" id="data_1">
+                                        <div class="input-group date">
+                                            <input id="EndDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("31/12/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:10px"></td>
+                                <td><button type="button" id="btnSearch" class="btn btn-primary" style="margin-bottom:15px"><i class="fa fa-search"></i>&nbsp;&nbsp; Search</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<input type="text" id="RowSelected" value="" />*@
+@*<input type="text" id="RowSelected" value="" hidden="hidden" />*@
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ----------------------------------------------------Is DataList Tab---------------------------------------------------------------- *@
+<div id="DataListView"></div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ------------------------------------------------------Is Modal Tab----------------------------------------------------------------- *@
+@Html.Partial("LoadModal")
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+
+
+
+@*----------------------- Import CSS---------------------- *@
+@Styles.Render("~/plugins/footableStyles")
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+@Styles.Render("~/plugins/select2Styles")
+@Styles.Render("~/plugins/dataPickerStyles")
+@Styles.Render("~/plugins/sweetAlertStyles")
+@Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+@*-------------------------------------------------------- *@
+
+@*------------------ Import JavaScript-------------------- *@
+@Scripts.Render("~/plugins/footable")
+@Scripts.Render("~/plugins/dataTables")
+@Scripts.Render("~/plugins/select2")
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/sweetAlert")
+@Scripts.Render("~/plugins/iCheck")
+@*-------------------------------------------------------- *@
+
+<script src="~/Scripts/Main/JS_Main.js"></script>
+<script src="~/Scripts/Main/Utility.js"></script>
+<script src="~/Scripts/Main/date.format.js"></script>
+
+
+<script src="~/waitMe/waitMe.min.js"></script>
+<link href="~/waitMe/waitMe.min.css" rel="stylesheet" />
+
+
+<div hidden="hidden">
+    <input type="text" id="controlDupplicate" value="0" hidden />
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+
+        $(".select2_Bank,.select2_AccountType,.select2_RentType,.select2_Developer,.select2_Project,.select2_Project,.select2_Provice,.select2_Distict,.select2_SubDistinct,.select2_CardFrom,.select2_UnitType,.select2_RSCashierBank").select2();
+        $('.select2-container').css("z-index", "auto");
+
+        $(document).delegate('.numbersOnly', 'keypress', function (e) {
+            if (String.fromCharCode(e.keyCode).match(/[^0-9\.\,]/g)) return false;
+        });
+
+        $(document).delegate('.numbersOnly', 'focusout', function () {
+            var IsVal = parseFloat($(this).val().replace(/\,/g, ''));
+            if (isNaN(IsVal)) { IsVal = 0; }
+            $(this).val(ConvertString2DecimalFormat(IsVal.toFixed(2)));
+        });
+
+        $('#ddl_Bank').attr("disabled", true);
+        $('#ddl_RentType').attr("disabled", true);
+        $('#ddl_Developer').attr("disabled", true);
+        $('#ddl_Project').attr("disabled", true);
+        $('#txtFloor').attr("disabled", true);
+        $('#txtUnits').attr("disabled", true);
+        $('#txtAddressNo').attr("disabled", true);
+        $('#ddlDS_UnitType').attr("disabled", true);
+        $('#txtRoomArea').attr("disabled", true);
+        $('#txtRoomAddress').attr("disabled", true);
+        $('#txtBuilding').attr("disabled", true);
+
+        $('#txt_RSCus_IDCard').attr("disabled", true);
+        $('#txt_RSCus_Name').attr("disabled", true);
+        $('#txt_RSCus_Age').attr("disabled", true);
+        $('#txt_RSCus_Nationality').attr("disabled", true);
+        $('#Chk_RSUnExpireCard').attr("disabled", true);
+        $('#ddl_RSCardFrom').attr("disabled", true);
+        $('#txt_RSCus_Address').attr("disabled", true);
+        $('#txt_RSCus_Moo').attr("disabled", true);
+        $('#txt_RSCus_Soi').attr("disabled", true);
+        $('#txt_RSCus_Road').attr("disabled", true);
+        $('#ddl_RSProvince').attr("disabled", true);
+        $('#ddl_RSDistrict').attr("disabled", true);
+        $('#ddl_RSSubDistrict').attr("disabled", true);
+        $('#txt_RSCus_Zipcode').attr("disabled", true);
+        $('#txt_RSCus_Tel').attr("disabled", true);
+        $('#txt_RSTelCellPhone').attr("disabled", true);
+        $('#txt_RSEmail').attr("disabled", true);
+        $('#txt_RSCus_Company').attr("disabled", true);
+
+        var CheckSave = 0;
+
+        $('#DataListView').on("click", ".confirm-View", function () {
+            //var _strInt = ThaiBaht(12546896);
+            //alert(_strInt);
+            var _DepositID = $(this).data("dsid");
+            var _DSContactID = $(this).data("cust");
+            var _UnitID = $(this).data("uid");
+            var _ReSaleID = $(this).data("saleid");
+            ShowModalBlinding(_DepositID, _DSContactID, _UnitID, _ReSaleID);
+        });
+
+        $('#DataListView').on("click", ".confirm-Print", function () {
+
+
+            var id = $(this).data("saleid");
+            var url = '@Url.Action("ReportViewer", "Report")' + "?ReportCode=" + "RS_RESALE_Contact" + "&objName=" + "ResaleID" + "&objValue=" + id;
+            loadNewPage(url);
+
+
+            var url2 = '@Url.Action("ReportViewer", "Report")' + "?ReportCode=" + "RS_RESALE_Temporary_Reciept" + "&objName=" + "ResaleID" + "&objValue=" + id;
+            loadNewPage(url2);
+
+        });
+
+
+        $('#txt_RSSalePrice').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txt_RSSaleDiscount').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txt_RSTranferDiscount').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+
+        $('#txt_RSNetPrice').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+
+        $('#txt_RSPricePerSQM').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txtTransferFeeAmt').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+
+        $('#txt_RSPriceBeforeVat').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txt_RSVat').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txt_RSPriceIncVat').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+
+        $('#txtContactAmt').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txtReserve_RSAmountCash').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+
+        $('#txtReserve_RSAmountCashier').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        $('#txtReserve_RSAmounCashTransfer').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            $(this).val(replaceCommas(currentVal));
+        });
+
+        function validate() {
+            var result = true;
+
+            //if (Project == 0 || Project == "0" || Project == "") {
+            //    swal('กรุณาเลือก รหัสโครงการ');
+            //    $("#ddlProject").focus();
+            //    return false;
+            //}
+            //if (BudgetAccount == 0 || BudgetAccount == "0" || BudgetAccount == "") {
+            //    swal('กรุณาเลือก งบประมาณ');
+            //    $("#ddlBudgetAccount").focus();
+            //    return false;
+            //}
+            //if (BudgetModel == 0 || BudgetModel == "0" || BudgetModel == "") {
+            //    swal('กรุณาเลือก รหัสงบประมาณ');
+            //    $("#ddlBudgetModel").focus();
+            //    return false;
+            //}
+            //if (Amount == 0 || Amount == "0.00" || Amount == "") {
+            //    swal('กรุณาระบุยอดเงินทดรองจ่าย');
+            //    $("#txtAmount").focus();
+            //    return false;
+            //}
+            //if (PaymentType == 0 || PaymentType == "0" || PaymentType == "") {
+            //    swal('กรุณาเลือก ประเภทเงินที่ต้องการรับ');
+            //    $("#ddlPaymentType").focus();
+            //    return false;
+            //}
+
+            return true;
+        }
+
+        LoadDataListView($('#RowAdmin').val(), $("#EmployeeID").data("emp-id"),0);
+
+
+        $('.confirm - Print').click(function () {
+
+            var url1 = '@Url.Action("ReportViewer", "Report")' + "?ReportCode=" + "RV_RENT_CONTACT_001" + "&objName=" + "ReservationsID" + "&objValue=" + _ReservationsID;
+            loadNewPage(url1);
+
+            setTimeout(function () {
+                var url2 = '@Url.Action("ReportViewer", "Report")' + "?ReportCode=" + "RV_RENT_Temp_Reciept_001" + "&objName=" + "ReservationsID" + "&objValue=" + _ReservationsID;
+                loadNewPage(url2);
+            }, 800);
+
+
+        });
+
+        $('#btnPreviewFile').click(function () {
+
+            var url = $(this).data("link");
+            if (url == "") { swal("ยังไม่มี File upload"); return; }
+            window.open(url, '_blank');
+        });
+
+        $('#btnPreviewFile2').click(function () {
+
+            var url = $(this).data("link");
+            if (url == "") { swal("ยังไม่มี File upload"); return; }
+            window.open(url, '_blank');
+        });
+
+        $('#btnPreviewFile3').click(function () {
+
+            var url = $(this).data("link");
+            if (url == "") { swal("ยังไม่มี File upload"); return; }
+            window.open(url, '_blank');
+        });
+
+        $('#btnClose').click(function () {
+            $('#myModal').modal('hide');
+        });
+
+        $('#btnSearch').click(function () {
+            LoadDataListView($('#RowAdmin').val(), $("#EmployeeID").data("emp-id"), 0);
+        });
+
+        $('#btnSave').click(function () {
+
+            //alert($("#ddlProvince").attr('title'));
+            if (CheckSave == 0) {
+
+            swal({
+                title: "Are you sure?",
+                text: "Would you like to save this record?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Save it!",
+                closeOnConfirm: false
+            }, function () {
+                CheckSave = 1;
+                SaveResaleTable(false, 2);
+            });
+
+            }
+
+
+        });
+
+        $('#btnCancel').click(function () {
+
+            swal({
+                title: "Are you sure?",
+                text: "Would you like to save this record?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Save it!",
+                closeOnConfirm: false
+            }, function () {
+                SaveResaleTable(true, -1);
+            });
+
+
+        });
+
+        $("#ddlProvince").change(function () {
+            var _ProvinceID = $("#ddlProvince").val();
+            SetDistinct(_ProvinceID);
+        });
+
+        $('#btnPrint').click(function () {
+
+            if (CheckSave == 0) {
+            swal({
+                title: "Are you sure?",
+                text: "Would you like to save this record?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Save it!",
+                closeOnConfirm: false
+            }, function () {
+                CheckSave = 1;
+                SaveResaleTable(false, 2);
+            });
+
+            }
+
+        });
+
+        $("#ddlDistrict").change(function () {
+            var _ProvinceID = $("#ddlProvince").val();
+            var _DistinctID = $("#ddlDistrict").val();
+            SetSubDistinct(_ProvinceID, _DistinctID);
+        });
+
+        function SetDistinct(_ProviceID) {
+            if (_ProviceID != 0) {
+                var url = '@Url.Action("getDistinct", "DMPS_DepositRoom")';
+                $('#ddlDistrict').empty();
+                $("#ddlDistrict").select2({ data: null });
+
+                $.post(url,
+                    {
+                        ProviceID: _ProviceID
+                    }, function (result) {
+
+                        var foo = $.parseJSON(result);
+                        $("#ddlDistrict").select2({ data: foo });
+                        $("#ddlDistrict").select2("val", 0);
+
+                        $('#ddlDistrict').attr("disabled", false);
+                        $('#ddlSubDistrict').attr("disabled", false);
+                    });
+            }
+            else {
+                $("#ddlDistrict").select2("val", 0);
+                $('#ddlDistrict').attr("disabled", false);
+                $("#ddlSubDistrict").select2("val", 0);
+                $('#ddlSubDistrict').attr("disabled", false);
+            };
+        }
+
+        function SetSubDistinct(_ProviceID, _DistinctID) {
+            if (_DistinctID != 0) {
+
+                var url = '@Url.Action("getSubDistinct", "DMPS_DepositRoom")';
+                $('#ddlSubDistrict').empty();
+                $("#ddlSubDistrict").select2({ data: null });
+
+                $.post(url,
+                    {
+                        ProviceID: _ProviceID,
+                        DistinctID: _DistinctID
+                    }, function (result) {
+                        var foo = $.parseJSON(result);
+                        $("#ddlSubDistrict").select2({ data: null });
+                        $("#ddlSubDistrict").select2({ data: foo });
+                        $("#ddlSubDistrict").select2("val", 0);
+                        $('#ddlSubDistrict').attr("disabled", false);
+                    });
+            }
+            else {
+                $("#ddlSubDistrict").select2("val", 0);
+                $('#ddlSubDistrict').attr("disabled", false);
+            };
+        }
+
+
+        function LoadDataListView(IsAdmin, EmpCode, ResaleID) {
+            ShowHideLoading(1);
+            var EmpID = $("#EmployeeID").data("emp-id");
+            var ParentDeptID = $("#EmployeeID").data("parent-dept");
+
+            //var StartDate = ConvertString2DatetimeFormat($('#StartDate').val());
+            //var EndDate = ConvertString2DatetimeFormat($('#EndDate').val()
+            var url = '@Url.Action("LoadDataListView", "DMPS_ResaleRoom")';
+            $('#DataListView').load(url,
+            {
+                IsAdmin: IsAdmin,
+                EmpCode: EmpCode,
+                ResaleID: ResaleID,
+            }, function (result) {
+                $('.dataTables-example').DataTable({
+                    "order": [[0, "asc"]],
+                    "scrollX": true,
+                    "sScrollX": "3500px",
+                    "autoWidth": true,
+                    dom: '<"html5buttons"B>lTfgitp',
+                    buttons: [
+                        { extend: 'excel', title: 'ExcelFile' },
+                    ]
+                });
+                ShowHideLoading(0);
+            });
+        }
+
+        $('#btnAddNew').click(function () {
+            ShowModalBlinding(0);
+        });
+
+        $('#DataListView').on("dblclick", ".IsRows", function () {
+            var id = $(this).data("id");
+            var no = $(this).data("no");
+            ShowModalBlinding(id);
+        });
+
+
+
+
+        function saveFileUpload(_ID) {
+            var _objAttachFile = $(".clsAttachFile");
+            $.each(_objAttachFile, function (i, e) {
+
+                var _objName = e.id;
+                var fileData = new FormData();
+                var fileUpload = $("#" + _objName).get(0);
+                var files = fileUpload.files;
+                var _Running = $("#" + _objName).data("running");
+
+
+                if (files.length > 0) {
+                    for (var i = 0; i < files.length; i++) {
+                        fileData.append(files[i].name, files[i]);
+                    }
+                    fileData.append("DepositID", _ID);
+                    fileData.append("Running", _Running);
+                    fileData.append("Type", "RS");
+                }
+                $.ajax({
+
+                    url: '@Url.Action("FileUploadHandler", "DMPS_DepositRoom")',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    ////data: fileData,
+                    data: fileData,
+                    success: function (result2) {
+                        // alert(result2);
+                    },
+                    error: function (err) {
+                        // alert(err.statusText);
+                    }
+                });
+            });
+
+        }
+
+
+        function LoadPreview(_FilePath, _Btn, _txt) {
+            /// แนบไฟล์
+            //alert(_Btn + ":" + _FilePath);
+
+            var link = '@Url.Action("GetFile", "DMPS_DepositRoom")' + "?filename=" + _FilePath;
+
+            if (_FilePath == null || _FilePath == "") {
+
+                link = "";
+                //$("#" + _Btn).data("link", link);
+                $("#" + _Btn).hide();
+            }
+            else {
+
+                $("#" + _Btn).data("link", link);
+                $("#" + _Btn).show();
+            }
+
+
+            @*var link = '@Url.Action("GetFile", "DMPS_DepositRoom")' + "?filename=" + _FilePath;
+            $('#btnPreviewFile').show();
+
+            if (_FilePath == null || _FilePath == "") {
+                link = "";
+                $('#btnPreviewFile').hide();
+            }
+            $('#btnPreviewFile').data("link", link);*@
+            }
+
+
+        function LoadDataForPreview(_ID, _Type) {
+            var url = '@Url.Action("GetImageTable", "DMPS_DepositRoom")';
+            $.post(url,
+                {
+                    DepositID: _ID,
+                    Type: _Type,
+                }, function (result) {
+                    if (result != "") {
+
+                    var obj = $.parseJSON(result);
+
+                    $.each(obj, function (a, c) {
+
+                        if (c.Running == 1) {
+                            LoadPreview(c.Path, "btnPreviewFile", "txtAttachFile");
+                        }
+
+                        if (c.Running == 2) {
+                            LoadPreview(c.Path, "btnPreviewFile2", "txtAttachFile2");
+                        }
+
+                        if (c.Running == 3) {
+                            LoadPreview(c.Path, "btnPreviewFile3", "txtAttachFile3");
+                        }
+
+                        if (result != "") { }
+                    });
+
+
+                    }
+
+
+
+                });
+        }
+
+
+        function GetNewDocuments(_DocType) {
+
+            var _DocNoNew;
+            var _YYYY = (new Date()).getFullYear();
+            var _MM = (new Date()).getMonth() + 1;
+            var _DD = (new Date()).getDay() + 1;
+
+            if (_DD < 10) { _DD = "0" + _DD };
+            if (_MM < 10) { _MM = "0" + _MM };
+
+            if (_DocType == 1) {
+                _DocNoNew = "SUP" + "-" + _YYYY + _MM + _DD + "-" + "xxxx"
+            }
+            else if (_DocType == 2) {
+
+                _DocNoNew = "RT" + "-" + _YYYY + _MM + "-" + "xxxx"
+            }
+            else if (_DocType == 3) {
+                _DocNoNew = "RS" + "-" + _YYYY + _MM + "-" + "xxxx"
+
+            }
+            return _DocNoNew;
+
+        }
+
+
+
+        function ShowModalBlinding(_DepositID, _DSContactID, _UnitID, _ReSaleID) {
+            var url = '@Url.Action("GetResaleData", "DMPS_ResaleRoom")';
+            $.post(url, {
+                DepositID: _DepositID,
+                DSContactID: _DSContactID,
+                UnitID: _UnitID,
+                ResaleID: _ReSaleID,
+            }, function (result) {
+                var obj = $.parseJSON(result);
+                //////0 Deposit
+                //////1 Contract
+                //////2 unit
+                //////3 unitDetails
+                //////4 Resale
+                //////5 BankContact
+                //////6 CRM_Contact (CustType = 2 for cust Rent)
+
+                if (obj[4].ResaleNo == "New") {
+                    $('#lblDocNo').text(GetNewDocuments(3));
+                    $('#lblDocumentStatusDisplay').text(obj[4].ResaleNo);
+                    $('#btnCancel').hide();
+                }
+                else {
+                    $('#lblDocNo').text(obj[4].ResaleNo);
+                    $('#lblDocumentStatusDisplay').text(obj[7]);
+                    $('#btnCancel').show();
+                }
+
+
+                $('#ddlDocDate').val(ConvertJson2DatetimeFormat2(obj[4].ResaleDate, "dd/mm/yyyy"));
+                $('#txtDocAt').val(obj[4].ResaleAt);
+
+                $('#txtDocsRef').val(obj[4].DocRef)
+
+                //// Hide Data
+                $('#txtDSCustID').val(_DSContactID);
+                $('#txtDepositID').val(_DepositID);
+                $('#txtUnitID').val(_UnitID);
+                $('#txtRSCustID').val(obj[6].ContactsID);
+                $('#txtResaleID').val(_ReSaleID);
+
+                ///ข้อมูลผู้ให้เช่า (รายละเอียดตามบัตรประชาชน)
+                $('#txtName').val(obj[1].NameFullPre);
+                $('#txtIDCard').val(obj[1].CitizenID);
+                $('#txtTel').val(obj[1].Tel1);
+
+                /////รายละเอียดบัญชีธนาคาร
+                $("#ddl_Bank").select2("val", obj[5].BankID);
+                //$("#ddl_AccountType").select2("val", obj[5][0].BankTypeID);
+                $('#txt_AccountNo').val(obj[5].BankNo);
+                $('#txt_AccountName').val(obj[5].BankName);
+
+                /////ข้อมูลผู้เช่า (รายละเอียดตามบัตรประชาชน)
+                $('#txtCus_Name').val(obj[6].NameFullPre);
+                $('#txtCus_IDCard').val(obj[6].CitizenID);
+                $('#txtCus_Age').val(obj[6].Age);
+                $('#ddlCus_CardDate').val(ConvertJson2DatetimeFormat2(obj[6].CitizenIssue, "dd/mm/yyyy"));
+                $('#ddlCus_CardExpire').val(ConvertJson2DatetimeFormat2(obj[6].CitizenExp, "dd/mm/yyyy"));
+
+
+                if (obj[6].UnExpireIDCard == true) {
+                    $('.clsChkUnExpireCard').iCheck('check');
+                }
+                else {
+                    $('.clsChkUnExpireCard').iCheck('uncheck');
+                }
+
+
+                $('#txtCus_Nationality').val(obj[6].Nationality);
+                //$('#txtCus_CardFrom').val(obj[6].CitizenProvince);
+                $('#ddlCardFrom').select2("val", obj[6].CitizenProvince);
+                $('#txtCus_Address').val(obj[6].AddressNo);
+                $('#txtCus_Moo').val(obj[6].Moo);
+                $('#txtCus_Soi').val(obj[6].Soi);
+                $('#txtCus_Road').val(obj[6].Road);
+
+                if (obj[6].Province != 0) {
+                    $('#ddlProvince').select2("val", obj[6].Province);
+                    setTimeout(function () { $('#ddlDistrict').select2("val", obj[6].District); }, 500);
+                    setTimeout(function () { $('#ddlSubDistrict').select2("val", obj[6].SubDistrict); }, 1000);
+                }
+                else {
+                    $('#ddlProvince').select2("val", "");
+                    $('#ddlDistrict').select2("val", "");
+                    $('#ddlSubDistrict').select2("val", "");
+                }
+
+                $('#txtCus_Zipcode').val(obj[6].ZipCode);
+                $('#txtCus_Tel').val(obj[6].Tel1);
+                $('#txtCus_Company').val(obj[6].AddressNo_Work);
+
+                 $('#txtTelCellPhone').val(obj[6].Tel2);
+                $('#txtEmail').val(obj[6].Email);
+
+                /////รายละเอียดห้อง
+                $('#ddl_RentType').select2("val", obj[0].DSTypeID);
+                $('#ddl_Developer').select2("val", obj[0].DeveloperID);
+                setTimeout(function () { $('#ddl_Project').select2("val", obj[0].ProjectID); }, 500);
+
+
+
+                $('#txtFloor').val(obj[3].Floor);
+                $('#txtUnits').val(obj[2].UnitsCode);
+                $('#txtAddressNo').val(obj[3].RoomNo);
+                //$('#txtRoomType').val(obj[3].RoomType);
+                $("#ddlDS_UnitType").select2("val", obj[3].RoomType);
+                $('#txtRoomArea').val(obj[3].RoomArea);
+                $('#txtRoomAddress').val(obj[0].ProjectAddress);
+                $('#txtBuilding').val(obj[3].Building)
+
+                ////Payments
+                $('#txtSalePrice').val(ConvertString2DecimalFormat(parseFloat(obj[4].SalePrice).toFixed(2)));
+                $('#txtSaleDiscount').val(ConvertString2DecimalFormat(parseFloat(obj[4].ContractDiscount).toFixed(2)));
+                $('#txtTranferDiscount').val(ConvertString2DecimalFormat(parseFloat(obj[4].TransferDiscount).toFixed(2)));
+                $('#txtNetPrice').val(ConvertString2DecimalFormat(parseFloat(obj[4].SaleAmt).toFixed(2)));
+                $('#txtPricePerSQM').val(ConvertString2DecimalFormat(parseFloat(obj[4].SalePerSqm).toFixed(2)));
+                $('#txtPriceBeforeVat').val(ConvertString2DecimalFormat(parseFloat(obj[4].PriceBFVat).toFixed(2)));
+                $('#txtVat').val(ConvertString2DecimalFormat(parseFloat(obj[4].VatAmt).toFixed(2)));
+                $('#txtPriceIncVat').val(ConvertString2DecimalFormat(parseFloat(obj[4].NetPrice).toFixed(2)));
+                $('#txtTransferFeeAmt').val(ConvertString2DecimalFormat(parseFloat(obj[4].TransferFeeAmt).toFixed(2)));
+                $('#txtContactAmt').val(ConvertString2DecimalFormat(parseFloat(obj[4].ContactAmt).toFixed(2)));
+
+
+
+                /// เงินสด
+                $('#txtReserve_RSAmountCash').val(ConvertString2DecimalFormat(parseFloat(obj[4].Pay_Cash).toFixed(2)));
+
+                /// แคชเชียร์เช็ค
+                $('#txtReserve_RSAmountCashier').val(ConvertString2DecimalFormat(parseFloat(obj[4].Pay_Cashier).toFixed(2)));
+                $('#ddl_RSCashierBank').select2("val", obj[4].Pay_CashierBank);
+                $('#txtReserve_RSCashierNo').val(obj[4].Pay_CashierNo);
+                $('#dllRNCashierDate').val(ConvertJson2DatetimeFormat2(obj[4].Pay_CashierDate, "dd/mm/yyyy"));
+
+                /// เงินโอนผ่านธนาคาร
+                $('#txtReserve_RSAmounCashTransfer').val(ConvertString2DecimalFormat(parseFloat(obj[4].Pay_TransferCash).toFixed(2)));
+                $('#txtReserve_RSBankNoCashTransfer').val(obj[4].Pay_TransferBankNo);
+                $('#txtReserve_RSBankNameCashTransfer').val(formatNumber(obj[4].Pay_TransferBankName));
+                $('#dllRSCashTransferDate').val(ConvertJson2DatetimeFormat2(obj[4].Pay_TransferCashDate, "dd/mm/yyyy"));
+
+
+                $('#btnPreviewFile').hide();
+                $('#btnPreviewFile2').hide();
+                $('#btnPreviewFile3').hide();
+
+                LoadDataForPreview(_ReSaleID, "RS");
+
+            });
+            //$('#myModal').modal('show');
+            $('#myModal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+        }
+
+        $('#txtCus_IDCard').focusout(function () {
+            var _IDCard = $(this).val();
+            var url = '@Url.Action("getSellerDetail", "DMPS_ResaleRoom")';
+            $.post(url, { IDCard: _IDCard }, function (result) {
+                var obj = $.parseJSON(result);
+                /////ข้อมูลผู้เช่า (รายละเอียดตามบัตรประชาชน)
+                $('#txtRSCustID').val(obj.ContactsID);
+                $('#txtCus_Name').val(obj.NameFullPre);
+                //$('#txtCus_IDCard').val(obj.CitizenID);
+                $('#txtCus_Age').val(obj.Age);
+                $('#ddlCus_CardDate').val(ConvertJson2DatetimeFormat2(obj.CitizenIssue, "dd/mm/yyyy"));
+                $('#ddlCus_CardExpire').val(ConvertJson2DatetimeFormat2(obj.CitizenExp, "dd/mm/yyyy"));
+                $('#txtCus_Nationality').val(obj.Nationality);
+                //$('#txtCus_CardFrom').val(obj.CitizenProvince);
+                $('#ddlCardFrom').select2("val", obj.CitizenProvince);
+
+                $('#txtCus_Address').val(obj.AddressNo);
+                $('#txtCus_Moo').val(obj.Moo);
+                $('#txtCus_Soi').val(obj.Soi);
+                $('#txtCus_Road').val(obj.Road);
+
+                if (obj.Province != 0) {
+                    $('#ddlProvince').select2("val", obj.Province);
+                    setTimeout(function () { $('#ddlDistrict').select2("val", obj.District); }, 500);
+                    setTimeout(function () { $('#ddlSubDistrict').select2("val", obj.SubDistrict); }, 1000);
+                }
+                else {
+                    $('#ddlProvince').select2("val", "");
+                    $('#ddlDistrict').select2("val", "");
+                    $('#ddlSubDistrict').select2("val", "");
+                }
+                $('#txtCus_Zipcode').val(obj.ZipCode);
+                $('#txtCus_Tel').val(obj.Tel1);
+                $('#txtCus_Company').val(obj.AddressNo_Work);
+
+                $('#txtTelCellPhone').val(obj.Tel2);
+                $('#txtEmail').val(obj.Email);
+            })
+        });
+
+
+
+        function ValidateResale() {
+
+            var result = "";
+
+
+            //var currdate = dateFormat(new Date(), "dd/mm/yyyy");
+            //var vSTime = $('#ddlStime').val();
+            // Run at Server
+            //var aa = dateFormat(new Date(ConvertString2DatetimeFormat(vWorkDate)), "dd/mm/yyyy");
+
+            // Run at My Computer
+            //var aa = dateFormat(new Date(ConvertString2DatetimeFormatInDate(vWorkDate)), "dd/mm/yyyy");
+
+            if ($("#txtDocAt").val().trim() == "") { return "กรุณากรอก ทำที่ !" }
+
+            if ($("#txtSalePrice").val().trim() == "" || $("#txtSalePrice").val().trim() == 0) { return "กรุณากรอก ราคาขาย !" }
+            if ($("#txtSaleDiscount").val().trim() == "" || $("#txtSaleDiscount").val().trim() == 0) { return "กรุณากรอก ส่วนลดหน้าสัญญา !" }
+            if ($("#txtTranferDiscount").val().trim() == "" || $("#txtTranferDiscount").val().trim() == 0) { return "กรุณากรอก ส่วนลด ณ วันโอน !" }
+            if ($("#txtNetPrice").val().trim() == "" || $("#txtNetPrice").val().trim() == 0) { return "กรุณากรอก ราคาขายสุทธิ !" }
+            if ($("#txtPricePerSQM").val().trim() == "" || $("#txtPricePerSQM").val().trim() == 0) { return "กรุณากรอก ราคาขาย / ตรม. !" }
+
+            if ($("#txtPriceBeforeVat").val().trim() == "" || $("#txtPriceBeforeVat").val().trim() == 0) { return "กรุณากรอก ยอดก่อน Vat !" }
+            if ($("#txtVat").val().trim() == "" || $("#txtVat").val().trim() == 0) { return "กรุณากรอก Vat 7% !" }
+            if ($("#txtPriceIncVat").val().trim() == "" || $("#txtPriceIncVat").val().trim() == 0) { return "กรุณากรอก ยอดรวม Vat !" }
+
+            if ($("#txtContactAmt").val().trim() == "" || $("#txtContactAmt").val().trim() == 0) { return "กรุณากรอก ยอดรับเงิน ณ วันทำสัญญา !" }
+
+            if ($("#txtCus_IDCard").val().trim() == "") { return "กรุณากรอก เลขที่บัตรประชาชน !" }
+            if ($("#txtCus_Name").val().trim() == "") { return "กรุณากรอก ชื่อ - สกุล !" }
+            if ($("#txtCus_Age").val().trim() == "") { return "กรุณากรอก อายุ !" }
+            if ($("#txtCus_Nationality").val().trim() == "") { return "กรุณากรอก สัญชาติ !" }
+            if ($("#txtCus_CardFrom").val().trim() == "") { return "กรุณากรอก บัตรประชาขนออก ณ จังหวัด !" }
+            if ($("#txtCus_Address").val().trim() == "") { return "กรุณากรอก ที่อยู่ !" }
+            //if ($("#txtMoo").val().trim() == "") { return "กรุณากรอก หมู่ !" }
+            //if ($("#txtSoi").val().trim() == "") { return "กรุณากรอก ตรอก/ซอย !" }
+            //if ($("#txtRoad").val().trim() == "") { return "กรุณากรอก ถนน !" }
+            if ($("#ddlProvince").val() == null || $("#ddlProvince").val().trim() == "" || $("#ddlProvince").val().trim() == 0) { return "กรุณาเลือก จังหวัด !" }
+            if ($("#ddlDistrict").val() == null || $("#ddlDistrict").val().trim() == "" || $("#ddlDistrict").val().trim() == 0) { return "กรุณาเลือก เขต/อำเภอ !" }
+            if ($("#ddlSubDistrict").val() == null ||$("#ddlSubDistrict").val().trim() == "" || $("#ddlSubDistrict").val().trim() == 0) { return "กรุณาเลือก ตำบล/แขวง !" }
+            if ($("#txtCus_Zipcode").val().trim() == "") { return "กรุณากรอก รหัสไปรษณีย์ !" }
+            if ($("#txtCus_Tel").val().trim() == "") { return "กรุณากรอก เบอร์โทร !" }
+            if ($("#txtCus_Company").val().trim() == "") { return "กรุณากรอก สถานที่ทำงาน !" }
+
+            //if ($("#txtContractPeriod").val().trim() == "") { return "กรุณากรอก ระยะเวลาเช่า !" }
+
+            //if ($("#txtRentPrice").val().trim() == "") { return "กรุณากรอก อัตราค่าเช่า !" }
+            //if ($("#txtDayOfDue").val().trim() == "") { return "กรุณากรอก กำหนดชำระยะทุกวันที่ !" }
+
+            //if ($("#txtRoomInsurance").val().trim() == "") { return "กรุณากรอก จำนวนเดือนประกันการเช่า (เดือน) !" }
+            //if ($("#txtRoomInsurancePrice").val().trim() == "") { return "กรุณากรอก จำนวนเงินประกันการเช่า (บาท) !" }
+            //if ($("#txtDepositRent").val().trim() == "") { return "กรุณากรอก จำนวนเดือนค่าเช่าล่วงหน้า (เดือน) !" }
+            //if ($("#txtDepositRentPrice").val().trim() == "") { return "กรุณากรอก จำนวนค่าเช่าล่วงหน้า (บาท) !" }
+
+
+            //if ($("#ddlBank").val().trim() == "" || $("#ddlBank").val().trim() == 0) { return "กรุณาเลือก บัญชีธนาคาร !" }
+            //if ($("#ddlAccountType").val().trim() == "" || $("#ddlAccountType").val().trim() == 0) { return "กรุณาเลือก ประเภทบัญชี !" }
+            //if ($("#txtAccountNo").val().trim() == "") { return "กรุณากรอก เลขที่บัญชี !" }
+            //if ($("#txtAccountName").val().trim() == "") { return "กรุณากรอก ชื่อบัญชี !" }
+
+            return "";
+        };
+
+        function Validation() {
+            var _IsValid = true;
+            var _Message = "";
+
+            var _SalePrice = $('#txtSalePrice').val();
+            var _NetPrice = $('#txtNetPrice').val();
+            var _RSCardID = $('#txtCus_IDCard').val();
+            var _RSName = $('#txtCus_Name').val();
+            var _RSTel = $('#txtCus_Tel').val();
+
+            if (_SalePrice <= 0) {
+                _Message = "กรุณากรอกข้อมูลราคาขาย";
+                _IsValid = false;
+            }
+            else if (_NetPrice <= 0) {
+                _Message = "กรุณากรอกข้อมูลราคาขายสุทธิ";
+                _IsValid = false;
+            }
+            else if (_RSCardID == "") {
+                _Message = "กรุณากรอกข้อมูลเลขที่บัตรประชาชน";
+                _IsValid = false;
+            }
+            else if (_RSName == "") {
+                _Message = "กรุณากรอกข้อมูลชื่อ - สกุล";
+                _IsValid = false;
+            }
+            else if (_RSTel == "") {
+                _Message = "กรุณากรอกข้อมูลเบอร์โทร";
+                _IsValid = false;
+            }
+
+            if (!_IsValid) { swal("ผลการตรวจสอบ", _Message, "error"); }
+            return _IsValid;
+        }
+
+        function SaveResaleTable(_IsDelete, _UnitStatus) {
+            var EmpID = $("#EmployeeID").data("emp-id");
+
+            var _DSCustID = $('#txtDSCustID').val();
+            var _DepositID = $('#txtDepositID').val();
+            var _UnitID = $('#txtUnitID').val();
+            var _RSCustID = $('#txtRSCustID').val();
+            var _ResaleID = $('#txtResaleID').val();
+
+            var _RSName = $('#txtCus_Name').val();
+            var _RSCardID = $('#txtCus_IDCard').val();
+            var _RSAge = $('#txtCus_Age').val();
+            var _RSCardIssue = ConvertString2DatetimeFormat($('#ddlCus_CardDate').val());
+            var _RSCardExpire = ConvertString2DatetimeFormat($('#ddlCus_CardExpire').val());
+            var _RSCardFrom = $('#ddlCardFrom').val();
+            var _RSAddressNo = $('#txtCus_Address').val();
+            var _RSMoo = $('#txtCus_Moo').val();
+            var _RSSoi = $('#txtCus_Soi').val();
+            var _RSRoad = $('#txtCus_Road').val();
+            var _RSSubDistinct = $('#ddlSubDistrict').val();
+            var _RSDistinct = $('#ddlDistrict').val();
+            var _RSProvince = $('#ddlProvince').val();
+            var _RSZipcode = $('#txtCus_Zipcode').val();
+            var _RSTel = $('#txtCus_Tel').val();
+            var _TelMobile = $('#txtTelCellPhone').val();
+            var _Email = $('#txtEmail').val();
+            var _RSNationality = $('#txtCus_Nationality').val();
+            var _RSCompanyAddress = $('#txtCus_Company').val();
+
+            var _ResaleDate = ConvertString2DatetimeFormat( $('#ddlDocDate').val());
+            var _ResaleAt = $('#txtDocAt').val();
+
+            var _SalePrice = $('#txtSalePrice').val().replace(/\,/g, '');
+            var _SaleDiscount = $('#txtSaleDiscount').val().replace(/\,/g, '');
+            var _TranferDiscount = $('#txtTranferDiscount').val().replace(/\,/g, '');
+            var _NetPrice = $('#txtNetPrice').val().replace(/\,/g, '');
+            var _PricePerSQM = $('#txtPricePerSQM').val().replace(/\,/g, '');
+            var _PriceBeforeVat = $('#txtPriceBeforeVat').val().replace(/\,/g, '');
+            var _Vat = $('#txtVat').val().replace(/\,/g, '');
+            var _PriceIncVat = $('#txtPriceIncVat').val().replace(/\,/g, '');
+            var _TransferFeeAmt = $('#txtTransferFeeAmt').val().replace(/\,/g, '');
+
+
+            ////////// ประเภทการชำระค่าใช้จ่ายต่างๆ
+
+            var _AmountCash = $('#txtReserve_RSAmountCash').val().replace(/,\s?/g, "");
+
+            var _AmountCashier = $('#txtReserve_RSAmountCashier').val().replace(/,\s?/g, "");
+            var _AmounCashTransfer = $('#txtReserve_RSAmounCashTransfer').val().replace(/,\s?/g, "");
+
+
+            var _CashierBank = $('#ddl_RSCashierBank').val();
+            var _CashierNo = $('#txtReserve_RSCashierNo').val();
+            var _CashierNoDate = ConvertString2DatetimeFormat($('#dllRSCashierDate').val());
+
+            var _BankNameCashTransfer = $('#txtReserve_RSBankNameCashTransfer').val();
+            var _BankNoCashTransfer = $('#txtReserve_RSBankNoCashTransfer').val();
+            var _CashTransferDate = ConvertString2DatetimeFormat($('#dllRSCashTransferDate').val());
+            /////////////////////
+
+
+            var _ContactAmt = $('#txtContactAmt').val().replace(/,\s?/g, "");
+            //_ContactAmt
+
+            var _DocRef = $('#txtDocsRef').val();
+
+
+            var _IsUnExpireCard = false;
+            if ($('#ChkUnExpireCard').is(':checked') == true) { _IsUnExpireCard = true };
+
+
+            if (!Validation()) { return; }
+
+            var url = '@Url.Action("SaveResaleTable", "DMPS_ResaleRoom")';
+            $.post(url, {
+                ContactsID: _RSCustID,
+                CustomerTypeId: 3,
+                FirstName: _RSName,
+                Age: _RSAge,
+                CitizenID: _RSCardID,
+                CitizenIssue: _RSCardIssue,
+                CitizenExp: _RSCardExpire,
+                UnExpireIDCard:_IsUnExpireCard,
+                CitizenProvince: _RSCardFrom,
+                Tel1: _RSTel,
+                AddressNo: _RSAddressNo,
+                Moo: _RSMoo,
+                Soi: _RSSoi,
+                Road: _RSRoad,
+                SubDistrict: _RSSubDistinct,
+                District: _RSDistinct,
+                Province: _RSProvince,
+                ZipCode: _RSZipcode,
+                AddressNo_Work: _RSCompanyAddress,
+                Nationality: _RSNationality,
+                ResaleID: _ResaleID,
+                ResaleDate: _ResaleDate,
+                ResaleAt: _ResaleAt,
+                ResaleStatus: _UnitStatus,
+                RSContractID: _RSCustID,
+                SalePrice: _SalePrice,
+                ContractDiscount: _SaleDiscount,
+                TransferDiscount: _TranferDiscount,
+                SaleAmt: _NetPrice,
+                SalePerSqm: _PricePerSQM,
+                PriceBFVat: _PriceBeforeVat,
+                VatAmt: _Vat,
+                NetPrice: _PriceIncVat,
+                Creator: EmpID,
+                Reviser: EmpID,
+                IsDelete: _IsDelete,
+                DepositID: _DepositID,
+                CreateBy: EmpID,
+                ModifyBy: EmpID,
+                DocType: _DocRef,
+                Tel2: _TelMobile,
+                Email: _Email,
+                Pay_Cash: _AmountCash,
+                Pay_Cashier: _AmountCashier,
+                Pay_CashierBank: _CashierBank,
+                Pay_CashierNo: _CashierNo,
+                Pay_CashierDate: _CashierNoDate,
+                Pay_TransferCash: _AmounCashTransfer,
+                Pay_TransferBankNo: _BankNoCashTransfer,
+                Pay_TransferCashDate: _CashTransferDate,
+                Pay_TransferBankName: _BankNameCashTransfer,
+                TransferFeeAmt: _TransferFeeAmt,
+                ContactAmt: _ContactAmt,
+
+            }, function (result) {
+                if (result != "") {
+                    $('#controlDupplicate').val(0);
+                    var sp = result.split("|");
+                    saveFileUpload(sp[1]);
+
+                    swal("Save Complete!!!", "", "success");
+                    $('#myModal').modal('hide');
+                    LoadDataListView($('#RowAdmin').val(), $("#EmployeeID").data("emp-id"), sp[1]);
+                    CheckSave = 0;
+                }
+                else {
+                    $('#controlDupplicate').val(0);
+                    ShowHideLoading(0);
+                    swal("Warnning !", "Save Is Not Complete !!! ", "warning");
+                    CheckSave = 0;
+                }
+
+
+            });
+
+        }
+
+        /*======================================================= Loading ========================================================*/
+        function ShowHideLoading(_isShow) {
+            if (_isShow == 1) {
+                $('body').waitMe({
+                    effect: 'progressBar',
+                    text: 'Please wait..',
+                    color: '#000',
+                    maxSize: '',
+                    waitTime: -1,
+                    textPos: 'vertical',
+                });
+            } else {
+                $('body').waitMe("hide");
+            }
+        }
+        /*======================================================= End Loading ========================================================*/
+
+
+    });
+</script>

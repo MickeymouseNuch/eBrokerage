@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection1 Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>Connection1</Alias>
+        <ConnectionStringEncrypted>+cj1K2FP68VxTU348SxpP95UU2DNfEGk4UuhzGcEYOffVtGhSAnT8MsT5UR6XOG7hXT5iVZRAYFyTaVETT3jD8Ja+UPFSgEJ7VHRUOk9JT/VeM0I718BwctGvQhjHWEv3Hj7oVtcS51/fLH0y0yge8JU2StGCFnZwU3QzOE9tG6B2MEv</ConnectionStringEncrypted>
+        <Name>Connection1</Name>
+      </Connection1>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <DataSource1 Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>DataSource1</Alias>
+        <Columns isList="true" count="9">
+          <value>AsMonth,System.String</value>
+          <value>CompanyID,System.Int32</value>
+          <value>CompanyName,System.String</value>
+          <value>Number,System.String</value>
+          <value>มือถือและทางไกล,System.Decimal</value>
+          <value>หมายเลขพิเศษ,System.Decimal</value>
+          <value>ต่างประเทศ,System.Decimal</value>
+          <value>ภายในพื้นที่,System.Decimal</value>
+          <value>DeptDescription,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>DataSource1</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_SelectMonth,,10,300</value>
+        </Parameters>
+        <SqlCommand>select 
+	CASE WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'January' THEN '01' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'February' THEN '02' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'March' THEN '03' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'April' THEN '04' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'May' THEN '05' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'June' THEN '06' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'July' THEN '07' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'August' THEN '08' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'September' THEN '09' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'October' THEN '10' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'November' THEN '11' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'December' THEN '12'  END  + '-' +
+		REPLACE(SUBSTRING([AsMonth], CHARINDEX('-', [AsMonth]), LEN([AsMonth])), '-', '') as [AsMonth]
+
+,CompanyID,CompanyName,DeptDescription
+	,Number,ISNULL(SUM(มือถือและทางไกล),0) as มือถือและทางไกล,ISNULL(SUM(หมายเลขพิเศษ),0) as หมายเลขพิเศษ,ISNULL(SUM(ต่างประเทศ),0) as ต่างประเทศ,ISNULL(SUM(ภายในพื้นที่),0) AS ภายในพื้นที่ from [TCS].[dbo].[vw_SummaryFileImport]
+pivot (Sum (Amount) for TypeDescription_Report_TH in (มือถือและทางไกล,หมายเลขพิเศษ,ต่างประเทศ,ภายในพื้นที่)) as AvgIncomePerDay
+WHERE DeptDescription Is not null
+AND [AsMonth] = @SelectMonth
+GROUP BY CASE WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'January' THEN '01' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'February' THEN '02' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'March' THEN '03' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'April' THEN '04' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'May' THEN '05' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'June' THEN '06' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'July' THEN '07' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'August' THEN '08' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'September' THEN '09' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'October' THEN '10' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'November' THEN '11' 
+		WHEN LEFT([AsMonth], CHARINDEX('-', [AsMonth]) - 1) = 'December' THEN '12'  END  + '-' +
+		REPLACE(SUBSTRING([AsMonth], CHARINDEX('-', [AsMonth]), LEN([AsMonth])), '-', ''),CompanyID,CompanyName,DeptDescription,Number</SqlCommand>
+      </DataSource1>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="6">
+        <HeaderBand1 Ref="5" type="HeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19,1.02</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text1 Ref="6" type="Text" isKey="true">
+              <Border>None;Black;1;Double;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,0,17.85,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,16,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>รายงานค่าใช้จ่ายประจำเดือน {DataSource1.AsMonth}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>HeaderBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <PrintOn>OnlyFirstPage</PrintOn>
+        </HeaderBand1>
+        <GroupHeaderBand1 Ref="7" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.22,19,0.56</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text4 Ref="8" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,0,17.85,0.56</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold| Underline</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Text>{DataSource1.CompanyName}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text4>
+          </Components>
+          <Condition>{DataSource1.CompanyID}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand1</Name>
+          <NewPageBefore>True</NewPageBefore>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </GroupHeaderBand1>
+        <GroupHeaderBand2 Ref="9" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.58,19,1.78</ClientRectangle>
+          <Components isList="true" count="7">
+            <Text5 Ref="10" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[215:227:188]</Brush>
+              <ClientRectangle>1.2,1.02,2.29,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>cad5387f0750498ab56bd86aee2219b5</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>ปี-เดือน</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+            <Text6 Ref="11" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[215:227:188]</Brush>
+              <ClientRectangle>3.49,1.02,2.29,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>e76b59c9f05540d99c14e741e5418b2e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>หมายเลข</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text8 Ref="12" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[215:227:188]</Brush>
+              <ClientRectangle>5.77,1.02,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>af4ea5cc7e7c475ca2a2e40d2de72803</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>ภายในพื้นที่</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Text11 Ref="13" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[215:227:188]</Brush>
+              <ClientRectangle>8.82,1.02,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>0a1d30db014149cca5633593208a5191</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>มือถือและทางไกล</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text12 Ref="14" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[215:227:188]</Brush>
+              <ClientRectangle>11.87,1.02,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>de13216679f1495e83590ff1b8266bc8</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>ต่างประเทศ</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Text14 Ref="15" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[215:227:188]</Brush>
+              <ClientRectangle>14.92,1.02,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>72b6f6f14f244346ba4acb04025372f1</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>ยอดรวมสุทธิ</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text14>
+            <Text2 Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,0.25,17.85,0.56</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>34c7aca219c74c3bb5c4940f6bb9ca80</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>{DataSource1.DeptDescription}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+          </Components>
+          <Condition>{DataSource1.DeptDescription}</Condition>
+          <Conditions isList="true" count="0" />
+          <KeepGroupTogether>True</KeepGroupTogether>
+          <Name>GroupHeaderBand2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </GroupHeaderBand2>
+        <DataBand1 Ref="17" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,6.16,19,0.76</ClientRectangle>
+          <Components isList="true" count="6">
+            <Text3 Ref="18" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>1.2,0,2.29,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="4" />
+              <Parent isRef="17" />
+              <Text>{DataSource1.AsMonth}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+            <Text7 Ref="19" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>3.49,0,2.29,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>a21a538bb680455f84d6aaa7c9a3c4fd</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="4" />
+              <Parent isRef="17" />
+              <Text>{DataSource1.Number}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+            <Text9 Ref="20" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>5.77,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>20f170486b11475c92ab2d86f98ce64e</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="4" />
+              <Parent isRef="17" />
+              <Text>{DataSource1.ภายในพ__นท__}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="21" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+            <Text10 Ref="22" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>8.82,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>53883e8cc23c46f9a1280fff492874d5</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="4" />
+              <Parent isRef="17" />
+              <Text>{DataSource1.ม_อถ_อและทางไกล}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="23" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text13 Ref="24" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>11.87,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>6944576fd828425d9eb83a1aa4c22fd7</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="4" />
+              <Parent isRef="17" />
+              <Text>{DataSource1.ต_างประเทศ}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="25" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text13>
+            <Text15 Ref="26" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>14.92,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>be906fa1e8bb467eab2e992ab8b70165</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="4" />
+              <Parent isRef="17" />
+              <Text>{DataSource1.ต_างประเทศ + DataSource1.ม_อถ_อและทางไกล + DataSource1.หมายเลขพ_เศษ + DataSource1.ภายในพ__นท__}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="27" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text15>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>DataSource1</DataSourceName>
+          <Filters isList="true" count="1">
+            <value>CompanyName,IsNotNull,,,String</value>
+          </Filters>
+          <Name>DataBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>CompanyID</value>
+          </Sort>
+        </DataBand1>
+        <GroupFooterBand1 Ref="28" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,7.72,19,0.76</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text17 Ref="29" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[253:234:218]</Brush>
+              <ClientRectangle>1.2,0,4.57,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>8fbe4f6df9544db1ad3604e6edbbf763</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="4" />
+              <Parent isRef="28" />
+              <Text>ยอดรวมสุทธิ</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text17>
+            <Text22 Ref="30" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>5.77,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>1b9ddb446eeb4afeb1cc325eee91833a</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="4" />
+              <Parent isRef="28" />
+              <Text>{Sum(GroupHeaderBand2,DataSource1.ภายในพ__นท__)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="31" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+            <Text23 Ref="32" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>8.82,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>237f7f775aca4721bf55c85829b75003</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="4" />
+              <Parent isRef="28" />
+              <Text>{Sum(GroupHeaderBand2,DataSource1.ม_อถ_อและทางไกล)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="33" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text24 Ref="34" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>11.87,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>5fe8c09503f141c5adcc2a20c054aa1e</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="4" />
+              <Parent isRef="28" />
+              <Text>{Sum(GroupHeaderBand2,DataSource1.ต_างประเทศ)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="35" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text24>
+            <Text25 Ref="36" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>14.92,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>63c04ea9cc014553a6db6ee790ca839d</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="4" />
+              <Parent isRef="28" />
+              <Text>{Sum(GroupHeaderBand2,DataSource1.ต_างประเทศ + DataSource1.ม_อถ_อและทางไกล + DataSource1.หมายเลขพ_เศษ + DataSource1.ภายในพ__นท__)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="37" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text25>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>GroupFooterBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </GroupFooterBand1>
+        <GroupFooterBand2 Ref="38" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,9.28,19,0.76</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text16 Ref="39" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[195:214:155]</Brush>
+              <ClientRectangle>1.2,0,4.57,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>356a74c7b9ec4aa4868bc3cca88bbb76</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="4" />
+              <Parent isRef="38" />
+              <Text>ยอดรวมสุทธิ</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text16>
+            <Text18 Ref="40" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>5.77,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>3405c8f8de8a4f27acda454faa799558</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="4" />
+              <Parent isRef="38" />
+              <Text>{Sum(GroupHeaderBand1,DataSource1.ภายในพ__นท__)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="41" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text18>
+            <Text19 Ref="42" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>8.82,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>a10a47acb0ff463fb48f18ba50137733</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="4" />
+              <Parent isRef="38" />
+              <Text>{Sum(GroupHeaderBand1,DataSource1.ม_อถ_อและทางไกล)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="43" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text19>
+            <Text20 Ref="44" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>11.87,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>cababa42811243e9899f205286e97c34</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="4" />
+              <Parent isRef="38" />
+              <Text>{Sum(GroupHeaderBand1,DataSource1.ต_างประเทศ)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="45" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text20>
+            <Text21 Ref="46" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>14.92,0,3.05,0.76</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14,Bold</Font>
+              <Guid>2d84a248a150480da80beb4d78d6118f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="4" />
+              <Parent isRef="38" />
+              <Text>{Sum(GroupHeaderBand1,DataSource1.ต_างประเทศ + DataSource1.ม_อถ_อและทางไกล + DataSource1.หมายเลขพ_เศษ + DataSource1.ภายในพ__นท__)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="47" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>1</GroupSize>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>GroupFooterBand2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </GroupFooterBand2>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>e77983a87fef4575807a962dd01bac05</Guid>
+      <Margins>1,1,1.5,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <PaperSize>A4</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="48" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="49" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>11/7/2018 3:02:17 PM</ReportChanged>
+  <ReportCreated>9/19/2018 2:05:13 PM</ReportCreated>
+  <ReportFile>D:\SourceCode\01\UVG_Main_Develop\UVG_Main\Report\TCS\Invoice_AllDataByCompany.mrt</ReportFile>
+  <ReportGuid>eca154538c644fd7bffb4f71d19899ff</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2014.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

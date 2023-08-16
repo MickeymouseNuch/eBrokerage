@@ -1,0 +1,937 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection1 Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>Connection1</Alias>
+        <ConnectionStringEncrypted>5X7RAsVKk8HiS02ZeogyH8Pye8JNBdmIQghNnEtY6w/DasspQ3XzzW9a5QjoWPVGhT5pC09d2dnhSc2Y5VS1E9PEgWDOQUuc4U3lzGEA42P0cGUJThh7lGJHvNjxHK1jkBRxCV5PQ916EzmYZHQie9R4mwlGTUKI7BX18WNM4V7EyPXrSA==</ConnectionStringEncrypted>
+        <Name>Connection1</Name>
+      </Connection1>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <DataSource1 Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>DataSource1</Alias>
+        <Columns isList="true" count="130">
+          <value>RentNo,System.String</value>
+          <value>RentDate,System.DateTime</value>
+          <value>RentAt,System.String</value>
+          <value>RentPeriod,System.Int32</value>
+          <value>RentStartDate,System.DateTime</value>
+          <value>RentEndDate,System.DateTime</value>
+          <value>RentPrice,System.Decimal</value>
+          <value>DayofDue,System.String</value>
+          <value>RoomInsuranceQty,System.Int32</value>
+          <value>RoomInsuranceAmt,System.Decimal</value>
+          <value>RoomDepositQty,System.Int32</value>
+          <value>RoomDepositAmt,System.Decimal</value>
+          <value>CheckRoomRemarkRent,System.String</value>
+          <value>RentRemark,System.String</value>
+          <value>MaintenanceCharge,System.Decimal</value>
+          <value>WaterCharge,System.Decimal</value>
+          <value>CountKey,System.Int64</value>
+          <value>KeyIsAgent,System.Boolean</value>
+          <value>KeyIsJuristic,System.Boolean</value>
+          <value>ProjectAddress,System.String</value>
+          <value>CheckRoomRemarkDeposit,System.String</value>
+          <value>FacilityOther,System.String</value>
+          <value>FacilityRemark,System.String</value>
+          <value>UnitsCode,System.String</value>
+          <value>UnitsName,System.String</value>
+          <value>Floor,System.String</value>
+          <value>RoomNo,System.String</value>
+          <value>RoomArea,System.Decimal</value>
+          <value>BedRoomQty,System.Int32</value>
+          <value>LivingRoomQty,System.Int32</value>
+          <value>ToiletRoomQty,System.Int32</value>
+          <value>KitchenRoomQty,System.Int32</value>
+          <value>ProjectName,System.String</value>
+          <value>DevelopmentName,System.String</value>
+          <value>RentID,System.Int64</value>
+          <value>DS_FirstName,System.String</value>
+          <value>DS_CitizenID,System.String</value>
+          <value>DS_CitizenIssue,System.DateTime</value>
+          <value>DS_CitizenExp,System.DateTime</value>
+          <value>DS_Tel1,System.String</value>
+          <value>DS_AddressNo,System.String</value>
+          <value>DS_ZipCode,System.String</value>
+          <value>DS_Nationality,System.String</value>
+          <value>DS_Age,System.Int32</value>
+          <value>DS_PROVINCE_NAME,System.String</value>
+          <value>DS_AMPHUR_NAME,System.String</value>
+          <value>DS_SubDistrict,System.String</value>
+          <value>RN_FirstName,System.String</value>
+          <value>RN_CitizenID,System.String</value>
+          <value>RN_CitizenIssue,System.DateTime</value>
+          <value>RN_CitizenExp,System.DateTime</value>
+          <value>RN_Tel1,System.String</value>
+          <value>RN_AddressNo,System.String</value>
+          <value>RN_ZipCode,System.String</value>
+          <value>RN_Nationality,System.String</value>
+          <value>RN_Age,System.Int32</value>
+          <value>RN_PROVINCE_NAME,System.String</value>
+          <value>RN_AMPHUR_NAME,System.String</value>
+          <value>RN_SubDistrict,System.String</value>
+          <value>BankName,System.String</value>
+          <value>BankTypeNameTH,System.String</value>
+          <value>AccountName,System.String</value>
+          <value>AccountNo,System.String</value>
+          <value>DS_IDCard_Province,System.String</value>
+          <value>RN_IDCard_Province,System.String</value>
+          <value>RoomType,System.String</value>
+          <value>RN_Moo,System.String</value>
+          <value>RN_Soi,System.String</value>
+          <value>RN_Road,System.String</value>
+          <value>DS_Moo,System.String</value>
+          <value>DS_Soi,System.String</value>
+          <value>DS_Road,System.String</value>
+          <value>MulctPrice,System.Decimal</value>
+          <value>DS_UnExpireIDCard,System.Boolean</value>
+          <value>RN_UnExpireIDCard,System.Boolean</value>
+          <value>RN_AddressNo_Work,System.String</value>
+          <value>DS_AddressNo_Work,System.String</value>
+          <value>RoomFurnitureAmt,System.Decimal</value>
+          <value>RentFurnitureNo,System.String</value>
+          <value>ThaiCurrentcyRoomFurnitureAmt,System.String</value>
+          <value>CommissionPrice,System.Decimal</value>
+          <value>IsCommissionChecked,System.Int32</value>
+          <value>PeriodStratEndRent_TH,System.String</value>
+          <value>CreatorName,System.String</value>
+          <value>ReviserName,System.String</value>
+          <value>RoomFurnitureQty,System.Int32</value>
+          <value>RoomFurnitureDepositQty,System.Int32</value>
+          <value>RoomFurnitureDepositAmt,System.Decimal</value>
+          <value>Pay_Cash,System.Decimal</value>
+          <value>Pay_Cashier,System.Decimal</value>
+          <value>Pay_CashierBank,System.String</value>
+          <value>Pay_CashierNo,System.String</value>
+          <value>Pay_CashierDate,System.DateTime</value>
+          <value>Pay_TransferCash,System.Decimal</value>
+          <value>Pay_TransferBankNo,System.String</value>
+          <value>Pay_TransferBankName,System.String</value>
+          <value>Pay_TransferCashDate,System.DateTime</value>
+          <value>Sum_RoomInsuranceAmt,System.Decimal</value>
+          <value>Sum_RoomDepositAmt,System.Decimal</value>
+          <value>Sum_RoomFurnitureAmt,System.Decimal</value>
+          <value>Sum_RoomFurnitureDepositAmt,System.Decimal</value>
+          <value>CHECKED_Pay_Cash,System.Int32</value>
+          <value>CHECKED_Pay_Cashier,System.Int32</value>
+          <value>CHECKED_TransferCash,System.Int32</value>
+          <value>CHECKED_RoomInsuranceAmt,System.Int32</value>
+          <value>CHECKED_RoomDepositAmt,System.Int32</value>
+          <value>CHECKED_RoomFurnitureAmt_INS,System.Int32</value>
+          <value>CHECKED_RoomFurnitureDepositAmt,System.Int32</value>
+          <value>Pay_CashierDate_TH,System.String</value>
+          <value>Pay_TransferCashDate_TH,System.String</value>
+          <value>RentDate_TH,System.String</value>
+          <value>Pay_CashierBankName,System.String</value>
+          <value>ReservationsAmt,System.Int32</value>
+          <value>TempRep_RoomNo,System.String</value>
+          <value>Building,System.String</value>
+          <value>CommissionChecked,System.Boolean</value>
+          <value>Com_Pay_Cash,System.Decimal</value>
+          <value>Com_Pay_Cashier,System.Decimal</value>
+          <value>Com_Pay_CashierBank,System.String</value>
+          <value>Com_Pay_CashierNo,System.String</value>
+          <value>Com_Pay_CashierDate,System.DateTime</value>
+          <value>Com_Pay_TransferCash,System.Decimal</value>
+          <value>Com_Pay_TransferBankNo,System.String</value>
+          <value>Com_Pay_TransferBankName,System.String</value>
+          <value>Com_Pay_TransferCashDate,System.DateTime</value>
+          <value>CHECKED_Com_Pay_Cash,System.Int32</value>
+          <value>CHECKED_Com_Pay_Cashier,System.Int32</value>
+          <value>CHECKED_Com_Pay_TransferCash,System.Int32</value>
+          <value>DateTH_Com_Pay_CashierDate,System.String</value>
+          <value>DateTH_Com_Pay_TransferCashDate,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>DataSource1</Name>
+        <NameInSource>Connection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_RentID,RentID,8,0</value>
+        </Parameters>
+        <SqlCommand>SELECT *
+   FROM [vw_rpt_Rent]
+	where RentID = @RentID</SqlCommand>
+      </DataSource1>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="1">
+      <value>,RentID,RentID,System.String,_x0031_78,False,False,True</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="3">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="8">
+        <PageHeaderBand1 Ref="5" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,17,1.2</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text1 Ref="6" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.6,0,12.4,1.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,12</Font>
+              <Guid>423400d30bf94af78571925c8afc74b3</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>บริษัท แกรนด์ ยูนิตี้ ดิเวลล็อปเมนท์ จำกัด
+เลขที่ 900 อาคารต้นสนทาวเวอร์ ชั้น 7 ถนนเพลินจิต แขวงลุมพินี เขตปทุมวัน กรุงเทพฯ 10330</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </PageHeaderBand1>
+        <Text45 Ref="7" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>38.8,15.4,3.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>TH Sarabun New,14,Bold</Font>
+          <Guid>295755da83b44da788d2ec8c2cdee929</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text45</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{IIF(DataSource1.CHECKED_TransferCash == 0, " ", DataSource1.Pay_TransferCash)}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextFormat Ref="8" type="NumberFormat" isKey="true">
+            <DecimalDigits>0</DecimalDigits>
+            <GroupSeparator>,</GroupSeparator>
+            <NegativePattern>1</NegativePattern>
+            <UseLocalSetting>False</UseLocalSetting>
+          </TextFormat>
+          <Type>Expression</Type>
+        </Text45>
+        <Image1 Ref="9" type="Image" isKey="true">
+          <AspectRatio>True</AspectRatio>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>-0.6,0.2,4,1.4</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <File>C:\Users\neeranuch.ya\Desktop\messageImage_1564481388032.jpg</File>
+          <HorAlignment>Center</HorAlignment>
+          <Name>Image1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Stretch>True</Stretch>
+          <VertAlignment>Center</VertAlignment>
+        </Image1>
+        <DataBand1 Ref="10" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.4,17,3.6</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text2 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.2,17,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,18,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="4" />
+              <Parent isRef="10" />
+              <Text>ใบรับเงินชั่วคราว / TEMPORARY RECIEPT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text2>
+            <Text4 Ref="12" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,2.4,9,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>c53df1d50201497abcbaddd15aca4f58</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="4" />
+              <Parent isRef="10" />
+              <Text>{Blank(0) + "เลขที่  &lt;b&gt;" + DataSource1.RentNo + "&lt;/b&gt; "
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text4>
+            <Text3 Ref="13" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>11.6,2.4,5.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>3a0165dec7aa450489e6063e4b6d624f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="4" />
+              <Parent isRef="10" />
+              <Text>{Blank(0) + "วันที่  &lt;b&gt;" + DataSource1.RentDate_TH + "&lt;/b&gt; "
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+        <DataBand2 Ref="14" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6.8,17,0.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text5 Ref="15" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0.2,17,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>56a51e8885f84dc784f8fa355d78616a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="4" />
+              <Parent isRef="14" />
+              <Text>{Blank(15) + "ได้รับเงินจาก  &lt;b&gt;" + DataSource1.DS_FirstName + "&lt;/b&gt; "
++ "โครงการ " + "&lt;b&gt;" + DataSource1.ProjectName + "&lt;/b&gt; ห้องชุดเลขที่ " + "&lt;b&gt;" + DataSource1.TempRep_RoomNo + "&lt;/b&gt; "
++ "ระยะเวลาเช่า " + "&lt;b&gt;" + DataSource1.RentPeriod + "&lt;/b&gt;" + " เดือน " + "ระหว่างวันที่ " + "&lt;b&gt;" + DataSource1.PeriodStratEndRent_TH + "&lt;/b&gt; " 
++ "อัตราเช่า"+ " &lt;b&gt;" + Format("{0:N0}", DataSource1.RentPrice) +"&lt;/b&gt;" + " บาท/เดือน"
+}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text5>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </DataBand2>
+        <DataBand8 Ref="16" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.4,17,1.4</ClientRectangle>
+          <Components isList="true" count="2">
+            <SubReport2 Ref="17" type="SubReport" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,17,1.4</ClientRectangle>
+              <Components isList="true" count="0" />
+              <Name>SubReport2</Name>
+              <Page isRef="4" />
+              <Parameters isList="true" count="0" />
+              <Parent isRef="16" />
+              <SubReportPageGuid>a2dc7c0a55f445588583aeaa0b02941f</SubReportPageGuid>
+            </SubReport2>
+            <Text13 Ref="18" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>5ae20e7b34724136944c9c5f4afc2d0f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="4" />
+              <Parent isRef="16" />
+              <Text>ชำระค่า</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text13>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>f75caad9062a42328fb63ed5b12499b5</Guid>
+          <Name>DataBand8</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </DataBand8>
+        <DataBand4 Ref="19" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,10.6,17,1.4</ClientRectangle>
+          <Components isList="true" count="2">
+            <SubReport1 Ref="20" type="SubReport" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,17,1.4</ClientRectangle>
+              <Components isList="true" count="0" />
+              <Name>SubReport1</Name>
+              <Page isRef="4" />
+              <Parameters isList="true" count="0" />
+              <Parent isRef="19" />
+              <SubReportPageGuid>68940968a99c450f9b6886edc4898c8f</SubReportPageGuid>
+            </SubReport1>
+            <Text6 Ref="21" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>0d576689c30c443c8794dc3d909f66c6</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="4" />
+              <Parent isRef="19" />
+              <Text>ชำระเป็น</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text6>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>c502b2bef1c7497e9264b0b2a7c7b497</Guid>
+          <Name>DataBand4</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </DataBand4>
+        <DataBand3 Ref="22" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,12.8,17,3.6</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text21 Ref="23" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>11.2,2.2,5,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>1a385f4b818d4cf1bdcc477f68bcf4e4</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="4" />
+              <Parent isRef="22" />
+              <Text>{"( " + DataSource1.ReviserName + " )"}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text21>
+            <Text22 Ref="24" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10,1.6,6.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>eebf3e853fa3457ba690ef735684af9b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="4" />
+              <Parent isRef="22" />
+              <Text>ผู้รับเงิน .................................................................</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text22>
+            <Text23 Ref="25" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9.6,2.8,6.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>7963b01168c14b2aa3299e9cf3541dea</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="4" />
+              <Parent isRef="22" />
+              <Text>GRAND UNITY DEVELOPMENT CO.,LTD.    </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text23>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand3</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>892a7ae466ac473e9c52727598ae5229</Guid>
+      <Margins>2,2,1.5,2</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <PaperSize>A4</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="26" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+    <subReport_1 Ref="27" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="3">
+        <DataBand5 Ref="28" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,17,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text30 Ref="29" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,0,15,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>4960f469be13489791b91c33362ecb18</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="27" />
+              <Parent isRef="28" />
+              <Text>เงินสด  {IIF(DataSource1.CHECKED_Com_Pay_Cash == 0, " - ", Format("{0:N0}", DataSource1.Com_Pay_Cash))}  บาท</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text30>
+          </Components>
+          <Conditions isList="true" count="1">
+            <value>DataSource1.CHECKED_Com_Pay_Cash,EqualTo,_x0030_,,String,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+          </Conditions>
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>ca36b1420e6b43ec8c50386fb2d6088d</Guid>
+          <Name>DataBand5</Name>
+          <Page isRef="27" />
+          <Parent isRef="27" />
+          <Sort isList="true" count="0" />
+        </DataBand5>
+        <DataBand6 Ref="30" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.8,17,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text8 Ref="31" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>2,0,15,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>488c46f56ac24472957e8ec4c0cbb57c</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="27" />
+              <Parent isRef="30" />
+              <Text>เช็ค ธนาคาร  {IIF(DataSource1.CHECKED_Com_Pay_Cashier == 0, " - ", DataSource1.Com_Pay_CashierBank)} เลขที่ {IIF(DataSource1.CHECKED_Com_Pay_Cashier == 0, " - ", DataSource1.Com_Pay_CashierNo)} วันที่ {IIF(DataSource1.CHECKED_Com_Pay_Cashier == 0, " - ", DataSource1.DateTH_Com_Pay_CashierDate)} จำนวนเงิน  {IIF( DataSource1.CHECKED_Com_Pay_Cashier== 0, " - ", Format("{0:N0}", DataSource1.Com_Pay_Cashier))} บาท</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text8>
+          </Components>
+          <Conditions isList="true" count="1">
+            <value>DataSource1.CHECKED_Com_Pay_Cashier,EqualTo,_x0030_,,String,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+          </Conditions>
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>81cff4bed4b64eabb427fc10688b7681</Guid>
+          <Name>DataBand6</Name>
+          <Page isRef="27" />
+          <Parent isRef="27" />
+          <Sort isList="true" count="0" />
+        </DataBand6>
+        <DataBand7 Ref="32" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.2,17,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text24 Ref="33" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,0,15,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>30bc7e4dbfe34b9c9c7b6ea79a56e9b4</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="27" />
+              <Parent isRef="32" />
+              <Text>โอนผ่านบัญชีเลขที่ {IIF(DataSource1.CHECKED_Com_Pay_TransferCash == 0, " - ", DataSource1.Com_Pay_TransferBankNo)} ชื่อบัญชี {IIF(DataSource1.CHECKED_Com_Pay_TransferCash == 0, " - ", DataSource1.Com_Pay_TransferBankName)} วันที่{IIF(DataSource1.CHECKED_Com_Pay_TransferCash == 0, " - ", DataSource1.DateTH_Com_Pay_TransferCashDate)}  จำนวนเงิน {IIF(DataSource1.CHECKED_Com_Pay_TransferCash == 0, " - ", Format("{0:N0}", DataSource1.Com_Pay_TransferCash))} บาท </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text24>
+          </Components>
+          <Conditions isList="true" count="1">
+            <value>DataSource1.CHECKED_Com_Pay_TransferCash,EqualTo,_x0030_,,String,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+          </Conditions>
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>ac1bb6e3ee8a45ed8824ce9466ed0232</Guid>
+          <Name>DataBand7</Name>
+          <Page isRef="27" />
+          <Parent isRef="27" />
+          <Sort isList="true" count="0" />
+        </DataBand7>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>68940968a99c450f9b6886edc4898c8f</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>subReport_1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>19</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="34" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </subReport_1>
+    <subReport_2 Ref="35" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="5">
+        <DataBand9 Ref="36" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,17,0.6</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text19 Ref="37" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0,5,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>d11d5825d5d64394877d65db95b464cb</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="35" />
+              <Parent isRef="36" />
+              <Text>เงินประกันความเสียหาย</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text19>
+            <CheckBox6 Ref="38" type="CheckBox" isKey="true">
+              <Brush>Transparent</Brush>
+              <Checked>{DataSource1.CHECKED_RoomInsuranceAmt}</Checked>
+              <CheckStyleForFalse>NoneRectangle</CheckStyleForFalse>
+              <CheckStyleForTrue>CheckRectangle</CheckStyleForTrue>
+              <ClientRectangle>2.2,0,0.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ContourColor>Black</ContourColor>
+              <Guid>cb4724485575491d9795698a4ac26784</Guid>
+              <Name>CheckBox6</Name>
+              <Page isRef="35" />
+              <Parent isRef="36" />
+              <TextBrush>Black</TextBrush>
+              <Values>1/0</Values>
+            </CheckBox6>
+            <Text29 Ref="39" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.2,0,7.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>b753fdfc8a4948a19f9fb0e7fa5b4ac2</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="35" />
+              <Parent isRef="36" />
+              <Text>จำนวน {IIF(DataSource1.CHECKED_RoomInsuranceAmt == 0, " - ", Format("{0:N0}", DataSource1.Sum_RoomInsuranceAmt))} บาท</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text29>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Enabled>False</Enabled>
+          <Filters isList="true" count="0" />
+          <Guid>1ad970b670084647bd793625d119c93e</Guid>
+          <Name>DataBand9</Name>
+          <Page isRef="35" />
+          <Parent isRef="35" />
+          <Sort isList="true" count="0" />
+        </DataBand9>
+        <DataBand10 Ref="40" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.8,17,0.6</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text9 Ref="41" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0,5,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>d3aadbe00445443a83d099007f4d1b22</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="35" />
+              <Parent isRef="40" />
+              <Text>ค่าเช่าล่วงหน้า {IIF(DataSource1.RoomDepositQty == 0, " - ", Format("{0:N0}", DataSource1.RoomDepositQty))} เดือน</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text9>
+            <Text11 Ref="42" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.2,0,7.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>5b8c35f3b27648f78901a26ae2e151ca</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="35" />
+              <Parent isRef="40" />
+              <Text>จำนวน {IIF(DataSource1.CHECKED_RoomDepositAmt == 0, " - ", Format("{0:N0}",DataSource1.Sum_RoomDepositAmt))} บาท</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text11>
+            <CheckBox1 Ref="43" type="CheckBox" isKey="true">
+              <Brush>Transparent</Brush>
+              <Checked>{DataSource1.CHECKED_RoomDepositAmt}</Checked>
+              <CheckStyleForFalse>NoneRectangle</CheckStyleForFalse>
+              <CheckStyleForTrue>CheckRectangle</CheckStyleForTrue>
+              <ClientRectangle>2.2,0,0.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ContourColor>Black</ContourColor>
+              <Guid>b1db44d9a3f34011931bc0216642b1d3</Guid>
+              <Name>CheckBox1</Name>
+              <Page isRef="35" />
+              <Parent isRef="40" />
+              <TextBrush>Black</TextBrush>
+              <Values>1/0</Values>
+            </CheckBox1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Enabled>False</Enabled>
+          <Filters isList="true" count="0" />
+          <Guid>2bfafe51aa2b4d64ac3b271a2693329a</Guid>
+          <Name>DataBand10</Name>
+          <Page isRef="35" />
+          <Parent isRef="35" />
+          <Sort isList="true" count="0" />
+        </DataBand10>
+        <DataBand12 Ref="44" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.2,17,0.6</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text14 Ref="45" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0,5,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>0cd9acb98240460f93881d17ab060e75</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="35" />
+              <Parent isRef="44" />
+              <Text>ค่านายหน้า </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text14>
+            <Text15 Ref="46" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.2,0,7.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>a0ce08aeda12469cb6bfd749ded346c1</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="35" />
+              <Parent isRef="44" />
+              <Text>จำนวน {IIF(DataSource1.CommissionPrice == 0, " - ", Format("{0:N0}", DataSource1.CommissionPrice))} บาท</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text15>
+            <CheckBox3 Ref="47" type="CheckBox" isKey="true">
+              <Brush>Transparent</Brush>
+              <Checked>{DataSource1.IsCommissionChecked}</Checked>
+              <CheckStyleForFalse>NoneRectangle</CheckStyleForFalse>
+              <CheckStyleForTrue>CheckRectangle</CheckStyleForTrue>
+              <ClientRectangle>2.2,0,0.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ContourColor>Black</ContourColor>
+              <Guid>b98dccbc6482456f81ea2f5bef4c1e82</Guid>
+              <Name>CheckBox3</Name>
+              <Page isRef="35" />
+              <Parent isRef="44" />
+              <TextBrush>Black</TextBrush>
+              <Values>1/0</Values>
+            </CheckBox3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>02b1531657454bd499fe9f52b58d7129</Guid>
+          <Name>DataBand12</Name>
+          <Page isRef="35" />
+          <Parent isRef="35" />
+          <Sort isList="true" count="0" />
+        </DataBand12>
+        <DataBand11 Ref="48" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.6,17,0.6</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text7 Ref="49" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0,5,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>3988c943fb0a4b1e90013975e82e4b7c</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="35" />
+              <Parent isRef="48" />
+              <Text>เงินจองห้องชุด</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text7>
+            <CheckBox2 Ref="50" type="CheckBox" isKey="true">
+              <Brush>Transparent</Brush>
+              <Checked>{DataSource1.CHECKED_RoomInsuranceAmt}</Checked>
+              <CheckStyleForFalse>NoneRectangle</CheckStyleForFalse>
+              <CheckStyleForTrue>CheckRectangle</CheckStyleForTrue>
+              <ClientRectangle>2.2,0,0.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ContourColor>Black</ContourColor>
+              <Guid>c1759a336d44436d8d85dcdc3b3968da</Guid>
+              <Name>CheckBox2</Name>
+              <Page isRef="35" />
+              <Parent isRef="48" />
+              <TextBrush>Black</TextBrush>
+              <Values>1/0</Values>
+            </CheckBox2>
+            <Text10 Ref="51" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.2,0,7.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>f6ef7ec1e6eb45529133f04a449934bd</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="35" />
+              <Parent isRef="48" />
+              <Text>จำนวน { Format("{0:N0}", DataSource1.ReservationsAmt)} บาท</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text10>
+            <Text12 Ref="52" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.4,0,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>bf5ffea03cc348ab8800e6561634812a</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="35" />
+              <Parent isRef="48" />
+              <Text>หัก</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text12>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Enabled>False</Enabled>
+          <Filters isList="true" count="0" />
+          <Guid>3a06bb1dd17246afa6a89469798d75c1</Guid>
+          <Name>DataBand11</Name>
+          <Page isRef="35" />
+          <Parent isRef="35" />
+          <Sort isList="true" count="0" />
+        </DataBand11>
+        <DataBand13 Ref="53" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6,17,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text48 Ref="54" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.2,0,7.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>TH Sarabun New,14</Font>
+              <Guid>7e0c3e8f6f204d68b090753fccff41c1</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text48</Name>
+              <Page isRef="35" />
+              <Parent isRef="53" />
+              <Text>รวม {IIF(DataSource1.CommissionPrice == 0, " - ", Format("{0:N0}", DataSource1.CommissionPrice))}  บาท</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text48>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>035c541af08b4d4b83fcf979803a75ab</Guid>
+          <Name>DataBand13</Name>
+          <Page isRef="35" />
+          <Parent isRef="35" />
+          <Sort isList="true" count="0" />
+        </DataBand13>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>a2dc7c0a55f445588583aeaa0b02941f</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>subReport_2</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>19</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="55" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </subReport_2>
+  </Pages>
+  <PrinterSettings Ref="56" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>6/15/2023 9:39:45 AM</ReportChanged>
+  <ReportCreated>7/30/2019 3:57:24 PM</ReportCreated>
+  <ReportFile>E:\Project\30 eBrokerage\Inspinia_MVC5\Report\eBrokerage\RN_Commision_Temporary_Reciept.mrt</ReportFile>
+  <ReportGuid>8e85f1ac736c42e5bbaca171c78d5dda</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2014.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+		
+		public string Blank (int number)
+		{
+			string result = "";
+			for(int i = 0; i&lt;number; i++)
+			{
+				result += "&amp;nbsp;";	
+			}
+			return result;
+		}
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

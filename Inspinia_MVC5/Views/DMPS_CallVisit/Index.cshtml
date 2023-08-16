@@ -1,0 +1,2423 @@
+﻿@* ----------------------------------------------------Is Head Page List-------------------------------------------------------------- *@
+
+<div class="row wrapper border-bottom white-bg page-heading" style="padding-bottom:5px">
+    <div class="col-lg-8" style="padding-top:5px">
+        <h3 style="margin-bottom:5px"><label id="application"></label></h3>
+        <ol class="breadcrumb">
+            <li>
+                <a id="Back2Menu" data-url-back="'@Url.Action("ViewName","ControllerName")'" href="#"><label id="menu"></label></a>
+            </li>
+            <li class="active">
+                <strong><label id="submenu"></label></strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action" style="padding-top:15px">
+            <button id="btnAddNewCallVisit" data-id="0" data-no="0" class="btn btn-primary" title="เพิ่มข้อมูลลูกค้าโทร/แวะ"><i class="fa fa-file-text"></i>&nbsp;&nbsp; Add New Document</button>
+        </div>
+        <div class="col-lg-2" style="text-align:right">
+
+        </div>
+    </div>
+</div>
+
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+
+@* ----------------------------------------------------Is Searching Tab--------------------------------------------------------------- *@
+<div class="wrapper wrapper-content" style="padding-bottom: 0px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Search</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="width:270px"></td>
+                                <td style="text-align:right"><label style="padding-bottom: 10px;">Start Date : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div class="form-group" id="data_1">
+                                        <div class="input-group date">
+                                            <input id="StartDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("01/01/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:50px"></td>
+                                <td style="text-align: right;" ><label style="margin-left: 5px; ">End Date : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div class="form-group" id="data_1">
+                                        <LoadDataListViewdiv class="input-group date">
+                                            <input id="EndDate" type="text" class="form-control" value="@System.DateTime.Now.ToString("31/12/yyyy")"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </LoadDataListViewdiv>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table style="margin-left: 15px;">
+                        <tbody>
+                            <tr>
+                                <td style="width:270px"></td>
+                                <td style="text-align:right"><label style="padding-bottom: 10px;padding-top: 15px;">ชื่อ : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="txtNameSeach" name="txtNameSeach" class="form-control" style="width: 15pc;" maxlength="200" onkeydown="return /[ก-๛a-zA-Z]/i.test(event.key)" />
+                                    </div>
+                                </td>
+
+                                <td style="width:50px"></td>
+                                <td style="text-align:right"><label style="padding-bottom: 10px;padding-top: 15px;">นามสกุล : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="txtSurNameSeach" name="txtSurNameSeach" class="form-control" style="width: 15pc;" maxlength="200" onkeydown="return /[ก-๛a-zA-Z]/i.test(event.key)" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:80px"></td>
+                                <td style="text-align:right"><label style="padding-bottom: 10px;padding-top: 15px;">เบอร์โทร : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="txtTelSeach" name="txtTelSeach" class="form-control" style="width: 15pc;" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)" />
+                                    </div>
+                                </td>
+
+                                <td style="width:50px"></td>
+                                <td style="text-align:right"><label style="padding-bottom: 10px;padding-top: 15px;">เลขที่บัตร : </label></td>
+                                <td style="width:10px"></td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="txtIDCardSeach" name="txtIDCardSeach" class="form-control" style="width: 15pc;" maxlength="200" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <button type="button" id="btnSearch" class="btn btn-primary" style="margin-left: 10px; margin-bottom: 0; "><i class="fa fa-search"></i>&nbsp;&nbsp; Search</button>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@*<input type="text" id="RowSelected" value="" />*@
+@*<input type="text" id="RowSelected" value="" hidden="hidden" />*@
+<input type="text" id="txttab" hidden="hidden" value="Lead" />
+<input type="text" id="txtAddmin" name="txtAddmin" hidden="hidden" />
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ----------------------------------------------------Is DataList Tab---------------------------------------------------------------- *@
+<div id="DataListView"></div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ------------------------------------------------------Is Modal Tab----------------------------------------------------------------- *@
+@Html.Partial("LoadModal")
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+
+
+
+@*----------------------- Import CSS---------------------- *@
+@Styles.Render("~/plugins/footableStyles")
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+@Styles.Render("~/plugins/select2Styles")
+@Styles.Render("~/plugins/dataPickerStyles")
+@Styles.Render("~/plugins/sweetAlertStyles")
+@Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+@*-------------------------------------------------------- *@
+
+@*------------------ Import JavaScript-------------------- *@
+@Scripts.Render("~/plugins/footable")
+@Scripts.Render("~/plugins/dataTables")
+@Scripts.Render("~/plugins/select2")
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/sweetAlert")
+@Scripts.Render("~/plugins/iCheck")
+@*-------------------------------------------------------- *@
+
+<script src="~/Scripts/Main/JS_Main.js"></script>
+<script src="~/Scripts/Main/Utility.js"></script>
+<script src="~/Scripts/Main/date.format.js"></script>
+
+<script src="~/waitMe/waitMe.min.js"></script>
+<link href="~/waitMe/waitMe.min.css" rel="stylesheet" />
+
+<div hidden="hidden">
+    <input type="text" id="controlDupplicate" value="0" hidden />
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        LoadDataListView("Lead", null, null);
+
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+
+        $('#btnSearch').click(function () {
+            var _Sdate = ConvertString2DatetimeFormat($('#StartDate').val());
+            var _Edate = ConvertString2DatetimeFormat($('#EndDate').val());
+
+            LoadDataListView($('#txttab').val(), _Sdate, _Edate);
+        });
+
+        $('#btnAddNewCallVisit').click(function () {
+            $("#modCallVisit").modal('show');
+            ClearDataQuestionnaireCustomer();
+            var date = new Date().format('dd/mm/yyyy');
+            $("#txtDate").val(date);
+            var salecode = "";
+            var _salecode = $('#EmployeeID').data("emp-id");
+            salecode = _salecode;
+            $("#ddlSaleName").select2().val(salecode).trigger("change");
+            if ($("#ddlSaleName").select2('data').length == 0 ) {
+                $('#ddlSaleName').select2().val($('#ddlSaleName option:eq(0)').val()).trigger("change");
+            }
+
+        });
+
+
+        //btn close form
+        $('#btnClose').click(function () {
+
+            var msg = AddActivityDetailBeforeClose($("#txtCallvisitID").val(), $('#tbLoadDataActivityDetails tr').length);
+            if (msg != "") {
+                swal({
+                    title: "ผิดพลาด",
+                    text: msg,
+                    icon: "warning",
+                    button: "Ok"
+                });
+
+            } else {
+
+                $("#modCallVisit").modal('hide');
+            }
+
+        });
+
+        //btn x to close form
+        $('#BtnCloseTop').click(function () {
+            var msg = AddActivityDetailBeforeClose($("#txtCallvisitID").val(), $('#tbLoadDataActivityDetails tr').length);
+            if (msg != "") {
+                swal({
+                    title: "ผิดพลาด",
+                    text: msg,
+                    icon: "warning",
+                    button: "Ok"
+                });
+
+            } else {
+
+                $("#modCallVisit").modal('hide');
+            }
+
+        });
+
+        //btn check idcard
+        $('#BtnIDCard').click(function () {
+            var msg = CheckDuplicateByIDCard();
+            $.when(
+                msg
+            ).done(function (vMsg) {
+                vMsg = $.parseJSON(vMsg)
+                if ($("#txtIDCard").val() == "" && (!$("#chkForeign").is(":checked"))) {
+                    swal({
+                        title: "คำเตือน",
+                        text: "กรุณากรอกเลขบัตรประชาชน",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+
+                } else if ($("#txtIDCard").val() == "" && $("#chkForeign").is(":checked")) {
+                    swal({
+                        title: "คำเตือน",
+                        text: "กรุณากรอกเลขที่บัตร",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+                }
+
+                else if ($("#txtIDCard").val() == $("#txtChkIDCard").val()) {
+                    swal({
+                        title: "ไม่พบข้อมูลซ้ำ",
+                        //text: "ไม่พบข้อมูลซ้ำ",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+                }
+                else if (vMsg.length > 0) {
+                    swal({
+                        title: "พบข้อมูลซ้ำ",
+                        //text: "พบข้อมูลซ้ำ",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+                } else {
+                    swal({
+                        title: "ไม่พบข้อมูลซ้ำ",
+                        //text: "ไม่พบข้อมูลซ้ำ",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+                }
+
+            });
+
+        });
+
+        function Script_checkID(id) {
+            if (!IsNumeric(id)) return false;
+            if (id.substring(0, 1) == 0) return false;
+            if (id.length != 13) return false;
+            for (i = 0, sum = 0; i < 12; i++)
+                sum += parseFloat(id.charAt(i)) * (13 - i);
+            if ((11 - sum % 11) % 10 != parseFloat(id.charAt(12))) return false;
+            return true;
+        }
+
+        function IsNumeric(input) {
+            var RE = /^-?(0|INF|(0[1-7][0-7]*)|(0x[0-9a-fA-F]+)|((0|[1-9][0-9]*|(?=[\.,]))([\.,][0-9]+)?([eE]-?\d+)?))$/;
+            return (RE.test(input));
+        }
+
+
+        //btn check tel
+        $('#BtnSchTel').click(function () {
+            var msg = CheckDuplicateByTel();
+            $.when(
+                msg
+            ).done(function (vMsg) {
+                vMsg = $.parseJSON(vMsg)
+                if ($("#txtTel").val() == "") {
+                    swal({
+                        title: "คำเตือน",
+                        text: "กรุณากรอกข้อมูลเบอร์โทร",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+
+                } else if ($("#txtTel").val() == $("#txtChkTel").val()) {
+                    swal({
+                        title: "ไม่พบข้อมูลซ้ำ",
+                        //text: "กรุณากรอกข้อมูลเบอร์โทร",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+
+                } else if (vMsg.length > 0) {
+                    swal({
+                        title: "พบข้อมูลซ้ำ",
+                        //text: "พบข้อมูลซ้ำ",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+
+                } else {
+                    swal({
+                        title: "ไม่พบข้อมูลซ้ำ",
+                        //text: "ไม่พบข้อมูลซ้ำ",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+                }
+
+            });
+        });
+
+        //btn check name
+        $('#BtnSchName').click(function () {
+            var msg = CheckDuplicateByName();
+            $.when(
+                msg
+            ).done(function (vMsg) {
+                vMsg = $.parseJSON(vMsg)
+                if ($("#txtName").val() == "") {
+                    swal({
+                        title: "คำเตือน",
+                        text: "กรุณากรอกข้อมูลชื่อ",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+                }
+                else if ($("#txtName").val() == $("#txtChkName").val() && $("#txtSurName").val() == $("#txtChkSurName").val()) {
+                    swal({
+                        title: "ไม่พบข้อมูลซ้ำ",
+                        //text: "ไม่พบข้อมูลซ้ำ",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+                }
+                else if (vMsg.length > 0) {
+                    swal({
+                        title: "พบข้อมูลซ้ำ",
+                        //text: "พบข้อมูลซ้ำ",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+                } else {
+                    swal({
+                        title: "ไม่พบข้อมูลซ้ำ",
+                        //text: "ไม่พบข้อมูลซ้ำ",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+                }
+
+            });
+        });
+
+
+        $('#btnAcitivityDetailsClose').click(function () {
+            ClearDataActivityDetails();
+        });
+
+        //btn AddActivityDetail
+        $("#btnAddActivityDetail").click(function () {
+            getDeveloper(0);
+            //var msg = SaveBeforeAddActivityDetails($("#txtCallvisitID").val());
+           
+        });
+
+
+
+        $('body').on('hidden.bs.modal', function () {
+            if ($('.modal.in').length > 0) {
+                $('body').addClass('modal-open');
+            }
+        });
+
+        $('.js-ddl-single').select2();
+
+        $('#data_date .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+
+
+        $("#chkForeign").change(function () {
+            var check = $("#chkForeign").is(":checked");
+            if (check) {
+                $('#IDCardName').removeClass('true').text('เลขที่บัตร :');
+                $('#txtIDCard').removeAttr("onkeypress");
+                $('#txtIDCard').removeAttr("maxlength");
+                $('#txtIDCard').attr("maxlength", "100");
+            } else {
+                $('#IDCardName').removeClass('true').text('เลขบัตรประชาชน :');
+                $('#txtIDCard').attr("onkeypress", "return /[0-9]/i.test(event.key)");
+                $('#txtIDCard').attr("maxlength", "13");
+
+            }
+        });
+
+        $("#chkAddForeign").change(function () {
+            var check = $("#chkAddForeign").is(":checked");
+            if (check) {
+                $('#RealAddress1').hide();
+                $('#RealAddress2').show();
+            } else {
+                $('#RealAddress1').show();
+                $('#RealAddress2').hide();
+            }
+        });
+
+        $("#chkWorkAddForeign").change(function () {
+            var check = $("#chkWorkAddForeign").is(":checked");
+            if (check) {
+                $('#AddressCompany1').hide();
+                $('#AddressCompany2').show();
+            } else {
+                $('#AddressCompany1').show();
+                $('#AddressCompany2').hide();
+            }
+        });
+
+
+        $('#ddlOccupations').change(function () {
+            var otherTarget = $('#ddlOccupations').select2('data')[0].text;
+            if (otherTarget.indexOf("อื่นๆ") >= 0) {
+                $('#txtOccOther').show();
+                $('#dvOccMore').show();
+            } else {
+                $('#txtOccOther').hide();
+                $('#dvOccMore').hide();
+            }
+        });
+
+        $('#ddlMediaName').change(function () {
+            var isFound = false;
+            for (var i = 0; i < $('#ddlMediaName').select2('data').length; i++) {
+                var otherTarget = $('#ddlMediaName').select2('data')[i].text;
+                if (otherTarget.indexOf("อื่นๆ") >= 0) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (isFound) {
+                $('#txtMediaOther').show();
+                $('#dvMediaMore').show();
+            } else {
+                $('#txtMediaOther').hide();
+                $('#dvMediaMore').hide();
+            }
+        });
+
+        $('#ddlPurposes').change(function () {
+            var isFound = false;
+            for (var i = 0; i < $('#ddlPurposes').select2('data').length; i++) {
+                var otherTarget = $('#ddlPurposes').select2('data')[i].text;
+                if (otherTarget.indexOf("อื่นๆ") >= 0) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (isFound) {
+                $('#txtPPOther').show();
+                $('#dvPPMore').show();
+            } else {
+                $('#txtPPOther').hide();
+                $('#dvPPMore').hide();
+            }
+        });
+
+        $('#ddlReasonName').change(function () {
+            var isFound = false;
+            for (var i = 0; i < $('#ddlReasonName').select2('data').length; i++) {
+                var otherTarget = $('#ddlReasonName').select2('data')[i].text;
+                if (otherTarget.indexOf("อื่นๆ") >= 0) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (isFound) {
+                $('#txtReasonOther').show();
+                $('#dvReasonMore').show();
+            } else {
+                $('#txtReasonOther').hide();
+                $('#dvReasonMore').hide();
+            }
+        });
+
+        $('#ddlTopic').change(function () {
+            var isFound = false;
+            for (var i = 0; i < $('#ddlTopic').select2('data').length; i++) {
+                var otherTarget = $('#ddlTopic').select2('data')[i].text;
+                if (otherTarget.indexOf("อื่นๆ") >= 0) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (isFound) {
+                $('#txtTopicOther').show();
+                $('#dvTopicOther').show();
+            } else {
+                $('#txtTopicOther').hide();
+                $('#dvTopicOther').hide();
+            }
+        });
+
+        //ddlDeveloper
+        function getDeveloper(thisID) {
+            var url = '@Url.Action("getDeveloper", "DMPS_CallVisit")';
+
+            $("#ddlDeveloper").empty();
+            $("#ddlDeveloper").select2({ data: null });
+
+            $.post(url,
+                {
+                    thisID: thisID,
+                }, function (result) {
+
+                    var foo = $.parseJSON(result);
+                    $("#ddlDeveloper").select2({ data: foo });
+                    $("#ddlDeveloper").select2("val", thisID);
+                    if (thisID != 0) {
+                        //ShowModalBlinding(thisID);
+                        //DisplayActivityDetail(CallVisitActivityID);
+                        DisplayActivityDetail(thisID);
+                        ClearDataActivityDetails();
+                        $("#ActivityDetailsModal").modal('show');
+                    } else {
+                        var msg = "";
+                        if (msg != "") {
+                            swal({
+                                title: "ผิดพลาด",
+                                text: msg,
+                                icon: "warning",
+                                button: "Ok"
+                            });
+
+                            $("#ActivityDetailsModal").modal('hide');
+                        } else {
+
+                            $("#ActivityDetailsModal").modal('show');
+                        }
+                    }
+                   
+
+
+
+                });
+
+        }
+
+        //ddlProject
+        $("#ddlDeveloper").change(function () {
+            var _ddlDeveloper = $("#ddlDeveloper").val();
+            SetProjectName(_ddlDeveloper, "ddlProjectName");
+        });
+
+        function SetProjectName(_ddlDeveloper, ddlProjectName) {
+            if (_ddlDeveloper != 0) {
+
+                var url = '@Url.Action("SetProjectName", "DMPS_CallVisit")';
+                $('#' + ddlProjectName).empty();
+                $('#' + ddlProjectName).select2({ data: null });
+
+                $.post(url,
+                    {
+                        _ddlDeveloper: _ddlDeveloper
+                    }, function (result) {
+
+                        var foo = $.parseJSON(result);
+                        $('#' + ddlProjectName).select2({ data: foo });
+                        $('#' + ddlProjectName).select2("val", 0);
+
+                        $('#' + ddlProjectName).attr("disabled", false);
+                    });
+            }
+            else {
+                $('#' + ddlProjectName).select2("val", 0);
+                $('#' + ddlProjectName).attr("disabled", true);
+
+            };
+
+        }
+
+        //district
+        $("#ddlRealAdressProvince").change(function () {
+            var _ProvinceID = $("#ddlRealAdressProvince").val();
+            SetDistinct(_ProvinceID, "ddlRealAdressDistrict", "ddlRealAdressSubDistrict");
+        });
+
+        $("#ddlWorkAdressProvince").change(function () {
+            var _ProvinceID = $("#ddlWorkAdressProvince").val();
+            SetDistinct(_ProvinceID, "ddlWorkAdressDistrict", "ddlWorkAdressSubDistrict");
+        });
+
+        //district and Province
+        $("#ddlRealAdressDistrict").change(function () {
+            $("#txtZipCode").val("");
+            document.getElementById("txtZipCode").disabled = false;
+
+            var _ProvinceID = $("#ddlRealAdressProvince").val();
+            var _DistinctID = $("#ddlRealAdressDistrict").val();
+
+            SetSubDistinct(_ProvinceID, _DistinctID, "ddlRealAdressSubDistrict");
+        });
+
+        $("#ddlWorkAdressDistrict").change(function () {
+            $("#txtZipCodeCom").val("");
+            document.getElementById("txtZipCodeCom").disabled = false;
+
+
+            var _ProvinceID = $("#ddlWorkAdressProvince").val();
+            var _DistinctID = $("#ddlWorkAdressDistrict").val();
+
+            SetSubDistinct(_ProvinceID, _DistinctID, "ddlWorkAdressSubDistrict");
+        });
+
+        //set ZipCode by string of subdistrict district and Province
+        $("#ddlRealAdressSubDistrict").change(function () {
+            document.getElementById("txtZipCode").disabled = false;
+            var _Province = $("#ddlRealAdressProvince").find("option:selected").text();
+            var _Distinct = $("#ddlRealAdressDistrict").find("option:selected").text();
+            var _SubDistinct = $("#ddlRealAdressSubDistrict").find("option:selected").text();
+            if ((_Province != "" && _Province != "Please Select")
+                && (_Distinct != "" && _Distinct != "Please Select")
+                && (_SubDistinct != "" && _SubDistinct != "Please Select")) {
+                SetZipCode(_Province, _Distinct, _SubDistinct);
+
+            }
+        });
+
+        //set ZipCode by string of subdistrict district and Province work
+        $("#ddlWorkAdressSubDistrict").change(function () {
+            document.getElementById("txtZipCodeCom").disabled = false;
+            var _Province = $("#ddlWorkAdressProvince").find("option:selected").text();
+            var _Distinct = $("#ddlWorkAdressDistrict").find("option:selected").text();
+            var _SubDistinct = $("#ddlWorkAdressSubDistrict").find("option:selected").text();
+            if ((_Province != "" && _Province != "Please Select")
+                && (_Distinct != "" && _Distinct != "Please Select")
+                && (_SubDistinct != "" && _SubDistinct != "Please Select")) {
+                SetZipCodeWork(_Province, _Distinct, _SubDistinct);
+
+            }
+        });
+
+        function SetZipCode(_Province, _Distinct, _SubDistinct) {
+            var url = '@Url.Action("SetZipcode", "DMPS_CallVisit")';
+
+            $.post(url, {
+                _Province: _Province.trim(),
+                _Distinct: _Distinct.trim(),
+                _SubDistinct: _SubDistinct.trim(),
+
+            }, function (result) {
+                var _result = $.parseJSON(result);
+                $("#txtZipCode").val(_result[0]);
+                if ($("#txtZipCode").val() != "") { document.getElementById("txtZipCode").disabled = true;}
+
+            });
+
+        }
+
+        function SetZipCodeWork(_Province, _Distinct, _SubDistinct) {
+            var url = '@Url.Action("SetZipCodeWork", "DMPS_CallVisit")';
+
+            $.post(url, {
+                _Province: _Province.trim(),
+                _Distinct: _Distinct.trim(),
+                _SubDistinct: _SubDistinct.trim(),
+
+            }, function (result) {
+                var _result = $.parseJSON(result);
+                $("#txtZipCodeCom").val(_result[0]);
+                if ($("#txtZipCodeCom").val() != "") { document.getElementById("txtZipCodeCom").disabled = true; }
+
+            });
+
+        }
+
+        function SetDistinct(_ProviceID, ddlAdressDistrictName, ddlAdressSubDistrictName) {
+            if (_ProviceID != 0) {
+
+                var url = '@Url.Action("getDistinct", "DMPS_CallVisit")';
+                $('#' + ddlAdressDistrictName).empty();
+                $('#' + ddlAdressDistrictName).select2({ data: null });
+
+                $.post(url,
+                    {
+                        ProviceID: _ProviceID
+                    }, function (result) {
+
+                        var foo = $.parseJSON(result);
+                        $('#' + ddlAdressDistrictName).select2({ data: foo });
+                        $('#' + ddlAdressDistrictName).select2("val", 0);
+
+                        $('#' + ddlAdressDistrictName).attr("disabled", false);
+                        $('#' + ddlAdressSubDistrictName).attr("disabled", true);
+                    });
+            }
+            else {
+                $('#' + ddlAdressDistrictName).select2("val", 0);
+                $('#' + ddlAdressDistrictName).attr("disabled", true);
+                $("#" + ddlAdressSubDistrictName).select2("val", 0);
+                $('#' + ddlAdressSubDistrictName).attr("disabled", true);
+            };
+
+        }
+
+        function SetSubDistinct(_ProviceID, _DistinctID, ddlAdressSubDistrictName) {
+            if (_ProviceID == "" || _ProviceID == null || _ProviceID == undefined || _DistinctID == "" || _DistinctID == null || _DistinctID == undefined) {
+                return;
+            }
+
+
+            if (_DistinctID != 0) {
+
+                var url = '@Url.Action("getSubDistinct", "DMPS_CallVisit")';
+                $('#' + ddlAdressSubDistrictName).empty();
+                $('#' + ddlAdressSubDistrictName).select2({ data: null });
+
+                $.post(url,
+                    {
+                        ProviceID: _ProviceID,
+                        DistinctID: _DistinctID
+                    }, function (result) {
+
+                        var foo = $.parseJSON(result);
+                        //console.log(foo)
+                        $('#' + ddlAdressSubDistrictName).select2({ data: null });
+                        $('#' + ddlAdressSubDistrictName).select2({ data: foo });
+                        $('#' + ddlAdressSubDistrictName).select2("val", 0);
+
+                        $('#' + ddlAdressSubDistrictName).attr("disabled", false);
+                    });
+            }
+            else {
+                $('#' + ddlAdressSubDistrictName).select2("val", 0);
+                $('#' + ddlAdressSubDistrictName).attr("disabled", false);
+            };
+
+        }
+
+        //select activity detail to delete
+        function SelectBeforeDelete(CallVisitActivityID) {
+
+            var msg = "";
+            if (CallVisitActivityID == 0 || CallVisitActivityID == undefined || CallVisitActivityID == null) {
+                msg = "กรุณาเลือก Activity Details ที่ต้องการ";
+
+            }
+
+            return msg;
+        }
+
+        //save form before add Activity Detail
+        /*function SaveBeforeAddActivityDetails(cvID) {
+             var msg = "";
+             if (cvID == 0 || cvID == undefined || cvID == null || cvID == "") {
+                 msg = "กรุณาบันทึกแบบสอบถามลูกค้าสนใจเช่า/ซื้อ ต่อห้องชุด ก่อนเพิ่ม Activity Details";
+
+             }
+
+             return msg;
+         }*/
+
+        //Add Activity Detail Before close pop up and project close
+        function AddActivityDetailBeforeClose(cvID, cvaID) {
+            var msg = "";
+            /* if (cvID != 0 && cvaID == 0) {
+                 msg = "กรุณาเพิ่ม Activity Details ";
+
+             }*/
+
+            if (cvaID != 0) {
+                var _ProjectID = "";
+                var ProjectID = "";
+                var ActivityID = "";
+                var isOK = false;
+
+                //loop find close activtiy in tableCallvisitactivity
+                for (var i = 0; i < $(".tdCallVisitActivityID").length; i++) {
+                    ProjectID = $(".tdProjectID")[i].innerHTML;
+                    ActivityID = $(".tdActivityID")[i].innerHTML;
+
+                    //check closeActivity
+                    if (ActivityID == 7 || ActivityID == 8) {
+                        _ProjectID = ProjectID;
+
+                        //loop to find poject == _ProjectID
+                        for (var j = 0; j < $(".tdCallVisitActivityID").length; j++) {
+                            // condition if projectid = projectid and activity != close activity return isOK
+                            if ($(".tdProjectID")[j].innerHTML == _ProjectID && $(".tdActivityID")[j].innerHTML != 8 && $(".tdActivityID")[j].innerHTML != 7) {
+                                isOK = true;
+                                break;
+                            }
+                        }
+                        //if notOK return msg
+                        if (!isOK)
+                            msg = "กรุณาเพิ่ม Activity ของลูกค้าแวะ หรือลูกค้าโทรในโครงการ ";
+
+                    }
+
+                }
+
+            }
+
+            return msg;
+        }
+
+        function ActivityUpdateValidate(cvaID) {
+            var msg = "";
+
+
+            for (var i = 0; i < $(".tdProjectName").length; i++) {
+                var ProjectID = $(".tdProjectID")[i].innerHTML;
+                var ActivityID = $(".tdActivityID")[i].innerHTML;
+                var CallVisitActivityID = $(".tdCallVisitActivityID")[i].innerHTML;
+                if ((cvaID != CallVisitActivityID) && $("#ddlProjectName").select2().val() == ProjectID && $("#ddlActivity").select2().val() == ActivityID) {
+                    msg = "Activity นี้มีอยู่แล้ว";
+                    break;
+                }
+                else if (($("#ddlActivity").select2().val() == 7 || $("#ddlActivity").select2().val() == 8) && $('#txtCurrentActivityID').val() != $("#ddlActivity").select2().val()) {
+                    for (var j = 0; j < $(".tdCallVisitActivityID").length; j++) {
+                        if ($(".tdProjectID")[j].innerHTML == $("#ddlProjectName").select2().val() && ($(".tdActivityID")[j].innerHTML == 7 || $(".tdActivityID")[j].innerHTML == 8) && cvaID != $(".tdCallVisitActivityID")[j].innerHTML) {
+                            msg = "โครงการนี้ปิดการติดตามไปแล้ว";
+                            break;
+                        }
+                    }
+                }
+
+            }
+
+            return msg;
+        }
+
+        function CheckDuplicateByName() {
+            var url = '@Url.Action("CheckDuplicateByName", "DMPS_CallVisit")';
+
+            var _Name = $("#txtName").val();
+            var _SurName = $("#txtSurName").val();
+
+            return $.post(url, {
+                _Name: _Name,
+                _SurName: _SurName,
+
+            });
+
+        }
+
+        function CheckDuplicateByTel() {
+            var url = '@Url.Action("CheckDuplicateByTel", "DMPS_CallVisit")';
+
+            var _Tel = $("#txtTel").val();
+            return $.post(url, {
+                _Tel: _Tel,
+
+
+            });
+        }
+
+        function CheckDuplicateByIDCard() {
+            var url = '@Url.Action("CheckDuplicateByIDCard", "DMPS_CallVisit")';
+
+            var _IDCard = $("#txtIDCard").val();
+            return $.post(url, {
+                _IDCard: _IDCard,
+
+            });
+        }
+
+        function validate() {
+            var msg = "";
+            var ProjectID = "";
+            var ActivityID = "";
+            if ($("#txtCallVisitActivityDetailsID").val() != 0) {
+                msg = ActivityUpdateValidate($("#txtCallVisitActivityDetailsID").val());
+            } else {
+                for (var i = 0; i < $(".tdProjectName").length; i++) {
+                    ProjectID = $(".tdProjectID")[i].innerHTML;
+                    ActivityID = $(".tdActivityID")[i].innerHTML;
+                    if ($("#ddlProjectName").select2().val() == ProjectID && $("#ddlActivity").select2().val() == ActivityID) {
+                        msg = "โครงการ และ Activity นี้มีอยู่แล้ว";
+                        break;
+                    }
+                    else if (($("#ddlActivity").select2().val() == 7 || $("#ddlActivity").select2().val() == 8)) {
+                        for (var j = 0; j < $(".tdCallVisitActivityID").length; j++) {
+                            if ($(".tdProjectID")[j].innerHTML == $("#ddlProjectName").select2().val() && ($(".tdActivityID")[j].innerHTML == 7 || $(".tdActivityID")[j].innerHTML == 8)) {
+                                msg = "โครงการนี้ปิดการติดตามไปแล้ว";
+                                break;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+
+            if ($("#ddlProjectName").select2().val() == 0) {
+                msg = "กรุณาเลือกชื่อโครงการ";
+            }
+            else if ($("#ddlActivity").select2().val() == 0) {
+                msg = "กรุณาเลือก Activity";
+            }
+
+            else if ($("#ActivityDate").val() == "") {
+                msg = "กรุณาเลือกวันที่";
+            }
+            else if ($("#ddlTopic").select2().val() == 0) {
+                msg = "กรุณาเลือกหัวข้อสนทนา";
+            }
+            else if ($("#ddlTopic").select2('data')[0].text.indexOf("อื่นๆ") >= 0 && $("#txtTopicOther").val() == "") {
+                msg = "เลือกอื่น ๆ กรุณาระบุหัวข้อสนทนา";
+            }
+            else if ($("#txtActivityDetailsOther").val() == "") {
+                msg = "กรุณากรอกรายเลียดลูกค้า"
+            }
+
+            return msg;
+        }
+
+        var m_msg = ""
+        function SaveValidate() {
+
+            var msg = "";
+            m_msg = "";
+           // setTimeout(function () {
+            var msgTel = CheckDuplicateByTel();
+            var msgName = CheckDuplicateByName();
+            var msgIDCard = CheckDuplicateByIDCard();
+
+            $.when(
+                msgTel, msgName, msgIDCard,
+            ).done(function (vMsgTel, vMsgName, vMsgIDCard) {
+
+                vMsgTel = $.parseJSON(vMsgTel[0]);
+                vMsgName = $.parseJSON(vMsgName[0]);
+                vMsgIDCard = $.parseJSON(vMsgIDCard[0]);
+
+                if ($("#txtName").val() == "" ) {
+                    msg = "ท่านยังไม่ได้กรอกข้อมูลชื่อ"
+
+                }
+
+                else if ($("#txtTel").val() == "") {
+                    msg = "ท่านยังไม่ได้กรอกข้อมูลเบอร์โทร"
+
+
+                }
+
+                //else if ($("#txtIDCard").val() == "" && ($("#chkForeign").is(":checked"))) {
+                //    msg = "กรุณากรอกเลขที่บัตร"
+
+
+                //}
+
+                else if ($("#txtIDCard").val().length != "" && $("#txtIDCard").val().length != 13 && !($("#chkForeign").is(":checked"))) {
+                    msg = "เลขบัตรประชาชนไม่ถูกต้อง"
+
+
+                }
+
+                else if ($("#txtIDCard").val().length == 13 && !($("#chkForeign").is(":checked"))) {
+                    if ($.trim($("#txtIDCard").val()) != '' && $("#txtIDCard").val().length == 13) {
+                        id = $("#txtIDCard").val().replace(/-/g, "");
+                        var result = Script_checkID(id);
+                        if (result === false) {
+                            msg = "เลขบัตรประชาชนไม่ถูกต้อง"
+
+                        }
+
+                    }
+                }
+
+                else if ((($("#txtName").val() != $("#txtChkName").val() && $("#txtSurName").val() != $("#txtChkSurName").val()) && vMsgName.length > 0)
+                    || ($("#txtTel").val() != $("#txtChkTel").val() && vMsgTel.length > 0)
+                    || ($("#txtIDCard").val() != $("#txtChkIDCard").val() && vMsgIDCard.length > 0)) {
+
+
+                    msg = "ข้อมูลชื่อ-นามสกุล เบอร์โทร หรือเลขบัตรประชาชนนี้มีอยู่ในระบบแล้ว"
+
+                }
+
+                //return msg;
+                m_msg = msg;
+            });
+
+          //}, 2000);
+
+
+        }
+
+        //SaveQuestionnaireCustomer
+        $("#btnSave").click(function () {
+
+            ShowHideLoading(1);
+
+            SaveValidate();
+            setTimeout(function () {
+                if (m_msg != "") {
+                    swal({
+                        title: "ผิดพลาด",
+                        text: m_msg,
+                        icon: "warning",
+                        button: "Ok"
+                    });
+
+                } else {
+                    swal({
+                        title: "ยืนยันการบันทึกข้อมูล?",
+                        text: "คุณต้องการบันทึกข้อมูลนี้",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#64dd54",
+                        confirmButtonText: "Yes, Save it!",
+                        closeOnConfirm: true
+                    }, function () {
+
+                        AddQuestionnaireCustomer();
+                        LoadDataListView($('#txttab').val(), null, null);
+                    });
+
+                }
+
+
+            }, 500);
+
+            ShowHideLoading(0);
+        });
+
+
+        //SaveQuestionnaireCustomer
+        /*$("#btnSave").click(function () {
+            var msg = "";
+            $.when(SaveValidate()).done(function () {
+                msg = SaveValidate();
+
+            if (msg != "") {
+                swal({
+                    title: "ผิดพลาด",
+                    text: msg,
+                    icon: "warning",
+                    button: "Ok"
+                });
+
+            } else {
+                swal({
+                    title: "ยืนยันการบันทึกข้อมูล?",
+                    text: "คุณต้องการบันทึกข้อมูลนี้",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#64dd54",
+                    confirmButtonText: "Yes, Save it!",
+                    closeOnConfirm: true
+                }, function () {
+
+                    AddQuestionnaireCustomer();
+                    LoadDataListView($('#txttab').val(), null, null);
+                });
+
+            }
+            });
+      }); */
+
+        //SavePopupActivitydetails
+        $("#btnAcitivityDetailsSave").click(function () {
+
+            var msg = validate();
+            if (msg != "") {
+                swal({
+                    title: "ผิดพลาด",
+                    text: msg,
+                    icon: "warning",
+                    button: "Ok"
+                });
+
+            } else {
+
+                swal({
+                    title: "ยืนยันการบันทึกข้อมูล?",
+                    text: "คุณต้องการบันทึกข้อมูลนี้",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#64dd54",
+                    confirmButtonText: "Yes, Save it!",
+                    closeOnConfirm: true
+                }, function () {
+
+                    AddCallVisitActivity();
+                    ClearDataActivityDetails();
+                    LoadDataListView($('#txttab').val(), null, null);
+                });
+
+            }
+        });
+
+
+        function AddQuestionnaireCustomer() {
+            var url = '@Url.Action("AddQuestionnaireCustomer", "DMPS_CallVisit")';
+
+            var isUpdate = false;
+            if ($("#txtCallvisitID").val() != 0) {
+                var _CVID = $("#txtCallvisitID").val();
+                isUpdate = true;
+
+            } else {
+                var _CVID = 0;
+            }
+
+            var _EmpID = $('#EmployeeID').data("emp-id");
+            var _SaleName = $("#ddlSaleName").select2().val();
+
+            var _CustomerName = $("#txtName").val();
+            var _CustomerSurName = $("#txtSurName").val();
+            var _CustomerTel = $("#txtTel").val();
+            var _CustomerEmail = $("#txtEmail").val();
+            var _CustomerLineID = $("#txtLineID").val();
+            if ($("#chkForeign").is(":checked")) {
+                var _IsForeign = true;
+            } else {
+                var _IsForeign = false;
+            }
+            var _IDCard = $("#txtIDCard").val();
+            var _Address = "";
+            var _Building = "";
+            var _Floor = "";
+            var _Moo = "";
+            var _Road = "";
+            var _Soi = "";
+            var _Province = 0;
+            var _District = 0;
+            var _SubDistrict = 0;
+            var _AddressDetails = "";
+            var _Country = "";
+            var _ZipCode = "";
+
+            if ($("#chkAddForeign").is(":checked")) {
+                 _AddressDetails = $("#txtRealAddressDetails").val();
+                 _Country = $("#ddlRealAddress2Country").select2().val();
+
+                _Address = "";
+                _Building = "";
+                _Floor = "";
+                _Moo = "";
+                _Road = "";
+                _Soi = "";
+                _ZipCode = "";
+                _Province = 0;
+                _District = 0;
+                _SubDistrict = 0;
+
+
+            } else {
+
+                _AddressDetails ="";
+                _Country = "THA";
+
+                _Address = $("#txtAddress").val();
+                _Building = $("#txtBuilding").val();
+                _Floor = $("#txtFloor").val();
+                _Moo = $("#txtMoo").val();
+                _Road = $("#txtRoad").val();
+                _Soi = $("#txtSoi").val();
+                if ($("#ddlRealAdressProvince").select2().val() == null || $("#ddlRealAdressProvince").select2().val() == undefined || $("#ddlRealAdressProvince").select2().val() == "") {
+                    _Province = 0;
+                    _District = 0;
+                    _SubDistrict = 0;
+
+                } else {
+                    _Province = $("#ddlRealAdressProvince").select2().val();
+
+                    if ($("#ddlRealAdressDistrict").select2().val() == null || $("#ddlRealAdressDistrict").select2().val() == undefined || $("#ddlRealAdressDistrict").select2().val() == "") {
+                        _District = 0;
+                    } else {
+                        _District = $("#ddlRealAdressDistrict").select2().val();
+                    }
+
+                    if ($("#ddlRealAdressSubDistrict").select2().val() == null || $("#ddlRealAdressSubDistrict").select2().val() == undefined || $("#ddlRealAdressSubDistrict").select2().val() == "") {
+                        _SubDistrict = 0;
+
+                    } else {
+                        _SubDistrict = $("#ddlRealAdressSubDistrict").select2().val();
+                    }
+
+                    //_Province = $("#ddlRealAdressProvince").select2().val();
+                    // if ($("#ddlRealAdressDistrict").select2().val() == null || $("#ddlRealAdressDistrict").select2().val() == undefined || $("#ddlRealAdressDistrict").select2().val() == "") {
+                    //     _District = 0;
+                    //     _SubDistrict = 0;
+                    //} else {
+                    //     _District = $("#ddlRealAdressDistrict").select2().val();
+                    //     if ($("#ddlRealAdressSubDistrict").select2().val() == null || $("#ddlRealAdressSubDistrict").select2().val() == undefined || $("#ddlRealAdressSubDistrict").select2().val() == "") {
+                    //         _SubDistrict = 0;
+
+                    //     } else {
+                    //         _SubDistrict = $("#ddlRealAdressSubDistrict").select2().val();
+                    //     }
+                    //}
+
+
+                }
+
+                _ZipCode = $("#txtZipCode").val();
+            }
+
+            var _Company = $("#txtCompany").val();
+            var _CompanyPosition = $("#txtPosition").val();
+            var _CompanyAddressDetails = "";
+            var _CompanyCountry = 0;
+            var _CompanyAddress = "";
+            var _CompanyBuilding = "";
+            var _CompanyFloor = "";
+            var _CompanyMoo = "";
+            var _CompanyRoad = "";
+            var _CompanySoi = "";
+            var _CompanyProvince = 0;
+            var _CompanyDistrict = 0;
+            var _CompanySubDistrict = 0;
+            var _CompanyZipCode = "";
+
+            if ($("#chkWorkAddForeign").is(":checked")) {
+                 _CompanyAddressDetails = $("#txtAddressCompanyDetails").val();
+                 _CompanyCountry = $("#ddlWorkAdressCountry").select2().val();
+
+                 _CompanyAddress = "";
+                 _CompanyBuilding = "";
+                 _CompanyFloor = "";
+                 _CompanyMoo = "";
+                 _CompanyRoad = "";
+                 _CompanySoi = "";
+                _CompanyProvince = 0;
+                _CompanyDistrict = 0;
+                _CompanySubDistrict = 0;
+
+                _CompanyZipCode = "";
+
+            } else {
+
+                _CompanyAddressDetails = "";
+                _CompanyCountry = "THA";
+
+                _CompanyAddress = $("#txtAddressCom").val();
+                _CompanyBuilding = $("#txtBuildingCom").val();
+                _CompanyFloor = $("#txtFloorCom").val();
+                _CompanyMoo = $("#txtMooCom").val();
+                _CompanyRoad = $("#txtRoadCom").val();
+                _CompanySoi = $("#txtSoiCom").val();
+                if ($("#ddlWorkAdressProvince").select2().val() == null || $("#ddlWorkAdressProvince").select2().val() == undefined || $("#ddlWorkAdressProvince").select2().val() == "") {
+                    _CompanyProvince = 0;
+                    _CompanyDistrict = 0;
+                    _CompanySubDistrict = 0;
+
+                } else {
+                    _CompanyProvince = $("#ddlWorkAdressProvince").select2().val();
+
+                    if ($("#ddlWorkAdressDistrict").select2().val() == null || $("#ddlWorkAdressDistrict").select2().val() == undefined || $("#ddlWorkAdressDistrict").select2().val() == "") {
+                        _CompanyDistrict = 0;
+                    } else {
+                        _CompanyDistrict = $("#ddlWorkAdressDistrict").select2().val();
+                    }
+
+                    if ($("#ddlWorkAdressSubDistrict").select2().val() == null || $("#ddlWorkAdressSubDistrict").select2().val() == undefined || $("#ddlWorkAdressSubDistrict").select2().val() == "") {
+                        _CompanySubDistrict = 0;
+                    } else {
+                        _CompanySubDistrict = $("#ddlWorkAdressSubDistrict").select2().val();
+                    }
+
+                }
+
+                 _CompanyZipCode = $("#txtZipCodeCom").val();
+            }
+
+
+            var _MaritalStatus = 0;
+            if ($("#ddlMaritalStatus").select2().val() != null && $("#ddlMaritalStatus").select2().val() != undefined && $("#ddlMaritalStatus").select2().val() != "") {
+                 _MaritalStatus = $("#ddlMaritalStatus").select2().val();
+            }
+
+            var _Ages = 0;
+            if ($("#ddlAges").select2().val() != null && $("#ddlAges").select2().val() != undefined && $("#ddlAges").select2().val() != "") {
+                 _Ages = $("#ddlAges").select2().val();
+            }
+
+            var _Occupations = 0;
+            var _OccupationsOther = "";
+            if ($("#ddlOccupations").select2().val() != null && $("#ddlOccupations").select2().val() != undefined && $("#ddlOccupations").select2().val() != "") {
+                _Occupations = $("#ddlOccupations").select2().val();
+                if ($("#ddlOccupations").select2('data')[0].text.indexOf("อื่นๆ") >= 0) {
+                    _OccupationsOther = $("#txtOccOther").val();
+                }
+            }
+
+            var _Salaries = 0;
+            if ($("#ddlSalaries").select2().val() != null && $("#ddlSalaries").select2().val() != undefined && $("#ddlSalaries").select2().val() != "") {
+                 _Salaries = $("#ddlSalaries").select2().val();
+            }
+
+            var _Budgets = 0;
+            if ($("#ddlBudgets").select2().val() != null && $("#ddlBudgets").select2().val() != undefined && $("#ddlBudgets").select2().val() != "") {
+                 _Budgets = $("#ddlBudgets").select2().val();
+
+            }
+
+            var _MediaID = "";
+            var _MediaOther = "";
+            if ($("#ddlMediaName").select2().val().length > 0) {
+                for (var i = 0; i < $("#ddlMediaName").select2().val().length; i++) {
+                    _MediaID += $("#ddlMediaName").select2().val()[i] + ",";
+                    if ($("#ddlMediaName").select2('data')[i].text.indexOf("อื่นๆ") >= 0) {
+                        _MediaOther += $("#txtMediaOther").val() + ",";
+                    } else {
+                        _MediaOther +=  ",";
+                    }
+
+                }
+                if (_MediaID.length > 0) {
+                    _MediaID = _MediaID.substring(0, _MediaID.length - 1);
+                    _MediaOther = _MediaOther.substring(0, _MediaOther.length - 1);
+                }
+
+            }
+
+            var _PurposesID = "";
+            var _PurposesOther = "";
+            if ($("#ddlPurposes").select2().val().length > 0) {
+                for (var i = 0; i < $("#ddlPurposes").select2().val().length; i++) {
+                    _PurposesID += $("#ddlPurposes").select2().val()[i] + ",";
+                    if ($("#ddlPurposes").select2('data')[i].text.indexOf("อื่นๆ") >= 0) {
+                        _PurposesOther += $("#txtPPOther").val() + ",";
+                    } else {
+                        _PurposesOther += ",";
+                    }
+
+                }
+                if (_PurposesID.length > 0) {
+                    _PurposesID = _PurposesID.substring(0, _PurposesID.length - 1);
+                    _PurposesOther = _PurposesOther.substring(0, _PurposesOther.length - 1);
+                }
+
+            }
+
+            var _ReasonID = "";
+            var _ReasonOther = "";
+            if ($("#ddlReasonName").select2().val().length > 0) {
+                for (var i = 0; i < $("#ddlReasonName").select2().val().length; i++) {
+                    _ReasonID += $("#ddlReasonName").select2().val()[i] + ",";
+                    if ($("#ddlReasonName").select2('data')[i].text.indexOf("อื่นๆ") >= 0) {
+                        _ReasonOther += $("#txtReasonOther").val() + ",";
+                    } else {
+                        _ReasonOther += ",";
+                    }
+
+                }
+                if (_ReasonID.length > 0) {
+                    _ReasonID = _ReasonID.substring(0, _ReasonID.length - 1);
+                    _ReasonOther = _ReasonOther.substring(0, _ReasonOther.length - 1);
+                }
+
+            }
+
+            var _CompareProject = "";
+            $('.Compare').each(function (i, obj) {
+                _CompareProject += $(this).val() + ",";
+
+            });
+
+            if (_CompareProject.length > 0) {
+                _CompareProject = _CompareProject.substring(0, _CompareProject.length - 1);
+            }
+
+            $.post(url, {
+                _CVID: _CVID,
+                _EmpID: _EmpID,
+                _SaleName: _SaleName,
+                _IsForeign: _IsForeign,
+                _CustomerName: _CustomerName.trim(),
+                _CustomerSurName: _CustomerSurName.trim(),
+                _CustomerTel: _CustomerTel.trim(),
+                _IDCard: _IDCard.trim(),
+                _CustomerEmail: _CustomerEmail.trim(),
+                _CustomerLineID: _CustomerLineID.trim(),
+                _AddressDetails: _AddressDetails.trim(),
+                _Country: _Country,
+                _Address: _Address.trim(),
+                _Building: _Building.trim(),
+                _Floor: _Floor.trim(),
+                _Moo: _Moo.trim(),
+                _Road: _Road.trim(),
+                _Soi: _Soi.trim(),
+                _Province: _Province,
+                _District: _District,
+                _SubDistrict: _SubDistrict,
+                _ZipCode: _ZipCode.trim(),
+                _Company: _Company.trim(),
+                _CompanyPosition: _CompanyPosition.trim(),
+                _CompanyAddressDetails: _CompanyAddressDetails.trim(),
+                _CompanyCountry: _CompanyCountry,
+                _CompanyAddress: _CompanyAddress.trim(),
+                _CompanyBuilding: _CompanyBuilding.trim(),
+                _CompanyFloor: _CompanyFloor.trim(),
+                _CompanyMoo: _CompanyMoo.trim(),
+                _CompanyRoad: _CompanyRoad.trim(),
+                _CompanySoi: _CompanySoi.trim(),
+                _CompanyProvince: _CompanyProvince,
+                _CompanyDistrict: _CompanyDistrict,
+                _CompanySubDistrict: _CompanySubDistrict,
+                _CompanyZipCode: _CompanyZipCode.trim(),
+                _MaritalStatus: _MaritalStatus,
+                _Ages: _Ages,
+                _Salaries: _Salaries,
+                _Budgets: _Budgets,
+                _Occupations: _Occupations,
+                _OccupationsOther: _OccupationsOther.trim(),
+                _MediaID: _MediaID,
+                _MediaOther: _MediaOther.trim(),
+                _PurposesID: _PurposesID,
+                _PurposesOther: _PurposesOther.trim(),
+                _ReasonID: _ReasonID,
+                _ReasonOther: _ReasonOther.trim(),
+                _CompareProject: _CompareProject,
+
+
+            }, function (result) {
+
+                var _CallVisitID = $.parseJSON(result);
+                $("#txtCallvisitID").val(_CallVisitID);
+
+                if (_CallVisitID != "") {
+                    AddPDPA(_CallVisitID, isUpdate);
+
+                }
+
+
+            });
+
+        }
+
+
+        function AddPDPA(_CallVisitID, isUpdate) {
+            var url = '@Url.Action("AddPDPA", "DMPS_CallVisit")';
+
+            if (_CallVisitID != 0) {
+                var _CallVisitID = _CallVisitID;
+            } else {
+                var _CallVisitID = 0;
+            }
+
+            var _EmpID = $('#EmployeeID').data("emp-id");
+            var id = "";
+            var _PDPAID = "";
+            //var rdo = "";
+            var RDO = "";
+            var _RDO = "";
+            var _Title = "";
+
+            $.each($("div[id^='dvPDPAID']"), function () {
+                id = $(this).html();
+                _PDPAID += $(this).html() + ",";
+                //rdo += $("#rdoAgree" + id).is(':checked') + "," + $("#rdoDisagree" + id).is(':checked') + ",";
+                RDO = $("#rdoAgree" + id).is(':checked') + "," + $("#rdoDisagree" + id).is(':checked');
+                _Title += $("#pPDPATitle" + id).data('tp') + ",";
+
+                if (RDO == "true,false") {
+                    _RDO += 1 + ",";
+                } else if (RDO == "false,true") {
+                    _RDO += 0 + ",";
+                } else {
+                    _RDO += "" +",";
+                }
+
+            });
+
+            if (_PDPAID.length > 0) {
+                _PDPAID = _PDPAID.substring(0, _PDPAID.length - 1);
+            }
+
+            if (_RDO.length > 0) {
+                _RDO = _RDO.substring(0, _RDO.length - 1);
+            }
+            _Title = _Title.replace(/\<h3>/g, '').replace(/\<\/h3>/g, '').replace(/\<b>/g, '').replace(/\<\/b>/g, '').replace(/\<p>/g, '').replace(/\<\/p>/g, '').replace(/\<br\/>/g, '');
+
+
+
+            $.post(url, {
+                _EmpID: _EmpID,
+                _CallVisitID: _CallVisitID,
+                _PDPAID: _PDPAID,
+                _RDO: _RDO,
+                _Title: _Title,
+                isUpdate: isUpdate,
+
+            }, function (result) {
+
+
+                if ($("#txtCallvisitID").val() != "") {
+                    if (isUpdate)
+                        UpdatePDPALog($("#txtCallvisitID").val());
+                    else
+                        InsertPDPALog($("#txtCallvisitID").val());
+                    setTimeout(function () {
+                        DisplayCallVisitPDPA($("#txtCallvisitID").val());
+                        swal({
+                            title: "Done",
+                            text: "บันทึกไฟล์เรียบร้อยแล้ว",
+                            icon: "success",
+                            button: "Ok"
+                        })
+
+                    }, 1000);
+
+
+                    LoadDataListView($('#txttab').val(), null, null);
+
+                } else {
+                    swal({
+                        title: "Error",
+                        text: "ไม่สามารถบันทึกไฟล์ได้",
+                        icon: "error",
+                        button: "Ok"
+                    })
+                }
+
+
+            });
+
+
+        }
+
+        function AddCallVisitActivity() {
+
+            var url = '@Url.Action("AddCallVisitActivity", "DMPS_CallVisit")';
+
+            var _EmpID = $('#EmployeeID').data("emp-id");
+
+            var _CallVisitID = $("#txtCallvisitID").val();
+
+            if ($("#txtCallVisitActivityDetailsID").val() != 0) {
+                var _CallVisitActivity = $("#txtCallVisitActivityDetailsID").val();
+            } else {
+                var _CallVisitActivity = 0;
+            }
+
+            var _DeveloperID = 0;
+            if ($("#ddlDeveloper").select2().val() != null && $("#ddlDeveloper").select2().val() != undefined && $("#ddlDeveloper").select2().val() != "") {
+                _DeveloperID = $("#ddlDeveloper").select2().val();
+            }
+
+            var _ProjectID = 0;
+            if ($("#ddlProjectName").select2().val() != null && $("#ddlProjectName").select2().val() != undefined && $("#ddlProjectName").select2().val() != "") {
+                _ProjectID = $("#ddlProjectName").select2().val();
+
+            }
+
+            var _ActivityID = 0;
+            if ($("#ddlActivity").select2().val() != null && $("#ddlActivity").select2().val() != undefined && $("#ddlActivity").select2().val() != "") {
+                _ActivityID = $("#ddlActivity").select2().val();
+            }
+
+            var _TopicID = 0;
+            var _TopicOther = "";
+            if ($("#ddlTopic").select2().val() != null && $("#ddlTopic").select2().val() != undefined && $("#ddlTopic").select2().val() != "") {
+                _TopicID = $("#ddlTopic").select2().val();
+                if ($("#ddlTopic").select2('data')[0].text.indexOf("อื่นๆ") >= 0) {
+                    _TopicOther = $("#txtTopicOther").val();
+                }
+            }
+
+            var _ActivityDate = ConvertString2DatetimeFormat($("#ActivityDate").val());
+            var _ActivityDetails = $("#txtActivityDetailsOther").val();
+
+
+            $.post(url, {
+                _EmpID: _EmpID,
+                _CallVisitID: _CallVisitID,
+                _CallVisitActivity: _CallVisitActivity,
+                _DeveloperID: _DeveloperID,
+                _ProjectID: _ProjectID,
+                _ActivityID: _ActivityID,
+                _TopicID: _TopicID,
+                _TopicOther: _TopicOther.trim(),
+                _ActivityDate: _ActivityDate,
+                _ActivityDetails: _ActivityDetails.trim(),
+
+            }, function (result) {
+
+                LoadDataActivityDetails($("#txtCallvisitID").val());
+                $("#ActivityDetailsModal").modal("hide");
+
+            });
+
+        }
+
+        function LoadDataActivityDetails(CallVisitID) {
+            var url = '@Url.Action("LoadDataActivityDetails", "DMPS_CallVisit")';
+
+            var _CallVisitID = CallVisitID;
+
+            $.post(url, {
+                _CallVisitID: _CallVisitID,
+
+            }, function (result) {
+                var obj = $.parseJSON(result);
+
+                $("#tbLoadDataActivityDetails").empty();
+
+                for (var i = 0; i < obj.length; i++) {
+
+                    //time at create
+                    var dtc = obj[i].ActivityDate;
+                    var dtcreate = dtc.substr(6, 10);
+
+                    var timescreate = dtcreate * 1000;
+                    var date = new Date(timescreate);
+                    var ActivityDate = date.format('dd/mm/yyyy');
+
+                    if (obj[i].TopicName.indexOf("อื่นๆ") >= 0) {
+                        topic = obj[i].TopicOther
+                    } else {
+                        topic = obj[i].TopicName
+                    }
+
+                    $("#tbLoadDataActivityDetails").append('<tr class="trLoadDataActivityDetails"><td>' + [i + 1]
+                        + '</td><td><button class="confirm-View btn-primary" data-id="' + obj[i].CallVisitActivityID +'"  type="button" style="margin-right: 1px;"><i class="fa fa-search"></i></td > '
+                        + '<td class="tdProjectID" hidden>' + obj[i].ProjectID + '</td>'
+                        + '<td class="tdCallVisitActivityID" hidden>' + obj[i].CallVisitActivityID + '</td>'
+                        + '<td class="tdchkboxIsdelete"><input type="checkbox" name="chkboxIsdelete" data-id="' + obj[i].CallVisitActivityID +'" class="chkboxIsdelete" style="transform: scale(1.5);margin-left: 7px;"/>&nbsp;&nbsp;</td>'
+                        + '<td class="tdProjectName" >' + obj[i].ProjectName + '</td>'
+                        + '<td class="tdAcitivityName" >' + obj[i].AcitivityName + '</td>'
+                        + '<td class="tdActivityID" hidden>' + obj[i].ActivityID + '</td>'
+                        + '<td class="tdtopic">' + topic + '</td>'
+                        + '<td class="tdActivityDetails">' + obj[i].ActivityDetails + '</td>'
+                        + '<td class="tdActivityDate" style="text-align: center;">' + ActivityDate + '</td>'
+                        + '<td class="tdCreatorName" style="text-align: center;">' + obj[i].CreatorName + '</td>'
+                        + '<td class="tdReviserName" style="text-align: center;">' + obj[i].ReviserName + '</td></tr>');
+
+                }
+
+
+
+                $('#tbLoadDataActivityDetails').on("click", ".confirm-View", function () {
+                    var CallVisitActivityID = $(this).data("id");
+                    getDeveloper(CallVisitActivityID);
+                    //DisplayActivityDetail(CallVisitActivityID);
+                    //ClearDataActivityDetails();
+                    //$("#ActivityDetailsModal").modal('show');
+                });
+
+                //ปุ่มลบActivityDetails
+                $("#btnDeleteActivityDetail").click(function () {
+                    var CallVisitActivityID = "";
+                    $.each($("input[name='chkboxIsdelete']:checked"), function () {
+                        CallVisitActivityID = $(this).data("id")
+                    });
+
+                    var msg = SelectBeforeDelete(CallVisitActivityID);
+                    if (msg != "") {
+                        swal({
+                            title: "ผิดพลาด",
+                            text: msg,
+                            icon: "warning",
+                            button: "Ok"
+                        });
+
+                    } else {
+                        swal({
+                            title: "ยืนยันการลบข้อมูล?",
+                            text: "คุณต้องการลบข้อมูลนี้",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#64dd54",
+                            confirmButtonText: "Yes, Delete it!",
+                            closeOnConfirm: true
+
+                        }, function () {
+                            var _CallVisitActivityID = "";
+                            $.each($("input[name='chkboxIsdelete']:checked"), function () {
+                                _CallVisitActivityID += $(this).data("id") + ",";
+
+                            });
+                            if (_CallVisitActivityID.length > 0) {
+                                _CallVisitActivityID = _CallVisitActivityID.substring(0, _CallVisitActivityID.length - 1);
+                            }
+
+                            DeleteActivityDetails(_CallVisitActivityID);
+
+                        });
+                    }
+
+                });
+
+                LoadDataListView($('#txttab').val(), null, null);
+
+            });
+        }
+
+        function DeleteActivityDetails(_CallVisitActivityID) {
+            var url = '@Url.Action("DeleteActivityDetails", "DMPS_CallVisit")';
+
+            $.post(url, {
+                _CallVisitActivityID: _CallVisitActivityID,
+
+            }, function (result) {
+
+                LoadDataActivityDetails($("#txtCallvisitID").val());
+
+                setTimeout(function () {
+                    swal({
+                        title: "Done",
+                        text: "ลบไฟล์เรียบร้อยแล้ว",
+                        icon: "success",
+                        button: "Ok"
+                    })
+                }, 1000);
+            });
+        }
+
+        function DisplayInfo(CallVisitID) {
+
+            var url = '@Url.Action("DisplayInfo", "DMPS_CallVisit")';
+
+            $.post(url, {
+                CallVisitID: CallVisitID,
+
+            }, function (result) {
+                var cv = $.parseJSON(result);
+
+                //time at create
+                var dtc = cv.CreateDateTime;
+                var dtcreate = dtc.substr(6, 10);
+
+                var timescreate = dtcreate * 1000;
+                var date = new Date(timescreate);
+                var dtcrate = date.format('dd/mm/yyyy');
+
+                //hidden
+                $("#txtChkName").val(cv.Name);
+                $("#txtChkSurName").val(cv.SurName);
+                $("#txtChkTel").val(cv.Tel);
+                $("#txtChkIDCard").val(cv.IDCard);
+
+                //setCallvisitIDforActivity
+                $("#txtCallvisitID").val(cv.CallVisitID);
+
+                $("#txtSaleName").val(cv.Creator);
+                $("#ddlSaleName").select2().val(cv.SaleCode).trigger("change");
+                $("#txtDate").val(dtcrate);
+                $("#txtName").val(cv.Name);
+                $("#txtSurName").val(cv.SurName);
+                $("#txtTel").val(cv.Tel);
+                $("#txtIDCard").val(cv.IDCard);
+                $("#txtEmail").val(cv.Email);
+                $("#txtLineID").val(cv.LineID);
+
+                if (cv.IsForeign == true ) {
+                    $("#chkForeign").prop('checked', true).trigger('change');
+                }
+
+
+                //AddresssDetails
+                if ((cv.CountryCode) != "THA") {
+                    $("#chkAddForeign").prop('checked', true).trigger('change');
+                    $("#txtRealAddressDetails").val(cv.Address);
+                    $("#ddlRealAddress2Country").select2().val(cv.CountryCode).trigger("change");
+                } else {
+                    $("#txtAddress").val(cv.Address);
+                    $("#txtBuilding").val(cv.Building);
+                    $("#txtFloor").val(cv.Floor);
+                    $("#txtMoo").val(cv.Moo);
+                    $("#txtRoad").val(cv.Road);
+                    $("#txtSoi").val(cv.Soi);
+                    $("#ddlRealAdressProvince").select2().val(cv.ProvinceID).trigger("change");
+                    setTimeout(
+                        function () {
+                            $("#ddlRealAdressDistrict").select2().val(cv.DistrictID).trigger("change");
+                            setTimeout(function () {
+                                $("#ddlRealAdressSubDistrict").select2().val(cv.SubDistrictID).trigger("change");
+                            }, 1000);
+                        }, 1500);
+
+                    $("#txtZipCode").val(cv.ZipCode);
+                }
+
+                $("#txtCompany").val(cv.CompanyName);
+                $("#txtPosition").val(cv.CompanyPosition);
+
+                //WorkAddresssDetails
+                if ((cv.CompanyCountryCode) != "THA") {
+                    $("#chkWorkAddForeign").prop('checked', true).trigger('change');
+                    $("#txtAddressCompanyDetails").val(cv.CompanyAddress);
+                    $("#ddlWorkAdressCountry").select2().val(cv.CompanyCountryCode).trigger("change");
+                } else {
+                    $("#txtAddressCom").val(cv.CompanyAddress);
+                    $("#txtBuildingCom").val(cv.CompanyBuilding);
+                    $("#txtFloorCom").val(cv.CompanyFloor);
+                    $("#txtMooCom").val(cv.CompanyMoo);
+                    $("#txtRoadCom").val(cv.CompanyRoad);
+                    $("#txtSoiCom").val(cv.CompanySoi);
+                    $("#ddlWorkAdressProvince").select2().val(cv.CompanyProvinceID).trigger("change");
+                    setTimeout(
+                        function () {
+                            $("#ddlWorkAdressDistrict").select2().val(cv.CompanyDistrictID).trigger("change");
+                            setTimeout(function () {
+                                $("#ddlWorkAdressSubDistrict").select2().val(cv.CompanySubDistrictID).trigger("change");
+                            }, 1000);
+                        }, 1500);
+                }
+
+                $("#txtZipCodeCom").val(cv.CompanyZipCode);
+
+                $("#ddlMaritalStatus").select2().val(cv.MaritalStatusID).trigger("change");
+                $("#ddlAges").select2().val(cv.AgeID).trigger("change");
+                $("#ddlSalaries").select2().val(cv.SalaryID).trigger("change");
+                $("#ddlBudgets").select2().val(cv.BudgetID).trigger("change");
+
+                $("#ddlOccupations").select2().val(cv.OccupationID).trigger("change");
+                $("#txtOccOther").val(cv.OtherOccupation);
+
+            });
+
+            DisplayCallVisitCompareProject(CallVisitID);
+            DisplayCallVisitMedia(CallVisitID);
+            DisplayCallVisitPurpose(CallVisitID);
+            DisplayCallVisitReason(CallVisitID);
+            //ShowAcitivity
+            LoadDataActivityDetails(CallVisitID);
+
+            //LoadMainPage
+            LoadDataListView($('#txttab').val(), null, null);
+        }
+
+        function DisplayCallVisitPDPA(CallVisitID) {
+            var url = '@Url.Action("DisplayCallVisitPDPA", "DMPS_CallVisit")';
+
+            $.post(url, {
+                CallVisitID: CallVisitID,
+
+            }, function (result) {
+                var pdpa = $.parseJSON(result);
+                for (var i = 0; i < pdpa.length; i++) {
+                    var PDPAStatus = pdpa[i].Status;
+                    var PDPAID = pdpa[i].PDPAID;
+
+                    if (PDPAStatus == false) {
+
+                        $("#rdoDisagree" + PDPAID).prop('checked', true);
+                        $("#dft" + PDPAID).html("false");
+                    }
+                    if (PDPAStatus == true) {
+
+                        $("#rdoAgree" + PDPAID).prop('checked', true);
+                        $("#dft" + PDPAID).html("true");
+
+                    }
+
+                }
+
+                LoadDataListView($('#txttab').val(), null, null);
+
+            });
+        }
+
+
+        function DisplayActivityDetail(CallVisitActivityID) {
+
+             var url = '@Url.Action("DisplayActivityDetail", "DMPS_CallVisit")';
+
+            $.post(url, {
+                CallVisitActivityID: CallVisitActivityID,
+
+            }, function (result) {
+                var obj = $.parseJSON(result);
+
+                //time at create
+                var dtc = obj.ActivityDate;
+                var dtcreate = dtc.substr(6, 10);
+
+                var timescreate = dtcreate * 1000;
+                var date = new Date(timescreate);
+                var ActivityDate = date.format('dd/mm/yyyy');
+
+                $("#txtCallVisitActivityDetailsID").val(obj.CallVisitActivityID);
+
+
+                setTimeout(
+                    function () {
+                        $('#ddlDeveloper').select2().val(obj.DevelopmentID).trigger('change');
+                        setTimeout(function () {
+                            $('#ddlProjectName').select2().val(obj.ProjectID).trigger('change');
+                        }, 1000);
+                    }, 1000);
+
+                $('#ddlActivity').select2().val(obj.ActivityID).trigger('change');
+                $('#ddlTopic').select2().val(obj.TopicID).trigger('change');
+
+                $('#ActivityDate').val(ActivityDate);
+                $('#txtCurrentActivityID').val(obj.ActivityID);
+
+                $('#txtTopicOther').val(obj.TopicOther);
+                $('#txtActivityDetailsOther').val(obj.ActivityDetails);
+
+            });
+        }
+
+        function DisplayCallVisitCompareProject(CallVisitID) {
+            var url = '@Url.Action("DisplayCallVisitCompareProject", "DMPS_CallVisit")';
+
+            $.post(url, {
+                CallVisitID: CallVisitID,
+
+            }, function (result) {
+                var cp = $.parseJSON(result);
+                if (cp.length > 0) {
+                    cp = cp.substring(0, cp.length - 1);
+                }
+                cps = cp.split(",");
+                for (var i = 0; i < cps.length; i++){
+                    /*if (i == 0) {
+                        $("#Compare1").val(cps[i]);
+                    } else if (i == 1) {
+                        $("#Compare2").val(cps[i]);
+                    } else if (i == 2) {
+                        $("#Compare3").val(cps[i]);
+                    }*/
+
+                    $("#Compare" + (i+1)).val(cps[i]);
+
+                }
+
+                /*$('.Compare').each(function (i, obj) {
+                    $(this).val(cps[i]);
+                });*/
+
+            });
+        }
+
+        function DisplayCallVisitMedia(CallVisitID) {
+            var url = '@Url.Action("DisplayCallVisitMedia", "DMPS_CallVisit")';
+
+            $.post(url, {
+                CallVisitID: CallVisitID,
+
+            }, function (result) {
+                var cm = $.parseJSON(result);
+                var tmp = [];
+                for (var i = 0; i < cm.length; i++) {
+                    tmp.push(cm[i].MediaID);
+                    if (cm[i].Other != "") {
+                        $('#txtMediaOther').val(cm[i].Other);
+                    }
+                }
+                $('#ddlMediaName').select2().val(tmp).trigger('change');
+            });
+        }
+
+        function DisplayCallVisitPurpose(CallVisitID) {
+            var url = '@Url.Action("DisplayCallVisitPurpose", "DMPS_CallVisit")';
+
+            $.post(url, {
+                CallVisitID: CallVisitID,
+
+            }, function (result) {
+                var pp = $.parseJSON(result);
+                var tmp = [];
+                for (var i = 0; i < pp.length; i++) {
+                    tmp.push(pp[i].PurposeID);
+                    if (pp[i].Other != "") {
+                        $('#txtPPOther').val(pp[i].Other);
+                    }
+                }
+                $('#ddlPurposes').select2().val(tmp).trigger('change');
+            });
+        }
+
+        function DisplayCallVisitReason(CallVisitID) {
+            var url = '@Url.Action("DisplayCallVisitReason", "DMPS_CallVisit")';
+
+            $.post(url, {
+                CallVisitID: CallVisitID,
+
+            }, function (result) {
+                var cr = $.parseJSON(result);
+                var tmp = [];
+                for (var i = 0; i < cr.length; i++) {
+                    tmp.push(cr[i].ReasonID);
+                    if (cr[i].Other != "") {
+                        $('#txtReasonOther').val(cr[i].Other);
+                    }
+                }
+                $('#ddlReasonName').select2().val(tmp).trigger('change');
+            });
+        }
+
+        $('#DataListView').on("click", ".confirm-View", function () {
+            var CallVisitID = $(this).data("id");
+            ClearDataQuestionnaireCustomer();
+            DisplayInfo(CallVisitID);
+            DisplayCallVisitPDPA(CallVisitID);
+            $("#modCallVisit").modal('show');
+
+
+        });
+
+        $('#DataListView').on("click", ".tabshow", function () {
+            $('#txttab').val($(this).data("tab"));
+            LoadDataListView($(this).data("tab"), null, null);
+        });
+
+        function checkshowTab() {
+            if ($('#txttab').val() == "Lead") {
+                document.getElementById('Lead').className = "active";
+                $('#Lead').css('background', 'white');
+            } else if ($('#txttab').val() == "Call") {
+                document.getElementById('Call').className = "active";
+                $('#Call').css('background', 'white');
+            } else if ($('#txttab').val() == "Walk") {
+                document.getElementById('Walk').className = "active";
+                $('#Walk').css('background', 'white');
+            }
+        }
+
+         function LoadDataListView(mode, _Sdate, _Edate) {
+
+            ShowHideLoading(1);
+             var url = '@Url.Action("LoadDataListView", "DMPS_CallVisit")';
+
+            var NameSeach = $("#txtNameSeach").val();
+            var SurNameSeach =  $("#txtSurNameSeach").val();
+            var TelSeach = $("#txtTelSeach").val();
+            var IDCardSeach = $("#txtIDCardSeach").val();
+
+
+            $('#DataListView').load(url,
+            {
+                IsshowTab: mode,
+                SDate: _Sdate,
+                EDate: _Edate,
+                NameSeach: NameSeach,
+                SurNameSeach: SurNameSeach,
+                TelSeach: TelSeach,
+                IDCardSeach: IDCardSeach,
+            }, function (result) {
+                checkshowTab();
+                $('.dataTableLead').DataTable({
+                    dom: '<"html5buttons"B>lTfgitp',
+                    //dom: 'Bfrtip',
+                    "scrollX": true,
+                    "sScrollX": "2500px",
+                    "autoWidth": true,
+                    "order": [0, "asc"],
+                    buttons: [
+
+                        { extend: 'excel', title: 'Data Export' }
+
+                    ]
+                });
+
+                $('.dataTableCall').DataTable({
+                    dom: '<"html5buttons"B>lTfgitp',
+                    //dom: 'Bfrtip',
+                    "scrollX": true,
+                    "sScrollX": "2500px",
+                    "autoWidth": true,
+                    "order": [0, "asc"],
+                    buttons: [
+
+                        { extend: 'excel', title: 'Data Export' }
+
+                    ]
+                });
+
+                $('.dataTableWalk').DataTable({
+                    //pageLength: 10,
+                    dom: '<"html5buttons"B>lTfgitp',
+                    "scrollX": true,
+                    "sScrollX": "2500px",
+                    "autoWidth": true,
+                    "order": [0, "asc"],
+                    buttons: [
+                        { extend: 'excel', title: 'Data Export' }
+                    ]
+                });
+
+
+                ShowHideLoading(0);
+
+
+            });
+        }
+
+        function ClearDataQuestionnaireCustomer() {
+            $("#tbLoadDataActivityDetails").empty();
+
+            $("#txtCallvisitID").val("");
+            var Displayname = $('#lblDisplayname').html().split(":");
+            var _Displayname = Displayname[1].trim();
+            $("#txtSaleName").val(_Displayname);
+
+            //$('#ddlSaleName').select2("val", $('#ddlSaleName option:eq(0)').val()).change();
+            $('#ddlSaleName').select2().val($('#ddlSaleName option:eq(0)').val()).trigger("change");
+
+            //$("#ddlSaleName").select2().val(0).trigger("change");
+
+            //$("#txtSaleName").val($('#lblDisplayname').html().substring(11, 999));
+            //var date = new Date().format('dd/mm/yyyy');
+            //$("#txtDate").val(date);
+            //$("#txtDate").val(new Date().toJSON().slice(0, 10));
+
+            //hidden
+            $("#txtChkName").val("");
+            $("#txtChkSurName").val("");
+            $("#txtChkTel").val("");
+            $("#txtChkIDCard").val("");
+
+            $("#txtName").val("");
+            $("#txtSurName").val("");
+            $("#txtTel").val("");
+            $("#txtIDCard").val("");
+            $("#txtEmail").val("");
+            $("#txtLineID").val("");
+
+            $("#chkForeign").prop('checked', false).trigger('change');
+
+            //AddresssDetails
+            if ($("#txtCallvisitID").val() == "") {
+                $("#chkAddForeign").prop('checked', false).trigger('change');
+                $("#txtRealAddressDetails").val("");
+                $("#ddlRealAddress2Country").select2().val("").trigger("change");
+
+                $("#txtAddress").val("");
+                $("#txtBuilding").val("");
+                $("#txtFloor").val("");
+                $("#txtMoo").val("");
+                $("#txtRoad").val("");
+                $("#txtSoi").val("");
+                $("#ddlRealAdressProvince").select2().val("").trigger("change");
+                $("#ddlRealAdressDistrict").select2().val("").trigger("change");
+                $("#ddlRealAdressSubDistrict").select2().val("").trigger("change");
+                $("#txtZipCode").val("");
+            }
+
+            $("#txtCompany").val("");
+            $("#txtPosition").val("");
+
+            //WorkAddresssDetails
+            if ($("#txtCallvisitID").val() == "") {
+                $("#chkWorkAddForeign").prop('checked', false).trigger('change');
+                $("#txtAddressCompanyDetails").val("");
+                $("#ddlWorkAdressCountry").select2().val("").trigger("change");
+                $("#txtAddressCom").val("");
+                $("#txtBuildingCom").val("");
+                $("#txtFloorCom").val("");
+                $("#txtMooCom").val("");
+                $("#txtRoadCom").val("");
+                $("#txtSoiCom").val("");
+                $("#ddlWorkAdressProvince").select2().val("").trigger("change");
+                $("#ddlWorkAdressDistrict").select2().val("").trigger("change");
+                $("#ddlWorkAdressSubDistrict").select2().val("").trigger("change");
+                $("#txtZipCodeCom").val("");
+            }
+
+            $("#ddlMaritalStatus").select2().val("").trigger("change");
+            $("#ddlAges").select2().val("").trigger("change");
+            $("#ddlSalaries").select2().val("").trigger("change");
+            $("#ddlBudgets").select2().val("").trigger("change");
+
+            $("#ddlOccupations").select2().val("").trigger("change");
+            $("#txtOccOther").val("");
+
+            $("#Compare1").val("");
+            $("#Compare2").val("");
+            $("#Compare3").val("");
+
+            $('#txtMediaOther').val("");
+            $('#ddlMediaName').select2().val(0).trigger('change');
+
+            $('#txtPPOther').val("");
+            $('#ddlPurposes').select2().val(0).trigger('change');
+
+            $('#txtReasonOther').val("");
+            $('#ddlReasonName').select2().val(0).trigger('change');
+
+
+            ClearDataActivityDetails();
+            PDPADisplayInfo();
+        }
+
+
+
+        function ClearDataActivityDetails() {
+
+            $('#ddlDeveloper').select2().val("").trigger('change');
+            $('#ddlProjectName').select2().val("").trigger('change');
+            $('#ddlActivity').select2().val("").trigger('change');
+            $('#ddlTopic').select2().val("").trigger('change');
+
+            $('#ActivityDate').val("");
+            $('#txtTopicOther').val("");
+            $('#txtActivityDetailsOther').val("");
+            $("#txtCallVisitActivityDetailsID").val("");
+            $('#txtCurrentActivityID').val("");
+
+
+        }
+
+
+        function PDPADisplayInfo() {
+            var url = '@Url.Action("PDPADisplayInfo", "DMPS_CallVisit")';
+
+            var _Isdelete = false;
+
+            $.post(url, {
+                _Isdelete: _Isdelete,
+
+            }, function (result) {
+                var obj = $.parseJSON(result);
+                $("#dvPDPA").empty();
+                for (var i = 0; i < obj.length; i++) {
+
+
+                    $("#dvPDPA").append('<div id="dvPDPAID' + obj[i].PDPAID + '" style="display:none">' + obj[i].PDPAID + '</div><div class="row">'
+                        + '<div class="col-md-12" id="dft' + obj[i].PDPAID + '" hidden></div>'
+                        + '<div class="col-md-12" style="padding-top: 15px; padding-left: 3pc; width: 100%; height: 100px; overflow-y: scroll;"><p id="pPDPATitle' + obj[i].PDPAID + '" data-tp="' + obj[i].PDPATitle + '">'
+                        + obj[i].PDPATitle + '</p></div >'
+                        + ' <div class="col-md-12" style="padding-left: 3pc; padding-top: 10px; width: 50pc;">'
+                        + ' <input type="radio" id="rdoAgree' + obj[i].PDPAID + '" name="Radio' + obj[i].PDPAID + '" value="Agree"><label for="rdoAgree' + obj[i].PDPAID + '">&nbsp;&nbsp;ยินยอม</label>'
+                        + ' &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="rdoDisagree' + obj[i].PDPAID + '" name="Radio' + obj[i].PDPAID + '" value="Disagree"><label for="rdoDisagree' + obj[i].PDPAID + '">&nbsp;&nbsp;ไม่ยินยอม</label> &nbsp;&nbsp;</div></div><hr />');
+
+                }
+
+
+            });
+        }
+
+
+
+        function InsertPDPALog(_CallVisitID){
+             var url = '@Url.Action("InsertPDPALog", "DMPS_CallVisit")';
+
+            var _EmpID = $('#EmployeeID').data("emp-id");
+
+            var _PDPAID = "";
+            var RDO = "";
+            var _RDO = "";
+            var _Title = "";
+
+
+            $.each($("div[id^='dvPDPAID']"), function () {
+                id = $(this).html();
+                _PDPAID += $(this).html() + ",";
+                RDO = $("#rdoAgree" + id).is(':checked') + "," + $("#rdoDisagree" + id).is(':checked');
+                _Title += $("#pPDPATitle" + id).data('tp') + ",";
+
+
+                if (RDO == "true,false") {
+                    _RDO += 1 + ",";
+                } else if (RDO == "false,true") {
+                    _RDO += 0 + ",";
+                } else {
+                    _RDO += "" + ",";
+                }
+
+            });
+
+            if (_PDPAID.length > 0) {
+                _PDPAID = _PDPAID.substring(0, _PDPAID.length - 1);
+            }
+
+            if (_RDO.length > 0) {
+                _RDO = _RDO.substring(0, _RDO.length - 1);
+            }
+
+            if (_Title.length > 0) {
+                _Title = _Title.substring(0, _Title.length - 1);
+            }
+
+            _Title = _Title.replace(/\<h3>/g, '').replace(/\<\/h3>/g, '').replace(/\<b>/g, '').replace(/\<\/b>/g, '').replace(/\<p>/g, '').replace(/\<\/p>/g, '').replace(/\<br\/>/g, '');
+
+            $.post(url, {
+                _EmpID: _EmpID,
+                _CallVisitID: _CallVisitID,
+                _PDPAID: _PDPAID,
+                _RDO: _RDO,
+                _Title: _Title
+            }, function (result) {
+
+            });
+        }
+
+
+        function UpdatePDPALog(_CallVisitID){
+             var url = '@Url.Action("UpdatePDPALog", "DMPS_CallVisit")';
+
+
+            var _EmpID = $('#EmployeeID').data("emp-id");
+
+            var _PDPAID = "";
+            var _RDO = "";
+            var _Title = "";
+            var dft = "";
+
+            $.each($("div[id^='dvPDPAID']"), function () {
+                id = $(this).html();
+                _Title += $("#pPDPATitle" + id).data('tp') + ",";
+                dft = $("#dft" + id).html();
+
+                if (
+                    (dft == "false" && $("#rdoDisagree" + id).is(':checked') != true)
+                    || (dft == "true" && $("#rdoAgree" + id).is(':checked') != true)
+                    || (dft == "" && ($("#rdoAgree" + id).is(':checked') != false || $("#rdoDisagree" + id).is(':checked') != false))
+                    )
+                {
+
+                    //เปลี่ยน
+                    if ($("#rdoAgree" + id).is(':checked') == true) {
+                        _RDO += 1 + ",";
+                    } else if ($("#rdoDisagree" + id).is(':checked') == true) {
+                        _RDO += 0 + ",";
+                    } else {
+                        _RDO += "" + ",";
+                    }
+
+                    _PDPAID += $("#dvPDPAID" + id).html() + ",";
+
+                }
+
+            });
+
+
+            if (_PDPAID.length > 0) {
+                _PDPAID = _PDPAID.substring(0, _PDPAID.length - 1);
+            }
+
+            if (_RDO.length > 0) {
+                _RDO = _RDO.substring(0, _RDO.length - 1);
+            }
+
+            if (_Title.length > 0) {
+                _Title = _Title.substring(0, _Title.length - 1);
+            }
+
+            _Title = _Title.replace(/\<h3>/g, '').replace(/\<\/h3>/g, '').replace(/\<b>/g, '').replace(/\<\/b>/g, '').replace(/\<p>/g, '').replace(/\<\/p>/g, '').replace(/\<br\/>/g, '');
+
+            $.post(url, {
+                _EmpID: _EmpID,
+                _CallVisitID: _CallVisitID,
+                _PDPAID: _PDPAID,
+                _RDO: _RDO,
+                _Title: _Title
+            }, function (result) {
+
+            });
+        }
+
+
+        /*======================================================= Loading ========================================================*/
+        function ShowHideLoading(_isShow) {
+            if (_isShow == 1) {
+                $('body').waitMe({
+                    effect: 'progressBar',
+                    text: 'Please wait..',
+                    color: '#000',
+                    maxSize: '',
+                    waitTime: -1,
+                    textPos: 'vertical',
+                });
+            } else {
+                $('body').waitMe("hide");
+            }
+        }
+        /*======================================================= End Loading ========================================================*/
+
+
+    });
+</script>

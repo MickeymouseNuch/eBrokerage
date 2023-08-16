@@ -1,0 +1,173 @@
+﻿
+<div class="modal inmodal fade" id="myModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:10px">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                @* --------------------------------Modal Heading 1------------------------------------- *@
+                <div class="row">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-8">
+                        <h4 class="modal-title">ส่วนกลางโครงการ</h4>
+                    </div>
+                    <div class="col-lg-2">
+                    </div>
+                </div>
+                @* --------------------------------End Modal Heading 1---------------------------------- *@
+            </div>
+            @* --------------------------------End Modal Heading 2---------------------------------- *@
+            <div class="modal-body" style="padding-bottom:0px">
+                <div class="row" id="row">
+                    <div class="col-sm-12">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Panel Header Desc</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-3" style="text-align:right">
+                                                        <label id="lbl" class="" style="padding-top:5px">ส่วนกลาง : <b style="color:red">*</b></label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" id="txtFacilityDesc" class="form-control input-mini" />
+                                                        <input type="text" id="txtChkFacilityDesc" hidden />
+                                                    </div>
+                                                    <div hidden="hidden">
+                                                        <input type="text" id="txtFacilityID" class="form-control input-mini" />
+                                                    </div>
+                                                </div>
+                                                <br />
+                                               <div class="row">
+                                                    <div class="col-lg-3" style="text-align:right">
+                                                        <label id="lbl" class="" style="padding-top:5px">ลบข้อมูล : </label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="checkbox i-checks"><input type="checkbox" class="clsCheckInActive" id="chkIsdelete" checked style="padding-top: 5px;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @* ------------------------------------ ผู้สร้างงาน ------------------------------------ *@
+                <div class="row" id="rowCreater">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordionCreator" href="#collapseCreator" style="text-align:left" aria-expanded="false">ข้อมูลผุ้สร้าง</a>
+                                </h5>
+                            </div>
+                            <div id="collapseCreator" class="panel-collapse collapse cFootbar" aria-expanded="false">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-4" style="text-align:right">
+                                            <label style="padding-top:5px" class="pull-right"> </label>
+                                            <label id="" data-id="" style="padding-top:5px" class="pull-right">ชื่อ-นามสกุล</label>
+                                        </div>
+                                        <div class="col-lg-4" style="text-align:left">
+                                            <input type="text" id="txtCreator" class="form-control lstDocumentStatusName" readonly="readonly" value="" name="txtCreator" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-lg-4" style="text-align:right">
+                                            <label style="padding-top:5px" class="pull-right"> </label>
+                                            <label id="" data-id="" style="padding-top:5px" class="pull-right">บริษัท</label>
+                                        </div>
+                                        <div class="col-lg-4" style="text-align:left">
+                                            <input type="text" id="txtCreatorCompany" class="form-control lstDocumentStatusName" readonly="readonly" value="" name="txtCreatorCompany" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-lg-4" style="text-align:right">
+                                            <label style="padding-top:5px" class="pull-right"> </label>
+                                            <label id="" data-id="" style="padding-top:5px" class="pull-right">วันที่</label>
+                                        </div>
+                                        <div class="col-lg-4" style="text-align:left">
+                                            <input type="text" id="txtCreateDateTime" class="form-control lstDocumentStatusName" readonly="readonly" value="" name="txtCreateDateTime" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* -------------------------------------------------------------------------------------------- *@
+
+                @* ------------------------------------ ผู้แก้ไขงาน ------------------------------------ *@
+                <div class="row" id="rowReviser">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordionReviser" href="#collapseReviser" style="text-align:left" aria-expanded="true">ข้อมูลผู้แก้ไข</a>
+                                </h5>
+                            </div>
+                            <div id="collapseReviser" class="panel-collapse collapse cFootbar" aria-expanded="true">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-4" style="text-align:right">
+                                            <label style="padding-top:5px" class="pull-right"> </label>
+                                            <label id="" data-id="" style="padding-top:5px" class="pull-right">ชื่อ-นามสกุล</label>
+                                        </div>
+                                        <div class="col-lg-4" style="text-align:left">
+                                            <input type="text" id="txtReviser" class="form-control lstDocumentStatusName" readonly="readonly" value="" name="txtReviser" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-lg-4" style="text-align:right">
+                                            <label style="padding-top:5px" class="pull-right"> </label>
+                                            <label id="" data-id="" style="padding-top:5px" class="pull-right">บริษัท</label>
+                                        </div>
+                                        <div class="col-lg-4" style="text-align:left">
+                                            <input type="text" id="txtReviserCompany" class="form-control lstDocumentStatusName" readonly="readonly" value="" name="txtReviserCompany" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-lg-4" style="text-align:right">
+                                            <label style="padding-top:5px" class="pull-right"> </label>
+                                            <label id="" data-id="" style="padding-top:5px" class="pull-right">วันที่</label>
+                                        </div>
+                                        <div class="col-lg-4" style="text-align:left">
+                                            <input type="text" id="txtReviserDateTime" class="form-control lstDocumentStatusName" readonly="readonly" value="" name="txtReviserDateTime" />
+                                        </div>
+                                    </div>
+
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* -------------------------------------------------------------------------------------------- *@
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-lg-12 text-right">
+                        <button id="btnSave" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
+                        <button id="btnClose" class="btn btn-default"><i class="fa fa-close"></i>&nbsp;&nbsp;Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,385 @@
+﻿
+@* ----------------------------------------------------Is Head Page List-------------------------------------------------------------- *@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <h3 style="margin-bottom:5px"><label id="application"></label></h3>
+        <ol class="breadcrumb">
+            <li>
+                @* url on click back to page *@
+                <a id="Back2Menu" data-url-back="'@Url.Action("ViewName","ControllerName")'" href="#">ข้อมูล Master</a>
+            </li>
+            <li class="active">
+                <strong>Developer</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action">
+            <button id="btnAddNew" class="btn btn-primary btnAddNew"><i class="fa fa-plus-square"></i>&nbsp;&nbsp; Add New</button>
+        </div>
+    </div>
+</div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ----------------------------------------------------Is Searching Tab--------------------------------------------------------------- *@
+<div class="wrapper wrapper-content animated fadeInRight" style="padding-bottom: 0px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Search</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-4" style="text-align:right;margin-top:10px;">
+                            <label class="" style="padding-top: 5px; font-size: 12px;">ค้นหา : </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="SearcheName" name="SearchName" class="form-control " data-id="" value="" maxlength="500" />
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" id="btnSearch" class="btn btn-primary" style="margin-left:10px;"><i class="fa fa-search"></i>&nbsp;&nbsp; Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ----------------------------------------------------Is Searching Tab--------------------------------------------------------------- *@
+<div id="DataListView"></div>
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@* ------------------------------------------------------Is Modal Tab----------------------------------------------------------------- *@
+@Html.Partial("LoadModal")
+@* ----------------------------------------------------------------------------------------------------------------------------------- *@
+
+@*----------------------- Import CSS---------------------- *@
+@Styles.Render("~/plugins/dataPickerStyles")
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+@Styles.Render("~/plugins/select2Styles")
+@Styles.Render("~/plugins/sweetAlertStyles")
+@Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+@*-------------------------------------------------------- *@
+
+@*------------------ Import JavaScript-------------------- *@
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/dataTables")
+@Scripts.Render("~/plugins/select2")
+@Scripts.Render("~/plugins/sweetAlert")
+@Scripts.Render("~/plugins/iCheck")
+@*-------------------------------------------------------- *@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //--------------------------------------------------On Load-------------------------------------------------//
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+
+        $(".select2_ddlClass1,.select2_ddlClass2").select2();
+        $('.select2-container').css("z-index", "auto");
+
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+        //-----------------------------------------------End On Load-------------------------------------------------//
+
+        //--------------------------------------------------On Search-------------------------------------------------//
+        $("#SearcheName").keyup(function (event) {
+            if (event.keyCode === 13) {
+                $("#btnSearch").click();
+            }
+        });
+
+        $('#btnSearch').click(function () {
+            LoadDataListView(0);
+        });
+
+        LoadDataListView(0);
+
+        function LoadDataListView(_id) {
+            var EmpID = $("#EmployeeID").data("emp-id");
+
+            var _SearcheName = $("#SearcheName").val();
+
+
+            var url = '@Url.Action("LoadDataListView", "DMPS_MasterDevelopper")';
+            $('#DataListView').load(url,
+             {
+                 _SearcheName: _SearcheName,
+                 _id: _id,
+
+             }, function (result) {
+                 $('.dataTables-example').DataTable({
+                     //"order": [[0, "asc"]],
+                     //"scrollX": true,
+                     //"sScrollX": "3000px",
+                     "autoWidth": true,
+                     dom: '<"html5buttons"B>lTfgitp',
+                     buttons: [
+                         { extend: 'excel', title: 'ExcelFile' },
+                     ]
+                 });
+             });
+        }
+        //-------------------------------------------------End On Search-------------------------------------------------//
+
+        //--------------------------------------------------On Binding-------------------------------------------------//
+        $('#btnAddNew').click(function () {
+            ShowModalBlinding(0);
+        });
+
+        $('#DataListView').on("click", ".confirm-View", function () {
+            var thisID = $(this).data("id");
+            ShowModalBlinding(thisID);
+        });
+
+        function ShowModalBlinding(thisID) {
+            var url = '@Url.Action("LoadData2Modal", "DMPS_MasterDevelopper")';
+            $.post(url,
+                {
+                    id: thisID
+                }, function (result) {
+                    var obj = $.parseJSON(result);
+                  
+                    $('#txtDevelopmentID').val(obj[0].DevelopmentID);
+                    $('#txtChkDevelopmentID').val(obj[0].DevelopmentID);
+                    $('#txtDevelopmentCode').val(obj[0].DevelopmentCode);
+                    $('#txtChkDevCode').val(obj[0].DevelopmentCode);
+                    $('#txtDevelopmentName').val(obj[0].DevelopmentName);
+                    $('#txtChkDevName').val(obj[0].DevelopmentName);
+
+
+                    if (obj[0].IsDelete == true) { $('#chkIsdelete').iCheck('check'); } else { $('#chkIsdelete').iCheck('uncheck'); };
+
+                    var Cfullname = "";
+                    if (obj[1].EM_NAME_T != null) {
+                        var Cfullname = obj[1].EM_NAME_T + "  " + obj[1].EM_SURNAME_T;
+                   }
+
+                    var Rfullname = "";
+                    if (obj[2].EM_NAME_T != null) {
+                        var Rfullname = obj[2].EM_NAME_T + "  " + obj[2].EM_SURNAME_T;
+                    }
+
+                    var resultCreateDateTime = "";
+                    if (obj[0].CreateDateTime != null) {
+                        var date = obj[0].CreateDateTime;
+                        var nowDate = new Date(parseInt(date.substr(6)));
+                        resultCreateDateTime += nowDate.format("dd/mm/yyyy HH:MM");
+                    }
+
+                    var resultReviseDateTime = "";
+                    if (obj[0].ReviseDateTime != null) {
+                        var date = obj[0].ReviseDateTime;
+                        var nowDate = new Date(parseInt(date.substr(6)));
+                        resultReviseDateTime += nowDate.format("dd/mm/yyyy HH:MM");
+                    }
+
+
+                    ////--------------Creater-------------//
+                    $('#txtCreator').val(Cfullname);
+                    $('#txtCreatorCompany').val(obj[1].EM_COMPANY_T);
+                    $('#txtCreateDateTime').val(resultCreateDateTime);
+                    ////--------------Reviser-------------//
+                    $('#txtReviser').val(Rfullname);
+                    $('#txtReviserCompany').val(obj[2].EM_COMPANY_T);
+                    $('#txtReviserDateTime').val(resultReviseDateTime);
+
+                    //-----------------------End Bind Data to Object---------------------------//
+                    $('#myModal').modal('show');
+                });
+        }
+        //-------------------------------------------------End On Binding-------------------------------------------------//
+
+        //-----------------------------------------------On Modal Control-------------------------------------------------//
+        $('#btnSave').click(function () {
+            var msg = CheckDuplicateByDevCode();
+            $.when(
+                msg
+            ).done(function (vMsg) {
+                vMsg = $.parseJSON(vMsg)
+                if ($('#txtDevelopmentCode').val() == "" || $('#txtDevelopmentCode').val() == "-") {
+                    swal({
+                        title: "คำเตือน",
+                        text: "กรุณากรอก รหัสผู้พัฒนาโครงการ !",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+
+                } else if ($('#txtDevelopmentName').val() == "" || $('#txtDevelopmentName').val() == "-") {
+                    swal({
+                        title: "คำเตือน",
+                        text: "กรุณากรอก ชื่อผู้พัฒนาโครงการ !",
+                        icon: "warning",
+                        button: "Ok"
+                    });
+
+                } else if (vMsg.length > 0) {
+                    if ($('#txtDevelopmentID').val() == 0) {
+                        swal({
+                            title: "พบข้อมูลซ้ำ",
+                            //text: "พบข้อมูลซ้ำ",
+                            icon: "warning",
+                            button: "Ok"
+                        });
+
+                    } else if (vMsg.length > 0 && $('#txtDevelopmentID').val() != vMsg[0].DevelopmentID) {
+                        swal({
+                            title: "พบข้อมูลซ้ำ",
+                            //text: "พบข้อมูลซ้ำ",
+                            icon: "warning",
+                            button: "Ok"
+                        });
+
+                    } else {
+                        swal({
+                            title: "Are you sure?",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Yes, Save Data",
+                            closeOnConfirm: true
+                        }, function () {
+                            SaveDeveloper();
+                        });
+                    }
+
+
+                } else {
+                    swal({
+                        title: "Are you sure?",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, Save Data",
+                        closeOnConfirm: true
+                    }, function () {
+                        SaveDeveloper();
+                    });
+                }
+
+            });
+
+        });
+
+        function CheckDuplicateByDevCode() {
+            var url = '@Url.Action("CheckDuplicateByDevCode", "DMPS_MasterDevelopper")';
+
+            var _DevCode = $("#txtDevelopmentCode").val();
+
+            return $.post(url, {
+                _DevCode: _DevCode,
+            });
+           
+        }
+
+        $('#btnClose').click(function () {
+            $('#myModal').modal('hide');
+            ClearData();
+        });
+
+        $('#closex').click(function () {
+            $('#myModal').modal('hide');
+            ClearData();
+        });
+
+        function ClearData() {
+
+            $('#txtDevelopmentID').val("");
+            $('#txtChkDevelopmentID').val("");
+            $('#txtDevelopmentCode').val("");
+            $('#txtDevelopmentName').val("");
+            $('#txtChkDevCode').val("");
+            $('#txtChkDevName').val("");
+            $("#chkIsDelete").prop('checked', false).trigger('change');
+
+            ////--------------Creater-------------//
+            $('#txtCreator').val("");
+            $('#txtCreatorCompany').val("");
+            $('#txtCreateDateTime').val("");
+            ////--------------Reviser-------------//
+            $('#txtReviser').val("");
+            $('#txtReviserCompany').val("");
+            $('#txtReviserDateTime').val("");
+
+        }
+
+        function SaveDeveloper() {
+            var EmpID = $("#EmployeeID").data("emp-id");
+            //-------------------------Data to Object---------------------------//
+            var _IsDelete = false;
+            if ($('#chkIsdelete').is(':checked') == true) { _IsDelete = true };
+
+            var _DevelopmentID = $('#txtDevelopmentID').val();
+            var _DevelopmentCode = $('#txtDevelopmentCode').val();
+            var _DevelopmentName = $('#txtDevelopmentName').val();
+
+            //-----------------------End Data to Object---------------------------//
+            var url = '@Url.Action("SaveDeveloper", "DMPS_MasterDevelopper")';
+            $.post(url, {
+                DevelopmentID: _DevelopmentID,
+                DevelopmentCode: _DevelopmentCode,
+                DevelopmentName: _DevelopmentName,
+                DevelopmentStatus: 0,
+                Creator: EmpID,
+                Reviser: EmpID,
+                IsDelete: _IsDelete,
+
+            }, function (result) {
+                if (result != "0") {
+                    swal({
+                        title: "การบันทึกข้อมูลสำเร็จ!",
+                        type: "success",
+                    });
+                    $('#myModal').modal('hide');
+                    LoadDataListView(result);
+                }
+                else {
+
+                    swal({
+                        title: "การบันทึกข้อมูลมีการผิดพลาด!",
+                        type: "error",
+                    });
+
+                }
+            });
+        }
+
+        $('#btnClose').click(function () {
+            $('#myModal').modal('hide');
+        });
+
+        //--------------------------------------------End On Modal Control-------------------------------------------------//
+
+
+
+
+
+
+
+
+
+    });
+</script>
