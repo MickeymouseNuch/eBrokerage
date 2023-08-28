@@ -28,7 +28,7 @@ namespace Inspinia_MVC5.Controllers.Report
                 var lstCri = MASDB.ReportCriteriaTables.Where(s => s.ReportCode == ReportCode && s.IsDelete == false).OrderBy(s => s.CriteriaRow).ToList();
                 ViewBag.lstCri = lstCri;
                 var maxRow = MASDB.ReportCriteriaTables.Where(s => s.ReportCode == ReportCode && s.IsDelete == false).Max(s => s.CriteriaRow).GetValueOrDefault();
-                ViewBag.maxRow = maxRow;
+                ViewBag.maxRow = maxRow; //182975
             }
             catch (Exception ex)
             {
